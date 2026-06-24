@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Layout } from "./components/Layout";
 import { Home } from "./pages/Home";
 import { Learn } from "./pages/Learn";
@@ -38,5 +39,10 @@ export function App() {
   else if (activePage === "structurelab") page = <StructureLab onPractice={practiceModule} />;
   else page = <Home progress={progress} onNavigate={navigate} />;
 
-  return <Layout activePage={activePage} onNavigate={navigate} theme={progress.theme} onToggleTheme={toggleTheme}>{page}</Layout>;
+  return (
+    <Layout activePage={activePage} onNavigate={navigate} theme={progress.theme} onToggleTheme={toggleTheme}>
+      {page}
+      <SpeedInsights />
+    </Layout>
+  );
 }
