@@ -1,5 +1,6 @@
 import type { Question } from "../types";
 import { m4Questions, m6Questions, m9Questions, m10Questions } from "./extendedQuestions";
+import { m10PriorityQuestions, m8PriorityQuestions, m5dPriorityQuestions } from "./priorityQuestions";
 import { structureBuildQuestions, structureGraphQuestions } from "./structureGraphQuestions";
 import { structureQuestions } from "./structureQuestions";
 
@@ -118,11 +119,14 @@ export const questions: Question[] = [
   ...m6Questions,
   ...m10,
   ...m10Questions,
+  ...m10PriorityQuestions,
   ...m9,
   ...m9Questions,
   ...m7,
   ...m8,
+  ...m8PriorityQuestions,
   ...m5d,
+  ...m5dPriorityQuestions,
   ...structureQuestions,
   ...structureGraphQuestions,
   ...structureBuildQuestions,

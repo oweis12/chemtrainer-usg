@@ -7,6 +7,7 @@ import { BinasBox } from "./BinasBox";
 import { FeedbackPanel } from "./FeedbackPanel";
 import { FormulaBlock } from "./FormulaBlock";
 import { StructureRenderer } from "./StructureRenderer";
+import { QuestionVisual } from "./QuestionVisual";
 import { MoleculePuzzleBuilder } from "./chem/MoleculePuzzleBuilder";
 
 type PracticeResult = { question: ChemistryQuestion; correct: boolean; reflection: string };
@@ -89,6 +90,7 @@ export function QuestionCard({ question, mode = "practice", number, total, onPra
       </div>
       <h2>{question.question}</h2>
       <div className="question-binas"><BinasBox references={binasReferences} /></div>
+      {question.visual && <QuestionVisual visual={question.visual} />}
       {question.structure && <StructureRenderer structure={question.structure} />}
       {question.type === "calculation" && <FormulaBlock title="Rekenherinnering" note="Controleer steeds je eenheden."><span>n = c × V &nbsp; · &nbsp; c = n / V &nbsp; · &nbsp; V in L</span></FormulaBlock>}
       {isBuilder && buildTask && <div className="question-builder"><MoleculePuzzleBuilder task={buildTask} onChecked={(correct) => report(correct)} /></div>}

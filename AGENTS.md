@@ -12,3 +12,4 @@ When implementing from a selected generated mock, treat that image as the source
 - Do not expand generic lessons or the general questions bank unless explicitly asked. Current priority is real SVG structure formulas and the interactive StructuurLab puzzle builder.
 - Keep molecule tooling deliberately lightweight and native to React/SVG; no heavy chemistry-editor dependency is wanted for this V1.
 - Keep BINAS support as an original reference guide only: show relevant table references and how to use them, never copied table contents, screenshots, or literal table reproductions.
+- Current content priority: improve test quality, contextual reasoning and visual interpretation in M10, M8 and M5D before adding broad new features or generic content.

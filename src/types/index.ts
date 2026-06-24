@@ -92,6 +92,15 @@ export interface StructureData {
   graph?: MoleculeGraph;
 }
 
+export interface QuestionVisual {
+  type: "diagram" | "spectrum" | "chromatogram" | "structure" | "image";
+  component?: string;
+  src?: string;
+  alt: string;
+  caption?: string;
+  variant?: string;
+}
+
 export interface Question {
   id: string;
   module: ModuleId;
@@ -108,6 +117,7 @@ export interface Question {
   hints: string[];
   commonMistakes: string[];
   explanation: string;
+  visual?: QuestionVisual;
   structure?: StructureData;
   structureTaskId?: string;
 }
@@ -139,4 +149,4 @@ export interface StoredProgress {
 }
 
 export type AppPage = "home" | "learn" | "practice" | "test" | "mistakes" | "structurelab" | "binas";
-export type TestKind = "official" | "random" | "challenge";
+export type TestKind = "official" | "random" | "challenge" | "priority";

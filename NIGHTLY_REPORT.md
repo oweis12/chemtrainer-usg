@@ -1,67 +1,81 @@
 # NIGHTLY REPORT — ChemTrainer USG
 
-Datum: 2026-06-23
+Datum: 2026-06-24
 
-## StructuurLab toegevoegd
+## Gerichte toetskwaliteitsronde
 
-- Nieuwe navigatiesectie **StructuurLab** met vier tabs: Herkennen, Bouwen, Functionele groepen en Toetsvragen.
-- De pagina legt eerst rustig uit hoe leerlingen atomen, enkele/dubbele bindingen, OH, COOH, ester en amide in een structuurformule lezen.
-- De bestaande lichte labnotitie-/examenbundelstijl is aangehouden; er is geen grote layoutwijziging gedaan.
+Deze ronde beperkte zich bewust tot M10, M8 en M5D. De bestaande labnotitie-layout en bestaande oefen-/toetsflow zijn behouden.
 
-## Nieuwe structuurcomponenten
+### Audit van de bestaande kernvragen
 
-- `StructureRenderer` tekent nu `MoleculeGraph`-data als responsive SVG: atoomlabels, enkele/dubbele/drievoudige bindingen en formele ladingen.
-- Oude tekstformules blijven werken als terugvaloptie voor bestaande vragen.
-- Nieuwe interactieve builder-onderdelen:
-  - `MoleculePuzzleBuilder`
-  - `AtomPalette`
-  - `BondSelector`
-  - `MoleculeCanvas`
-  - `StructureFeedbackPanel`
-- Leerlingen kunnen losse C/H/O/N/Cl/S/P-atomen of snelle fragmenten plaatsen, verslepen, verbinden, verwijderen, resetten, nakijken en het model tonen.
-- Studentenstructuren worden per bouwopdracht lokaal als JSON bewaard met `localStorage`.
+| Module | Bestaande kernbank beoordeeld | Besluit |
+| --- | ---: | --- |
+| M10 titratie/mol | 57 | Behouden als fundament; korte instapvragen blijven uitsluitend niveau 1. Geen onjuiste of onduidelijke vraag hoefde te worden verwijderd. |
+| M8 analysetechnieken | 15 | Vier erg compacte instappers zijn didactisch aangevuld met context- en visualisatievarianten; geen vraag als onbruikbaar gemarkeerd. |
+| M5D DNA/polymeren | 15 | Behouden als startdiagnostiek en aangevuld met langere redeneer- en vergelijkingsvragen; geen vraag als onbruikbaar gemarkeerd. |
 
-## Nieuwe vraagtypen en data
+Er zijn dus **geen** vragen als `replace` gemarkeerd. De verbeteractie was `keep/improve`: bestaande basisvragen blijven bruikbaar op niveau 1, maar vormen niet langer de hoofdinhoud van de prioriteitsbanken.
 
-- Toegevoegd: `structure_view`, `structure_click`, `structure_build` en `structure_complete`.
-- **20** interactieve bouwopdrachten zijn toegevoegd, verdeeld over niveau 1 t/m 4 (water tot polyamide, nucleotide, triglyceride en zeep).
-- **40** SVG-structuurformulevragen zijn toegevoegd voor alcoholen, carbonzuren, esters, amiden/peptidebindingen, aminozuren, hydrofiel/hydrofoob, H-bruggen, polariteit en nucleotiden.
-- Bouwopdrachten kunnen nu in **Oefenen** verschijnen; een fout wordt via dezelfde resultaatstroom in het foutenlog opgeslagen.
-- Bouwopdrachten zijn bewust uitgesloten van de **Proeftoets**, omdat die modus lineair en zonder interactieve editor hoort te blijven.
+## Nieuwe en verbeterde vraagbanken
+
+- **M10:** nu **80** kernvragen, exact **20 per niveau**. Toegevoegd: 23 toetsgerichte vragen over buret, Schellbachstreep, `n = c × V`, molverhoudingen, zuur-base, verdunnen, massa%, gemiddelden/uitbijters, significantie, indicatoren en foutenanalyse.
+- **M8:** nu **60** kernvragen, exact **15 per niveau**. Toegevoegd: 45 vragen over M-, M+1- en M+2-pieken, basispiek, fragmentatie, isotopen, Rutherford, GC, GC-MS, IR en NMR.
+- **M5D:** nu **50** kernvragen. Toegevoegd: 35 vragen over DNA, RNA, nucleotide/polymeer, complementaire basenparing, additie- en condensatiepolymeren, ester-/amide-/peptidebindingen, eiwitten, vetten en materialenredeneren.
+- De nieuwe vragen vragen vooral om uitleg op microniveau, rekenstappen, bronkritiek, vergelijking en foutenanalyse; losse definitievragen zijn alleen nog instapmateriaal.
+
+## Nieuwe visualisaties
+
+Nieuwe native React/SVG-componenten, zonder extra zware library:
+
+- `MassSpectrometerDiagram`
+- `MassSpectrumDiagram`
+- `GcChromatogramDiagram`
+- `GcMsDiagram`
+- `TitrationSetupDiagram`
+- `NucleotideDiagram`
+- `DnaPolymerDiagram`
+- `DnaRnaDiagram`
+- `PeptideBondDiagram`
+
+Vraagdata ondersteunt nu een optioneel `visual`-veld. `QuestionVisual` zet componentnamen om naar een toegankelijke figuur met bijschrift. Er zijn minstens **15 buret-/titratievragen met een visuele opstelling** toegevoegd.
+
+## Toetsmodus
+
+- Nieuwe **Prioriteitstoets M10–M8–M5D**.
+- Tien vragen met vaste verdeling: **4× M10, 3× M8, 2× M5D, 1× M9 of M7**.
+- De bestaande proeftoets, random proeftoets en 8+ challenge zijn ongewijzigd beschikbaar.
 
 ## Aangepaste bestanden
 
 - `src/types/index.ts`
-- `src/utils/chemGraph.ts`
-- `src/components/StructureRenderer.tsx`
-- `src/components/QuestionCard.tsx`
-- `src/components/chem/AtomPalette.tsx`
-- `src/components/chem/BondSelector.tsx`
-- `src/components/chem/MoleculeCanvas.tsx`
-- `src/components/chem/MoleculePuzzleBuilder.tsx`
-- `src/components/chem/StructureFeedbackPanel.tsx`
-- `src/data/structureBuildTasks.ts`
-- `src/data/structureGraphQuestions.ts`
 - `src/data/questions.ts`
-- `src/pages/StructureLab.tsx`
+- `src/data/priorityQuestions.ts`
+- `src/components/QuestionCard.tsx`
+- `src/components/QuestionVisual.tsx`
+- `src/components/diagrams/MassSpectrometerDiagram.tsx`
+- `src/components/diagrams/MassSpectrumDiagram.tsx`
+- `src/components/diagrams/GcChromatogramDiagram.tsx`
+- `src/components/diagrams/GcMsDiagram.tsx`
+- `src/components/diagrams/TitrationSetupDiagram.tsx`
+- `src/components/diagrams/NucleotideDiagram.tsx`
+- `src/components/diagrams/DnaPolymerDiagram.tsx`
+- `src/components/diagrams/DnaRnaDiagram.tsx`
+- `src/components/diagrams/PeptideBondDiagram.tsx`
 - `src/pages/TestMode.tsx`
-- `src/App.tsx`
-- `src/components/Layout.tsx`
 - `src/styles.css`
 - `AGENTS.md`
+- `NIGHTLY_REPORT.md`
 
 ## Controle
 
-- `npm run build` werkt: TypeScript-check en productiebuild zijn geslaagd.
-- Ontwikkelserver draait lokaal op `http://127.0.0.1:5173/`.
-- Een live browsercontrole kon in deze sessie niet worden afgerond doordat de lokale browser-URL door de browserbeveiliging werd geblokkeerd; de productiebuild en typecheck zijn wel volledig geslaagd.
+- `npm run build` werkt: TypeScript-check én Vite-productiebundel zijn geslaagd.
 
-## Nog beperkt in deze V1
+## Nog zwak / bewust buiten scope
 
-- De structuurvergelijker gebruikt praktische grafvergelijking en functionele-groepdetectie; hij is geen volledige RDKit-achtige chemie-engine.
-- Fragmenten zijn bewuste snelbouwstenen. Daardoor is bijvoorbeeld een COOH- of esterfragment één klikbaar puzzelstuk, geen atoom-voor-atoom editor.
-- `structure_click` is in deze versie een gerichte herkenningsvraag bij het SVG-model; er is nog geen individuele klik-hotspot per atoomgroep.
+- M7 en M9 hebben nog niet dezelfde volledige toetskwaliteitsronde gekregen.
+- Open antwoorden worden nog door de leerling met rubric zelf beoordeeld; er is bewust geen onbetrouwbare automatische taalbeoordeling toegevoegd.
+- De diagrammen zijn conceptueel en toetsgericht; ze zijn geen vervanging voor echte spectra of practicumdata.
 
 ## Aanbevolen volgende stap
 
-Voeg, alleen als daar later behoefte aan is, interactieve klik-hotspots toe aan SVG-groepen en breid vervolgens de grafvergelijker uit met een kleinere isomorfisme-check voor moleculen zonder snelle fragmenten.
+Voer dezelfde gerichte audit uit voor M7 redox en M9 bindingen, en voeg daarna enkele realistische bronvragen toe waarin leerlingen diagram, tekst en rekentabel combineren.
