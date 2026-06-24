@@ -1,0 +1,3 @@
+export function BondSelector({ order, onChange }: { order: 1 | 2 | 3; onChange: (order: 1 | 2 | 3) => void }) {
+  return <div className="bond-selector"><span className="section-kicker">Binding</span><div><button className={order === 1 ? "selected" : ""} onClick={() => onChange(1)} aria-label="Enkele binding">— <small>enkel</small></button><button className={order === 2 ? "selected" : ""} onClick={() => onChange(2)} aria-label="Dubbele binding">═ <small>dubbel</small></button><button className={order === 3 ? "selected" : ""} onClick={() => onChange(3)} aria-label="Drievoudige binding">≡ <small>drievoudig</small></button></div></div>;
+}
