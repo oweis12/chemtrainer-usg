@@ -1,7 +1,9 @@
 import { Alarm, ArrowRight, CheckCircle, ClipboardText, Clock, GraduationCap, ListChecks, Shuffle, Sparkle, Target, WarningCircle } from "@phosphor-icons/react";
 import { useEffect, useMemo, useState } from "react";
 import { questions } from "../data/questions";
-import type { Question, TestKind } from "../types";
+import { learningObjectives } from "../data/learningObjectives";
+import { officialPracticeTest } from "../data/officialPracticeTest";
+import type { Question, StoredProgress, TestKind } from "../types";
 import { FeedbackPanel } from "../components/FeedbackPanel";
 import { QuestionCard } from "../components/QuestionCard";
 
@@ -23,9 +25,10 @@ const timeLabel = (seconds: number) => `${String(Math.floor(seconds / 60)).padSt
 interface TestModeProps {
   onResult: (question: Question, correct: boolean, reflection: string) => void;
   onPracticeQuestion: (question: Question) => void;
+  progress: StoredProgress;
 }
 
-export function TestMode({ onResult, onPracticeQuestion }: TestModeProps) {
+export function TestMode({ onResult, onPracticeQuestion, progress }: TestModeProps) {
   const [kind, setKind] = useState<TestKind>("official");
   const [withTimer, setWithTimer] = useState(true);
   const [started, setStarted] = useState(false);
@@ -45,6 +48,20 @@ export function TestMode({ onResult, onPracticeQuestion }: TestModeProps) {
 
   const current = items[index];
   const picked = useMemo(() => {
+    if (kind === "officialPractice") return officialPracticeTest.questions;
+    if (kind === "learningObjectives") {
+      const scoreFor = (ids: string[]) => {
+        const attempts = progress.answers.filter((answer) => ids.includes(answer.questionId));
+        return attempts.length ? attempts.filter((answer) => answer.correct).length / attempts.length : -1;
+      };
+      const orderedObjectives = [...learningObjectives].sort((a, b) => scoreFor(a.questionIds) - scoreFor(b.questionIds));
+      const chosen: Question[] = [];
+      orderedObjectives.forEach((objective) => objective.questionIds.forEach((id) => {
+        const candidate = testEligibleQuestions.find((question) => question.id === id);
+        if (candidate && !chosen.some((question) => question.id === candidate.id) && chosen.length < 10) chosen.push(candidate);
+      }));
+      return chosen.length >= 10 ? chosen : [...chosen, ...mix(testEligibleQuestions.filter((question) => !chosen.some((selected) => selected.id === question.id))).slice(0, 10 - chosen.length)];
+    }
     if (kind === "priority") {
       const moduleItems = (module: Question["module"], amount: number) => mix(testEligibleQuestions.filter((question) => question.module === module)).slice(0, amount);
       return [
@@ -63,9 +80,13 @@ export function TestMode({ onResult, onPracticeQuestion }: TestModeProps) {
       });
     }
     return mix(testEligibleQuestions).slice(0, 10);
-  }, [kind]);
+  }, [kind, progress.answers]);
 
-  function start() { setItems(picked); setIndex(0); setAnswers({}); setOutcomes({}); setSeconds(kind === "challenge" ? 35 * 60 : kind === "official" ? 40 * 60 : kind === "priority" ? 45 * 60 : 30 * 60); setSubmitted(false); setStarted(true); }
+  const officialSourceMissing = kind === "officialPractice" && officialPracticeTest.sourceStatus !== "ready";
+  const timeForKind = kind === "challenge" ? 35 * 60 : kind === "officialPractice" ? 60 * 60 : kind === "official" ? 40 * 60 : kind === "priority" ? 45 * 60 : kind === "learningObjectives" ? 35 * 60 : 30 * 60;
+  const kindLabel = kind === "challenge" ? "8+ challenge" : kind === "official" ? "Proeftoets" : kind === "officialPractice" ? "Officiële oefentoets" : kind === "priority" ? "Prioriteitstoets M10–M8–M5D" : kind === "learningObjectives" ? "Leerdoelentoets" : "Random proeftoets";
+
+  function start() { if (officialSourceMissing || !picked.length) return; setItems(picked); setIndex(0); setAnswers({}); setOutcomes({}); setSeconds(timeForKind); setSubmitted(false); setStarted(true); }
   function acceptAnswer(question: Question, answer: string) { setAnswers((all) => ({ ...all, [question.id]: answer })); setIndex((currentIndex) => Math.min(currentIndex + 1, items.length)); }
   function submit() {
     if (submitted) return;
@@ -75,18 +96,30 @@ export function TestMode({ onResult, onPracticeQuestion }: TestModeProps) {
   }
   function selfScore(question: Question, correct: boolean) { if (outcomes[question.id] !== undefined) return; setOutcomes((all) => ({ ...all, [question.id]: correct })); onResult(question, correct, "Zelf beoordeeld na toetsinzage."); }
 
-  if (!started) return <div className="test-page"><section className="page-intro"><span className="section-kicker">Toetsmodus</span><h1>Oefen onder toetscondities.</h1><p>Geen directe feedback, geen hints. Je krijgt pas na inleveren je analyse en modelantwoorden.</p></section><div className="test-kind-grid"><TestKindCard active={kind === "official"} title="Proeftoets" text="Gebalanceerde set uit modules 4 t/m 10." icon={<GraduationCap size={31} />} onClick={() => setKind("official")} /><TestKindCard active={kind === "priority"} title="Prioriteitstoets M10–M8–M5D" text="10 vragen: 40% M10, 30% M8, 20% M5D en 10% M9/M7." icon={<Target size={30} />} onClick={() => setKind("priority")} /><TestKindCard active={kind === "random"} title="Random proeftoets" text="Tien willekeurige, serieuze vragen uit de databank." icon={<Shuffle size={30} />} onClick={() => setKind("random")} /><TestKindCard active={kind === "challenge"} title="8+ challenge" text="Combinatievragen die redeneren en rekenen verbinden." icon={<Sparkle size={30} />} onClick={() => setKind("challenge")} /></div><section className="test-settings"><div><Alarm size={24} /><div><strong>Timer optioneel</strong><p>{kind === "challenge" ? "35 minuten" : kind === "official" ? "40 minuten" : kind === "priority" ? "45 minuten" : "30 minuten"} voorgesteld.</p></div></div><label className="switch-label"><input type="checkbox" checked={withTimer} onChange={(event) => setWithTimer(event.target.checked)} /><span className="toggle-rail"><span /></span>{withTimer ? "Timer aan" : "Timer uit"}</label><button className="primary-button" onClick={start}><ClipboardText size={19} /> Start {kind === "challenge" ? "challenge" : "toets"}</button></section></div>;
-  if (submitted) return <TestResults items={items} outcomes={outcomes} onSelfScore={selfScore} onPractice={onPracticeQuestion} onAgain={() => setStarted(false)} />;
+  if (!started) return <div className="test-page">
+    <section className="page-intro"><span className="section-kicker">Toetsmodus</span><h1>Oefen onder toetscondities.</h1><p>Geen directe feedback, geen hints. Je krijgt pas na inleveren je analyse en modelantwoorden.</p></section>
+    <div className="test-kind-grid">
+      <TestKindCard active={kind === "official"} title="Proeftoets" text="Gebalanceerde set uit modules 4 t/m 10." icon={<GraduationCap size={31} />} onClick={() => setKind("official")} />
+      <TestKindCard active={kind === "officialPractice"} title="Officiële oefentoets" text="De docentversie in oorspronkelijke volgorde, met punten en inzage na inleveren." icon={<ClipboardText size={30} />} onClick={() => setKind("officialPractice")} />
+      <TestKindCard active={kind === "priority"} title="Prioriteitstoets M10–M8–M5D" text="10 vragen: 40% M10, 30% M8, 20% M5D en 10% M9/M7." icon={<Target size={30} />} onClick={() => setKind("priority")} />
+      <TestKindCard active={kind === "learningObjectives"} title="Leerdoelentoets" text="Trekt vragen uit leerdoelen die nog weinig of zwak geoefend zijn." icon={<ListChecks size={30} />} onClick={() => setKind("learningObjectives")} />
+      <TestKindCard active={kind === "random"} title="Random proeftoets" text="Tien willekeurige, serieuze vragen uit de databank." icon={<Shuffle size={30} />} onClick={() => setKind("random")} />
+      <TestKindCard active={kind === "challenge"} title="8+ challenge" text="Combinatievragen die redeneren en rekenen verbinden." icon={<Sparkle size={30} />} onClick={() => setKind("challenge")} />
+    </div>
+    <section className="test-settings"><div><Alarm size={24} /><div><strong>Timer optioneel</strong><p>{Math.round(timeForKind / 60)} minuten voorgesteld.</p>{officialSourceMissing && <p className="source-note">{officialPracticeTest.sourceNote}</p>}</div></div><label className="switch-label"><input type="checkbox" checked={withTimer} onChange={(event) => setWithTimer(event.target.checked)} /><span className="toggle-rail"><span /></span>{withTimer ? "Timer aan" : "Timer uit"}</label><button className="primary-button" disabled={officialSourceMissing} onClick={start}><ClipboardText size={19} /> {officialSourceMissing ? "Bronbestand nodig" : `Start ${kind === "challenge" ? "challenge" : "toets"}`}</button></section>
+  </div>;
+  if (submitted) return <TestResults items={items} outcomes={outcomes} kind={kind} onSelfScore={selfScore} onPractice={onPracticeQuestion} onAgain={() => setStarted(false)} />;
   if (!current) return <div className="test-page"><div className="test-finish-card"><CheckCircle size={42} weight="fill" /><h1>Alle antwoorden zijn vastgelegd.</h1><p>Je kunt nu inleveren. Daarna zie je pas de feedback.</p><button className="primary-button" onClick={submit}>Toets inleveren <ArrowRight size={18} /></button></div></div>;
-  return <div className="test-page"><div className="test-run-header"><div><span className="section-kicker">{kind === "challenge" ? "8+ challenge" : kind === "official" ? "Proeftoets" : kind === "priority" ? "Prioriteitstoets M10–M8–M5D" : "Random proeftoets"}</span><strong>Vraag {Math.min(index + 1, items.length)} van {items.length}</strong></div>{withTimer && <span className={`timer ${seconds < 300 ? "timer-low" : ""}`}><Clock size={18} /> {timeLabel(seconds)}</span>}<button className="text-action" onClick={submit}>Nu inleveren</button></div><p className="test-rule">Toetsmodus: feedback en modelantwoorden blijven verborgen tot je inlevert.</p><QuestionCard key={current.id} question={current} mode="test" number={index + 1} total={items.length} onTestAnswer={acceptAnswer} /></div>;
+  return <div className="test-page"><div className="test-run-header"><div><span className="section-kicker">{kindLabel}</span><strong>Vraag {Math.min(index + 1, items.length)} van {items.length}{current.points ? ` · ${current.points} ${current.points === 1 ? "punt" : "punten"}` : ""}</strong></div>{withTimer && <span className={`timer ${seconds < 300 ? "timer-low" : ""}`}><Clock size={18} /> {timeLabel(seconds)}</span>}<button className="text-action" onClick={submit}>Nu inleveren</button></div><p className="test-rule">Toetsmodus: feedback en modelantwoorden blijven verborgen tot je inlevert.</p><QuestionCard key={current.id} question={current} mode="test" number={index + 1} total={items.length} onTestAnswer={acceptAnswer} /></div>;
 }
 
 function TestKindCard({ active, title, text, icon, onClick }: { active: boolean; title: string; text: string; icon: React.ReactNode; onClick: () => void }) { return <button className={`test-kind-card ${active ? "selected" : ""}`} onClick={onClick}>{icon}<h2>{title}</h2><p>{text}</p><span>{active ? "Geselecteerd" : "Kies deze modus"}</span></button>; }
 
-function TestResults({ items, outcomes, onSelfScore, onPractice, onAgain }: { items: Question[]; outcomes: Record<string, boolean | undefined>; onSelfScore: (question: Question, correct: boolean) => void; onPractice: (question: Question) => void; onAgain: () => void }) {
+function TestResults({ items, outcomes, kind, onSelfScore, onPractice, onAgain }: { items: Question[]; outcomes: Record<string, boolean | undefined>; kind: TestKind; onSelfScore: (question: Question, correct: boolean) => void; onPractice: (question: Question) => void; onAgain: () => void }) {
   const assessed = items.filter((question) => outcomes[question.id] !== undefined);
   const correct = assessed.filter((question) => outcomes[question.id]).length;
   const topics = [...new Set(items.map((question) => question.topic))];
   const weak = assessed.filter((question) => outcomes[question.id] === false);
-  return <div className="test-results"><section className="result-hero"><span className="section-kicker">Toetsanalyse</span><h1>Ingeleverd. Nu wordt het leerzaam.</h1><div className="score-circle"><strong>{assessed.length ? Math.round((correct / assessed.length) * 100) : "—"}%</strong><span>{correct} / {assessed.length} beoordeeld goed</span></div><p>{items.length - assessed.length ? `${items.length - assessed.length} open vragen wachten nog op je zelfbeoordeling.` : "Alle vragen zijn beoordeeld."}</p></section><section className="topic-score-grid">{topics.map((topic) => { const topicItems = items.filter((question) => question.topic === topic && outcomes[question.id] !== undefined); const topicCorrect = topicItems.filter((question) => outcomes[question.id]).length; return <div className="topic-score" key={topic}><span>{topic}</span><strong>{topicItems.length ? `${Math.round((topicCorrect / topicItems.length) * 100)}%` : "zelf beoordelen"}</strong><small>{topicCorrect}/{topicItems.length} goed</small></div>; })}</section>{weak.length > 0 && <section className="retry-strip"><WarningCircle size={24} weight="fill" /><div><strong>Opnieuw oefenen</strong><p>{weak.length} fout{weak.length === 1 ? "e" : "en"} zijn aan je foutenlog toegevoegd. Pak ze gericht terug.</p></div><button className="secondary-button" onClick={() => onPractice(weak[0])}><Target size={18} /> Oefen eerste fout</button></section>}<section className="result-review"><h2>Inzage per vraag</h2>{items.map((question, index) => <article className="result-question" key={question.id}><div className="result-question-head"><span>Vraag {index + 1} · {question.topic}</span>{outcomes[question.id] === true ? <span className="good-chip">goed</span> : outcomes[question.id] === false ? <span className="error-chip">opnieuw oefenen</span> : <span className="wait-chip">zelf beoordelen</span>}</div><p>{question.question}</p><FeedbackPanel question={question} correct={outcomes[question.id]} selfReview={!objectiveTypes.has(question.type)} />{outcomes[question.id] === undefined && <div className="self-actions"><button className="secondary-button" onClick={() => onSelfScore(question, true)}><CheckCircle size={18} weight="fill" /> Mijn antwoord klopt</button><button className="review-button" onClick={() => onSelfScore(question, false)}><WarningCircle size={18} weight="fill" /> Ik wil dit herhalen</button></div>}</article>)}</section><button className="primary-button" onClick={onAgain}><ListChecks size={18} /> Nieuwe toets instellen</button></div>;
+  const weakObjectives = learningObjectives.filter((objective) => weak.some((question) => objective.questionIds.includes(question.id)));
+  return <div className="test-results"><section className="result-hero"><span className="section-kicker">Toetsanalyse</span><h1>Ingeleverd. Nu wordt het leerzaam.</h1><div className="score-circle"><strong>{assessed.length ? Math.round((correct / assessed.length) * 100) : "—"}%</strong><span>{correct} / {assessed.length} beoordeeld goed</span></div><p>{items.length - assessed.length ? `${items.length - assessed.length} open vragen wachten nog op je zelfbeoordeling.` : "Alle vragen zijn beoordeeld."}</p></section><section className="topic-score-grid">{topics.map((topic) => { const topicItems = items.filter((question) => question.topic === topic && outcomes[question.id] !== undefined); const topicCorrect = topicItems.filter((question) => outcomes[question.id]).length; return <div className="topic-score" key={topic}><span>{topic}</span><strong>{topicItems.length ? `${Math.round((topicCorrect / topicItems.length) * 100)}%` : "zelf beoordelen"}</strong><small>{topicCorrect}/{topicItems.length} goed</small></div>; })}</section>{weak.length > 0 && <section className="retry-strip"><WarningCircle size={24} weight="fill" /><div><strong>Opnieuw oefenen</strong><p>{weak.length} fout{weak.length === 1 ? "e" : "en"} zijn aan je foutenlog toegevoegd. Pak ze gericht terug.</p></div><button className="secondary-button" onClick={() => onPractice(weak[0])}><Target size={18} /> Oefen eerste fout</button></section>}{kind === "learningObjectives" && <section className="objective-result-strip"><ClipboardText size={24} weight="duotone" /><div><strong>Leerdoelen om te herhalen</strong><p>{weakObjectives.length ? weakObjectives.map((objective) => objective.onderwerp).join(" · ") : "Nog geen zwak leerdoel uit deze toets; beoordeel open antwoorden om dit volledig te maken."}</p></div></section>}<section className="result-review"><h2>Inzage per vraag</h2>{items.map((question, index) => <article className="result-question" key={question.id}><div className="result-question-head"><span>Vraag {index + 1} · {question.topic}</span>{outcomes[question.id] === true ? <span className="good-chip">goed</span> : outcomes[question.id] === false ? <span className="error-chip">opnieuw oefenen</span> : <span className="wait-chip">zelf beoordelen</span>}</div><p>{question.question}</p><FeedbackPanel question={question} correct={outcomes[question.id]} selfReview={!objectiveTypes.has(question.type)} />{outcomes[question.id] === undefined && <div className="self-actions"><button className="secondary-button" onClick={() => onSelfScore(question, true)}><CheckCircle size={18} weight="fill" /> Mijn antwoord klopt</button><button className="review-button" onClick={() => onSelfScore(question, false)}><WarningCircle size={18} weight="fill" /> Ik wil dit herhalen</button></div>}</article>)}</section><button className="primary-button" onClick={onAgain}><ListChecks size={18} /> Nieuwe toets instellen</button></div>;
 }

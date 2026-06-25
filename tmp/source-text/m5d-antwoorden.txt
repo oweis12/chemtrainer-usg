@@ -1,0 +1,402 @@
+
+USG antwoorden
+2 dec 2024
+Module 5-D
+DNA en andere polymeren.
+Voorbeeld
+Antwoorden
+Leerjaar 4h en 4v
+02-12-2024 USG
+
+UITWERKING Practicum 19 Condensatiepolymeren
+19.1	Inde voorgaande ….
+	a. 
+	b. Jazeker
+	c. In één stof is zowel de alcohol~ als de carbonzuurfunctionaliteit aanwezig.
+	d. 
+	e. Molecuulformule 1-propylbutanoaat: C7H14O2 dus de molmassa is dan 130,18  g/mol De molmassa van de ester van d is 134,08 g/mol dus de twee stoffen zullen zonder aanwezigheid van bv OH of NH groepen ongeveer hetzelfde kookpunt hebben.
+	f. In de structuurformule zie je OH-groepen, die zorgen voor waterstofbruggen waardoor het kookpunt hoger wordt.
+	g. Er is nog een carbonzuur groep aanwezig.
+	h. Er is ook een OH-groep aanwezig.
+	i. 
+	j. Door het tekenen van ~ aan de uiteinden.
+	k. Een polymeer ontstaat doordat er vele monomeermoleculen (via een condensatiereactie) aan elkaar koppelen.
+19.2	Aan de hand van …
+a.  
+	b. 
+	c. Zie b
+	d. Ja, dat kan. Er zijn twee OH-groepen en die kunnen reageren tot een ether. Er zal dus een polyether ontstaan. 
+	e. Natuurlijk niet
+19.3	In de vorige opdracht …
+	a. Zie 19.2a
+b. Zie 19.2b
+	c. Zie 19.2c
+	d. Jawel hoor, het wordt nogal eens in kleding gebruikt.
+	e. Ook polyesters komen voor in kleding, maar ook in bijvoorbeeld kunststof zwembaden en zo.
+	f. Polyethers vind je vooral in matrassen (polyetherschuim)
+19.4	De polymeren uit de …..
+a. Aan de uiteinden zie je de golfjes (en er zijn veel A’s te zien)
+b. Het zijn allemaal A’s c. 11 d. ~A-B-A-B-A-B-A-B-A-B~ (ik teken dus liever te twee monomeren aan het einde, want dan klopt de volgorde beter
+e. Een alternerend copolymeer
+f. Een terpolymeer
+19.5	Uit propaandizuur en ethaan-1,2-diamine kan een copolymeer ontstaan.
+	a. 	ethaan-1,2-diamine
+
+		propaandizuur
+	polymeer
+	b. Het is een condensatiepolymeer, omdat bij de vorming van de amide-	binding H2O is ontstaan.
+	c. Het is een polyamide vanwege de amide groep(en)
+	d. Het is een alternerend copolymeer (twee afwisselende monomere 	eenheden)
+19.6	Een bekend voorbeeld ….
+	a. Vooral bekend van de kousen (nylons)
+	b. Het is een condensatiepolymeer
+	c. Het is een polyamide
+	d. 	A: hexaan-1,6-diamine	
+		B: hexaandizuur		
+	e. Natuurlijk
+	f. OK	
+	g.   + 2 H-O-H 	 + 2 H-Cl
+	h. Ook waterstofchloride, H-Cl
+	i.  Eigenlijk wel, want er ontstaat een (klein) molecuul
+	j.  als er tijd is als demonstratie.
+19.7	In
+	a. Nylon 6,10 ontstaat uit hexaan-1,6-diamine en sebacoylchloride. Het 	diamine heeft 6 C-atomen dus dan zal het sebacoylchloride er wel 10 	hebben. 
+	b. 
+	c.  Er zijn twee monomeren nodig (een dizuur en een diamine).
+	d. 
+	e. In een polymeer zijn niet alle ketens even lang (dus is het eigenlijk een 	mengsel van stoffen). Hoe langer de keten hoe meer moeite het kost om 	die in beweging te krijgen.  Microniveau!
+	f. De molecuulformule van de herhaalde eenheid is C6H11NO en heeft een 	molecuulmassa van 141u. Dus dat past dan 2,3x104/ 113 = 203,5 keer 	erin. (Met juiste significantie: 2,0x102)
+	
+
+
+Voor huiswerk 19A.3 en 4
+Film Gif om op te vreten:   https://www.youtube.com/watch?v=opkz88Fhfxo
+
+UITWERKING Practicum 20 Eiwitten, koolhydraten en vetten
+20.1	In practicum 19 en 19A …..
+	a. Als -CONH2, -CONH- en als -CON<
+	b. Dat is natuurlijk water.
+	c. H2N-C5H10-CONH-C5H10-COOH
+	
+	d. Ja, er is een aminogroep en een carbonzuurgroep.
+20.2	Ook uit andere ….
+a.  Dat is amino-ethaanzuur. 
+	b. Dat hangt er van af. Als je de uiteinden meetelt zouden het er ook 5 kunnen zijn. Er zijn 3 volledige peptidebindingen getekend.
+	c.  of 
+	d. 
+	e. Ik ben (nog) niet zo goed in de éénletter aminozuren. De volledige structuurformule is te veel werk dus werk ik met de drieletterformules. f. ~Trp-Trp-Trp-~
+20.3	Hieronder zie je …
+	a. Tussen de NH en de C=O   Let op: het lijkt alsof op er een CO enkele binding zit maar het is een C=O dubbele binding!:
+
+zie plaatje:
+
+b. Natuurlijk klopt dat.
+	c. Bij valine stelt het een 2-propyl groep voor.
+	d. Val-Cys en Cys-Val. Deze zijn anders omdat bij de eerste bijvoorbeeld de zuurgroep van Val gekoppeld is aan de aminogroep van Cys, en bij de tweede is de zuurgroep van Cys gekoppeld aan de amino van Val.
+	e. Dat weet ik. Het is een (bio)katalysator die ervoor zorgt dat reacties (sneller) kunnen optreden.
+20.4	In de vorige opdracht ….
+a. Aardappels en brood
+b. Suiker heeft formule C12H22O11. Dus n=12 en m = 11. c. n = 6 en m = 6 d. Glucose is een monosacharide.
+e. Sacharose is een disacharide
+f. Van allemaal.
+20.5	Je zult aan de hand van ….
+	a. Glucose: C6H12O6 	  Fructose: C6H12O6
+	b. Er zijn OH groepen te zien.
+	c. Er is een C-O-C binding.
+	d. Ze horen bij de polyethers, omdat ze via de koppeling tussen twee 	alcohol-groepen gevormd worden. 	e. Ik vind het meer een indeling op microniveau, want je kijkt hoeveel 	eenheden er gekoppeld zijn.
+20.6	De belangrijkste functie van koolhydraten ….
+	a. In glycogeen zijn vertakkingen, in cellulose niet.
+	b. Op microniveau, want ik heb naar de structuurformules gekeken.
+	c. n C6H12O6  (C6H10O5)n + n H2O
+	d. Het glycogeen wordt als energieopslag gebruikt dus zal het wel 	endotherm zijn.
+	e. Hoog staan de stoffen na de pijl. Onder staat de stof voor de pijl:
+
+20.7	Vetten worden ….
+	a. propaan-1,2,3-triol 
+	b. 16 C’s
+	c.  Er zijn drie (=tri) ester bindingen ze zien.
+	d. De vetzuur moleculen hebben een carbonzuurgroep, die met de OH’s 	van glycerol kunnen reageren.
+20.8	In de vorige opdracht …..
+	a. Er kunnen 6 verschillende vetten ontstaan uit de gegeven combinatie: 		PPP, PPO, POP, POO, OPO, OOO
+
+	b. Er zijn dubbele bindingen te zien in de structuurformule.
+	c. Je kunt controleren op dubbele bindingen door broomwater te 	gebruiken. Als er dubbele bindingen zijn reageert het volgens een 	additiereactie en verdwijnt de kleur van het broom.
+	d. Dat er vetzuren in zitten die meer dan één dubbele binding hebben.
+	e. dat zijn natuurlijk de koolhydraten.
+	f. Een cel heeft voedingsstoffen en zuurstof nodig dat onder andere via 	het bloed komt. Deze stoffen moeten wel door het membraan kunnen, 	anders wordt het wel wat moeilijk om te leven.
+	g. OKe
+
+UITWERKING Practicum 21 Spijsvertering
+21.1	In RWZI’s ….
+	a. Ja, RioolWaterZuiveringsInstallatie
+	b. Bekijk de film via  https://www.youtube.com/watch?v=opkz88Fhfxo
+	c. Storten, want daarmee voorkom je dus niet de vorming van afval.
+	d. De organismen zorgen ervoor dat er bepaalde reacties verlopen, die anders (misschien) niet zouden verlopen.
+	e. Ja hoor. 
+21.2	Bij biologische waterzuivering …
+a. Bacteriën
+	b. De fotosynthese
+	c. C6H12O6 + 6O2  6CO2 + 6H2O
+	d. Eigenlijk beide, want alle stoffen komen terug in beide reacties.
+	e. Nou ja niet echt, want je start wel al baby in een wieg, maar als je oud en versleten bent ga je niet meer terug in een wieg.
+21.3	In dit practicum …
+	a. Via het bloed.
+b. Nee, we hadden afgesproken dat een reactie waar zuurstof verdwijnt een verbranding genoemd wordt. Daar hoeven niet perse vlammen bij te horen.
+	c. Op het hoogste niveau staan glucose en zuurstof. Daaronder komen koolstofdioxide en water:
+
+	d. Brood, aardappels.
+	e. C12H22O11 + H2O  2C6H12O6
+	f. poysacharide: glycogeen, cellulose    disacharide: maltose, lactose   monosacharide: galactose, fructose
+	g.Er wordt bij de hydrolyse water gebruikt; die moleculen zorgen er voor dat er H en OH weer worden gebonden en dus is die massa dan groter
+21.4	In (cellen van) organismen …
+a. Met jood (oplossing) (andersom kun je met zetmeel jood aantonen!)
+b. Maak een oplossing/suspensie van zetmeel. 	   Voeg wat joodwater toe (het kleurt dan blauw)    Voeg amylase toe (bv dmv speeksel)    Als de blauwe kleur verdwijnt dan zorgt de amylase voor het afbreken van het zetmeel. c. Sommige wel, andere niet. d. Dat zal dan wel maltase zijn.
+e. Lipase uit de alvleesklier. Er ontstaan monoglyceriden, glycerol en vetzuren.
+f. Dat zijn aminozuren.
+g. 0,010 M betekent 0,010 mol per Liter. Dus in 500 mL zit dan 0,0050 mol waterstofchloride. Dat is 0,0050 x 36,5 = 0,183 g
+h. Nee, er is eigenlijk geen reactie met zuurstof.
+i. bij maagsap staat een lage pH = 2,5 en bij darmen een pH=8,5
+j. pepsase (pepsine) werkt bij pH=2,5 optimaalk
+21.5	De aminozuren …
+	a. Zuurstof
+	b. 	1 C18H34O2 + 25,5O2  18CO2 + 17H2O 	alles x2:
+		2C18H34O2 + 51O2  36CO2 + 34H2O
+	c. Glycogeen
+	d.  H3PO4
+	e. de middelste C-O van glycerol bindt een C-13 vetzuurketen dus 
+tridecaanzuur
+		de onderste een C-15 vetzuur: pentadecaanzuur
+f	Dat zijn de essentiële aminozuren en vetzuren.
+
+
+UITWERKING Practicum 21 Spijsvertering
+21.1	In RWZI’s ….
+	a. Ja, RioolWaterZuiveringsInstallatie
+	b. Bekijk de film via  https://www.youtube.com/watch?v=opkz88Fhfxo
+	c. Storten, want daarmee voorkom je dus niet de vorming van afval.
+	d. De organismen zorgen ervoor dat er bepaalde reacties verlopen, die anders (misschien) niet zouden verlopen.
+	e. Ja hoor. 
+21.2	Bij biologische waterzuivering …
+a. Bacteriën
+	b. De fotosynthese
+	c. C6H12O6 + 6O2  6CO2 + 6H2O
+	d. Eigenlijk beide, want alle stoffen komen terug in beide reacties.
+	e. Nou ja niet echt, want je start wel al baby in een wieg, maar als je oud en versleten bent ga je niet meer terug in een wieg.
+21.3	In dit practicum …
+	a. Via het bloed.
+b. Nee, we hadden afgesproken dat een reactie waar zuurstof verdwijnt een verbranding genoemd wordt. Daar hoeven niet perse vlammen bij te horen.
+	c. Op het hoogste niveau staan glucose en zuurstof. Daaronder komen koolstofdioxide en water:
+
+	d. Brood, aardappels.
+	e. C12H22O11 + H2O  2C6H12O6
+	f. poysacharide: glycogeen, cellulose    disacharide: maltose, lactose   monosacharide: galactose, fructose
+	g.Er wordt bij de hydrolyse water gebruikt; die moleculen zorgen er voor dat er H en OH weer worden gebonden en dus is die massa dan groter
+21.4	In (cellen van) organismen …
+a. Met jood (oplossing) (andersom kun je met zetmeel jood aantonen!)
+b. Maak een oplossing/suspensie van zetmeel. 	   Voeg wat joodwater toe (het kleurt dan blauw)    Voeg amylase toe (bv dmv speeksel)    Als de blauwe kleur verdwijnt dan zorgt de amylase voor het afbreken van het zetmeel. c. Sommige wel, andere niet. d. Dat zal dan wel maltase zijn.
+e. Lipase uit de alvleesklier. Er ontstaan monoglyceriden, glycerol en vetzuren.
+f. Dat zijn aminozuren.
+g. 0,010 M betekent 0,010 mol per Liter. Dus in 500 mL zit dan 0,0050 mol waterstofchloride. Dat is 0,0050 x 36,5 = 0,183 g
+h. Nee, er is eigenlijk geen reactie met zuurstof.
+i. bij maagsap staat een lage pH = 2,5 en bij darmen een pH=8,5
+j. pepsase (pepsine) werkt bij pH=2,5 optimaalk
+21.5	De aminozuren …
+	a. Zuurstof
+	b. 	1 C18H34O2 + 25,5O2  18CO2 + 17H2O 	alles x2:
+		2C18H34O2 + 51O2  36CO2 + 34H2O
+	c. Glycogeen
+	d.  H3PO4
+	e. de middelste C-O van glycerol bindt een C-13 vetzuurketen dus 
+tridecaanzuur
+		de onderste een C-15 vetzuur: pentadecaanzuur
+f	Dat zijn de essentiële aminozuren en vetzuren.
+
+
+
+UITWERKING Practicum 22Enzymen,  DNA
+22.1Uit het voorgaande practicum ….	
+a. Het wit van een ei.
+b. Cys en met éénlettersymbool C (denk ik)
+c. 
+
+Let op het bovenste plaatje in het boekje op bl;z 22-2 is onjuist en moet je aanpassen:
+
+
+d. Van het verwerken van glucose. (Mensen met suikerziekte hebben een tekort hieraan)
+e. Covalente- of atoombinding.
+f.  Geel 
+22.2	Een eigenschap van enzymen …
+a. Uit 6 (want er zijn 6 bolletjes)
+b. Voor beide tekeningen is de volgorde van de bolletjes (primaire structuur) hetzelfde maar de vorm (ruimtelijke bouw) niet.
+c. Het is door middel van de EXTRA waterstofbruggen dat de secundaire structuur ontstaat. (er is natuurlijk ook gewoon vanderwaalsbinding aanwezig)
+d. Van hemoglobine.	
+22.3	Met de precies passende vorm …
+a. Oke.
+b. Na het afkoelen bleef het eiwit vast en wit.
+c. De binding(en) van de primaire structuur (covalente bindingen) zijn sterker dan die van de secundaire structuur (waterstofbruggen).
+d. Jazeker. Waterstofbrug: -0,22x105 J/mol en C-N binding: -2,8x105 J/mol.
+22.4	In afvalwater dat in een RWZI …
+a. Pijl 3 zeker. Pijl 1 is discutabel, maar een enzym wordt wel gemaakt met behulp van DNA.
+b. Blok a stelt de cel voor	. c. Ik vind de meer schematische tekening duidelijker. d. Er zijn veel verschillende soorten DNA, bijvoorbeeld bij de mens zijn er 46 chromosomen met elk hun eigen DNA en dan heeft ook nog eens iedere mens (en alle andere organismen) hun eigen DNA.
+e. Zie uitleg bij d. Daarbij nog de opmerking dat het gaat om (verschillende) combinaties van ACGT.
+f. (alleen voor havo).
+22.5	Op microniveau kun je het bestaan van …
+a. Jawel hoor
+b. C5H10O4	
+c. Nee, niet echt. Er zijn te weinig O's (vandaar de de-oxy)
+d. Het is een monosacharide.
+e. H3PO4
+f. In elk van de basen zitten amino-groepen waarvan we weten dat ze roodlakmoes blauw kleuren.
+g. resp. A T G en C
+h. Yep i. Ook dat klopt
+j. Bij elke reactie ontstaat water.
+22.6 In de vorige opdracht ….
+a. Ja, die herken ik wel.
+b. Van boven naar beneden OP DE LINKER KETEN: ACGT
+c. Ook hier van boven naar beneden OP DE RECHTER KETEN: TGCA
+d. Met twee H-bruggen
+e. De combinatie CG is met drie waterstofbruggen verbonden.
+f. Yo!
+g. Die van E. Als het gaat om de biologische werking hoef ik niet persé de exacte chemische structuur te kennen.
+h. Twijfelachtig. Op sommige plaatjes die met een elektronenmicroscoop zijn gemaakt lijkt de helix wel zichtbaar te zijn.
+22.7 In deze opdracht ….
+a. Op elke plek heb je de keuze uit 4 mogelijkheden (het hoeven niet drie verschillende basen te zijn). Dus 4x4x4 = 64 mogelijkheden.
+(AAA AAC ACA CAA EN CCC CCA CAC ACC ENZOVOORT)
+b. Ala: GCA, GCG, GCU of GCC
+c. Ik doe het wel met de tips: let op: in de tabel staat A tweemaal vetgedrukt en tweemaal niet vet.
+Je moet de tweemaal niet vette A’s vinden in het middenstuk 2e base:
+
+
+22.8 In de vorige opdracht …
+a. Een eiwit wordt uit veel aminozuren opgebouwd. Voor elk aminozuur is een codon nodig.
+b. 4 codons (voor Met, Leu, Ser en Tyr)
+
+c. Een stuk of 8; zie ook tabel! De meest rechter dus niet; dat is het stopcodon
+ Maar de meest linker dan? Het is niet het oorspronkelijke aminozuur Met want        er staat fMet en dat betekent een geformyleerd Methionine en wordt wel meegerekend. Een formylgroep is dus die aldehyde groep waar eerst een H-atoom aan N zat)
+d. Ja dat klopt wel.
+22.9 Bij de translatie op een ribosoom …
+a. Ja, een beetje. ~zym wordt gebruikt bij katalysatoren. Het tRNA zorgt dat het ribosoom kan werken.
+b. C5H10O5
+c. Meest voor de hand liggend: ribose heeft een O meer.
+d. Microniveau, want op macroniveau zou ik niet weten wat en of er verschil is tussen die twee.
+e. Ik vind voor de replicatie, translatie en transcriptie een animatie wel mooi.
+	Zoek op youtube naar 
+ “from RNA to Protein Synthesis”
+En
+“van DNA naar eiwit 3D’
+
+
+
+UITWERKING Practicum 23Additiepolymerisatie
+23.1In de voorgaande practica ….	
+a. De hydrolyse.
+b. Valine, Val, V en   
+c. Er is een amino-groep en een carbonzuurgroep aanwezig. Die kunnen reageren met elkaar tot een amide.
+d. Een polyamide.
+e. Copolymeer.
+f.  Natuurlijk klopt dat. 
+23.2 	In dit practicum …
+a. propeen: 	but-2-een: 
+b. Een meer-één- reactie, of ook wel een reactie waarbij een dubbele binding verdwijnt.
+c. Ja (dat zie je aan de twee puntjes)
+d. Er zijn twee puntjes getekend.
+e. Die is endotherm.
+f. Om een C=C binding te verbreken is 6,1x105 J/mol nodig. Bij de vorming van een C-C binding komt 3,5x105 J/mol vrij. Er is dus 2,6x105 J/mol nodig.
+23.3	In de vorige opdracht heb je gezien …
+a. Dat zal waarschijnlijk UV licht zijn, want daar zit meer energie in.
+b. 
+c. 
+d. Nee, was niet nodig.
+e. Bij elke twee C’s was een koppeling gemaakt. Ik houd dan dus over: CHCl=CH2 en CH2=CH2 ofwel chlooretheen en etheen.
+23.4	In de vorige opdracht …
+a. Jawel, dat had ik.
+b. Dan wordt het energieverschil kleiner tussen beginniveau en het activeringsniveau:  c. Eigenlijk niet, maar ik denk met UV licht (omdat dat gebruikt werd bij de substitutiereactie in een eerder practicum). d. Er staat een puntje bij de laatste C (en er is eigenlijk een binding te weinig).
+e. Oke: .
+f. Dat zie ik.
+g. Het chloryl reageert mee (en verdwijnt).
+23.5	In de vorige opdracht  …
+a. Ja, dat wist ik al.
+b. Ze zijn redelijk sterk en meestal brandbaar.	
+c. Het aantal monomere eenheden dat gekoppeld is.
+d. PVC staat voor polyvinylchloride. 	vinylchloride is een andere naam voor chlooretheen 	
+e. Bij een grotere ketenlengte is ook de (gemiddelde) molmassa groter en is er dus een hoger smeltpunt te verwachten.
+23.6 Bij veel toepassingen ….
+a. Er is sowieso al geen echt smeltpunt, omdat er in een polymeer (plastic) verschillende ketenlengtes zijn. De glastemperatuur zou te maken kunnen hebben met de kortere ketens die bij lagere temperaturen al meer gaan bewegen en er zo voor kunnen zorgen dat het plastic al zacht wordt voordat het echt gaat smelten.
+b. Zo te zien wel ja.
+c. LDPE voor onder ander huisvuilzakken, PVC voor isolatie van elektriciteitsdraad.
+23.7 Wegwerpkoffiebekertjes worden gemaakt van polystyreen (PS) ….
+a. Koffie is over het algemeen warmer dan 70 °C. Het PET zou dan al zacht worden.
+b. Molecuulformule: C8H8. Om een additiepolymerisatie te kunnen krijgen moet er tenminste één dubbele binding in zitten. 
+c. 
+d. Het is een beetje gekrompen/gesmolten.
+e. Bij sommige plastics gaat het spijkertje er makkelijker doorheen. Er zijn ook plastics die een speciale geur krijgen bij het verwarmen. Andere schroeien alleen maar.
+f. Plastisch betekent vervormbaar of zoiets. Dus thermoplasten zullen dan wel zacht worden bij verwarmen en thermoharders niet.
+g. vanderWaalskracht (de molecuulbinding is dat, weet je nog?)
+h. thermolyse
+i.  Ja, bij sommige zag je duidelijk de kleur veranderen
+j. Waarschijnlijk zitten de (polymeer)moleculen dan veel sterker tegen elkaar aan (door een hoge molmassa of door een andere reden).
+
+
+
+
+UITWERKING Practicum 24 Meer over polymeren, micro/macro
+24.1In het vorige practicum ….	
+a. Het is een polymeer dat ontstaat doordat een monomeer met tenminste twee karakteristieke groepen volgens een condensatiereactie koppelt
+b. Het is een polymeer dat ontstaat doordat monomeren met dubbele bindingen koppelen aan elkaar
+c. Dat zijn de thermoplasten.
+d. Dat zijn dan de thermoharders.
+e. vanderWaalskracht.
+24.2 	Polymeren die niet verweken …
+a. Ik zie een OH-groep en een COOH-groep, en die kunnen met elkaar “condenseren”
+b. 
+c. Er is (ook) een dubbele binding (tussen twee C’s) te zien, daarmee kan een stof een additiereactie ondergaan.
+d. 
+e. Oke.
+f. Als er crosslinks zijn, kunnen ook bij verwarmen de ketens niet meer vrij bewegen; ze zitten aan elkaar vast.
+g. Oke, de O-tjes die tussen de twee hoofdketens staan.
+h. Teken boven (en onder) de al getekende structuur dezelfde structuur zodat de OH-groepen tegenover de COOH-groepen liggen. Daarna maak je daar de ester binding.
+i. Die van een netwerkstructuur
+j. Een cyclomatrix
+24.3	Sofie voorspelt dat er een thermoharder …
+a. 
+b. bijvoorbeeld butadieen                    : 
+c. 
+d. Zie b.
+e. Ja ongeveer wel.
+f. Een uitstekende groep met een dubbele binding kan worden opgenomen in de polypropeenketen.
+ 
+
+	De rode stukken komen van propeenmoleculen, 
+het groene stuk (geel omcirkeld) van buta-1,3-dieen.
+g. Het niet smelten of verweken van een polymeer
+h. Covalente bindingen (ofwel atoombindingen)
+24.4	Als er maar een beperkt aantal …
+a. Ze zijn rekbaar of elastisch (vervormbaar).
+b. Jawel hoor. c. Bij een elastiekje moet je er echt aan trekken om het uit te rekken, er is een kracht (dus energie) voor nodig. d. Een covalente binding
+e. Het verschil in macro-eigenschap kan gekoppeld worden aan het aantal crosslinks. Bij veel crosslinks is het materiaal veel minder elastisch dan bij weinig crosslinks.
+f. Flauwe vraag. Het is natuurlijk element zwavel en niet de stof.
+24.5	In de vorige opdracht  …
+a. Nou ja, thermoplasten kunnen smelten en thermoharders niet. Op microniveau wordt dit verklaard met lineaire ketens die langs elkaar gaan bewegen voor de thermoplasten en met een netwerkstructuur bij de thermoharders..
+b. Aan de haakjes en de n in subscript.
+c. Het is een condensatiepolymeer, dat zie ik aan de ester-groep.
+d. (Hetzelfde stuk dat tussen de haakjes staat, maar dan met H-tjes aan linkeruiteinde en -OH aan rechteruiteinde:
+
+(eigenlijk is het een copolymeer van benzeendicarbonzuur en ethaandiol)
+e. .
+24.6 In tabel 97D staan van verschillende ….
+a. ja, want ik had gezien dat het een condensatiepolymeer is, en een polyester is een condensatiepolymeer.
+b. 1 is het hele ding, 2 is het stukje net onder de trechter, 3 is de schroef zelf en 4 is het stuk aan het uiteinde van de schroef.
+c. .
+d. Het kan als continuproces uitgevoerd worden want als de trechter continu volgehouden wordt, kan de extruder gewoon blijven draaien.
+e.  (Het blauwe deel is dan waar het polymeer doorheen geperst wordt.)
+24.7 Als het de bedoeling is om een ….
+a. ja dat zie ik.
+b. Dat kan niet (of is moeilijker) omdat thermoharders niet kunnen smelten of zacht worden.
+c. Een beetje, het zal wel de component zijn die verharder genoemd wordt.
+24.8 In de voorgaande opdrachten heb je ….
+a. C
+b. Dan zou ik in eerste instantie denken aan vulstoffen, antistatica of brand/vlamvertragers.
+c. C8H6O4
+d. 
+e. Het zijn relatief kleine moleculen ten opzichte van de polymeren en zullen (zeker bij hogere temperaturen) dan relatief makkelijk uit het spul kunnen ontsnappen.
+

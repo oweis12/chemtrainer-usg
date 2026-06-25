@@ -1,11 +1,13 @@
-import { Atom, BookBookmark, BookOpenText, ChartBar, ClipboardText, Flask, House, ListChecks, Moon, Sun, WarningCircle } from "@phosphor-icons/react";
+import { Atom, BookBookmark, BookOpenText, ChartBar, ClipboardText, Flask, House, ListChecks, Moon, Sun, Target, WarningCircle } from "@phosphor-icons/react";
 import type { AppPage } from "../types";
 
 const navigation: Array<{ id: AppPage; label: string; icon: typeof House }> = [
   { id: "home", label: "Dashboard", icon: House },
   { id: "learn", label: "Leren", icon: BookOpenText },
   { id: "structurelab", label: "StructuurLab", icon: Atom },
+  { id: "titrationlab", label: "TitratieLab", icon: Flask },
   { id: "binas", label: "BINAS-wijzer", icon: BookBookmark },
+  { id: "coverage", label: "Leerdoelen", icon: Target },
   { id: "practice", label: "Oefenen", icon: ListChecks },
   { id: "test", label: "Toetsmodus", icon: ClipboardText },
   { id: "mistakes", label: "Foutenlog", icon: WarningCircle },

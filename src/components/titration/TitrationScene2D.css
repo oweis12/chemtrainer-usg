@@ -1,0 +1,193 @@
+/* ─────────────────────────────────────────────────────────────────
+   TitrationScene2D.css
+   Scoped styles for the isolated 2D titration scene component.
+   All selectors use titration- prefix — no global resets.
+   Import in TitrationScene2D.tsx or your lab page.
+────────────────────────────────────────────────────────────────── */
+
+/* Wrapper: positions SVG and keeps aspect ratio */
+.titration-scene-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  background: #f0f4f8;
+  border-radius: 10px;
+  border: 1.5px solid #c8d8e8;
+  box-shadow: 0 4px 18px rgba(60, 90, 120, 0.10);
+  padding-bottom: 12px;
+  font-family: 'Courier New', monospace;
+  overflow: hidden;
+}
+
+/* SVG fills wrapper */
+.titration-scene-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 320px;
+}
+
+/* ── Buret ───────────────────────────────────────────────────── */
+.titration-buret {
+  transition: filter 0.2s ease, opacity 0.2s ease;
+}
+.titration-buret-rinse,
+.titration-buret-fill {
+  filter: drop-shadow(0 0 6px rgba(41, 121, 168, 0.24));
+}
+
+/* ── Valve ───────────────────────────────────────────────────── */
+.titration-valve {
+  transition: opacity 0.2s;
+}
+
+.titration-valve:hover rect:first-child {
+  filter: brightness(1.08);
+}
+
+.titration-valve:focus {
+  outline: none;
+}
+
+.titration-valve:focus-visible rect:first-child {
+  stroke: #0066cc;
+  stroke-width: 2px;
+}
+
+/* ── Flask ───────────────────────────────────────────────────── */
+.titration-flask path,
+.titration-flask rect {
+  /* smooth liquid level animation */
+  transition: fill 0.8s ease, d 0.3s ease;
+}
+.titration-flask-sample,
+.titration-flask-indicator {
+  filter: drop-shadow(0 0 7px rgba(41, 121, 168, 0.18));
+}
+
+.titration-pipet {
+  transition: filter 0.18s ease, opacity 0.18s ease;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.titration-pipet-shift {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.titration-pipet-rinse,
+.titration-pipet-sample {
+  filter: drop-shadow(0 0 6px rgba(41, 121, 168, 0.22));
+}
+.titration-reading-indicator-active {
+  animation: readingPulse 1.2s ease both;
+}
+.scene-badge-text {
+  fill: #35506b;
+  font: 700 8px "Courier New", monospace;
+  text-transform: uppercase;
+}
+
+/* ── Valve control buttons (HTML, below SVG) ─────────────────── */
+.titration-valve-controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 0 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.titration-valve-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1.5px solid #b0c8d8;
+  background: #ffffff;
+  color: #334455;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  letter-spacing: 0.02em;
+}
+
+.titration-valve-btn:hover {
+  background: #e4f0f8;
+  border-color: #7aa8c8;
+}
+
+.titration-valve-btn--active {
+  background: #2979a8;
+  color: #ffffff;
+  border-color: #1a5878;
+  font-weight: bold;
+}
+
+.titration-valve-btn:focus-visible {
+  outline: 2px solid #0066cc;
+  outline-offset: 2px;
+}
+
+/* ── Volume badge (inside SVG via foreignObject or adjacent) ─── */
+.titration-volume-badge text {
+  user-select: none;
+}
+
+/* ── Endpoint badge ──────────────────────────────────────────── */
+.titration-endpoint-badge rect {
+  transition: fill 0.6s ease, stroke 0.6s ease;
+}
+
+/* ── Reading indicator ───────────────────────────────────────── */
+.titration-reading-indicator text {
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ── Drop animation ──────────────────────────────────────────── */
+@keyframes titration-drop-fall {
+  0%   { transform: translateY(0); opacity: 1; }
+  80%  { opacity: 0.9; }
+  100% { transform: translateY(60px); opacity: 0; }
+}
+
+/* ── Responsive narrow (mobile / sidebar) ────────────────────── */
+@media (max-width: 420px) {
+  .titration-scene-wrapper {
+    border-radius: 6px;
+  }
+
+  .titration-valve-btn {
+    font-size: 11px;
+    padding: 5px 10px;
+  }
+}
+
+/* ── Reduced motion ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .titration-flask path,
+  .titration-flask rect {
+    transition: none;
+  }
+
+  .titration-endpoint-badge rect {
+    transition: none;
+  }
+
+  @keyframes titration-drop-fall {
+    to { opacity: 0; }
+  }
+
+  .titration-reading-indicator-active {
+    animation: none !important;
+  }
+}
+
+@keyframes readingPulse {
+  0% { opacity: .15; transform: scale(.94); }
+  40% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 1; transform: scale(1); }
+}

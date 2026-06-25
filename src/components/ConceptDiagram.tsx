@@ -10,6 +10,7 @@ const diagramMeta: Record<ConceptDiagramId, { title: string; caption: string }> 
   titration: { title: "Titratie: druppels tellen tot precies genoeg", caption: "Bij het equivalentiepunt zijn zuur en base in de juiste molverhouding op." },
   redox: { title: "Elektronen gaan van reductor naar oxidator", caption: "Wie e⁻ afgeeft is de reductor; wie e⁻ opneemt is de oxidator." },
   "dna-nucleotide": { title: "Een nucleotide is één bouwsteentje", caption: "Veel van deze bouwsteentjes achter elkaar vormen een DNA- of RNA-keten." },
+  "gene-expression": { title: "Van DNA-informatie naar een eiwit", caption: "Transcriptie maakt mRNA; translatie zet mRNA-codons om in een aminozuurketen." },
   "mass-spectrum": { title: "Een massaspectrum is een verzameling pieken", caption: "De hoogste piek heet basispiek; M is het hele molecuulion." },
 };
 
@@ -27,5 +28,6 @@ function DiagramBody({ kind }: { kind: ConceptDiagramId }) {
   if (kind === "titration") return <div className="diagram-titration"><div className="buret-visual"><strong>NaOH</strong><span className="meniscus" /><i className="buret-drop"><Drop weight="fill" /></i></div><ArrowRight size={25} className="diagram-arrow" /><div className="erlenmeyer-visual"><span>azijnzuur<br />+ indicator</span></div><div className="equivalence-badge">precies genoeg<br /><b>equivalentiepunt</b></div></div>;
   if (kind === "redox") return <div className="diagram-redox"><div className="redox-card redactor"><strong>Reductor</strong><span>staat e⁻ af</span></div><div className="electron-arrow"><span>e⁻ e⁻</span><ArrowRight size={34} weight="bold" /></div><div className="redox-card oxidator"><strong>Oxidator</strong><span>neemt e⁻ op</span></div></div>;
   if (kind === "dna-nucleotide") return <div className="diagram-dna"><span className="dna-part phosphate">fosfaat</span><ArrowRight size={18} /><span className="dna-part sugar">suiker</span><ArrowRight size={18} /><span className="dna-part base">base<br />A / T / C / G</span><span className="diagram-label">= één nucleotide</span></div>;
+  if (kind === "gene-expression") return <div className="diagram-gene-expression"><div><b>DNA</b><small>A · T · C · G</small></div><ArrowRight size={22} /><div><b>mRNA</b><small>transcriptie<br />A · U · C · G</small></div><ArrowRight size={22} /><div><b>ribosoom</b><small>translatie<br />codons lezen</small></div><ArrowRight size={22} /><div><b>eiwit</b><small>aminozuurketen</small></div></div>;
   return <div className="diagram-ms"><div className="ms-axis"><span>intensiteit</span></div><div className="ms-peaks"><i className="peak fragment" style={{ height: "40%" }}><b>43</b><em>fragment</em></i><i className="peak base" style={{ height: "100%" }}><b>57</b><em>basispiek</em></i><i className="peak molecular" style={{ height: "65%" }}><b>M</b><em>molecuulion</em></i><i className="peak isotope" style={{ height: "12%" }}><b>M+1</b><em>vaak ¹³C</em></i></div><span className="diagram-label">m/z →</span></div>;
 }

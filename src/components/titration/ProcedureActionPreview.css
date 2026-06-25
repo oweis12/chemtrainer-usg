@@ -1,0 +1,251 @@
+/* ──────────────────────────────────────────────────────────────
+   ProcedureActionPreview.css
+   Lab-notebook mini cutscene panel.
+   All selectors use pap- prefix.
+   Keyframes are scoped to this file — no global pollution.
+────────────────────────────────────────────────────────────── */
+
+/* ── Wrapper ──────────────────────────────────────────────── */
+.pap-wrapper {
+  width: 100%;
+  max-width: 320px;
+  background: #f7f9fb;
+  border: 1.5px solid #c8d8e8;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(60, 90, 120, 0.08);
+  overflow: hidden;
+  font-family: 'Courier New', monospace;
+  margin: 0 auto;
+}
+
+/* ── Placeholder ──────────────────────────────────────────── */
+.pap-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 12px;
+  gap: 8px;
+  opacity: 0.7;
+}
+
+.pap-placeholder-text {
+  font-size: 11px;
+  color: #7a9ab8;
+  text-align: center;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ── Scene container ──────────────────────────────────────── */
+.pap-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 10px 10px;
+  gap: 8px;
+}
+
+.pap-svg {
+  display: block;
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+}
+
+/* ── Caption ──────────────────────────────────────────────── */
+.pap-caption {
+  font-size: 10.5px;
+  color: #4a6a88;
+  text-align: center;
+  margin: 0;
+  line-height: 1.45;
+  padding: 0 4px;
+}
+
+/* ── Text helpers ─────────────────────────────────────────── */
+.pap-label-small {
+  font: 9px 'Courier New', monospace;
+  fill: #5a8aa8;
+}
+.pap-scale-text {
+  font: 8px 'Courier New', monospace;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ANIMATIONS
+   All keyframes listed at bottom for clarity.
+═══════════════════════════════════════════════════════════ */
+
+/* ── FilledBurette: stream + rising liquid ────────────────── */
+.pap-fill-stream {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: pap-stream-draw 0.6s ease 0.2s forwards, pap-stream-pulse 1s ease 0.8s infinite alternate;
+}
+.pap-buret-liquid {
+  transform-origin: bottom;
+  transform-box: fill-box;
+  animation: pap-liquid-rise 1.4s ease 0.3s both;
+}
+
+/* ── RinsedBurette: stream + drops to waste ──────────────── */
+.pap-rinse-stream {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation: pap-stream-draw 0.5s ease 0.1s forwards;
+}
+.pap-rinse-drop {
+  animation: pap-drop-fall 0.9s ease infinite;
+}
+.pap-rinse-drop-1 { animation-delay: 0.3s; }
+.pap-rinse-drop-2 { animation-delay: 0.75s; }
+
+/* ── RinsedPipette: fill + drain ──────────────────────────── */
+.pap-pipet-fill {
+  transform-origin: bottom;
+  transform-box: fill-box;
+  animation: pap-pipet-fill-cycle 2s ease 0.2s infinite;
+}
+.pap-pipet-drain {
+  animation: pap-drop-fall-small 1.5s ease 1s infinite;
+}
+
+/* ── PipettedSample: drops into flask ─────────────────────── */
+.pap-sample-drop {
+  animation: pap-drop-fall 1s ease infinite;
+}
+.pap-sample-drop-1 { animation-delay: 0s; }
+.pap-sample-drop-2 { animation-delay: 0.38s; }
+.pap-sample-drop-3 { animation-delay: 0.76s; }
+
+.pap-flask-highlight {
+  animation: pap-highlight-pulse 1s ease 0.8s infinite alternate;
+}
+
+/* ── AddedIndicator: colored drops ───────────────────────── */
+.pap-indicator-drop {
+  animation: pap-drop-fall-long 1.2s ease infinite;
+}
+.pap-indicator-drop-1 { animation-delay: 0s; }
+.pap-indicator-drop-2 { animation-delay: 0.3s; }
+.pap-indicator-drop-3 { animation-delay: 0.6s; }
+.pap-indicator-drop-4 { animation-delay: 0.9s; }
+
+.pap-indicator-highlight {
+  animation: pap-pink-pulse 1.5s ease 0.5s infinite alternate;
+}
+
+/* ── ReadingPanel: meniscus + eye line ───────────────────── */
+.pap-meniscus {
+  animation: pap-meniscus-appear 0.6s ease both;
+}
+.pap-eye-line {
+  animation: pap-eyeline-slide 0.7s ease 0.4s both;
+}
+
+/* ── TitratedSlowly: separated drops ─────────────────────── */
+.pap-slow-drop {
+  animation: pap-slow-drop-fall 1.8s ease infinite;
+}
+.pap-slow-drop-1 { animation-delay: 0s; }
+.pap-slow-drop-2 { animation-delay: 0.6s; }
+.pap-slow-drop-3 { animation-delay: 1.2s; }
+
+/* ── StoppedAtEndpoint: light pink ───────────────────────── */
+.pap-endpoint-pink {
+  animation: pap-pink-appear 1s ease both;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   KEYFRAMES
+═══════════════════════════════════════════════════════════ */
+
+@keyframes pap-stream-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes pap-stream-pulse {
+  from { opacity: 0.7; }
+  to   { opacity: 1; }
+}
+
+@keyframes pap-liquid-rise {
+  0%   { transform: scaleY(0.15); opacity: 0.5; }
+  30%  { opacity: 1; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes pap-drop-fall {
+  0%   { transform: translateY(0);    opacity: 1; }
+  70%  { opacity: 0.9; }
+  100% { transform: translateY(28px); opacity: 0; }
+}
+
+@keyframes pap-drop-fall-small {
+  0%   { transform: translateY(0);    opacity: 1; }
+  100% { transform: translateY(16px); opacity: 0; }
+}
+
+@keyframes pap-drop-fall-long {
+  0%   { transform: translateY(0);    opacity: 1; }
+  100% { transform: translateY(44px); opacity: 0; }
+}
+
+@keyframes pap-slow-drop-fall {
+  0%   { transform: translateY(0);    opacity: 1; }
+  100% { transform: translateY(48px); opacity: 0; }
+}
+
+@keyframes pap-pipet-fill-cycle {
+  0%   { transform: scaleY(0.1); opacity: 0; }
+  30%  { transform: scaleY(1);   opacity: 1; }
+  70%  { transform: scaleY(1);   opacity: 1; }
+  100% { transform: scaleY(0.1); opacity: 0; }
+}
+
+@keyframes pap-highlight-pulse {
+  from { opacity: 0.4; }
+  to   { opacity: 0.9; }
+}
+
+@keyframes pap-pink-pulse {
+  from { fill: #f5c8f5; opacity: 0.5; }
+  to   { fill: #e898e8; opacity: 0.85; }
+}
+
+@keyframes pap-meniscus-appear {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pap-eyeline-slide {
+  from { stroke-dashoffset: 60; opacity: 0; }
+  to   { stroke-dashoffset: 0;  opacity: 1; }
+}
+
+@keyframes pap-pink-appear {
+  0%   { fill: #e8f3fa; opacity: 0.3; }
+  60%  { fill: #f5c8f0; opacity: 0.9; }
+  100% { fill: #f0b8ec; opacity: 1; }
+}
+
+/* ── Reduced motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .pap-fill-stream,
+  .pap-buret-liquid,
+  .pap-rinse-stream,
+  .pap-rinse-drop,
+  .pap-pipet-fill,
+  .pap-pipet-drain,
+  .pap-sample-drop,
+  .pap-flask-highlight,
+  .pap-indicator-drop,
+  .pap-indicator-highlight,
+  .pap-meniscus,
+  .pap-eye-line,
+  .pap-slow-drop,
+  .pap-endpoint-pink {
+    animation: none !important;
+    opacity: 1;
+  }
+}

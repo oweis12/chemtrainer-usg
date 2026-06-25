@@ -76,12 +76,14 @@ export interface Lesson {
   memoryAnchor?: string[];
   concepts: Array<{ term: string; meaning: string }>;
   example: { title: string; prompt: string; steps: string[] };
+  extraExamples?: Array<{ title: string; prompt: string; steps: string[]; conclusion: string; visual?: QuestionVisual }>;
   examAnswer: string;
   commonMistakes: string[];
   miniCheck: Array<{ question: string; answer: string }>;
+  imageSlots?: string[];
 }
 
-export type ConceptDiagramId = "covalent" | "ionic" | "metallic" | "polarity" | "hydrogen-bond" | "titration" | "redox" | "dna-nucleotide" | "mass-spectrum";
+export type ConceptDiagramId = "covalent" | "ionic" | "metallic" | "polarity" | "hydrogen-bond" | "titration" | "redox" | "dna-nucleotide" | "gene-expression" | "mass-spectrum";
 
 export interface StructureData {
   formula: string;
@@ -99,10 +101,53 @@ export interface QuestionVisual {
   alt: string;
   caption?: string;
   variant?: string;
+  purpose?: "read-data" | "interpret-spectrum" | "interpret-structure" | "setup-identification" | "calculation-support" | "explanation-only";
+}
+
+export type LearningObjectiveType = "kennen" | "kunnen" | "berekenen" | "uitleggen" | "toepassen";
+export type CoverageStatus = "gedekt" | "deels gedekt" | "mist";
+
+export interface LearningObjective {
+  id: string;
+  module: ModuleId;
+  onderwerp: string;
+  leerdoelTekst: string;
+  type: LearningObjectiveType;
+  lessonIds: string[];
+  questionIds: string[];
+  status: CoverageStatus;
+  notes: string;
+}
+
+export interface VisualAssetRecord {
+  id: string;
+  module: ModuleId;
+  topic: string;
+  location: string;
+  currentProblem: string;
+  desiredVisual: string;
+  type: "real lab photo" | "labeled setup" | "generated realistic teaching image" | "exam-style structure formula image" | "spectrum/chromatogram" | "step image" | "callout diagram";
+  priority: "hoog" | "middel" | "laag";
+  proposedFilename: string;
+  alt: string;
+  caption: string;
+  prompt: string;
+  status: "needs-image" | "placeholder" | "done";
+  path?: string;
+}
+
+export interface OfficialPracticeTest {
+  id: string;
+  title: string;
+  sourceStatus: "source-missing" | "ready";
+  sourceNote: string;
+  questions: Question[];
 }
 
 export interface Question {
   id: string;
+  /** Alleen gebruikt bij een brongebonden oefentoets met puntentoekenning. */
+  points?: number;
   module: ModuleId;
   topic: string;
   skill: string;
@@ -148,5 +193,46 @@ export interface StoredProgress {
   theme: "light" | "dark";
 }
 
-export type AppPage = "home" | "learn" | "practice" | "test" | "mistakes" | "structurelab" | "binas";
-export type TestKind = "official" | "random" | "challenge" | "priority";
+export type AppPage = "home" | "learn" | "practice" | "test" | "mistakes" | "structurelab" | "titrationlab" | "binas" | "coverage" | "visualaudit";
+export type TestKind = "official" | "officialPractice" | "random" | "challenge" | "priority" | "learningObjectives";
+
+export type TitrationTaskType = "molariteit" | "massa-aandeel" | "volume-aflezen" | "procedure";
+export type ValveSetting = "dicht" | "langzaam" | "normaal" | "snel";
+export type EndpointState = "voor" | "bijna" | "goed" | "te_ver";
+
+export interface TitrationMoleRatio {
+  analyte: number;
+  titrant: number;
+}
+
+export interface TitrationSimulation {
+  id: string;
+  titel: string;
+  analyteName: string;
+  titrantName: string;
+  analyteVolumeMl: number;
+  analyteMolarityHidden: number;
+  titrantMolarity: number;
+  reactionEquation: string;
+  moleRatio: TitrationMoleRatio;
+  indicator: string;
+  endpointPHApprox: number;
+  equivalenceVolumeMl: number;
+  allowedErrorMl: number;
+  taskType: TitrationTaskType;
+  instructions: string[];
+  modelCalculation: string[];
+  commonMistakes: string[];
+  rubric: string[];
+  molarMassAnalyte?: number;
+  sampleMassG?: number;
+}
+
+export interface TitrationLabProgress {
+  completedCount: number;
+  bestDeviationMl: number | null;
+  averageScore: number;
+  frequentMistakes: string[];
+  lastSimulationId?: string;
+  updatedAt?: string;
+}

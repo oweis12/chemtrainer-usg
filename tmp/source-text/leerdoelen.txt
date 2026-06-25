@@ -1,0 +1,67 @@
+Overzicht de te leren stof kwintaal 4 en 5 scheikunde klas 5
+Leerdoelen module 5 (vierde deel() DNA en andere polymeren
+(Alleen het deel over DNA p20, p21, p22)
+Enzymen, die in organismen bepalen welke reacties er verlopen, bestaan uit eiwitten. Welk enzym/eiwit in een organisme voorkomt hangt af van het aanwezige soort DNA. Op microniveau worden DNA-moleculen voorgesteld als dubbele helices van polymeerketens die opgebouwd zijn uit nucleotide-eenheden.
+Wat moet je Kúnnen? 
+- peptidebinding in een structuurformule aanwijzen
+- de aminozuren benoemen die in een eiwit zitten
+- een eiwit scheiden in aminozuren door middel van hydrolyse
+- DNA transcriptie en translatie kunnen toepassen om een aminozuurvolgorde de te geven door de codons op te zoeken. 
+- Aangeven wat de primaire, secundaire en tertiaire structuur van een eiwit zijn, en hoe je die kunt veranderen, en wat voor effect dat heeft op de eigenschappen van een eiwit kunnen beschrijven. (BINAS tabel 67)
+
+Leerdoelen module 8 (VWO) Ontwikkelen van wetenschap
+(Paragraaf 1,2,3 niet. vraag 3.7 wel, paragraaf 4 wel, paragraaf vanaf 5.4)
+Millikan bepaalde aan het begin van de twintigste eeuw de (kleinst mogelijke) lading van een elektron: het elementair ladingsquantum. (geen actieve kennis:) Uit de discontinuïteit van lading werd ook voor (ion)stoffen een deeltjesmodel geconstrueerd. Bij elk element hoort dan een atoom met een kenmerkende positieve kernlading (gelijk aan het atoomnummer). De positieve kernlading wordt in een atoom geneutraliseerd door elektronen (evenveel als het atoomnummer). Het ontstaan van ionstoffen kan dan op microniveau verklaard worden door het onttrekken of toevoegen van elektronen aan atomen. Het voorkomen van isotopen bij een element kun je op microniveau verklaren met een verschillend aantal neutronen in de kern (naast hetzelfde aantal positief geladen protonen). De resultaten van experimenten in een massaspectrometer (dat is een aangepaste kathodestraalbuis) kun je met behulp van het deeltjesmodel gebruiken om stoffen te identificeren. Ook kernreacties kunnen met dit deeltjesmodel verklaard worden. Wat je moet kénnen na deze module kun je terugvinden aan de hand van de trefwoorden aan het eind van elk practicum. 
+Hieronder staat een lijstje van dingen die je moet kúnnen. 
+- heen en weer denken tussen micro- en macroniveau 
+- continu en discontinu onderscheiden (niet actief toepassen)
+- atoommodellen gebruiken
+- Je kunt een massaspectrogram interpreteren en gebruiken om stoffen te onderscheiden of om stoffen te herkennen
+- je kunt aan de hand van het MS de verhoudingen tussen isotopen bepalen. 
+- je kunt met binas tabel 39 D bepalen welke pieken er in een ms zullen voorkomen.
+- je weet wat een gaschromatograaf is en je kunt vertellen wat de eigenschappen van de kolom voor invloed hebben op de retentietijd.
+- Je hebt de opdrachten over IR en NMR gemaakt.
+
+
+Leerdoelen module 9 (VWO) Toepassen van deeltjesmodellen 
+Je kunt elektrovalentie(s) van elementen op microniveau verklaren als je voor atomen het schillenmodel gebruikt waarin elektronen zich op verschillende afstanden van de positief geladen kern bevinden. De plaats van de elektronen in dat model van Rutherford en Bohr kon worden afgeleid uit experimenten met (alweer) een aangepaste kathodestraalbuis (van Franck en Hertz). In de buitenste schil (het verst weg van de atoomkern) bevinden zich de zogeheten valentie-elektronen. In dit model worden atoombindingen voorgesteld als elektronenparen tussen positief geladen atoomresten. Met de resulterende neutrale moleculen (die elkaar aantrekken met (zwakke) vanderwaalskrachten) kun je op macroniveau eigenschappen van deze zogeheten moleculaire stoffen verklaren. Onverwacht hoge smelt- en kookpunten van moleculaire stoffen worden verklaard met waterstofbruggen. Net als bij covalente bindingen wordt ook in metaalroosters de (sterke) binding verzorgd door elektronen en positief geladen atoomresten; om diverse metaaleigenschappen te kunnen verklaren moet je dan wel veronderstellen dat die elektronen door het rooster kunnen bewegen. Eigenschappen van zouten kun je op microniveau verklaren als je ze voorstelt als combinaties van positieve en negatieve ionen. In de tabel in practicum 5A van deze module vind je (macro-)eigenschappen van moleculaire stoffen, metalen en zouten en ook de verklaring ervan op microniveau. Met het deeltjesmodel kunnen ook andere eigenschappen van stoffen verklaard en voorspeld worden zoals (de invloed van temperatuur, concentratie, verdelingsgraad en katalysatoren op de) reactiesnelheid, kristalwater en composieten. Wat je moet kénnen na deze module kun je terugvinden aan de hand van de trefwoorden aan het eind van elk practicum. 
+
+Hieronder staat een lijstje van dingen die je moet kúnnen. 
+- heen en weer denken tussen micro- en macroniveau 
+- atomen met het schillenmodel voorstellen 
+- deeltjesmodellen gebruiken
+- Valentie-elektronen gebruiken om de valentie van ionstoffen te bepalen of de covalentie van een atoom te voorspellen.
+- Uitleggen op atoom niveau wat het verschil is tussen de atoomsoorten metaal/niet-metaal/edelgas
+- je kunt het botsende deeltjesmodel gebruiken om reactiesnelheden te voorspellen. 
+- Je kunt een experiment verbeteren door suggesties te doen hoe je de snelheid van de reactie kunt verhogen (denk aan verdelingsgraad, katalysator, acitveringsenergie, volume, molariteit, druk)
+- je weet waar een kookpunt vanaf hangt 
+- intermoleculaire verbindingen (bindingen tussen moleculen, niet in moleculen) beschrijven. (vanderwaals, waterstofbrug, ionrooster, metaalrooster, dipool-dipoolbindingen). En je weet de invloed op macro eigenschappen als kookpunt, vervormbaarheid.
+- Je kunt uitleggen hoe je eigenschappen van een metaal kunt veranderen door er een legering van te maken. 
+- Je kunt uitleggen wat oplosbaarheid is, en hoe de verschillende stoffen oplosbaar zijn. (hydratatie, ionen, afstoten, dipool-dipoolbindingen, ion-dipoolbinden.etc. )
+- Je weet welke stoffen op welke manier oplosbaar zijn door naar de formule te kijken. 
+- Je weet uit te leggen wat een composiet is, en welke eigenschappen je in de composiet hebt die nuttig zijn. 
+- je kunt rekenen aan ionisatie energieën.
+- je kunt reactievergelijkingen opstellen door te kijken naar de stoffen en de bepalen wat voor soort reactie ze met elkaar aan gaan (redox, zuur-base, verbranding, synthese, ontleding etc.) 
+
+Leerdoelen module 10 (VWO) Milieu en evenwicht (P1, P2, P3, P5)
+Door de inzet van biobrandstoffen in plaats van fossiele brandstoffen hoopt men (de toename van) de hoeveelheid van het broeikasgas CO2 in de atmosfeer te verminderen. Bij de omzetting van chemische energie in elektrische energie worden nog andere milieumaatregelen getroffen zoals kolenvergassing, afvangen en opslaan van CO2 en toepassen van warmtekrachtkoppeling. Ook wordt onderzoek gedaan naar C-vrije elektriciteitsbronnen zoals batterijen. Dat zijn elektrochemische cellen waarin redoxreacties op afstand plaatsvinden. Als bij een elektrochemische cel de reagerende (ion)stoffen telkens worden aangevuld spreekt men van een brandstofcel. De bekendste soort brandstofcel werkt op waterstof; in zo’n cel zijn de compartimenten gescheiden door een semipermeabel (proton exchange) membraan dat H+ doorlaat. Nog een voorbeeld van een C-vrije elektriciteitsbron is de concentratiecel: de werking ervan berust op het potentiaalverschil dat ontstaat ten gevolge van verschillende concentraties van een (ion)stof. In/aan zo’n concentratiecel kun je heel goed zien dat in een elektrochemische cel het potentiaalverschil afhankelijk is van de concentraties van de reagerende (ion)stoffen. Als door het verloop van de reactie de concentraties zo veranderd zijn dat er geen potentiaalverschil meer is, wordt er geen stroom meer geleverd. 
+Een zuur is een (ion)stof waaruit H+ ontstaat; een base is een (ion)stof die met H+ reageert. (Op microniveau: een zuur is een protondonor; een base is een protonacceptor.) Middels een titratie (een analysemethode waarbij de hoeveelheid van een (ion)stof in een oplossing met behulp van een andere oplossing met bekende molariteit kan worden bepaald) kun je de molariteit concentratie van een zuur of base meten. Wat je moet kénnen na deze module kun je terugvinden aan de hand van de trefwoorden aan het eind van elk practicum.
+Hieronder staat een lijstje van dingen die je moet kúnnen. 
+- de werking van een batterij/elektrochemische cel/brandstofcel beschrijven met behulp van halfreacties/halfreactievergelijkingen 
+- brandstoffen met elkaar vergelijken, voorstellen voor aanpassing(en) beoordelen en redeneren over aspecten van duurzaamheid die daarbij een rol spelen 
+- rekenen met hydratie-energie, roosterenergie, vormingswarmte, verbrandingswarmte - berekeningen maken met atoomeconomie, E-factor en rendement 
+- met het oog op een milieueffectrapportage met behulp van kennis van productieprocessen ten minste in de context van gezondheid of duurzaamheid beschrijven welke maatschappelijke condities een rol spelen bij milieu-gerelateerde vraagstukken en voor deze vraagstukken beschrijven welke mogelijke gevolgen er zijn op het gebied van gezondheid en duurzaamheid 
+- zuur-base-reacties met een vergelijking beschrijven 
+- titreren - resultaten van een titratie interpreteren
+- pH berekeningen uitvoeren
+- een geschikte indicator kiezen voor het omslagpunt van de reactie met behulp van BINAS tabel 52A
+- beschrijven hoe je nauwkeurig een titratie uitvoert, hierbij kun je vertellen welk glaswerk met welke stof gespoeld mag worden en wanneer je moet/mag spoelen. 
+- je snapt wat een om-estering is en kunt een reactievergelijking tekenen met structuurformules (indien gevraagd) 
+- rekenen aan C/H verhoudingen
+
+ 
+
+
+
+
+

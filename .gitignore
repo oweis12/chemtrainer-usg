@@ -1,6 +1,7 @@
+reference/
 node_modules/
 dist/
-*.tsbuildinfo
 .DS_Store
 __MACOSX
 *.zip
+*.tsbuildinfo

@@ -3,10 +3,13 @@ import { Layout } from "./components/Layout";
 import { Home } from "./pages/Home";
 import { Learn } from "./pages/Learn";
 import { BinasGuide } from "./pages/BinasGuide";
+import { CoveragePage } from "./pages/CoveragePage";
 import { MistakeLog } from "./pages/MistakeLog";
 import { Practice } from "./pages/Practice";
 import { StructureLab } from "./pages/StructureLab";
+import { TitrationLab } from "./pages/TitrationLab";
 import { TestMode } from "./pages/TestMode";
+import { VisualAssetAudit } from "./pages/VisualAssetAudit";
 import type { AppPage, Question, StoredProgress } from "./types";
 import { readProgress, writeProgress } from "./utils/storage";
 
@@ -30,12 +33,15 @@ export function App() {
   const practiceModule = () => setActivePage("practice");
 
   let page: React.ReactNode;
-  if (activePage === "learn") page = <Learn completedLessons={progress.completedLessons} onComplete={completeLesson} onPractice={practiceModule} />;
-  else if (activePage === "practice") page = <Practice onResult={(question, correct, reflection) => recordResult(question, correct, reflection)} seedQuestionId={practiceSeed} onSeedHandled={() => setPracticeSeed(null)} />;
-  else if (activePage === "test") page = <TestMode onResult={recordResult} onPracticeQuestion={(question) => practiceQuestion(question.id)} />;
+  if (activePage === "learn") page = <Learn completedLessons={progress.completedLessons} onComplete={completeLesson} onPractice={practiceModule} onTitrationLab={() => setActivePage("titrationlab")} />;
+  else if (activePage === "practice") page = <Practice onResult={(question, correct, reflection) => recordResult(question, correct, reflection)} seedQuestionId={practiceSeed} onSeedHandled={() => setPracticeSeed(null)} onOpenTitrationLab={() => setActivePage("titrationlab")} />;
+  else if (activePage === "test") page = <TestMode progress={progress} onResult={recordResult} onPracticeQuestion={(question) => practiceQuestion(question.id)} />;
   else if (activePage === "mistakes") page = <MistakeLog mistakes={progress.mistakes} onRetry={practiceQuestion} />;
   else if (activePage === "binas") page = <BinasGuide />;
   else if (activePage === "structurelab") page = <StructureLab onPractice={practiceModule} />;
+  else if (activePage === "titrationlab") page = <TitrationLab />;
+  else if (activePage === "coverage") page = <CoveragePage onVisualAudit={() => setActivePage("visualaudit")} />;
+  else if (activePage === "visualaudit") page = <VisualAssetAudit />;
   else page = <Home progress={progress} onNavigate={navigate} />;
 
   return <Layout activePage={activePage} onNavigate={navigate} theme={progress.theme} onToggleTheme={toggleTheme}>{page}</Layout>;
