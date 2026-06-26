@@ -89,7 +89,7 @@ export function QuestionCard({ question, mode = "practice", number, total, onPra
         <div className="question-tags"><span>{question.module}</span><span>{question.topic}</span><span>Niveau {question.level}</span><span>{typeLabel[question.type]}</span></div>
       </div>
       <h2>{question.question}</h2>
-      <div className="question-binas"><BinasBox references={binasReferences} /></div>
+      {binasReferences.length > 0 && <div className="question-binas"><BinasBox references={binasReferences} compact /></div>}
       {question.visual && <QuestionVisual visual={question.visual} />}
       {question.structure && <StructureRenderer structure={question.structure} />}
       {question.type === "calculation" && <FormulaBlock title="Rekenherinnering" note="Controleer steeds je eenheden."><span>n = c × V &nbsp; · &nbsp; c = n / V &nbsp; · &nbsp; V in L</span></FormulaBlock>}

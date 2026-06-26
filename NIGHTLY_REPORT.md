@@ -1,6 +1,26 @@
 # NIGHTLY REPORT — ChemTrainer USG
 
-Datum: 2026-06-25
+Datum: 2026-06-26
+
+## Aanvulling 2026-06-26: uitlegvideo's gekoppeld aan lessen
+
+LESSON VIDEO MAPPING REPORT
+
+- Aangepaste bestanden: `AGENTS.md`, `VIDEO_MAPPING_AUDIT.md`, `NIGHTLY_REPORT.md`, `src/data/lessonVideoRegistry.ts`, `src/components/content/LessonVideoCard.tsx`, `src/data/lessons.ts`, `src/types/index.ts`, `src/pages/Learn.tsx`, `src/styles.css`, `scripts/auditLessonVideos.mjs`. Daarnaast twee kleine bestaande diagram-compilefixes: `RutherfordScatteringDiagram.tsx` en `BondPolarityDiagram.tsx`.
+- Video registry toegevoegd: ja, met eigen samenvattingen, bronlinks, confidence, gekoppelde modules/lessen en betrouwbaar gevonden YouTube IDs.
+- LessonVideoCard toegevoegd: ja, compact, zonder autoplay, met lazy `youtube-nocookie` embed en Exact-link fallback.
+- Aantal video's in registry: 34.
+- Aantal lessen met high/medium confidence video: 39.
+- Aantal lessen zonder goede video: 23.
+- YouTube IDs gevonden: 34, allemaal rechtstreeks gecontroleerd op de Exact-pagina's.
+- Exact-link fallback gebruikt: 0 actieve fallbackkaarten; fallback blijft aanwezig voor toekomstige bronnen zonder betrouwbare ID.
+- Modules met video's: M4, M6, M7, M8, M9 en M10.
+- M5D niet geforceerd: ja.
+- Validators: `auditLessonVideos`, `validateFigureQuestionQuality`, `validateHintQuality`, `validateLearningCoverage` en `validateChemGraph` groen.
+- Build: groen met `npm run build`.
+- Wat bewust niet aangepast: geen TitrationLab-animaties, geen `ProcedureActionPreview`, geen MassSpectrometryLab, geen AI tutor/backend/accounts, geen grote redesign, geen transcripties of overgenomen videoteksten.
+- Handmatige test voor Oweis: open M4 mol/molariteit, M6 pH/H3O+/zouten, M7 redox/Daniellcel, M8 atoommodellen, M9 polariteit/intermoleculaire krachten en M10 pH/evenwicht/groene chemie/titratierekenen; controleer ook mobiel en lessen zonder match.
+- STOP
 
 ## Bronnen van deze ronde
 
@@ -13,20 +33,41 @@ Deze ronde gebruikte de beschikbare docentbronnen in `reference/`:
 
 De docx-renderer kon in deze omgeving geen PNG-voorvertoning maken door een ontbrekende `pdf2image`-module. De inhoud is daarom gecontroleerd via de documenttekst en de bronstructuur. Dit blokkeerde de appimplementatie niet.
 
-## Leerdoelen: van 21 breed naar 94 toetsbare subleerdoelen
+## Leerdoelen: van 21 breed naar 100 toetsbare subleerdoelen
 
 | Module | Oude brede doelen | Nieuwe subleerdoelen |
 | --- | ---: | ---: |
 | M4 | 3 | 6 |
 | M5D | 3 | 15 |
-| M6 | 2 | 5 |
+| M6 | 2 | 11 |
 | M7 | 3 | 4 |
 | M8 | 3 | 15 |
 | M9 | 3 | 22 |
 | M10 | 4 | 27 |
-| **Totaal** | **21** | **94** |
+| **Totaal** | **21** | **100** |
 
 Elk subleerdoel heeft minimaal één les en twee inhoudelijk passende oefenvragen. M10 is opgesplitst in onder meer elektrochemische cel, brandstofcel, concentratiecel, duurzaamheid, K-uitdrukkingen, zuur-base, buret aflezen, Schellbachstreep, indicator, glaswerk conditioneren, titratierekenen, massapercentage, uitschieters en titratiefouten. M5D bevat nu losse doelen voor peptidebinding, hydrolyse, nucleotide, DNA-basen, DNA/RNA, transcriptie, translatie, codontabel, eiwitstructuur en denaturatie. M8 en M9 zijn op dezelfde manier verfijnd.
+
+## Aanvulling 2026-06-26: M8 atoommodellen en Oefenen UX
+
+- Toegevoegd: twee M8-lessen, `m8-atoommodellen-thomson-rutherford` en `m8-atoommodel-tekenen`.
+- Toegevoegd: native `AtomicModelsDiagram` met varianten `thomson`, `rutherford`, `bohr`, `goldFoil` en `drawingGuide`.
+- Toegevoegd: 10 gerichte M8-vragen over Thomson/Rutherford, goudfolie, Rutherford tekenen, Bohr/schillenmodel, isotopen, ionen en model-waarneming.
+- Oefenen is rustiger gemaakt met snelle startkaarten voor basis, toetsniveau en fouten opnieuw; modulefilter blijft direct zichtbaar, onderwerp/vaardigheid/niveau zitten achter “Geavanceerde filters”.
+- Vraagfeedback is opgesplitst in Eindantwoord, Stappen, Waarom dit klopt en Veelgemaakte fout / tip. BINAS-hulp verschijnt bij oefenvragen alleen nog wanneer er relevante verwijzingen zijn.
+- Validatie: figure question quality 0 waarschuwingen; hint quality 522 vragen / 1501 vraag-specifieke hints / 0 verboden generieke-only hints; learning coverage 100 subleerdoelen; ChemGraph groen; build groen.
+
+## Aanvulling 2026-06-26: lesson depth, diagram clarity en BINAS
+
+- Toegevoegd: `DIAGRAM_READABILITY_AUDIT.md` met component/les, probleemtype, actie en status per native diagramfamilie.
+- Toegevoegd: `LESSON_COMPLETENESS_AUDIT.md` met per les de status voor kernuitleg, examengerichte aanpak, figuurinterpretatie, BINAS en afsluiting.
+- Toegevoegd: `src/components/content/BinasReferenceBox.tsx` voor zichtbare lesniveau-BINAS-verwijzingen zonder tabelinhoud over te nemen.
+- Toegevoegd: `src/components/content/FigureExplanationBlock.tsx` plus een afsluitend lesblok, zodat leerlingen na een figuur zien wat het figuur toont, wat de conclusie is en hoe dit op de toets terugkomt.
+- Toegevoegd: `BondPolarityDiagram` voor H-H, H-Cl, elektronegativiteitsbeslissing en molecuulpolariteit. De uitleg over gedeelde elektronen, δ+ / δ− en schoolgrenzen staat nu buiten het SVG.
+- Toegevoegd: `RutherfordScatteringDiagram` voor goudfolievragen. Het diagram onderscheidt alfa-bron, goudfolie, meeste rechtdoor, enkele afgebogen en heel weinig sterk terug.
+- Verbeterd: M9 polariteit, M8 Rutherford/atoommodellen, M4 mol/molariteit, M7 redox/BINAS 48, M8 MS/GC-MS en M10 titratie/indicatoren met explicietere BINAS- en toetsaanpak.
+- Nieuwe vragen: 8 gerichte examenvragen (`m7-16`, `m7-17`, `m8-26`, `m8-27`, `m9-52`, `m9-53`, `m10-58`, `m10-59`).
+- Validatie: figure question quality 437 vraagblokken / 58 visuals / 0 waarschuwingen; hint quality 522 vragen / 1501 vraag-specifieke hints / 0 verboden generieke-only hints; learning coverage groen; ChemGraph groen; build groen met alleen de bestaande Vite chunk-size waarschuwing.
 
 ## Officiële oefentoets
 
@@ -194,7 +235,7 @@ Deze ronde stopte de algemene contentuitbreiding en werkte gericht aan didactiek
 - Nieuw: `src/utils/questionEnhancements.ts`.
 - Nieuw: `scripts/validateHintQuality.mjs`.
 - De actieve vraagdata en officiële proeftoetsvragen krijgen centraal verrijkte hints via `enhanceQuestion(...)`.
-- Validatorstatus: **486 vragen gecontroleerd**, **1387 vraag-specifieke hints actief**, **0 verboden generieke-only hints over**.
+- Validatorstatus: **522 vragen gecontroleerd**, **1501 vraag-specifieke hints actief**, **0 verboden generieke-only hints over**.
 - Oude generieke hintpatronen zoals “kijk goed naar de vraag” of “markeer de gegevens” worden in de actieve runtime vervangen door hints met vaktaal, bijvoorbeeld liter/molverhouding bij M10, piek/m/z bij M8 en functionele groep bij structuurvragen.
 
 ### Oefenherhaling

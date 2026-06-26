@@ -19,3 +19,4 @@ When implementing from a selected generated mock, treat that image as the source
 - Procedure steps in TitratieLab should behave as action/feedback cards tied to actual lab state, not as passive checkboxes.
 - The Leerdoelen page should be learner-facing first: show what the student must know, which lesson fits, which questions to practise, and personal checklist progress. Developer coverage and visual QA stay clearly separate.
 - M6 is foundational for M10 titration and should stay expanded into calm, step-by-step lessons on ionen, hydratatie, zuur-base, pH, names-to-formulas, and the bridge to titration.
+- Uitlegvideo's in lessen stay supplementary and curated: maximaal 1 passende Exact wat je zoekt / Sisters in Science-video per les, na de basisuitleg, geen low-confidence/random matches, geen transcripties, en een Exact-link fallback als een YouTube-id niet betrouwbaar is.

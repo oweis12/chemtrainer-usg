@@ -8,6 +8,7 @@
 - M8 M+2 isotopenpatroon Cl/Br
 - M8 GC chromatogram
 - M8 massaspectrometer route
+- M8 atoommodellen native SVG: Thomson, Rutherford, Bohr/schillenmodel, goudfolie en tekenhulp
 - M5D nucleotide bouwsteen
 - M5D DNA versus RNA
 - M9 ionstof versus moleculaire stof
@@ -20,6 +21,7 @@
 - M6 indicatoromslag in pH-gebied
 - M6 triviale namen overzicht
 - eventuele overige registry items die nog `needs-image` zijn
+- geen externe beeldgeneratie nodig voor M8 atoommodellen; `AtomicModelsDiagram` dekt deze V1 met rechtenvrije React/SVG
 - lage-prioriteit SVG-fallbacks die bewust zijn ingehaald door bestaande `.webp`-assets, zoals GC chromatogram, MS instrumentroute, DNA/RNA, nucleotide, redoxroute en effectieve botsingen
 
 ## Opmerking

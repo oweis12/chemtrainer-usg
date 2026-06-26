@@ -7,7 +7,7 @@ const o = (id: string, module: ModuleId, onderwerp: string, leerdoelTekst: strin
 export const learningObjectives: LearningObjective[] = [
   o("lo-m4-01", "M4", "formules", "Formules uit stofnamen en elementverhoudingen afleiden.", "kunnen", ["m4-hoeveelheden"], ["m4-01", "m4-02"], "Controleer indices en totale lading."),
   o("lo-m4-02", "M4", "molbegrip", "Massa, aantal deeltjes en hoeveelheid stof in mol onderscheiden.", "kennen", ["m4-hoeveelheden"], ["m4-03", "m4-07"], "Mol is een hoeveelheid stof, geen massa."),
-  o("lo-m4-03", "M4", "molmassa", "De molmassa uit atoommassa's bepalen en in g/mol noteren.", "berekenen", ["m4-hoeveelheden"], ["m4-02", "m4-14"], "Gebruik BINAS tabel 40 waar nodig."),
+  o("lo-m4-03", "M4", "molmassa", "De molmassa uit atoommassa's bepalen en in g/mol noteren.", "berekenen", ["m4-hoeveelheden"], ["m4-02", "m4-14"], "Gebruik BINAS tabel 40A waar nodig."),
   o("lo-m4-04", "M4", "massa en mol", "Van massa naar mol en terug rekenen met de molmassa.", "berekenen", ["m4-hoeveelheden"], ["m4-09", "m4-26"], "Schrijf eenheden in iedere stap."),
   o("lo-m4-05", "M4", "molariteit", "Molariteit uitleggen als mol opgeloste stof per liter oplossing.", "uitleggen", ["m4-hoeveelheden"], ["m4-04", "m4-10"], "Volume eerst naar liter."),
   o("lo-m4-06", "M4", "massa-aandeel", "Een massapercentage in woorden berekenen en fysisch beoordelen.", "berekenen", ["m4-hoeveelheden"], ["m4-06", "m4-19"], "Massa stof delen door massa mengsel."),
@@ -45,9 +45,9 @@ export const learningObjectives: LearningObjective[] = [
   o("lo-m7-03", "M7", "totaalreacties", "Halfreacties combineren tot een kloppende totaalreactie.", "kunnen", ["m7-redox"], ["m7-06", "m7-11"], "Maak eerst het aantal elektronen gelijk."),
   o("lo-m7-04", "M7", "Daniellcel", "Anode, kathode, elektronenstroom en zoutbrug in een Daniellcel verklaren.", "toepassen", ["m7-redox"], ["m7-08", "m7-09"], "Elektronen lopen van reductor naar oxidator."),
 
-  o("lo-m8-01", "M8", "micro en macro", "Een waarneming op macroniveau verbinden aan een deeltjesverklaring.", "toepassen", ["m8-massaspectrometrie"], ["priority-m8-12", "m8-14"], "Benoem steeds wat je ziet én wat de deeltjes doen."),
-  o("lo-m8-02", "M8", "atoommodellen", "Thomson en Rutherford vergelijken met de goudfolie-waarneming.", "uitleggen", ["m8-massaspectrometrie"], ["priority-m8-02", "priority-m8-12"], "Rutherford: kleine positieve kern en veel lege ruimte."),
-  o("lo-m8-03", "M8", "atoombouw", "Protonen, neutronen en elektronen uit atoomnummer, massagetal en lading bepalen.", "berekenen", ["m8-massaspectrometrie"], ["m8-05", "priority-m8-20"], "Neutronen = massagetal − atoomnummer."),
+  o("lo-m8-01", "M8", "micro en macro", "Een waarneming op macroniveau verbinden aan een deeltjesverklaring.", "toepassen", ["m8-atoommodellen-thomson-rutherford"], ["m8-17", "m8-24"], "Benoem steeds wat je ziet én wat de deeltjes doen."),
+  o("lo-m8-02", "M8", "atoommodellen", "Thomson en Rutherford vergelijken met de goudfolie-waarneming.", "uitleggen", ["m8-atoommodellen-thomson-rutherford"], ["m8-16", "m8-17"], "Rutherford: kleine positieve kern en veel lege ruimte."),
+  o("lo-m8-03", "M8", "atoombouw", "Protonen, neutronen en elektronen uit atoomnummer, massagetal en lading bepalen.", "berekenen", ["m8-atoommodel-tekenen"], ["m8-19", "m8-21"], "Neutronen = massagetal − atoomnummer."),
   o("lo-m8-04", "M8", "isotopen", "Isotopen uitleggen met gelijk aantal protonen en verschillend aantal neutronen.", "uitleggen", ["m8-massaspectrometrie"], ["m8-01", "m8-12"], "Het atoomnummer blijft gelijk."),
   o("lo-m8-05", "M8", "isotoopverhouding", "Uit piekhoogten of percentages een gemiddelde isotopenmassa bepalen.", "berekenen", ["m8-massaspectrometrie"], ["m8-12", "priority-m8-25"], "Percentage eerst als breuk schrijven."),
   o("lo-m8-06", "M8", "massaspectrometer", "De stappen verdampen, ioniseren, versnellen, scheiden en detecteren ordenen.", "kunnen", ["m8-massaspectrometrie"], ["priority-m8-06", "priority-m8-21"], "Zonder lading geen afbuiging."),

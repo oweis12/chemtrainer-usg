@@ -47,6 +47,18 @@ function specificHintsFor(question: Question) {
     hints.push("Bij NMR kijk je naar verschillende omgevingen van H- of C-atomen, niet alleen naar de molecuulmassa.");
   }
 
+  if (question.module === "M8" && /atoommodel|rutherford|thomson|goudfolie|bohr|schillenmodel|alfadeeltjes/.test(text)) {
+    hints.push("Koppel elk model aan het bewijs: Thomson heeft positieve massa verspreid, Rutherford verklaart de goudfolie-waarnemingen met een kleine positieve kern.");
+    hints.push("Bij goudfolievragen: meeste alfadeeltjes rechtdoor betekent veel lege ruimte; sterke afbuiging betekent een kleine positieve kern.");
+    hints.push(/bohr|schillenmodel|teken/.test(text) ? "Rutherford is niet automatisch een schillenmodel: Bohr voegt vaste elektronenbanen of schillen toe." : "Noem bij Rutherford altijd kern, lege ruimte en elektronen buiten de kern.");
+  }
+
+  if (question.module === "M8" && /atoomnummer|massagetal|proton|neutron|elektron|isotoop|ion/.test(text) && !/massaspect|spectrum|m-piek|m\+1|m\+2|basispiek|fragment|m\/z/.test(text)) {
+    hints.push("Gebruik atoomnummer voor protonen; neutronen bereken je met massagetal - atoomnummer.");
+    hints.push("Bij isotopen blijft het aantal protonen gelijk en verandert het aantal neutronen.");
+    hints.push("Bij ionen verandert het aantal elektronen; controleer de lading door protonen en elektronen te vergelijken.");
+  }
+
   if (question.module === "M5D" && /dna|rna|nucleotide|transcriptie|translatie|codon|base|eiwit|peptide|hydrolyse|denaturatie/.test(text)) {
     hints.push(/nucleotide|dna|rna/.test(text) ? "Een nucleotide bestaat uit drie delen: fosfaat, suiker en base." : "Bedenk of de vraag gaat over de bouwsteen, de keten of de 3D-vorm.");
     hints.push(/transcriptie|mrna|rna/.test(text) ? "Transcriptie betekent: DNA-informatie overschrijven naar mRNA; RNA gebruikt U in plaats van T." : "Bij DNA horen de basen A, T, C en G; bij RNA staat U op de plaats van T.");
@@ -59,12 +71,14 @@ function specificHintsFor(question: Question) {
   }
 
   if (question.module === "M7" || /redox|oxidator|reductor|halfreactie|elektron/.test(text)) {
+    if (/binas 48|standaardelektrode|elektrodepotential/.test(text)) hints.push("BINAS 48 geeft reductiehalfreacties; draai een halfreactie alleen om als die in jouw reactie oxidatie is.");
     hints.push("Elektronen rechts in een halfreactie betekent afstaan: die stof is de reductor.");
     hints.push("Elektronen links betekent opnemen: die stof is de oxidator.");
     hints.push("Elektronen lopen van reductor naar oxidator en verdwijnen uit de totaalreactie.");
   }
 
   if (question.module === "M9" && /polair|apolair|dipool|δ|elektronegativiteit/.test(text)) {
+    if (/binas 40a|elektronegativiteit/.test(text)) hints.push("Gebruik BINAS 40A om elektronegativiteiten te vergelijken voordat je δ+ en δ− noteert.");
     hints.push("Een binding is polair door verschil in elektronegativiteit; een molecuul is pas polair als de dipolen niet opheffen.");
   }
 

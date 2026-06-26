@@ -34,7 +34,7 @@ export function App() {
 
   let page: React.ReactNode;
   if (activePage === "learn") page = <Learn completedLessons={progress.completedLessons} onComplete={completeLesson} onPractice={practiceModule} onTitrationLab={() => setActivePage("titrationlab")} />;
-  else if (activePage === "practice") page = <Practice onResult={(question, correct, reflection) => recordResult(question, correct, reflection)} seedQuestionId={practiceSeed} onSeedHandled={() => setPracticeSeed(null)} onOpenTitrationLab={() => setActivePage("titrationlab")} />;
+  else if (activePage === "practice") page = <Practice onResult={(question, correct, reflection) => recordResult(question, correct, reflection)} seedQuestionId={practiceSeed} onSeedHandled={() => setPracticeSeed(null)} onOpenTitrationLab={() => setActivePage("titrationlab")} onOpenMistakeLog={() => setActivePage("mistakes")} mistakeQuestionIds={progress.mistakes.map((mistake) => mistake.questionId)} />;
   else if (activePage === "test") page = <TestMode progress={progress} onResult={recordResult} onPracticeQuestion={(question) => practiceQuestion(question.id)} />;
   else if (activePage === "mistakes") page = <MistakeLog mistakes={progress.mistakes} onRetry={practiceQuestion} />;
   else if (activePage === "binas") page = <BinasGuide />;

@@ -1,16 +1,20 @@
 import { ArrowLeft, CheckCircle, ClipboardText, Lightbulb, ListChecks, TestTube, Warning } from "@phosphor-icons/react";
 import { useState } from "react";
 import { lessons } from "../data/lessons";
-import { getBinasReferencesFor } from "../data/binasReferences";
+import { binasReferenceMap, getBinasReferencesFor } from "../data/binasReferences";
 import { visualAssetRegistry } from "../data/visualAssetRegistry";
-import type { Lesson, ModuleId } from "../types";
+import type { FigureExplanation, Lesson, ModuleId } from "../types";
 import { BinasBox } from "../components/BinasBox";
 import { FormulaBlock } from "../components/FormulaBlock";
 import { LessonCard } from "../components/LessonCard";
 import { ConceptDiagram } from "../components/ConceptDiagram";
+import { BinasReferenceBox } from "../components/content/BinasReferenceBox";
 import { FigureBlock } from "../components/content/FigureBlock";
+import { FigureExplanationBlock, LessonWrapUp } from "../components/content/FigureExplanationBlock";
 import { QuestionVisual } from "../components/QuestionVisual";
 import { getFigureByAssetId } from "../data/figureRegistry";
+import { getRenderableLessonVideo } from "../data/lessonVideoRegistry";
+import { LessonVideoCard } from "../components/content/LessonVideoCard";
 
 export function Learn({ completedLessons, onComplete, onPractice, onTitrationLab }: { completedLessons: string[]; onComplete: (lessonId: string) => void; onPractice: (module: ModuleId) => void; onTitrationLab: () => void }) {
   const [selected, setSelected] = useState<Lesson | null>(null);
@@ -22,11 +26,28 @@ export function Learn({ completedLessons, onComplete, onPractice, onTitrationLab
   return <div className="learn-page"><section className="page-intro"><span className="section-kicker">Leeromgeving</span><h1>Van basisbegrip naar toetsantwoord.</h1><p>Elke les bouwt op van de bouwsteen naar het antwoord dat je op een toets moet kunnen formuleren.</p></section><div className="filter-tabs"><button className={filter === "all" ? "active" : ""} onClick={() => setFilter("all")}>Alle modules</button>{(["M4", "M5D", "M6", "M7", "M8", "M9", "M10"] as ModuleId[]).map((module) => <button key={module} className={filter === module ? "active" : ""} onClick={() => setFilter(module)}>{module}</button>)}</div><section className="lesson-list">{visible.map((lesson) => <LessonCard key={lesson.id} lesson={lesson} completed={completedLessons.includes(lesson.id)} onOpen={() => setSelected(lesson)} />)}</section></div>;
 }
 
+function fallbackFigureExplanation(example: NonNullable<Lesson["extraExamples"]>[number]): FigureExplanation {
+  return {
+    observation: example.visual?.caption ?? example.prompt,
+    meaning: "Gebruik de zichtbare onderdelen als aanwijzingen. Lees eerst wat er staat afgebeeld en koppel elk label daarna aan het begrip uit de les.",
+    conclusion: example.conclusion,
+    examUse: "Op een toets gebruik je de figuur als bron: benoem de waarneming, leg de betekenis uit en sluit af met de conclusie in woorden.",
+  };
+}
+
 function LessonDetail({ lesson, completed, onBack, onComplete, onPractice, onTitrationLab, checksVisible, setChecksVisible }: { lesson: Lesson; completed: boolean; onBack: () => void; onComplete: () => void; onPractice: () => void; onTitrationLab: () => void; checksVisible: boolean; setChecksVisible: (value: boolean) => void }) {
   const simpleMeaning = lesson.simpleMeaning ?? [lesson.foundation[0]];
   const memoryAnchor = lesson.memoryAnchor ?? [lesson.objectives[0], "Gebruik daarna het voorbeeld als vast stappenplan."];
   const binasReferences = getBinasReferencesFor(lesson.module, `${lesson.topic} ${lesson.title} ${lesson.example.prompt}`);
+  const explicitBinasReferences = (lesson.binasReferenceIds ?? []).map((id) => binasReferenceMap[id]).filter(Boolean).map((reference) => ({
+    table: reference.tabel,
+    title: reference.onderwerp,
+    useFor: reference.wanneerGebruikJeDezeTabel,
+    howToUse: reference.waarschuwing,
+    example: reference.voorbeeldvraag,
+  }));
   const lessonImageSlots = (lesson.imageSlots ?? []).map((id) => visualAssetRegistry.find((asset) => asset.id === id)).filter((asset): asset is NonNullable<typeof asset> => Boolean(asset));
+  const lessonVideo = getRenderableLessonVideo(lesson.videoIds);
   const showTitrationLab = lesson.module === "M10" && /titr|buret|azijn|zuur-base/i.test(`${lesson.topic} ${lesson.title}`);
   let sectionCounter = 1;
   const sectionNo = () => String(sectionCounter++).padStart(2, "0");
@@ -62,6 +83,7 @@ function LessonDetail({ lesson, completed, onBack, onComplete, onPractice, onTit
             <span className="learning-layer">Laag 2 — schooluitleg</span>
             <h2>Stap-voor-stap uitleg vanaf nul</h2>
             {lesson.foundation.map((paragraph, index) => <p key={`${index}-${paragraph}`}>{paragraph}</p>)}
+            {lessonVideo && <LessonVideoCard video={lessonVideo} />}
           </div>
         </section>
 
@@ -106,6 +128,7 @@ function LessonDetail({ lesson, completed, onBack, onComplete, onPractice, onTit
             <FormulaBlock title={lesson.example.title}><p>{lesson.example.prompt}</p></FormulaBlock>
             <ol className="lesson-steps">{lesson.example.steps.map((step, index) => <li key={step}><span>{index + 1}</span>{step}</li>)}</ol>
             <BinasBox references={binasReferences} heading="BINAS bij dit voorbeeld" />
+            <BinasReferenceBox references={explicitBinasReferences} />
           </div>
         </section>
 
@@ -116,11 +139,20 @@ function LessonDetail({ lesson, completed, onBack, onComplete, onPractice, onTit
             <div className="lesson-extra-examples">
               {lesson.extraExamples.map((example) => <article className="lesson-extra-example" key={example.title}>
                 {example.visual && <QuestionVisual visual={example.visual} />}
+                {example.visual && <FigureExplanationBlock explanation={example.figureExplanation ?? fallbackFigureExplanation(example)} />}
                 <FormulaBlock title={example.title}><p>{example.prompt}</p></FormulaBlock>
                 <ol className="lesson-steps">{example.steps.map((step, index) => <li key={step}><span>{index + 1}</span>{step}</li>)}</ol>
                 <p className="example-conclusion"><strong>Conclusie:</strong> {example.conclusion}</p>
               </article>)}
             </div>
+          </div>
+        </section>}
+
+        {lesson.examApproach && lesson.examApproach.length > 0 && <section className="lesson-section">
+          <span className="section-no">{sectionNo()}</span>
+          <div>
+            <h2>Toetsaanpak</h2>
+            <ol className="lesson-steps">{lesson.examApproach.map((step, index) => <li key={step}><span>{index + 1}</span>{step}</li>)}</ol>
           </div>
         </section>}
 
@@ -146,6 +178,14 @@ function LessonDetail({ lesson, completed, onBack, onComplete, onPractice, onTit
           <div>
             <h2>Als je vastloopt, onthoud dit eerst</h2>
             <ul className="memory-list">{memoryAnchor.map((item) => <li key={item}><Lightbulb size={17} weight="fill" />{item}</li>)}</ul>
+          </div>
+        </section>
+
+        <section className="lesson-section">
+          <span className="section-no">{sectionNo()}</span>
+          <div>
+            <h2>Les afsluiten zonder losse eindjes</h2>
+            <LessonWrapUp objectives={lesson.objectives} examApproach={lesson.examApproach} memoryAnchor={memoryAnchor} />
           </div>
         </section>
       </article>

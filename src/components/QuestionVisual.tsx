@@ -1,4 +1,6 @@
 import type { QuestionVisual as QuestionVisualData } from "../types";
+import { AtomicModelsDiagram } from "./diagrams/AtomicModelsDiagram";
+import { BondPolarityDiagram } from "./diagrams/BondPolarityDiagram";
 import { DnaPolymerDiagram } from "./diagrams/DnaPolymerDiagram";
 import { DnaRnaDiagram } from "./diagrams/DnaRnaDiagram";
 import { GcChromatogramDiagram } from "./diagrams/GcChromatogramDiagram";
@@ -11,13 +13,17 @@ import { PeptideBondDiagram } from "./diagrams/PeptideBondDiagram";
 import { QuestionGcChromatogram } from "./diagrams/QuestionGcChromatogram";
 import { QuestionMassSpectrum } from "./diagrams/QuestionMassSpectrum";
 import { QuestionTitrationDataFigure } from "./diagrams/QuestionTitrationDataFigure";
+import { RutherfordScatteringDiagram } from "./diagrams/RutherfordScatteringDiagram";
 import { TitrationSetupDiagram } from "./diagrams/TitrationSetupDiagram";
 import { FigureBlock } from "./content/FigureBlock";
 import { getFigureByPath } from "../data/figureRegistry";
 
 export function QuestionVisual({ visual }: { visual: QuestionVisualData }) {
-  const component = visual.component === "MassSpectrometerDiagram" ? <MassSpectrometerDiagram />
-    : visual.component === "MassSpectrumDiagram" ? <MassSpectrumDiagram variant={visual.variant} />
+  const component = visual.component === "AtomicModelsDiagram" ? <AtomicModelsDiagram variant={visual.variant} />
+    : visual.component === "BondPolarityDiagram" ? <BondPolarityDiagram variant={visual.variant} />
+    : visual.component === "RutherfordScatteringDiagram" ? <RutherfordScatteringDiagram />
+      : visual.component === "MassSpectrometerDiagram" ? <MassSpectrometerDiagram />
+      : visual.component === "MassSpectrumDiagram" ? <MassSpectrumDiagram variant={visual.variant} />
       : visual.component === "QuestionMassSpectrum" ? <QuestionMassSpectrum variant={visual.variant} />
       : visual.component === "GcChromatogramDiagram" ? <GcChromatogramDiagram />
         : visual.component === "QuestionGcChromatogram" ? <QuestionGcChromatogram variant={visual.variant} />
@@ -34,7 +40,10 @@ export function QuestionVisual({ visual }: { visual: QuestionVisualData }) {
                               : visual.component === "CalciumHydrationDiagram" ? <CalciumHydrationDiagram />
                                 : null;
   const figure = getFigureByPath(visual.src);
-  const fallbackTitle = visual.component === "MassSpectrumDiagram" ? "Massaspectrum bij deze vraag"
+  const fallbackTitle = visual.component === "AtomicModelsDiagram" ? "Atoommodel bij deze vraag"
+    : visual.component === "BondPolarityDiagram" ? "Binding en polariteit bij deze vraag"
+    : visual.component === "RutherfordScatteringDiagram" ? "Rutherforddiagram bij deze vraag"
+    : visual.component === "MassSpectrumDiagram" ? "Massaspectrum bij deze vraag"
     : visual.component === "QuestionMassSpectrum" ? "Oefenmassaspectrum bij deze vraag"
     : visual.component === "GcChromatogramDiagram" ? "GC-chromatogram bij deze vraag"
       : visual.component === "QuestionGcChromatogram" ? "Oefenchromatogram bij deze vraag"

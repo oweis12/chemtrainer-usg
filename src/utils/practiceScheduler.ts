@@ -4,7 +4,8 @@ export interface PracticeFilter {
   module: ModuleId | "all";
   topic: string;
   skill: string;
-  level: number | "all";
+  level: number | "all" | "basis" | "toets";
+  source?: "default" | "review";
 }
 
 export type PracticeResultKind = "mastered" | "weak" | "skipped";
@@ -49,6 +50,7 @@ export function getPracticeDeckKey(filter: PracticeFilter) {
     topic: filter.topic,
     skill: filter.skill,
     level: filter.level,
+    source: filter.source ?? "default",
   });
 }
 

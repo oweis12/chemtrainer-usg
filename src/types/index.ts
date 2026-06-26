@@ -76,11 +76,24 @@ export interface Lesson {
   memoryAnchor?: string[];
   concepts: Array<{ term: string; meaning: string }>;
   example: { title: string; prompt: string; steps: string[] };
-  extraExamples?: Array<{ title: string; prompt: string; steps: string[]; conclusion: string; visual?: QuestionVisual }>;
+  extraExamples?: Array<{ title: string; prompt: string; steps: string[]; conclusion: string; visual?: QuestionVisual; figureExplanation?: FigureExplanation }>;
+  examApproach?: string[];
+  binasReferenceIds?: string[];
   examAnswer: string;
   commonMistakes: string[];
   miniCheck: Array<{ question: string; answer: string }>;
   imageSlots?: string[];
+  videoIds?: string[];
+}
+
+export interface FigureExplanation {
+  observation: string;
+  meaning: string;
+  conclusion: string;
+  examUse: string;
+  commonMistake?: string;
+  steps?: string[];
+  binasLink?: string;
 }
 
 export type ConceptDiagramId = "covalent" | "ionic" | "metallic" | "polarity" | "hydrogen-bond" | "titration" | "redox" | "dna-nucleotide" | "gene-expression" | "mass-spectrum";
