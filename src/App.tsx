@@ -12,6 +12,8 @@ import { TestMode } from "./pages/TestMode";
 import { VisualAssetAudit } from "./pages/VisualAssetAudit";
 import type { AppPage, Question, StoredProgress } from "./types";
 import { readProgress, writeProgress } from "./utils/storage";
+import { Analytics } from "@vercel/analytics/react";
+
 
 export function App() {
   const [activePage, setActivePage] = useState<AppPage>("home");
@@ -44,5 +46,17 @@ export function App() {
   else if (activePage === "visualaudit") page = <VisualAssetAudit />;
   else page = <Home progress={progress} onNavigate={navigate} />;
 
-  return <Layout activePage={activePage} onNavigate={navigate} theme={progress.theme} onToggleTheme={toggleTheme}>{page}</Layout>;
+return (
+  <>
+    <Layout
+      activePage={activePage}
+      onNavigate={navigate}
+      theme={progress.theme}
+      onToggleTheme={toggleTheme}
+    >
+      {page}
+    </Layout>
+    <Analytics />
+  </>
+);
 }
