@@ -4,6 +4,7 @@
 - Focus: M8, M10, M6, M9 en officiële oefentoetsen met figuren.
 - Gecontroleerd: vragen met `visual`, bronfiguren in `figureQuestions`, prioriteitsvragen met spectrum/chromatogram/titratiebeeld en officiële toetsfiguren.
 - Hoofdingreep: algemene titratieopstellingen zijn uit berekenvragen gehaald of vervangen door meetdata/flow/verdunningsschema. GC/MS-oefenvragen gebruiken nu native oefendiagrammen zonder antwoord-lekkende labels waar dat nodig is.
+- Vervolg-QA: `validateFigureQuestionQuality` is teruggebracht van 65 waarschuwingen naar 0 waarschuwingen.
 
 ## Audit Per Vraag
 
@@ -52,7 +53,9 @@
 - Lesfiguur voor M+2 vervangen door configureerbaar oefenmassaspectrum waar de vraag om interpretatie vraagt.
 - Modelantwoorden bij M8/M10 uitgebreid met eindantwoord, gegevens, stappen en chemische verklaring.
 - `purpose` toegevoegd aan nieuwe oefenvisuals zodat de validator figuurdoel kan controleren.
+- `purpose` toegevoegd aan resterende actieve bronvisuals, coverage-QA en officiële oefentoetsfiguren.
+- Verouderde duplicate replacements verwijderd; `qualityReplacementQuestions` heeft nu 68 unieke records en 0 orphan IDs.
 
 ## Nog Later
-- Oude bronbestanden bevatten nog historische visuals zonder `purpose`; de actieve vervangingen zijn aangescherpt, maar een volledige bronopschoning kan later.
 - Enkele lesfiguren zijn bewust behouden in conceptuele figuurvragen omdat de vraag om uitleg vraagt, niet om blind tellen.
+- Verdere inhoudelijke verfijning kan later per module, maar de huidige figuurwarning-validator geeft geen open waarschuwingen meer.

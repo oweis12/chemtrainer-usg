@@ -362,3 +362,11 @@ De hoogste prioriteit ligt nu niet meer bij Batch 1-beelden maar bij verfijning:
 - Toegevoegd: `scripts/validateFigureQuestionQuality.mjs` als warning-validator voor figuurdoel, decoratieve titratievisuals, antwoord-lekkende GC-labels, expliciete figuurverwijzing en eindantwoordkwaliteit.
 - Minimaal 25 zwakke figuurvragen/modelantwoorden zijn via `qualityReplacementQuestions` aangescherpt, vooral in M8 en M10.
 - Visual registry cleanup: oude fallback-SVG-slots die door `.webp`-assets zijn ingehaald zijn naar lage-prioriteit placeholder gezet, niet oneerlijk op `done`.
+
+## Warning burn-down + replacement QA
+
+- `qualityReplacementQuestions` gecontroleerd: 68 unieke replacements, 68 effectief gekoppeld, 0 duplicate IDs en 0 orphan IDs.
+- Centrale routes gecontroleerd: oefenen, modulefilters, practice scheduler, toetsmodus, leerdoelenchecklist en foutenlog gebruiken de centrale `questions`-export; officiële oefentoets blijft bewust aparte bron en is direct opgeschoond.
+- `validateFigureQuestionQuality`: teruggebracht van 65 waarschuwingen naar 0 waarschuwingen.
+- Extra opgeschoond: ontbrekende `purpose`-labels, figuurvragen zonder expliciete figuurverwijzing, modelantwoorden zonder duidelijk eindantwoord en decoratieve/te makkelijke M8/M10 visuals.
+- Nieuwe auditdocumenten: `QUESTION_REPLACEMENT_AUDIT.md` en `FIGURE_WARNING_BURNDOWN.md`.

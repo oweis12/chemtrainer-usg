@@ -17,7 +17,7 @@ export const figureQuestions: Question[] = [
     hints: ["Kijk vooral naar de pijl in figuur 7."],
     commonMistakes: ["H⁺ beide kanten op laten gaan.", "Een los proton zonder watercontext laten zweven."],
     explanation: "Deze vraag test of je het deeltjesniveau van zuur-base echt begrijpt.",
-    visual: { type: "image", src: "/assets/chemtrainer/m6/zuur-base-protonoverdracht.webp", alt: "Zuur geeft een proton af aan een base.", caption: "Figuur 7 laat protonoverdracht tussen zuur en base zien." },
+    visual: { type: "image", src: "/assets/chemtrainer/m6/zuur-base-protonoverdracht.webp", alt: "Zuur geeft een proton af aan een base.", caption: "Figuur 7 laat protonoverdracht tussen zuur en base zien.", purpose: "explanation-only" },
   }),
   q({
     id: "figure-m6-02",
@@ -33,7 +33,7 @@ export const figureQuestions: Question[] = [
     hints: ["Sterk/zwak zegt iets over deeltjesgedrag, niet over liters."],
     commonMistakes: ["Sterk en geconcentreerd als synoniemen gebruiken."],
     explanation: "Dit is een basisfout die direct doorwerkt naar titraties en pH-vragen.",
-    visual: { type: "image", src: "/assets/chemtrainer/m6/sterk-zwak-geconcentreerd-verdund.webp", alt: "Vergelijking van sterk, zwak, geconcentreerd en verdund.", caption: "Figuur 8 maakt het verschil tussen ionisatie en molariteit zichtbaar." },
+    visual: { type: "image", src: "/assets/chemtrainer/m6/sterk-zwak-geconcentreerd-verdund.webp", alt: "Vergelijking van sterk, zwak, geconcentreerd en verdund.", caption: "Figuur 8 maakt het verschil tussen ionisatie en molariteit zichtbaar.", purpose: "explanation-only" },
   }),
   q({
     id: "figure-m6-03",
@@ -49,7 +49,7 @@ export const figureQuestions: Question[] = [
     hints: ["Kijk welke kant van water naar welk ion wijst."],
     commonMistakes: ["Alleen zeggen dat water 'zout oplost' zonder ionen te noemen."],
     explanation: "De vraag legt de koppeling tussen deeltjesmodel en macro-geleidbaarheid bloot.",
-    visual: { type: "image", src: "/assets/chemtrainer/m6/zout-oplossen-hydratatie.webp", alt: "Watermoleculen rondom natrium- en chloride-ionen.", caption: "Figuur 9 laat hydratatie van ionen zien." },
+    visual: { type: "image", src: "/assets/chemtrainer/m6/zout-oplossen-hydratatie.webp", alt: "Watermoleculen rondom natrium- en chloride-ionen.", caption: "Figuur 9 laat hydratatie van ionen zien.", purpose: "explanation-only" },
   }),
   q({
     id: "figure-m8-04",
@@ -65,7 +65,7 @@ export const figureQuestions: Question[] = [
     hints: ["Chloor en broom hebben elk een herkenbaar isotopenpatroon."],
     commonMistakes: ["M+2 als fragment zonder isotopenkoppeling behandelen."],
     explanation: "Een isotopenpatroon is een sterk aanwijzingstype in MS.",
-    visual: { type: "image", src: "/assets/chemtrainer/analyse/mplus2-chloor-broom.webp", alt: "M+2-patroon voor chloor of broom.", caption: "Figuur 10: chloor ongeveer 3:1, broom ongeveer 1:1." },
+    visual: { type: "image", src: "/assets/chemtrainer/analyse/mplus2-chloor-broom.webp", alt: "M+2-patroon voor chloor of broom.", caption: "Figuur 10: chloor ongeveer 3:1, broom ongeveer 1:1.", purpose: "interpret-spectrum" },
   }),
   q({
     id: "figure-m8-05",
@@ -81,7 +81,7 @@ export const figureQuestions: Question[] = [
     hints: ["GC scheidt stoffen op tijd."],
     commonMistakes: ["De hoogste piek als het enige component zien."],
     explanation: "Deze vraag laat zien dat chromatografie scheiding en telling combineert.",
-    visual: { type: "image", src: "/assets/chemtrainer/analyse/gc-chromatogram-retentietijd.webp", alt: "GC chromatogram met pieken en retentietijd.", caption: "Figuur 11: elke piek kan een component zijn." },
+    visual: { type: "image", src: "/assets/chemtrainer/analyse/gc-chromatogram-retentietijd.webp", alt: "GC chromatogram met pieken en retentietijd.", caption: "Figuur 11: elke piek kan een component zijn.", purpose: "read-data" },
   }),
   q({
     id: "figure-m9-01",
@@ -97,7 +97,7 @@ export const figureQuestions: Question[] = [
     hints: ["Een waterstofbrug is tussen moleculen, niet binnen één molecuul."],
     commonMistakes: ["Een waterstofbrug een gewone binding noemen.", "Binnen één molecuul tekenen."],
     explanation: "Deze vraag is bedoeld om de grens tussen binding en intermoleculaire aantrekking scherp te houden.",
-    visual: { type: "image", src: "/assets/chemtrainer/m9/krachten-waterstofbrug-dipool-vdw.webp", alt: "Vergelijking van intermoleculaire krachten.", caption: "Figuur 17 vergelijkt vanderwaalskracht, dipool-dipool en waterstofbrug." },
+    visual: { type: "image", src: "/assets/chemtrainer/m9/krachten-waterstofbrug-dipool-vdw.webp", alt: "Vergelijking van intermoleculaire krachten.", caption: "Figuur 17 vergelijkt vanderwaalskracht, dipool-dipool en waterstofbrug.", purpose: "explanation-only" },
   }),
   q({
     id: "figure-m8-01",
@@ -113,7 +113,7 @@ export const figureQuestions: Question[] = [
     hints: ["Gebruik de labels in figuur 6 en koppel elk label aan één betekenis."],
     commonMistakes: ["De hoogste piek automatisch de M-piek noemen."],
     explanation: "Deze vraag test of je een spectrum leest in plaats van losse definities te reproduceren.",
-    visual: { type: "image", src: "/assets/chemtrainer/analyse/massaspectrum-m-mplus1-fragment.webp", alt: "Massaspectrum met gelabelde M-piek, M+1, fragmentpiek en basispiek.", caption: "Figuur 6 laat zien dat basispiek, M-piek en M+1 verschillende soorten informatie geven." },
+    visual: { type: "image", src: "/assets/chemtrainer/analyse/massaspectrum-m-mplus1-fragment.webp", alt: "Massaspectrum met gelabelde M-piek, M+1, fragmentpiek en basispiek.", caption: "Figuur 6 laat zien dat basispiek, M-piek en M+1 verschillende soorten informatie geven.", purpose: "explanation-only" },
   }),
   q({
     id: "figure-m8-02",
@@ -129,7 +129,7 @@ export const figureQuestions: Question[] = [
     hints: ["M+2 betekent: twee m/z-eenheden zwaarder dan M."],
     commonMistakes: ["M+2 als gewone fragmentpiek behandelen zonder isotopenpatroon te controleren."],
     explanation: "Bij massaspectrometrie hoort ook voorzichtig concluderen: een isotopenpatroon is bewijs voor een element, niet automatisch voor een hele structuur.",
-    visual: { type: "spectrum", component: "MassSpectrumDiagram", variant: "chlorine", alt: "Pseudo-spectrum met M en M plus 2 in chloorverhouding.", caption: "Een M/M+2-patroon kan een halogeen aanwijzen." },
+    visual: { type: "spectrum", component: "MassSpectrumDiagram", variant: "chlorine", alt: "Pseudo-spectrum met M en M plus 2 in chloorverhouding.", caption: "Een M/M+2-patroon kan een halogeen aanwijzen.", purpose: "interpret-spectrum" },
   }),
   q({
     id: "figure-m8-03",
@@ -145,7 +145,7 @@ export const figureQuestions: Question[] = [
     hints: ["Hoogte zegt intensiteit; m/z zegt massa/lading."],
     commonMistakes: ["Denken dat de piek met hoogste m/z altijd het belangrijkste antwoord is."],
     explanation: "Deze vraag dwingt het verschil tussen piekhoogte en molecuulmassa af.",
-    visual: { type: "spectrum", component: "MassSpectrumDiagram", alt: "Pseudo-spectrum met basispiek en M-piek.", caption: "De basispiek kan een fragment zijn." },
+    visual: { type: "spectrum", component: "MassSpectrumDiagram", alt: "Pseudo-spectrum met basispiek en M-piek.", caption: "De basispiek kan een fragment zijn.", purpose: "interpret-spectrum" },
   }),
   q({
     id: "figure-m5d-01",
@@ -161,7 +161,7 @@ export const figureQuestions: Question[] = [
     hints: ["Codons horen bij mRNA, niet bij een eiwitketen zelf."],
     commonMistakes: ["DNA-triplets direct codons noemen zonder mRNA te maken."],
     explanation: "Figuur 5 maakt de volgorde zichtbaar: eerst transcriptie, daarna translatie.",
-    visual: { type: "image", src: "/assets/chemtrainer/dna/transcriptie-translatie-stappen.webp", alt: "Schema van transcriptie en translatie.", caption: "Figuur 5: transcriptie maakt mRNA; translatie leest codons." },
+    visual: { type: "image", src: "/assets/chemtrainer/dna/transcriptie-translatie-stappen.webp", alt: "Schema van transcriptie en translatie.", caption: "Figuur 5: transcriptie maakt mRNA; translatie leest codons.", purpose: "explanation-only" },
   }),
   q({
     id: "figure-m5d-02",
@@ -177,7 +177,7 @@ export const figureQuestions: Question[] = [
     hints: ["Volg de pijlen in figuur 5 van links naar rechts."],
     commonMistakes: ["Zeggen dat DNA zelf direct als enzym werkt."],
     explanation: "Dit is een ketenredenering: elke stap verandert mogelijk de volgende stap.",
-    visual: { type: "image", src: "/assets/chemtrainer/dna/transcriptie-translatie-stappen.webp", alt: "Schema DNA naar mRNA naar aminozuurketen.", caption: "Figuur 5: van code naar eiwitvorm." },
+    visual: { type: "image", src: "/assets/chemtrainer/dna/transcriptie-translatie-stappen.webp", alt: "Schema DNA naar mRNA naar aminozuurketen.", caption: "Figuur 5: van code naar eiwitvorm.", purpose: "explanation-only" },
   }),
   q({
     id: "figure-m10-01",
@@ -193,7 +193,7 @@ export const figureQuestions: Question[] = [
     hints: ["Bij een buret gaat het om de stand op de schaal, niet om de hoeveelheid in het glas."],
     commonMistakes: ["Bovenkant van de meniscus nemen."],
     explanation: "Een kleine afleesfout werkt door in het gebruikte volume en dus in n = c × V.",
-    visual: { type: "image", src: "/assets/chemtrainer/titratie/buret-meniscus-ooghoogte.webp", alt: "Buretmeniscus op ooghoogte.", caption: "Figuur 2: lees de onderkant van de meniscus recht af." },
+    visual: { type: "image", src: "/assets/chemtrainer/titratie/buret-meniscus-ooghoogte.webp", alt: "Buretmeniscus op ooghoogte.", caption: "Figuur 2: lees de onderkant van de meniscus recht af.", purpose: "read-data" },
   }),
   q({
     id: "figure-m10-02",
@@ -209,7 +209,7 @@ export const figureQuestions: Question[] = [
     hints: ["De Schellbachstreep is geen aparte berekening; het is een afleeshulp."],
     commonMistakes: ["De streep zelf als volume-eenheid behandelen."],
     explanation: "Schellbach helpt vooral bij reproduceerbaar aflezen van begin- en eindstand.",
-    visual: { type: "image", src: "/assets/chemtrainer/titratie/schellbachstreep-detail.webp", alt: "Schellbachstreep bij de meniscus.", caption: "Figuur 3: het punt wijst naar de onderkant van de meniscus." },
+    visual: { type: "image", src: "/assets/chemtrainer/titratie/schellbachstreep-detail.webp", alt: "Schellbachstreep bij de meniscus.", caption: "Figuur 3: het punt wijst naar de onderkant van de meniscus.", purpose: "read-data" },
   }),
   q({
     id: "figure-m10-03",
@@ -225,6 +225,6 @@ export const figureQuestions: Question[] = [
     hints: ["Figuur 4 is een volgordeplaat: koppel elke handeling aan de berekening erna."],
     commonMistakes: ["Alleen de eindstand gebruiken als verbruik."],
     explanation: "Deze procedure voorkomt dat je een volume uit de buretstand zelf verwart met het toegevoegde volume.",
-    visual: { type: "image", src: "/assets/chemtrainer/titratie/titratie-stappen.webp", alt: "Zes stappen van een titratie.", caption: "Figuur 4: praktische volgorde van titreren en rekenen." },
+    visual: { type: "image", src: "/assets/chemtrainer/titratie/titratie-stappen.webp", alt: "Zes stappen van een titratie.", caption: "Figuur 4: praktische volgorde van titreren en rekenen.", purpose: "explanation-only" },
   }),
 ];
