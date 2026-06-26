@@ -1,388 +1,0 @@
-
-Voorbeeld antwoorden
-
-module 10 
-
-MILIEU EN EVENWICHT
-
-VWO
-
-p1 tm p6
-
-
-versie 29-8-2021
-
- Practicum 1 Stroombronnen
- 
-1.1 In een van de voorgaande modules …. a. 1 preventie : Dit uitgangspunten is het zoveel mogelijk voorkomen van afval. Dat klopt als je oplaadbare batterijen gebruikt. b. Dat heeft waarschijnlijk te maken met de stoffen die ontstaan en niet altijd even makkelijk kunnen terugreageren en/of niet in de buurt blijven. c. Nog niet echt, want het opladen kan ook met niet-duurzame energie gebeurd zijn. d. Elektriciteit is geen stof en atoomeconomie rekent alleen aan stoffen/massa.
-	•	 Elektrochemische cel. a. Dan zouden de oplossingen mengen en kunnen de koperionen meteen met het zink reageren.  b. De blauwe kleur wordt minder blauw. c. De reactie moet zijn: Cu --> Cu2+ + 2e-, dit is een reductor. Cu geeft e- af en geeft deze aan de positieve pool van de externe spanningsbron. d. Zn2+ + 2 e-  🡪  Zn 	H2O e. Niet door alleen maar bijvoegen (volume is eindig), maar ook zal op enig moment de zinkelektrode helemaal omgezet zijn. f. Het spul is ook nog eens schadelijk voor het milieu.
-1.3 Brandstofcel a. Dat kan helemaal niet want die stoffen zijn gasvormig. b. Er staan elektronen in het diagram.
-c.	H2 	  :2 e- H2 	  : 2F(-) 2,018g : 2F(-) C=A*s= 0,50*10*60=300 C (300: (9,65*104= ))3,11*10-3 x 2,018 : 2 = 3,13*10-3 gram waterstof moet verdwijnen
-d. 	2H2  			🡪 4H+ + 4 e-
-O2 + 2H2O + 4 e-	🡪  4 OH- 2H2 + O2 + 2H2O 	🡪 4H+ + 4 OH-
-Let op: 2H2 + O2 + 2H2O 	🡪 4H+ + 4 OH- wordt 4 H2O
-Dus totaal: 2H2 + O2 	🡪 2 H2O (want ook water voor de pijl en na de pijl hetzelfde moet weg)
-e. Ja, O2 verdwijnt
-f. H2 staat e- af, dus is reductor en die reductor eleckrode heeft bij (een redoxreactie) de lage(re) potentiaal, dus het is (chemici noemen het dan) de negatieve elektrode. 
-g. O2: oxidator : +0,40  en H2: reductor : O 	dus reductor lager dan oxidator.
-h. groter oppervlak, dus veel deeltjes aan het oppervlak waar veel andere deeltjes bij kunnen, dus meer kans op een effectieve botsing, dus een grotere reactiesneltheid.
- 1.4 Het waterstofgas dat bij een brandstofcel toegevoerd wordt, kun je maken door water te elektrolyseren a. 2H2O 🡪 2 H2 + O2  b. eigen mening c. de formule gaat over massa en elektriciteit heeft geen massa  d. stopcontact / elektriciteitsnetwerk
-
-	•	Concentratiecel
-a.  energie opgewekt met zout en zoetwater
-b. zoet- en zoutwater hebben een verschillende concentratie aan zout.
-c. filtreren
-d. 0,02*106 = 2*104 nm
-e. en f. Bij Na+  is de negetieve kant van water naar het ion en bij Cl- de positieve kant van het water.
-
-g. + 7,8 ·105 J/mol (een + want hij wordt verbroken)
-h. -3,9·105 + -3,8·105 
-i. antwoord g en h bij elkaar op tellen:
-+7,8 *105 -3,9 *105 -3,8 *105 = +0,1 *105 J, dus endotherm
-j. Energiediagram met daarin NaCl onder.
-k. hij een hogere snelheid bewegen deeltjes sneller, dus sneller gemengd.
-l. 2x (181*10-12 m) * 109 = 362*10-3  nm  	2x want straal x2 is de diameter.
-m. de straal van Na+ (9,8*10-12m) is kleiner dan die van Cl- toch gaat Na+ er niet doorheen, dus dat moet aan iets anders liggen, bijvoorbeeld het materiaal.
-n. de SEP van de oxidator Na+ is -2,71, deze is veel lager dan de oxidator H2O (met SEP -0,83)
-o. 2Cl- 🡪 Cl2 + 2 e-  en 2H2O 🡪 O2 + 4H+ + 4 e- 
-p. Jan: omdat bij de elektrolyse van keukenzoutopl. ook chloor ontstaat, kan dat bij een elektrochemische cel ook zo zijn. Sophie: want dat is een sterkere reductor dan Cl- q. Als Jan gelijk heeft ontstaat er een geel gevaarlijk gas, je kunt chloor aantonen. Of Als Sophie gelijk heeft ontstaat er O2 dat kun je aantonen met gloeiende houtspaander, of Sophie kan aantonen met blauwlakmoes dat de oplossing zuur is (H+ aanwezig)
-
-	•	
-a. de concentratie is gelijk aan beide kanten.
-b. De 0,2 M oplossing is donkerder van kleur van de 0,02M.
-c. 0,02 V
-d. die in de oplossing met de concentratie 0,2 M. (dat kun je zien in de opstelling: De kant met 0,2 M heeft de hoogste potentiaal; Je kunt het ook beredeneren: de concentratiecel blijft werken zolang er een concentratieverschil is. Als de cel werkt wordt dat verschil minder en dat betekent dat de concentratie bij 0,02 M moet toenemen (daar ontstaat dus Cu2+ : Cu --> Cu2+ + 2e) en dat de concentratie bij 0,2 M moet afnemen (daar verdwijnt du Cu2+ : Cu2+ +  2e --> Cu). Dat betekent dat er door de draad negatieve lading beweegt van 0,02 M naar 0,2 M: negatieve lading beweegt door de draad van lage naar hoge potentiaal.)
-e. 
-f. Cu2+ + Cu 🡪 Cu2+ + Cu
-g. Nee, totdat de concentraties gelijk zijn.
- 1.7
-a. Dat zou wel moeten
-b. Dat zou wel moeten
-c. (vragen van 1.6 e-f-g heb je gecontroleerd met 1.7 a-b-c)
-d. Anders is de concentratie meteen gelijk/loopt er geen e-
-e. de stroomkring moet gesloten zijn.	
-
-
-Practicum 2 Milieueffecten
- 
-	•	In het vorige practicum …. a.	Warmte, want feitelijk is geen enkele energieomzetting optimaal. b.	Er ontstaan afvalstoffen en de grondstoffen raken op, ze zijn niet hernieuwbaar. Er ontstaat CO2. c.	eigen antwoord. d.	Dat zal vooral met de prijs te maken hebben.
-	•	Bij de keuze voor een bepaald productieproces… a. Het aardgas wordt (nog steeds) lokaal gewonnen en kan met pijpleidingen 	vervoerd worden. Steenkool komt uit het buitenland en moet dus per spoor, 	boot of vrachtauto vervoerd worden. b. Het product is elektriciteit, en dat gaat gewoon via de 	hoogspanningsleidingen.. c. Waarschijnlijk niet, de koeling is hetzelfde. d. Binas 97A: TGG-15min SO2: 2,6 mg/m3 	Molmassa: 64,1 g/mol dus in mol/m3 : 2,6x10-3/64,1 = 4,1x10-6 mol/m3 e. categorie V gevaarlijk voor huid en ogen, dus handschoenen en veiligheidsbril. (geen juist antwoord is bijv. (want dit antwoord is niet voorkomen, maar als het al is geschiet wat dan… dus:) Er staat HZ-Z en K-D-A. Dat betekent: halfzittende houding, naar ziekenhuis en kleren uittrekken, douchen en arts waarschuwen. Het is een gas dus de beste preventie is het gebruik van ademhalingsapparatuur.)
-	•	Uit de vergelijking in …. a.	In een gas zijn de stoffen al goed gemengd en kan dus makkelijk worden 	geadsorbeerd aan/door een extractiemiddel. Bij een vaste stof moet het 	bijvoorbeeld eerst verpoederd worden en met een extractiemiddel in contact 	gebracht worden. b.	C + H2O 🡪 CO + H2 	0 + 2,42x105 – 1,105x105 – 0 = 1,315x105 J/mol (positief dus endotherm) c.	C + CO2  2CO 	0 + 3,935x105 – 2*1,105x105 = 1,725x105 J/mol (positief dus endotherm) d.	“natte gasreiniging” zouten en slib e.	Door het op te vangen of toch ook terug te voeren naar de vergassingsreactor 	waar het kan worden omgezet in CO.
-	•	In de vorige opdracht heb je gezien …. a.	De temperatuur van het koelwater is te laag om stoom te maken, maar is wel 	hoog genoeg om als verwarmingsbron te dienen. b.	Warmte energie. c.	Er zijn minder andere voorzieningen nodig om te verwarmen. d.	Energie ontstaat of verdwijnt niet, wel is er omzetting.
-Laatste zin van 6: De energie waarvan de kwaliteit bij een proces minder wordt, moet zoveel mogelijk gebruikt worden. e.	De planten die CO2 nodig hebben zullen beter groeien.
-	•	 In een kolenvergasser kan ook biomassa…. a.	Er hoeven geen eindige grondstoffen gebruikt te worden want biomassa groeit 	telkens weer aan. (Kleine koolstofkringloop) biomassa is ook afval en zo is er   
-dus minder afval. b.	Met CH4 is de verhouding 1:4 ofwel 0,25 c.	Verbrandingswarmte methaan: -8,90x105 J/mol. Dus voor 1 GJ heb je 	1x109/8,90x105 = 1,12x103 mol methaan nodig. Er ontstaat dus ook 1,12x103 	mol CO2 en dat heeft een massa van 1,12x103 x 44,01 = 49x103 g CO2 = 49 kg CO2
-d.	Een eerste generatie kan heel goed een voedingsstof zijn of wordt alleen 	verbouwd als bron voor biobrandstof. Bij een tweede generatie biobrandstof 	wordt gebruik gemaakt van restproducten van (voedings)gewassen.
-	•	In de voorgaande opdrachten is aardolie …. a.	Aardolie komt uit de zogenaamde OPEC landen, vooral uit het middenoosten. 	De vervoerskosten zijn daardoor relatief hoog en deze landen hebben een 	soort van monopoliepositie. b.	Het is nog steeds een destillatie die uitgaat van de kookpunten van stoffen en 	niet van reacties (van stoffen) c.	Bij kraken worden de langere koolwaterstof(ketens) in kleinere, lager kokende 	componenten afgebroken. d.	C7H14 🡪 C7H8 + 3H2 e.	CH3-CH2-CH2-CH2-CH2-CH2-CH2 🡪  + 4H2 f.	CH3-CH2-CH2-CH2-CH2-CH2-CH3 + H2 🡪 CH3-CH(CH3)-CH2-CH2-CH3 + CH4
-	•	Omdat stoffen uit aardolie ook als grondstof … a.	Rietsuiker: C12H22O11 	Glucose: C6H12O6 	Hydrolyse: C12H22O11 + H2O 🡪 2C6H12O6 	Vergisting: C6H12O6 🡪 2C2H5OH + 2CO2 b.	Ik denk van niet, want rietsuiker zou dan uit Brazilië moeten worden ingevoerd 	waardoor je weer extra kosten en CO2 uitstoot van het vervoer krijgt. c.	Dat dan weer wel, want mest kan lokaal worden gewonnen en gebruikt voor 	de productie van biobrandstoffen. d.	-   NL is te klein om voldoende koolzaadolie te produceren
-	•	Daardoor wordt palmolie gebruikt ipv frituurvet
-	•	Dan kun je het niet meer gebruiken voor veevoer
-	•	Er kunnen ook eiwitten, vezels en materialen voor kunststof uit gewonnen worden.
-     e. mening
-	•	Voor het gebruik van (bio)ethanol … a.	Van de ene ester wordt een andere gemaakt door bijvoorbeeld eerst te 	hydrolyseren en daarna weer te veresteren (met een andere stof). b.	De “dikte” of stroperigheid van een vloeistof. c.	Bij hydrogenisering verdwijnen er dubbele C=C bindingen en zal een olie dus 	minder vloeibaar (meer visceus) worden. d.	C57H104O6 + 3CH3OH 🡪 C3H8O3 + 3C19H36O2 (fout in boekje: er staat 	C19H36O6) e.	De grondstoffen waaruit biodiesel wordt gemaakt komt uit de kleine 	koolstofkringloop waarbij de biomassa eerst CO2 uit de atmosfeer heeft 	gehaald. f.	Massa grondstoffen: 57x12+104X1+6x16 + 3x32 = 980  	Massa (gewenste) product: 3x(19x12+36x1+2x16) = 888 	Atoomeconomie: 888/980x100% = 90,6% g.	Bij een rendement van 80% ontstaat er 888x0,8 = 710 g product. 	Definitie E-factor: (mbeginstoffen – mwerkelijke opbrengst product)/mwerkelijke opbrengst 	Dus: (980 – 710)/710 = 0,38 h.	Er staat een dubbele pijl. i.	Een evenwichtsreactie (niet-aflopende reactie) kan aflopend gemaakt worden 	door bijvoorbeeld (een van de) reactieproducten uit het reactiemengsel te 	verwijderen.
-Dus bijvoorbeeld: glycerol of methyloaat weghalen, dan wordt er weer meer gevormd totdat één van de beginstoffen op is.
-
-
- 
-
-Practicum 3 Evenwicht
-
-3.1 Vanuit het gezichtspunt “hernieuwbaarheid”… 
-a. biodiesel is afkomstig van plantjes, deze kun je opnieuw laten groeien, dus hernieuwbaar. Conventionele diesel komt uit aardolie en dat is miljoenen jaren geleden ontstaan en dus niet hernieuwbaar. De CO2 uit de plantjes komt uit een korte koolstofkringloop vs lange koolstofkringloop uit fossiele brandstoffen.    b. biodiesel is afkomstig van planten en hebben kort geleden CO2 opgenomen, dat is de CO2 die bij de branding weer wordt uitgestoten. Bij conventionele diesel is dit niet het geval (niet kort geleden CO2 opgenomen, lange koolstofkringloop). c. 
-d.
- 
-
-3.2 De evenwichtsstudie begint ….
-a. de reagerende stoffen zijn vast koper en ionstof koper, je kunt ze onderscheiden van elkaar, dus heterogeen.
-b.159,61x0,1=15,961 gram= 2*101 gram (denk aan significantie)
-c. In beide bekerglazen zat 1L met [Cu2+]=0,2 mol/L, ze doen er 0,1 mol CuSO4 bij, dus 0,1 mol Cu2+. Dus in totaal nu 0,2+0,2+0,1 is 0,5 mol Cu2+ het is in evenwicht, dus in beide bekerglazen evenveel.[Cu2+]= 0,5/2= 0,25 mol/L
-d. Er wordt Cu2+ in het linker bekerglas gedaan. De Cu2+  neemt e- op om Cu te worden, dus negatieve lading door de draad gaan van rechts naar links.
-e. Ja
-f. in de binas staat een “s” en dat betekent: slaan samen neer 
-g. Cu2+ + S2- 🡪 CuS
-h. Door het toevoegen van NaS-oplossing vind er rechts als reactie plaats Cu🡪 Cu2+, aan de andere kant wordt Cu2+ 🡪 Cu. Er komt een moment dat de Cu2+  in dit bekerglas op is en dan stopt de cel met werken, dus niét onbeperkt in werking blijft. 
-
-3.3
-a. Jan heeft meer Cu2+ in het linker bekerglas gedaan.
-b. in het linker bekerglas zal daarom Cu2+ 🡪 Cu worden (om de concentratie aan beide kanten weer gelijk te krijgen, als gevolg daarvan zal rechts dan Cu 🡪 Cu2+ worden gevormd)
-c. (Sophie doet in het rechter bekerglas Natriumsulfide-opl., de volgende reactie treedt op S2- + Cu2+ 🡪 CuS,) dus Cu2+ uit het rechter bekerglas
-d. in dit rechter bekerglas gaat vervolgens Cu 🡪 Cu2+ (om de concentratie aan beide kanten weer gelijk te krijgen, als gevolg daarvan zal 	links dan Cu2+ 🡪 Cu worden gevormd)
-
-3.4 
-a. ? Ja
-b. Wanneer er geen potentiaal verschil wordt gemeten zijn de concentraties gelijk. Bij 0,00 V is [Cu2+]= 0,20 mol/L
-c. 	0,08 mol/L of 1,00 mol/L (zie hieronder)
-
-
- d. als ie 0,08 mol/L is, is de kleur van deze oplossing lichter dan die van de andere, die is namelijk 0,20 mol/L. Als deze oplossing donkerder van kleur is, dan is de oplossing 1,00 mol/L
-
-3.5
-a. 2 H+ + 2 e- 🡪 H2
-b. 0 bij 1,00 mol/L
-c. Gelukt? (werkboek thuis? Of zelf op papier getekend?) onder c. kon je lezen dat het mogelijk < 0,0010 mol/L lastig werd. Daarom is men de logaritmische schaal gaan gebruiken.
-d. controle bij vraag f. had je het juist?
-e. pH (=-log[H+])
-f. had je d. juist?
-g. In het diagram heb je een rechte lijn getekend door de oorsprong. Gelukt?
-h. pH = 3,4 
-i. 10-pH = [H+] = 10-3,4 = 0,000398 = 0,0004 (decimalen van de pH  is significantie van de concentratie)
-j. nog nooit met een pH meter gewerkt, vraag je docent om er een te bekijken.
-
-3.6 
-a. ja? Anders kijk naar geen cijfer achter de komma pH=O ; één cijfer achter de komma pH=1 ;  twee cijfers achter de komma pH = 2 ; enz
-b. pH= –log (2,320) = -0,3655
-c. [H+]= 10-2,1 = 0,008 mol/L 
-d. pH = pOH= 7 in neutraal milieu (zo is pH + pOH = 14)
-e. H+ + OH- ⇄ H2O
-Practicum 4 Redoxevenwicht
- 
-	•	In de volgende opdrachten van dit practicum bestudeer je redoxevenwichten kwantitatief. a.	Ag+ (+ NO3- ) + Fe2+ (+ SO42-) → Ag + Fe3+  (+ NO3- + SO42-) b.	ox: Ag+  + e → Ag		+0,80 V 	red: Fe2+  → Fe3+  + e	+0,77 V 	Verschil: ΔU = 0,03 V c.	De potentiaal van red zilver is groter dan de potentiaal van ox Fe3+. d.	De roodbloedloogzoutoplossing kleurt blauw/groen. e.	Er is (dus) ionstof Fe2+ ontstaan. f.	Ag+  + Cl- → AgCl g.	Eigenlijk niet, maar misschien is het potentiaalverschil zo klein dat het wel een beetje kan.
-	•	In de vorige opdracht hebben jullie een reactie laten plaatsvinden waarvan je op grond van standaardelektrodepotentialen niet zou verwachten dat die plaatsvindt. a. Ni/Ni2+ : -0,26 V en Co/Co2+  : -0,28 V b. Geen reactie, want red Ni heeft een hogere potentiaal dan ox Co2+. c. Dan vind je de antwoorden van a. d. ? e.	Bij 0,5 M: Ni/Ni2+  : -0,26 en Co/Co2+  : -0,29 f.	Bij 0,1 M: Ni/Ni2+  : -0,28 en Co/Co2+  : -0,31 g.	De Ni-elektrode zou een potentiaal van -0,25 V hebben en de Co-elektrode een potentiaal van -0,31 V. Het verschil is dus 0,06 V h.	De Ni-elektrode heeft de hoogste potentiaal.
-	•	De reactie die in de hierboven getekende elektrochemische cel plaatsvindt, kan beschreven worden met de vergelijking 	Co + Ni2+  → Co2+  + Ni. a.	Ja, want de elektronen (lading) gaat altijd van min naar plus. b.	Als [Co2+]toeneemt, wordt de potentiaal ook groter. c.	Als de [Ni2+] concentratie afneemt, wordt de potentiaal kleiner. d.	Dan zullen de potentialen dus hetzelfde zijn. e.	Dat noemen we dan een evenwichts (niet-aflopende) reactie. f.	Standaard potentialen: 	Ag/Ag+  : +0,80 V, Fe3+/Fe2+  : +0,77 V; ΔU = 0,03 V 	Cu/Cu2+  : +0,34 V, Zn/Zn2+  : -0,76V; ΔU = +0,34 – (-0,76) = 1,10 V 	Als het potentiaalverschil groot is, dan heb je te maken met een aflopende reactie. Met een klein potentiaalverschil heb je te maken met een niet aflopende reactie.
-
-
-
-
-
-
-
-
-	•	Bij een aflopende reactie kun je, als je de hoeveelheden van de betrokken stoffen en ionstoffen kent, uitrekenen hoeveel van de nieuwe stoffen en ionstoffen er ontstaat en hoeveel overmaat er overblijft. a.
-a1. Zn + Cu2+ --> Zn2+ + Cu
-a2. 6,54 g / 65,38 = 0,10 mol Zn  
-a3. 100 mL van 0,10 M oplossing dus 0,10 mol in 1L je hebt maar 100 mL, dus 0,010 mol Cu2+  is er.
-Er is een overmaat Zink, dus al het Cu2+ reageren
-a4. dus 0,010 mol * 63,55 = 0,64 gram Cu ontstaat
-a5. 0,10 -0,010 = 0,09 mol Zn blijft over, dus 0,09*65,38=5,89 gram Zn blijft over
-b.	Co + Ni2+  ⇄ Co2+  + Ni (⇄ moet je schrijven, het is een niet aflopende reactie) c.	Met [Ni2+] = 0,05 M is deze potentiaal -0,295 V en die van [Co2+]=0,5 M heeft 	dan -0,290 V. De bovenstaande reactie kan alleen als de potentiaal van de ox 	(Ni2+) hoger is dan die van de red (Co) en dat is nu niet zo. d.	Als ik netjes aflees dan hebben ze dezelfde potentiaal. En dan kan er dus ook geen stroom lopen. e.	Bij ongeveer [Ni2+] = 0,035 M en [Co2+] = 0,2 M. (Dan zijn allebei de 	potentialen -0,3 V)
-	•	Vooral bij lagere concentraties is het aflezen van het diagram op blz. 2-2 niet nauwkeurig. a.	OK b.	Bij -0,4 V; [Co2+]=10-4,1=  7,9·10-5 mol/L en [Ni2+] = 10-5,2=6,3·10-6 mol/L c.	
-Potentiaal	V
-Evenwichtstoestanden
-[Co2+]/[Ni2+]
-
-[Co2+]	mol·L-1
-[Ni2+]	mol·L-1
-
--0,3
-10-0,6= 0,25
-10-1,7=0,020
-13
--0,4
-10-4,1=  7,9·10-5
-10-5,2=6,3·10-6
-13
--0,5
-10-7,3=5,0·10-8
-10-8,4= 4,0·10-9
-13
--0,6
-10-10,8=1,58·10-11
-10-11,9=1,25·10-12
-13
-d.	zie hierboven. (wanneer uit jouw zelf berekende antwoorden niet op 13 uitkomt, maar je antwoorde ligt wel in de buurt (tussen de 5 a 20) dan heb je het toch keurig afgelezen en berekent.) e.	[Co2+]/[Ni2+] = 0,05/0,04 = 1,25 dit is niet gelijk aan 13. Er is dus geen evenwicht. f.	Bij evenwicht: [Co2+]/[Ni2+] = 13. Dus als [Ni2+] = 0,2 mol/L moet gelden: 	[Co2+]/0,2 = 13 🡪 [Co2+] = 13x0,2 = 2,6 (mol/L)
-	•	Ook andere niet-aflopende reacties blijken te stoppen als de concentratiebreuk een bepaalde waarde heeft bereikt. a.	Hg/Hg2+  : +0,85 V en Ag/Ag+ : +0,80 V. De hoogste potentiaal wordt de ox dus: 2Ag + Hg2+  🡪 2Ag+  + Hg. b.	Bij 0,75 V: [Hg2+] = 10-3,3 = 5,0x10-4 mol/L en [Ag+] = 10-0,7 = 0,20 mol/L. c.	K = 0,202/ (5,0x10-4) = 80.
-  	De 2 in de formule is afkomstig van de 2Ag+ in de reactievergelijking. d.	? Dat zou wel moeten e.	De concentratie van stof kwik of stof zilver (sowieso van vloeistoffen en vaste 	stoffen) verandert niet. 
-
-	•	Test jezelf! a.	
-	•	Start met het schrijven van een reactievergelijking:
-	•				Pb + 2 H+ --> Pb2+ + H2 
-	•	Kies en potentiaal (bijvoorbeeld 0,20V) die beide lijnen doorkruist. Lees de bijbehorende getallen af (-log[ ]) en reken die m.b.v.  [ ] = 10getal op de x-as om naar een concentratie. Geef de concentratiebreuk (binas-tabel 37B) en vul hierin de getallen die hebt gevonden. 
-	•	
-	•	Qc = [Pb2+] x [H2] =  	[10-2,2] = 	6,3∙10-3
-  	        [Pb] x [H+]2 	[10-3,3]2		95,0∙10-4)2
-	•	Qc = 2,5 ∙104
-	•	[H2]  en  [Pb]  zijn doorgestreept omdat het geen stoffen in oplossing zijn, ze hebben geen concentratie.
-	•	 b.	vragen? c.	Van de concentratie, omdat het hier om reacties in oplossing gaat.   d.	Zilver: Ag+ + e → Ag	+0,80 V 	Ijzer:	Fe3+  + e → Fe2+	+0,77 V 	De potentialen liggen dicht bij elkaar; er zal dus sprake zijn van een 	evenwichtsreactie. (denk aan je antwoord op vraag 4,3f of kijk er nog        	eens naar) e. Qc = [Ag] + [Fe3+]              [Ag+] . [Fe2+] 		([Ag]  zie je niet in de breuk, want Ag is een vaste stof)
-f. 0,019 mol Ag+ in 100 mL is 0,19 mol in 1 L (ook voor de andere stoffen). Met 	deze concentratie is Q = 0,13 / (0,19⋅0,15)= 4,56. Niet gelijk aan 3,22. Het systeem is dus niet in 	evenwicht. g. vragen?
-	•	In de vorige opdracht heb je de evenwichtsconstante berekend voor de redoxreactie Ag+  + Fe2+  ↔ Ag + Fe3+. a.	De “concentratie” (lees dichtheid) van stof zilver verandert niet, het is een vaste stof. b.	Bij evenwicht is het potentiaalverschil 0 V. c.	Ag+ is kleurloos  Fe2+  is lichtgroen en Fe3+  is geel. d.	Instructie gevraagd? Deze staat in de digitale module. e.	Instructie gevraagd? f.	Huiswerk genoteerd?
-
-
-
-
-
-p5 Zuur-base-reacties
-
-5.1
-a. Cu2+ + Zn → Zn2+  + Cu. De s.e.p van de gekozen  oxidator moet in ieder geval hoger staan dan die van de gekozen reductor, verschil is > 0,3 Volt
-b. Kies nu een oxidator en reductor met een klein verschil in s.e.p. potentialen < 0,3 Volt bijvoorbeeld Co + Ni2+ Co2+ ] + Ni 
-Evenwichtsvoorwaarde: Kc = Qc = [Co2+] / [Ni2+] 
-c. Oxidatordeeltje neemt elektronen 
-d. elektronen worden overgedragen dus negatieve lading wordt overgedragen.
-e. H+ worden dus dan is het positieve lading
-f. HCl + H+ + OH- → H+ + Cl- + H2O (H+  doorstrepen)
-g. H atoomnummer 1 dus 1 proton en 1 elektron. H+ heeft alleen nog een proton in de kern en geen elektron meer.
-
-5.2
-a. F2
-b. Li
-c. HClO4
-d. O2-
-e. NH4+ + OH-  → NH3  + H2O
-f. Kamertemperatuur = 293K, kookpunt ammoniak = 240K, De stof heeft bij KT al gekookt en is dus gasvorming
-g. ammoniakmoleculen hebben -NH bindingen. Deze bindingen zijn polair en kunnen met andere (water)moleculen waterstofbruggen vormen.
-
-5.3
-a. De concentratie in mol per Liter= mol /L of molL-1 .
-b. geel
-c. 0,0986 mol NaOH is opgelost dat is 0,0986 * 39,997 = 3,94 g in 1,00 Liter
-
-5.3
-d. erlenmeyer met fenolftaleine : kleurloos en erlenmeyer met methylrood : rood/roze
-e. Binas 52A: de pH <8,2 fenolftaleine en pH < 4,8 methylrood. Dus de pH < 4,8
-f. Aflezen op 2 decimalen beginstand (methylrood en fenolftaleine )
-g. Aflezen op 2 decimalen eindstand (methylrood en fenolftaleine)
-h.
-i. Lukt dit niet ? Ga dan naar 5.4
-- toegevoegd natroloog = Na+ + OH- = eindstand - beginstand = aantal mL OH- . We stellen dit even op 10,00 mL
-- 10,00 mL OH- = 10,00/1000 L * 0,0986 mol/L= 9,86 * 10-4 mol OH- 
-- mol OH-  = mol H+ = verdwenen mol HCl = 9,86 * 10-4  mol HCl .
-- die 9,86 * 10-4 verdwenen mol HCl zat in 10,0 mL zoutzuur
-- dus de molariteit van het zoutzuur = 9,86 * 10-4  * 100 = 9,86 * 10-2  mol/L .
-
-5.4 (alleen maken als 5.3i niet lukte)
-a. toegevoegd natroloog = Na+ + OH- = eindstand - beginstand = aantal mL OH-  . We stellen dit even op 10,00 mL
-b. 10,00 mL OH-  = 10,00 mL * 0,0986/1000 mol/mL = 9,86 * 10-4 mol OH- 
-c. mol OH-  = mol H+  = verdwenen mol HCl = 9,86 * 10-4 mol in 10 mL HCl .
-Dus in 1,00 mL zat 9,86 * 10-5 mol
-d+e. Dus in 1,00 L (1000mL) zat dus 9,86 * 10-5 mol * 1000 = 9,86 * 10-2 mol/L HCl
-
-5.5
-a. zoutzuur = H+ + Cl- 
-b. 10,00 op een honderdste nauwkeurig . Dus met een volumepipet afgepast.
-c. HCl → H+  + Cl-  dus uit 0,100 M HCL geeft ook 0,100 mol H+ mol/L.
-pH = -log [H+ ] = -log 0,100 = 1,000 (3 significante cijfers geeft 3 decimalen in de log)
-Let op [ ] betekent mol/L dus niet het aantal mol gaan uitrekenen.
-d. pH < 6 dus de kleur van de oplossing is geel
-e. nee? Vraag je begeleider
-
-5.5
-f. bij 0,00 toegevoegd natronloog is de pH = 1,0
-g. Je meet nog steeds een pH dus moet er nog H+ in de oplossing aanwezig zijn.
-h. 7,0
-i. 14,0 -7,0 = 7,0
-j. Lees de pH af, pH = 11,8 dus de pOH = 14,0-11,8 = 2,2
-[OH-] = 10-pOH = 10-2,2  = 6 * 10-3 mol/L
-k. Het equivalentiepunt is na 10,0 mL toegevoegd natronloog. Dan is er precies 10,0mL 0,100 mol/L H+ verdwenen= =10,0/1000 * 0,100 Mol H+= mol OH-  (1:1) dus
-1,00 * 10-3 mol OH- zat in die 10,0 mL toegevoegd natronloog. Molariteit NaOH = 1,00 * 10-3 mol * 100 = 0,100 mol /L
-
-5.6
-a. Je haalt steeds ethaanzuur uit de oplossing. Er ontstaat minder H+. Dus heb je minder natronloog nodig. Het equivalentiepunt wordt eerder bereikt.
-b. Schets (NB, je doet aannames die achteraf  moeten worden herzien!) 
-- t=0, de begin pH, is die van de oplossing van ethaanzuur, hier uitgaande van een aflopende reactie C2H4O2  + H2O → H3O+ + C2H3O2-  
-pH = - log [H3O+ ]= - log 0,050 = 1,3
-- H3O+ + OH- → 2H2O 
-t= equivalentie punt mol H+ (=mol H3O+ )= 25/1000 * 0,050 = 1,25*10-3 mol H+. Je hebt evenveel  mol OH- nodig. Je hebt 0,1 mol in 1L zitten. Je hebt voor 1,25*10-3  mol OH- 1,25*10-3 mol/0,1 mol/L= 0,0125 L = 12,5 mL natronloog nodig. De pH = 7,0 (immers je krijgt water)
-c. ?
-
-5.7 	
-let op curve van 50 mL ethaanzuur  (5.6 = 25 mL) met 0,10 M natronloog
-a.-
-b. 25,0 mL
-c. aflezen in de grafiek bij 25,0 mL is de pH = 8,6
-d. De pH van natriumethanoaat op vochtig pH papier is >7 (8,6?)
-e. Er ontstaat water H3O+  + OH- → 2H2O en C2H4O2  + H2O → H3O+ + C2H3O2- = ethanoaat in het mengsel. Als pH niet 7 is maar hoger komt dat vast door het C2H3O2- 
-f. – log 0,05 = pH = 1,3
-g. Als al het ethaanzuur was verdwenen zou de begin pH =1,3 zijn. Immers dan zou er ook 0,05 mol/L H+ zijn ontstaan. Zoals je in de grafiek ziet is dat niet zo. Dus is blijkbaar niet al het ethaanzuur verdwenen en hebben we te maken met een niet aflopende reactie ipv een aflopende reactie.
- 
- 
-
-p6 Zuur-base-evenwichten
-
-6.1
-a. Al het HCl is dan omgezet in H+/ H3O+ reactievergelijking HCl  → H+ + Cl- 
-b.  C2H4O2
-c. Zowel ethaanzuur als HCl staan per mol maximaal 1 mol H+ af. Dus beide zuren zijn eenwaardig.
-d. de H van de OH groep is de zure H.
-e. formule procent: gedeelte/geheel * 100%. 
-Het geheel is de molariteit = 0,10 M en het gedeelte van ethaanzuur dat is omgezet in H+ kun je halen uit de gegeven pH=2,89 Dus [H+] = 10-pH = 102,89. 
-Invullen levert 102,89/ 0,10 * 100% =1,3 %
-
-6.2  nb. Het is de bedoeling dat je de gegevens uit opgave 6.1 gebruikt
-a. K= 10-2,89 * 10-2,89 /0,10 -10-2,89 = 1,7 * 10-5. Immers op moment van evenwicht moet je de concentraties invullen. [H+] = 10-pH = 102,89. En 1:1:1 dus evenveel ethanoaat/L is ontstaan. Aan ethaanzuur is over 0,10- wat er is verdwenen
-b. Als je meer ethaanzuur toevoegt, reageert het evenwicht door dit weer te laten verdwijnen, dus het evenwicht verschuift naar rechts.
-c. De noemer van de concentratiebreuk wordt groter dus K kleiner.
-d. Ja
-e. natronloog is Na+  + OH-. Reactie: H3O+ + OH-  → 2H2O = H+ + OH- → H2O
-[H+ ] wordt kleiner. De teller wordt kleiner, deze moet weer toenemen dus Het evenwicht reageert door [H+ ] groter te maken. Dus het evenwicht verschuift naar rechts.
-f. Door steeds OH- te blijven toevoegen.
-g. Het is een zelfde soort zuur als propaanzuur en dat is zwak.
-h. Meet van een 0,10 M oplossing van 2-methylpropaanzuur de pH. Is de pH > 1,00 dan is het een zwak zuur. 
-
-6.3
-a. H3O+ + OH-  → 2H2O  of H+ + OH- → H2O bij beide = reacties. Dus de pH van het equivalentiepunt zou dan de pH van water zijn bij 25° C dus 7,00
-
-b Nee?  of C2H4O2- = ethanoaat is een base.
-c. Je ziet dat er extra OH- ontstaat.
-d. K = [CH3COOH] * [OH- ] / [CH3COO-] * [H2O]
-e1. Binas: 0,9982* 103 g
-e2. 0,9982* 103 g / 18,02 = 55,4 mol
-e3. 55,4 mol/L
-e4 pH = 8,7. pH + pOH = 14,0-8,7 = 5,3 dus [OH-] = 10-5,3 = 5,0* 10-5 mol/L
-e5. Dus heeft er 1:1 ook zoveel mol H2O gereageerd
-e6. De concentratie van water (in water) op moment van evenwicht = 55,4-5,0* 10-6 mol/L= 55,4 mol/L 
-Dus: de concentratie van het oplosmiddel blijft nagenoeg het zelfde./ een constante.
-f. Ja
-g. Kb= 5,8 * 10-10
-
-6.4 
-a. Een sterke base, reageert meer met water als zuur. Dus dan verdwijnt er meer base. De noemer in de evenwichtsvoorwaarde is dan kleiner , de Kb groter.
-b. Ja Kb= >>1
-c. O2-- + H2O → 2OH-
-d. Kz = [H3O+ ]* [X- ]/ [HX] 
-e. 1,7 *10-5 = Kz 
-f. Een sterk zuur, reageert meer met water als base. Dus dan verdwijnt er meer zuur. De noemer in de evenwichtsvoorwaarde is dan kleiner , de Kz groter.
-g. Ja Kz= >>1
-h. HClO4 + H2O → ClO4- + H3O+ 
-
-6.5
-a. Binas 66B! ammonium (z), waterstofchloride (s), zwavelzuur (s), salpeterzuur (s), koolzuur (z), fosforzuur (z) en ethaanzuur/azijnzuur (z)
-b zie a: s of z
-c. Binas 66B! ammoniak (z), hydroxide (s), carbonaat (z), oxide (s) en (mono)waterstofcarbonaat(z)
-d. zie c: s of z
-
-6.6 Let bij deze vraag goed op de significantie = decimalen pH/pOH
-a. sterk zuur dus aflopende reactie in water: pH direct uit de concentratie [H3O+] of [H+ ] te berekenen: - log  [H3O+  ] = -log 0,025 = 1,60
-b. [H3O+ ] = 10-pH = 10-3,67= 2,1 * 10-4 mol/L
-c. ethanolaat is ethanol waar de H+ van af gaat 
-CH3CH2O- + H2O → CH3CH2OH + OH-
-[OH-] = 0,030 mol/L dus pOH = -log 0,030 = 1,52 
-pH + pOH= 14,00  dus pH = 14,00-1,52 = 12,48
-d. pOH = 14,00-10,33 = 3,67 dus [OH-] = 10-pOH = 10-3,67 = 2,1 * 10-4 mol/L
-NaOH : OH-= 1:1 dus M NaOH = 2,1 * 10-4 mol/L
-e. 0,10 mol N1H3 = 0,10*17 = 1,7 g
-f.  N1H3 + H2O  🡪 N1H4++ OH-
-g. Ja 
-h. molverhouding = 1:1:1:1 dus ook x en x
-i. Ja
-j. Leef je uit met de abc formule! 
-k. x= Ѵ1,8 *10-6 = 1,34 * 10-3 mol/L = [OH-] dus de pOH = 2,87 dus de pH = 11,130
-l. Als 0,10 = 100% dan is x = 1,34 * 10-3 m/0,10 * 100% = 1,34 % . Dat is kleiner dan 5 % .
- 
- 
-6.7
-a. 	HCN + H2O ⮀ CN- + H3O+ (of HCN ⮀ CN- + H+)
-	Evenwichtsvoorwaarde: Kz = [H3O+]*[CN-]/[HCN]
-	6,1 10-10 = x2 /(0,15 – x)
-	x in de noemer verwaarlozen
-	x2 = 6,1 10-10 * 0,15 => x = 9,57 10-6
- 	pH = -log(9,57 10-6) = 5,02
-of 	Kz = 6,1•10-10 	Dus 6,1•10-10 = x2 / 0,15 🡪 x =  	De pH is dan -log(9,6x10-6) = 5,02
-b. 	HF ⮀ H+ + F-
-	Evenwichtsvoorwaarde: Kz = [H+][F-]/[HF]
-	Er is gegeven dat [F-] (= [H+])= 3[HF], invullen
-	6,3 10-4 = [H+]3[HF]/[HF]
-	[H+] = 6,3 10-4/3 = 2,1*10-4
-	pH = - log 2,1*10-4 = 3,68
-of  Ik weet de [ H+] niet, en ook de andere niet. Wel weet ik 	dat de verhouding F- : HF 3,0 is. Dit kan dus ingevuld worden. 	 en omdat deze laatste 3,0 is, kan ik gaan uitrekenen. 	/[H3O+] = 6,3•10-4 / [H+] = 3,0 🡪 [H+] = 6,3•10-4 / 3,0 = 2,1•10-4 	pH = -log(2,1•10-4) = 3,68
-c. Bij toevoegen van OH- wordt de teller kleiner. Het evenwicht zal dan naar rechts opschuiven. LET OP:  (een antwoord zoals hieronder is niet volledig juist, want je uitleg moet zijn ‘aan de hand van de evenwichtsvoorwaarde’ en die is hieronder niet gebruikt) Dan verdwijnt er H+ (na de pijl), dus de concentratie wordt kleiner, om K= Kz dus weer H+ bijmaken dus het evenwicht verschuift naar rechts.
-d. Oxonium is H3O+ (dus eigenlijk zuur). Dan verschuift het evenwicht naar links.
-e. Evenwicht en evenwichtsvoorwaarde: zie b. 
- Er geldt: 6,3 ·10-4 = [H+]2/[H+] (immers [H+] = [F-]
-pH = -log(6,3 10-4) = 3
-
-6.8
-a. 298 K
-b. (+5,63 + 13,1 - 3,3 – 10,8 – 5,2 ) *105 = - 0,57 *105 J per mol 
-	Het levert dus – 0,57*105 J per mol HF op
-c. Evenwicht gaat de opwarming tegen, wil dus afkoelen, reactie gaat dus naar links (die is endotherm), de [H+] daalt, de pH wordt hoger en stijgt
-   

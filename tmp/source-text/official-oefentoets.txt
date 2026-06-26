@@ -1,155 +1,0 @@
-Oefentoets klas 5  kwintaal 5
- Lees het onderstaande eerst goed door!
-Dit schoolexamen bestaat uit 25 vragen.
-Voor dit schoolexamen zijn maximaal 51 punten te behalen.
-Voor elke vraag is aangegeven hoeveel punten met een goed antwoord behaald kunnen worden.
- 
-Werk netjes en overzichtelijk.
-Geef een berekening en/of toelichting bij je antwoord.
-Antwoorden zonder zo’n berekening en/of toelichting leveren doorgaans geen of bijna geen punten op.
-Toegestane hulpmiddelen: rekenmachine (geen GR), Binas
-
-Salpeterzuur 
-Salpeterzuur is een sterk zuur, dat wil zeggen dat er een aflopende  (oplos)reactie plaatsvindt als salpeterzuur in water wordt opgelost. 
-2p 1. Geef de vergelijking van de oplosreactie die plaatsvindt als salpeterzuur in water wordt opgelost.
-2p 2. Bereken hoeveel gram salpeterzuur in water opgelost moet worden om 500 mL 4,0 M salpeterzuuroplossing te maken.
-2p 3.  Bereken de pH in 4,0 M salpeterzuuroplossing.
-Nitraat (NO3)– staat samen met waterstof H+ met drie verschillende standaard- elektrodepotentialen in BINAS-tabel 48 vermeld:  0,96 V, 0,93 V en 0,81 V.
-1p 4. Leg aan de hand van een gegeven uit BINAS-tabel 48 uit dat koper in elk van deze gevallen als reductor met nitraat kan reageren.
-Welke halfreactie je voor salpeterzuur als oxidator moet gebruiken kun je zelf uitvinden door het maken van de rest van deze opgave.
-Als in een reageerbuis een koperstaafje wordt toegevoegd aan geconcentreerd salpeterzuur (bijv. 10 M) dan verdwijnt het koper en krijg je een groene oplossing onder in de buis. Uit de oplossing ontwijkt het bruine gas stikstofdioxide NO2.
- 
-Als de groene oplossing voorzichtig verwarmd wordt, ontwijkt nog meer stikstofdioxide. De groene oplossing wordt dan blauw.
-1p 5. Leg uit hoe het komt dat de oplossing groen is als er nog stikstofdioxide in zit en blauw als het stikstofdioxide eruit ontweken is. 
-Als in een reageerbuis een koperstaafje wordt toegevoegd aan verdund salpeterzuur (bijv. 4 M) dan verdwijnt het koper en krijg je een blauwe oplossing onder in de buis. Daaruit ontsnapt een kleurloos gas, maar alleen bóven(in) de buis zie je het bruine gas stikstofdioxide. 
-   Dat je alleen boven(in) de buis het bruine gas ziet kun je verklaren als je aanneemt dat ónderin de buis het kleurloze gas stikstofmonooxide ontstaat.  Bóven(in) de buis reageert stikstofmonooxide met zuurstof waarbij het bruine stikstofdioxide ontstaat.
-2p 6. Beschrijf deze reactie van stikstofmonooxide en zuurstof met een vergelijking.
-Uit bovenstaande gegevens moet je kunnen afleiden welke halfreactie (0,96 V of 0,80 V) hoort bij de oxidator "geconcentreerd salpeterzuur" en welke bij de oxidator "verdund salpeterzuur".
-3p 7. Geef (zo nodig m.b.v. de halfreacties) de vergelijking van de reactie die plaatsvindt als koper reageert met geconcentreerd salpeterzuur.
-3p 8. Geef (zo nodig m.b.v. de halfreacties) de vergelijking van de reactie die plaatsvindt als koper reageert met verdund salpeterzuur.
-Aspergegeur 
-In een aspergeplant komen asparagusinezuur en de ethylester van asparagusinezuur voor. Van deze stoffen is maar weinig in de plant aanwezig. Toch zorgen ze voor de speciale smaak van asperges. De structuurformule van asparagusinezuur (C4H6O2S2) wordt vaak als volgt schematisch weergegeven:
-
-In deze structuurformule is een aantal van de symbolen C en H weggelaten.
-2p 9. Geef de complete structuurformule van asparagusinezuur.
-De ethylester van asparagusinezuur is de ester die ontstaat bij de reactie van asparagusinezuur met ethanol.
-2p 10. Geef de structuurformule van de ethylester van asparagusinezuur. Gebruik hiervoor bovenstaande schematische structuurformule.
-Asparagusinezuur wordt in het lichaam door enzymen afgebroken. Hierbij ontstaat methaanthiol (CH3SH). Methaanthiol kan vervolgens worden omgezet tot andere zwavelhoudende verbindingen, zoals dimethyldisulfide. Zowel methaanthiol als dimethyldisulfide dragen bij tot de karakteristieke ‘aspergegeur’ van urine. Reeds een half uur na het eten van een portie asperges, waarin ongeveer 1 mg asparagusinezuur zit, kan deze geur worden waargenomen.
-3p 11. Bereken hoeveel mg methaanthiol maximaal kan ontstaan met de hoeveelheid zwavel die aanwezig is in 1,0 mg asparagusinezuur. Gebruik hierbij onder andere het gegeven dat de massa van een mol asparagusinezuur 150,2 g is.
-De omzetting van methaanthiol tot dimethyldisulfide is een redoxreactie. De vergelijking van de halfreactie waarin het dimethyldisulfide ontstaat, is hieronder onvolledig weergegeven. De elektronen (e–) en de coëfficiënten zijn weggelaten.
-CH3−SH → CH3−S−S−CH3 + H+
-2p 12. Neem deze vergelijking over. Zet aan de juiste kant van de pijl e– en maak de vergelijking kloppend. 
-2p 13. Is voor de omzetting van methaanthiol tot dimethyldisulfide een oxidator of een reductor nodig? Geef een verklaring voor je antwoord.
-Het blijkt dat niet bij iedereen, na het eten van asperges, de urine de ‘aspergegeur’ heeft, terwijl het asparagusinezuur wel is afgebroken. Over de oorzaak daarvan bestaan verschillende hypotheses. Eén daarvan is dat een aantal mensen een enzym mist dat bij de beschreven afbraak van asparagusinezuur is betrokken.
-1p 14. Leg uit hoe het missen van een enzym kan leiden tot het ontbreken van de ‘aspergegeur’ van de urine.
-
-Hydratatie 
-In het artikel “Dr. Zeepaard maakt waterlelies” (uit NRC Handelsblad van 7 november 2009) kun je lezen dat het openvouwen van de papieren waterlelie verklaard kan worden met opzwellende houtvezels. De tekst van dit artikel staat hieronder afgedrukt.
-Dr. Zeepaard maakt waterlelies
-DE PROEFJESFABRIEK
- 
-De bomen worden kaal. Tijd voor iets vrolijkers, vindt 
-Dr. Zeepaard. Vandaag laat hij je waterlelies maken. 
-Van papier en toch komen ze echt uit de knop.
-Wat heb je nodig? Kleurpotloden, papier, een schaar 
-en een diep bord of een schaal met water.
- 
-Wat moet je doen? - Teken de figuur na. Hoe groter je hem maakt, hoe groter je lelie wordt.
-- Kleur de driehoeken (de lelieblaadjes) aan allebei de kanten. Vouw ze dan met hun punt naar het midden van de achthoek (het hart van de waterlelie) toe. 
-- Leg de dichtgevouwen bloem in het water met de gekleurde blaadjes naar boven. Wacht een tijdje en kijk: de waterlelie vouwt vanzelf open.
-Hoe kan dat? Papier bestaat uit langgerekte sliertjes – houtvezels. Wanneer je de papieren bloem in het water legt, gaat overal in de ruimtes tussen die vezels wat water zitten. Als je een suikerklontje in een laagje koffie legt, zie je de koffie op net zo’n manier tussen de suikerkorrels in het klontje omhoog kruipen.
-De vezels in het papier zwellen door het water een beetje op. Ook in de vouw. Zo drukken ze – als een man die zich groot en dik maakt – het bloemblad bij de vouw omhoog. 
-Margriet van der Heijden
-Meer op nrc.nl/kleinewetenschap
- 
-Je hebt in al eens kunnen zien dat water door papier opgezogen werd. Toen heb je kleurstoffen van viltstiftinkt gescheiden m.b.v. de scheidingstechniek  chromatografie.
-Je deed dat door een strook filtreerpapier met  een stip van viltstiftinkt in een laagje water te  hangen. De ene (kleurstof) werd sneller door  water en papier mee omhoog genomen dan de  andere. 
-Dat water tussen houtvezels in papier en tussen korreltjes in een suikerklontje opgezogen wordt kun je verklaren met capillaire werking.
-Daarover kon je in de internetencyclopedie Wikipedia op 16 november  
-2009 o.a. het volgende lezen:
-Capillariteit (of capillaire werking) is een verschijnsel uit de natuurkunde waarbij, bijvoorbeeld, water in een zeer fijn buisje hoger stijgt dan het omringende vloeistofniveau, en zo een concaaf oppervlak vormt. Zulke fijne buisjes worden ook wel haarbuisjes of capillairen genoemd. Hoe fijner de buisjes, hoe hoger het water kan stijgen.
- 
- 2p 15. Leg uit hoe bij de scheidingstechniek “papierchromatografie” gebruik gemaakt wordt van deze capillaire werking.
-De vezels in papier bestaan uit cellulose. Van cellulose staat in BINAS-tabel 67F3 een structuurformule getekend.
-2p 16. Voorspel aan de hand van die structuurformule of een hydrofobe loopvloeistof langzamer of sneller dan water (een hydrofiele loopvloeistof) door chromatogafiepapier zal lopen. Licht je voorspelling toe.
-2p 17. Geef naam en structuurformule van een hydrofobe (loop)vloeistof.
-Als papier wat langer met water in contact is verliest het zijn stevigheid. De vezels worden dan zachter. Dit verlies van stevigheid kan verklaard worden met het verbreken van waterstofbruggen in een netwerkstructuur van cellulosepolymeermoleculen (afbeelding zie hieronder).
-  
-2p 18. Geef in de uitwerkbijlage met  - - - -  de waterstofbruggen aan waarmee de cellulosemoleculen in een netwerkstructuur bij elkaar worden gehouden.
-Op soortgelijke manier kan met waterstofbruggen verklaard worden dat een suikerklontje niet alleen koffie opzuigt, maar dat de suiker daarna dan ook oplost in de koffie.
-2p 19. Leg m.b.v. het (botsende-)deeltjesmodel uit dat suiker in hete koffie sneller oplost dan in koude koffie.
-2p 20. Kun je met het (botsende-)deeltjesmodel ook verklaren dat er méér suiker oplost in hete koffie dan in koude koffie? Licht je antwoord toe.
-Net als suiker lost ook keukenzout erg goed op in water. Op grond van het ionrooster waarmee vast keukenzout wordt voorgesteld zou je kunnen verwachten dat keukenzout slechter oplost dan suiker die wordt voorgesteld met een molecuulrooster.
-2p 21. Leg uit waarom moleculen uit een molecuulrooster veel makkelijker losraken dan ionen uit een ionrooster.
-Om te kunnen verklaren dat sommige zouten toch in water oplossen moet je het model van de waterstofbrug verfijnen en uitbreiden: chemici nemen aan dat in een covalente O-H-binding de O een beetje elektrisch negatief geladen is (δ–) en de H een beetje elektrisch positief geladen (δ+) is.
-                                    
-Een watermolecuul komt er in dit model zo uit te zien: 
-
-Het oplossen van calciumchloride kan dan voorgesteld worden als het losraken van calcium– en chloorionen uit het ionrooster, waarna de ionen omringd worden door watermoleculen.
-2p 22. Neem onderstaan plaatje over en teken hoe het calciumion door vier watermoleculen omringd wordt.
-  
-Zo’n door watermoleculen omringd ion wordt een gehydrateerd ion genoemd.
-De energie die bij de hydratatie vrijkomt heet hydratatie-energie.
-3p 23. Bereken aan de hand van gegevens uit BINAS-tabel 61 hoeveel hydratatie-energie er vrijkomt als 1 mol calciumchloride in water oplost.
-Er is ook energie nodig om de ionen uit het rooster los te maken. De waarden van die zogenaamde roosterenergie staan vermeld in BINAS-tabel 60.
-
-3p 24. Bereken m.b.v. je antwoord op vraag 23 en de roosterenergie van calciumchloride (BINAS-tabel 60) het netto energie-effect als 1 mol vast calciumchloride in water oplost. 
-1p 25. Leg aan de hand van je antwoord op vraag 24 uit of het oplossen van calciumchloride in water een endotherm of een exotherm proces is.
-Einde van de toets.
-Controleer of je alle vragen hebt beantwoord en controleer of je naam op de antwoordenblad staat en ook op de uitwerkbijlage.
-Uitwerkbijlage	
-Opgave 18.
-
-
-
-
-
-
-
-
-
-
-
-
-
-Voorbeeldantwoorden SE-3 Scheikunde Havo 2017/2018
-Opgave 1 Salpeterzuur (16 punten)
-2p 1. 	HNO3  🡪 H+  +  NO3–
-2p 2. 	molmassa HNO3 is 63,01 g, dus er moet 0,50 x 63,01 x 4,0 = 126 (= 1,3.102) gram salpterzuur opgelost worden.
-2p 3.	Uit 4,0 mol HNO3 ontstaat 4,0 mol H+, dus [H+] = 4,0 mol L-1, 
-dus pH = - log 4,0 = - 0,60 
-1p 4. 	De standaardelektrodepotentiaal van koper is + 0,34 V, dat is lager dan de genoemde potentialen van nitraat, dus kan koper er als reductor mee reageren.
-1p 5. 	Blauw met geel/bruin gemengd is groen, als het geelbruine gas uit de oplossing ontweken is blijft de blauwe Cu(II)-oplossing over.
-2p 6.  	2 NO  +  O2  🡪  2 NO2
-3p 7. 	(geconcentreerd: er ontstaat meteen al onder in de buis NO2, dus:0,80 V) Cu  +  2 NO3– +  4 H+  🡪 Cu2+ + 2 NO2  +  2 H2O 
-3p 8. 	(verdund, dus er ontstaat niet meteen onder in de buis NO2, dus: 0,96 V) 3 Cu  +  2 NO3– +  8 H+  🡪 3 Cu2+ + 2 NO  +  4 H2O 
-Ps. Vraag 7 en 8 omgedraaid max 3p
-Opgave 2 Aspergegeur (12 punten)
-2p 9. 
- 
-
-2p 10. 
- 
-
-3p 11. 2 CH3SH : C4H6O2S2   geeft massaverhouding (2x48,10) mg  :  150,2 mg
-Berekening: (2x48,10) /150,2 = 0,64 mg.
-2p 12. 2CH3−SH → CH3−S−S−CH3 + 2H+ + 2e–
-2p 13. 	Methaanthiol staat elektronen af / is de reductor, dus er is een oxidator
-nodig. Of In de vergelijking staan de elektronen na de pijl (die moeten worden opgenomen). 
-1p 14.  Asparaginezuur wordt dan in een stof omgezet die niet de “aspergegeur” heeft.
-     
-Opgave 3 Hydratatie (23 punten)
-2p 15. 	Het water wordt onderaan (door de strook papier) opgezogen, het opgezogen water passeert de stip met (kleur)stoffen (van de viltstiftinkt), de ene kleurstof wordt sneller/beter mee omhoog dan de andere, zo worden de (kleur)stoffen gescheiden.
-2p 16. 	Sneller, want hydrofobe vloeistoffen worden niet zoals water (door H-bruggen) aan cellulose vastgehouden.
-2p 17. 	Bijvoorbeeld: n-octaan  CH3 – CH2 – CH2 – CH2 – CH2 – CH2 – CH2 – CH3  niet hydrofoob: - 1p; geen vloeistof (bij kamertemperatuur): -1p
-               
-2p 18. 	zie boven
-2p 19. 	De moleculen in het (suiker)molecuulrooster trillen bij hogere temperatuur harder en laten/raken dan sneller/makkelijker los uit het rooster. 
-2p 20.  	Nee, daar is het (botsende-)deeltjesmodel niet voor bedacht, want gassen lossen bij hogere temperatuur juist slechter op. Ja, als de temperatuur hoger is bewegen de deeltjes meer/harder, ze nemen dan meer volume in (macro: de vloeistof zet uit), dus is er meer plaats voor suiker(moleculen).
-2p 21. 	Tussen moleculen alleen (zwakke) vanderwaalskrachten en tussen ionen (ook) sterke(re) elektrische krachten (want ionen zijn elektrisch geladen).
-2p 22. 	Vier watermoleculen met negatieve kant rond Ca2+-ion.
-3p 23. 	CaCl2  🡪  1 Ca2+  +  2 Cl-, dus 15,6 + 2x(1p) 3,8 = 23,2.105 J
-3p 24.  	Er komt vrij (hydratatie-energie): 23,2.105 J Er is nodig (roosterenergie): 22,3.105 Netto-effect: er komt vrij -23,2 - - 22,3 = -0,9.105 J
-(	Of	-23,2 + 22,3 = -0,9.105 J)
-1p 25.	 Er komt 0,9.105 J energie vrij, dus exotherm.
-  
