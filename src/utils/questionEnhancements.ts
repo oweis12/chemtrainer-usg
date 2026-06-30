@@ -114,7 +114,9 @@ function attachVisual(question: Question): Question {
   const text = haystack(question);
   const visual = question.visual;
 
-  if (visual?.src) return question;
+  // Explicit native diagrams are already deliberate teaching choices; only
+  // attach a static asset when the question has no concrete visual source.
+  if (visual?.src || visual?.component) return question;
 
   if (visual?.component === "MassSpectrumDiagram" || (question.module === "M8" && /massaspect|spectrum|m-piek|m\+1|basispiek|fragment/.test(text))) {
     return { ...question, visual: { ...(visual ?? imageVisual("", "Massaspectrum", "")), type: "image", src: "/assets/chemtrainer/analyse/massaspectrum-m-mplus1-fragment.webp", alt: visual?.alt ?? "Didactisch massaspectrum met M-piek, M+1, fragmentpiek en basispiek.", caption: visual?.caption ?? "Gebruik M, M+1, basispiek en fragmentpieken als vaste leesvolgorde." } };

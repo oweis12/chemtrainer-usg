@@ -5,6 +5,7 @@ import { structureBuildQuestions, structureGraphQuestions } from "./structureGra
 import { structureQuestions } from "./structureQuestions";
 import { qualityReplacementQuestions } from "./qualityReplacementQuestions";
 import { coverageQaQuestions } from "./coverageQaQuestions";
+import { curriculumGapQuestions } from "./curriculumGapQuestions";
 import { figureQuestions } from "./figureQuestions";
 import { massSpecMasteryQuestions } from "./massSpecMasteryQuestions";
 import { enhanceQuestion } from "../utils/questionEnhancements";
@@ -148,6 +149,7 @@ const baseQuestions: Question[] = [
   ...m7,
   ...m8,
   ...m8PriorityQuestions,
+  ...curriculumGapQuestions,
   ...massSpecMasteryQuestions,
   ...m5d,
   ...m5dPriorityQuestions,

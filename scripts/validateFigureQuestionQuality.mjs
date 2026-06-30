@@ -5,6 +5,7 @@ const root = process.cwd();
 const files = [
   "src/data/questions.ts",
   "src/data/priorityQuestions.ts",
+  "src/data/massSpecMasteryQuestions.ts",
   "src/data/qualityReplacementQuestions.ts",
   "src/data/figureQuestions.ts",
   "src/data/coverageQaQuestions.ts",

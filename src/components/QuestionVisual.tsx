@@ -7,12 +7,16 @@ import { DnaRnaDiagram } from "./diagrams/DnaRnaDiagram";
 import { GcChromatogramDiagram } from "./diagrams/GcChromatogramDiagram";
 import { GcMsDiagram } from "./diagrams/GcMsDiagram";
 import { GcMsWorkflowDiagram } from "./diagrams/GcMsWorkflowDiagram";
+import { HydrationIonDipoleDiagram } from "./diagrams/HydrationIonDipoleDiagram";
+import { IrSpectrumDiagram } from "./diagrams/IrSpectrumDiagram";
 import { FragmentationReasoningDiagram } from "./diagrams/FragmentationReasoningDiagram";
 import { IsotopePatternDiagram } from "./diagrams/IsotopePatternDiagram";
 import { MassSpectrometerRouteDiagram } from "./diagrams/MassSpectrometerRouteDiagram";
 import { MassSpectrumReadingDiagram } from "./diagrams/MassSpectrumReadingDiagram";
 import { MassSpectrometerDiagram } from "./diagrams/MassSpectrometerDiagram";
 import { MassSpectrumDiagram } from "./diagrams/MassSpectrumDiagram";
+import { MicelleDiagram } from "./diagrams/MicelleDiagram";
+import { NmrSignalDiagram } from "./diagrams/NmrSignalDiagram";
 import { NucleotideDiagram } from "./diagrams/NucleotideDiagram";
 import { AsparagusicAcidDiagram, CalciumHydrationDiagram, CelluloseHydrogenBondDiagram, EthylEsterFormationDiagram } from "./diagrams/OfficialExamDiagrams";
 import { PeptideBondDiagram } from "./diagrams/PeptideBondDiagram";
@@ -22,6 +26,7 @@ import { QuestionGcChromatogram } from "./diagrams/QuestionGcChromatogram";
 import { QuestionMassSpectrum } from "./diagrams/QuestionMassSpectrum";
 import { QuestionTitrationDataFigure } from "./diagrams/QuestionTitrationDataFigure";
 import { RutherfordScatteringDiagram } from "./diagrams/RutherfordScatteringDiagram";
+import { TitrationCurveDiagram } from "./diagrams/TitrationCurveDiagram";
 import { TitrationSetupDiagram } from "./diagrams/TitrationSetupDiagram";
 import { FigureBlock } from "./content/FigureBlock";
 import { getFigureByPath } from "../data/figureRegistry";
@@ -35,21 +40,26 @@ export function QuestionVisual({ visual }: { visual: QuestionVisualData }) {
       : visual.component === "MassSpectrumDiagram" ? <MassSpectrumDiagram variant={visual.variant} />
       : visual.component === "MassSpectrumReadingDiagram" ? <MassSpectrumReadingDiagram variant={visual.variant} />
       : visual.component === "IsotopePatternDiagram" ? <IsotopePatternDiagram variant={visual.variant} />
+      : visual.component === "IrSpectrumDiagram" ? <IrSpectrumDiagram variant={visual.variant} />
+      : visual.component === "NmrSignalDiagram" ? <NmrSignalDiagram variant={visual.variant} />
       : visual.component === "FragmentationReasoningDiagram" ? <FragmentationReasoningDiagram variant={visual.variant} />
       : visual.component === "QuestionMassSpectrum" ? <QuestionMassSpectrum variant={visual.variant} />
       : visual.component === "GcChromatogramDiagram" ? <GcChromatogramDiagram />
         : visual.component === "QuestionGcChromatogram" ? <QuestionGcChromatogram variant={visual.variant} />
           : visual.component === "GcMsDiagram" ? <GcMsDiagram />
           : visual.component === "GcMsWorkflowDiagram" ? <GcMsWorkflowDiagram variant={visual.variant} />
-            : visual.component === "NucleotideDiagram" ? <NucleotideDiagram />
-              : visual.component === "DnaPolymerDiagram" ? <DnaPolymerDiagram />
-                : visual.component === "DnaRnaDiagram" ? <DnaRnaDiagram />
+            : visual.component === "HydrationIonDipoleDiagram" ? <HydrationIonDipoleDiagram />
+              : visual.component === "MicelleDiagram" ? <MicelleDiagram />
+                : visual.component === "NucleotideDiagram" ? <NucleotideDiagram />
+                  : visual.component === "DnaPolymerDiagram" ? <DnaPolymerDiagram />
+                    : visual.component === "DnaRnaDiagram" ? <DnaRnaDiagram />
                   : visual.component === "DnaExpressionDiagram" ? <DnaExpressionDiagram variant={visual.variant as Parameters<typeof DnaExpressionDiagram>[0]["variant"]} />
                     : visual.component === "PeptideBondDiagram" ? <PeptideBondDiagram />
                       : visual.component === "PeptideBondFormationDiagram" ? <PeptideBondFormationDiagram variant={visual.variant as Parameters<typeof PeptideBondFormationDiagram>[0]["variant"]} />
                         : visual.component === "ProteinStructureDiagram" ? <ProteinStructureDiagram variant={visual.variant as Parameters<typeof ProteinStructureDiagram>[0]["variant"]} />
                     : visual.component === "TitrationSetupDiagram" ? <TitrationSetupDiagram variant={visual.variant} />
                       : visual.component === "QuestionTitrationDataFigure" ? <QuestionTitrationDataFigure variant={visual.variant} />
+                        : visual.component === "TitrationCurveDiagram" ? <TitrationCurveDiagram variant={visual.variant} />
                         : visual.component === "AsparagusicAcidDiagram" ? <AsparagusicAcidDiagram />
                           : visual.component === "EthylEsterFormationDiagram" ? <EthylEsterFormationDiagram />
                             : visual.component === "CelluloseHydrogenBondDiagram" ? <CelluloseHydrogenBondDiagram />
@@ -63,6 +73,8 @@ export function QuestionVisual({ visual }: { visual: QuestionVisualData }) {
     : visual.component === "MassSpectrometerRouteDiagram" ? "Route door de massaspectrometer"
     : visual.component === "MassSpectrumReadingDiagram" ? "Massaspectrum stap voor stap"
     : visual.component === "IsotopePatternDiagram" ? "Isotopenpatroon in het massaspectrum"
+    : visual.component === "IrSpectrumDiagram" ? "IR-spectrum met karakteristieke gebieden"
+    : visual.component === "NmrSignalDiagram" ? "NMR-signalen en H-omgevingen"
     : visual.component === "FragmentationReasoningDiagram" ? "Fragmentatie en massaverschil"
     : visual.component === "QuestionMassSpectrum" ? "Oefenmassaspectrum bij deze vraag"
     : visual.component === "GcChromatogramDiagram" ? "GC-chromatogram bij deze vraag"
@@ -70,9 +82,12 @@ export function QuestionVisual({ visual }: { visual: QuestionVisualData }) {
         : visual.component === "QuestionTitrationDataFigure" ? "Meetgegevens bij deze vraag"
       : visual.component === "GcMsDiagram" ? "GC-MS schema bij deze vraag"
       : visual.component === "GcMsWorkflowDiagram" ? "GC-MS: eerst scheiden, dan meten"
-        : visual.component === "DnaExpressionDiagram" ? "DNA- en eiwitroute bij deze vraag"
-          : visual.component === "PeptideBondFormationDiagram" ? "Peptidebinding bij deze vraag"
-            : visual.component === "ProteinStructureDiagram" ? "Eiwitstructuur bij deze vraag"
+        : visual.component === "HydrationIonDipoleDiagram" ? "Hydratatie en ion-dipoolinteracties"
+          : visual.component === "MicelleDiagram" ? "Micel van zeep in water"
+          : visual.component === "DnaExpressionDiagram" ? "DNA- en eiwitroute bij deze vraag"
+            : visual.component === "PeptideBondFormationDiagram" ? "Peptidebinding bij deze vraag"
+              : visual.component === "ProteinStructureDiagram" ? "Eiwitstructuur bij deze vraag"
+                : visual.component === "TitrationCurveDiagram" ? "Titratiecurve en omslaggebied"
             : visual.component ? "Schema bij deze vraag"
               : "Figuur bij deze vraag";
 

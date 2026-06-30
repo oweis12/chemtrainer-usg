@@ -159,6 +159,7 @@ const specificKeywordsFor = (objective) => {
     if (/ionen/.test(haystack)) return ["ion", "zout", "lading", "formule", "na", "cl"];
   }
   if (objective.module === "M8") {
+    if (/beperkingen/.test(haystack)) return ["massaspectrometrie", "ms alleen", "volledige structuur", "exacte structuur", "niet bewezen"];
     if (/micro en macro/.test(haystack)) return ["waarneming", "deeltjes", "atoommodel", "alfadeeltjes", "afbuigen", "microniveau"];
     if (/atoombouw/.test(haystack)) return ["proton", "neutron", "elektron", "atoomnummer", "massagetal", "lading"];
     if (/isotopen|isotoopverhouding/.test(haystack)) return ["isotoop", "isotop", "gemiddelde", "atoommassa", "percentage", "neutron"];

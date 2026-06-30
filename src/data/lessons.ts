@@ -1,4 +1,5 @@
 import type { ChemistryModule, Lesson } from "../types";
+import { curriculumGapLessons } from "./curriculumGapLessons";
 
 export const modules: ChemistryModule[] = [
   { id: "M4", shortLabel: "M4", title: "Formules & kwantitatief", subtitle: "Van formule naar hoeveelheid stof", accent: "blue", topics: ["elemententheorie", "chemische formules", "mol", "molmassa", "concentratie", "massa%", "reactievergelijkingen"] },
@@ -1450,12 +1451,21 @@ const lessonVideoIdsByLessonId: Record<string, string[]> = {
   "m8-ms-hoe-leid-je-molecuul-af": ["youtube-m8-ms-general"],
   "m8-gc-ms-combineren": ["youtube-m8-ms-applications"],
   "m8-ms-examenvragen-aanpak": ["youtube-m8-ms-exam-approach"],
+  "m8-analyse-overzicht": ["youtube-m8-spectroscopy-overview"],
+  "m8-ir-spectrum": ["youtube-m8-ir-reading"],
+  "m8-nmr-structuur": ["youtube-m8-nmr-basics"],
+  "m8-combineer-ms-ir-nmr": ["youtube-m8-combination-spectra"],
   "m9-atoombinding": ["exact-atoombinding-vorming"],
   "m9-ionbinding": ["exact-drie-soorten-stoffen"],
   "m9-metaalbinding": ["exact-drie-soorten-stoffen"],
   "m9-polariteit": ["exact-polair-apolair-hbrug"],
   "m9-intermoleculair": ["exact-polair-apolair-hbrug"],
   "m9-oplossen-reactiesnelheid": ["exact-micro-meso-macro"],
+  "m9-oplosbaarheid-formule-herkennen": ["exact-micro-meso-macro"],
+  "m9-hydratatie-ion-dipool": ["youtube-m9-hydration-water"],
+  "m9-hydrofoob-hydrofiel-zeep": ["youtube-m9-soap-emulsion"],
+  "m9-kookpunt-bindingen": ["exact-polair-apolair-hbrug"],
+  "m9-reactiesnelheid-verbeteren": ["youtube-m9-collision-model"],
   "m10-titratie": ["exact-molschema"],
   "m10-zuur-base-evenwicht": ["exact-evenwichtsreacties"],
   "m10-elektrochemie-duurzaamheid": ["exact-waterstofbrandstofcel"],
@@ -1468,6 +1478,11 @@ const lessonVideoIdsByLessonId: Record<string, string[]> = {
   "m10-evenwicht-zwakke-zuren": ["exact-evenwichtsreacties"],
   "m10-elektrochemie-cellen": ["exact-elektrochemische-cel"],
   "m10-duurzaamheid-rekenen": ["exact-e-factor"],
+  "m10-sterk-zwak-zuur-base-binas": ["youtube-m10-binas-49"],
+  "m10-zuur-base-reactievergelijkingen": ["youtube-m10-reactions-acid-base"],
+  "m10-titratie-principe": ["youtube-m10-titration-principle"],
+  "m10-titratiecurve": ["youtube-m10-titration-curve"],
+  "m10-titratie-vraagtypes": ["youtube-m10-titration-exercises"],
 };
 
 const attachLessonVideo = (lesson: Lesson): Lesson => ({
@@ -1480,5 +1495,6 @@ export const lessons: Lesson[] = [
   ...detailedM9Lessons,
   ...enhancedBaseLessons.filter((lesson) => lesson.module === "M10"),
   ...supplementalLessons.filter((lesson) => !supersededMassSpecLessonIds.has(lesson.id)),
+  ...curriculumGapLessons,
   ...massSpecMasterclassLessons,
 ].map(attachLessonVideo);
