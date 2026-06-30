@@ -2,6 +2,13 @@ import { ArrowSquareOut, PlayCircle } from "@phosphor-icons/react";
 import type { LessonVideo } from "../../data/lessonVideoRegistry";
 
 export function LessonVideoCard({ video }: { video: LessonVideo }) {
+  const linkHref = video.youtubeUrl ?? video.exactUrl;
+  const linkLabel = video.source === "youtube"
+    ? "Open op YouTube"
+    : video.source === "exact-wat-je-zoekt"
+      ? "Open bij Exact wat je zoekt"
+      : "Open bronvideo";
+
   return (
     <aside className="lesson-video-card" aria-label={`Uitlegvideo: ${video.title}`}>
       <div className="lesson-video-copy">
@@ -28,8 +35,8 @@ export function LessonVideoCard({ video }: { video: LessonVideo }) {
         </div>
       )}
 
-      <a className="lesson-video-link" href={video.exactUrl} target="_blank" rel="noreferrer">
-        Open bij Exact wat je zoekt <ArrowSquareOut size={16} />
+      <a className="lesson-video-link" href={linkHref} target="_blank" rel="noreferrer">
+        {linkLabel} <ArrowSquareOut size={16} />
       </a>
     </aside>
   );

@@ -1,4 +1,5 @@
 export type ModuleId = "M4" | "M5D" | "M6" | "M7" | "M8" | "M9" | "M10";
+export type ThemeMode = "light" | "dark";
 
 export type QuestionType = "mcq" | "open" | "calculation" | "steps" | "order" | "mixed" | "structure" | "structure_view" | "structure_click" | "structure_build" | "structure_complete";
 
@@ -186,7 +187,7 @@ export interface AnswerRecord {
   answeredAt: string;
   module: ModuleId;
   topic: string;
-  level: number;
+  level: Question["level"];
 }
 
 export interface MistakeRecord {
@@ -203,10 +204,64 @@ export interface StoredProgress {
   completedLessons: string[];
   answers: AnswerRecord[];
   mistakes: MistakeRecord[];
-  theme: "light" | "dark";
+  theme: ThemeMode;
+  titrationLab: TitrationLabProgress;
 }
 
-export type AppPage = "home" | "learn" | "practice" | "test" | "mistakes" | "structurelab" | "titrationlab" | "binas" | "coverage" | "visualaudit";
+export interface GameEvent {
+  id: string;
+  type: "lesson_completed" | "question_correct" | "streak" | "achievement" | "purchase";
+  points: number;
+  createdAt: string;
+  label: string;
+}
+
+export interface QuestionRewardLedgerEntry {
+  date: string;
+  rewardedCount: number;
+}
+
+export interface GameState {
+  points: number;
+  lifetimePoints: number;
+  level: number;
+  xp: number;
+  streakDays: number;
+  lastActiveDate?: string;
+  unlockedItemIds: string[];
+  equippedItemIds: string[];
+  achievements: string[];
+  eventLog: GameEvent[];
+  rewardedLessonIds: string[];
+  questionRewardLedger: Record<string, QuestionRewardLedgerEntry>;
+  companionHidden?: boolean;
+}
+
+export interface LocalProfile {
+  id: string;
+  name: string;
+  avatar: string;
+  color?: string;
+  createdAt: string;
+  lastActiveAt: string;
+  progress: StoredProgress;
+  game: GameState;
+}
+
+export type ShopItemCategory = "pets" | "badges" | "themes" | "effects" | "avatars";
+
+export interface ShopItem {
+  id: string;
+  name: string;
+  category: ShopItemCategory;
+  price: number;
+  description: string;
+  shortLabel: string;
+  accent: "blue" | "green" | "amber" | "red";
+  cosmeticSlot: "pet" | "badge" | "theme" | "effect" | "avatar";
+}
+
+export type AppPage = "home" | "learn" | "practice" | "test" | "mistakes" | "structurelab" | "titrationlab" | "binas" | "coverage" | "visualaudit" | "rewards";
 export type TestKind = "official" | "officialPractice" | "random" | "challenge" | "priority" | "learningObjectives";
 
 export type TitrationTaskType = "molariteit" | "massa-aandeel" | "volume-aflezen" | "procedure";

@@ -10,8 +10,7 @@ import { BuretteReadingPanel } from "../components/titration/BuretteReadingPanel
 import { titrationSimulations } from "../data/titrationSimulations";
 import { visualAssetRegistry } from "../data/visualAssetRegistry";
 import { getFigureByAssetId } from "../data/figureRegistry";
-import type { EndpointState, TitrationSimulation, ValveSetting } from "../types";
-import { readTitrationLabProgress, writeTitrationLabProgress } from "../utils/storage";
+import type { EndpointState, TitrationLabProgress, TitrationSimulation, ValveSetting } from "../types";
 import {
   accuracyFeedback,
   calculateFromVolume,
@@ -85,7 +84,7 @@ const procedureActionCopy: Partial<Record<keyof TitrationProcedureState, string>
   readEnd: "Gebruik: eindstand − beginstand = gebruikt volume.",
 };
 
-export function TitrationLab() {
+export function TitrationLab({ progress: storedProgress, onSaveProgress }: { progress: TitrationLabProgress; onSaveProgress: (progress: TitrationLabProgress) => void }) {
   const [labMode, setLabMode] = useState<TitrationLabMode>("uitleg");
   const [setupChallenge, setSetupChallenge] = useState(false);
   const [selectedId, setSelectedId] = useState(titrationSimulations[0]?.id ?? "");
@@ -100,10 +99,14 @@ export function TitrationLab() {
   const [calculationInputs, setCalculationInputs] = useState<TitrationCalculationInputs>(() => emptyCalculationInputs());
   const [calculationChecked, setCalculationChecked] = useState(false);
   const [saved, setSaved] = useState(false);
-  const [progress, setProgress] = useState(() => readTitrationLabProgress());
+  const [progress, setProgress] = useState(storedProgress);
   const [activeProcedureAnimation, setActiveProcedureAnimation] = useState<ProcedureAnimation>(null);
   const [lastProcedureAction, setLastProcedureAction] = useState<string>("");
   const [currentProcedureIndex, setCurrentProcedureIndex] = useState(0);
+
+  useEffect(() => {
+    setProgress(storedProgress);
+  }, [storedProgress]);
 
   useEffect(() => {
     if (labMode !== "uitleg" && !setupChallenge) setSetup(readySetup());
@@ -173,7 +176,7 @@ export function TitrationLab() {
   const saveProgress = () => {
     const next = updateTitrationProgress(progress, score, accuracy.deviation, simulation.id, mistakes);
     setProgress(next);
-    writeTitrationLabProgress(next);
+    onSaveProgress(next);
     setSaved(true);
   };
   const asset = (id: string) => visualAssetRegistry.find((item) => item.id === id);

@@ -99,9 +99,6 @@ for (const lesson of lessons) {
     }
   }
 
-  if (lesson.module === "M5D" && videoIds.length > 0) {
-    errors.push(`M5D-les ${lesson.id} heeft een video, terwijl M5D niet geforceerd mag worden.`);
-  }
 }
 
 const youtubePatterns = [
@@ -127,11 +124,11 @@ async function fetchText(url) {
 
 let networkChecked = false;
 let networkUnavailable = false;
-let exactUrlFallbackCards = 0;
+let directLinkFallbackCards = 0;
 let foundYoutubeIds = 0;
 
 for (const video of lessonVideoRegistry) {
-  if (!video.youtubeId) exactUrlFallbackCards += 1;
+  if (!video.youtubeId) directLinkFallbackCards += 1;
   const result = await fetchText(video.exactUrl);
   if (!result.ok) {
     networkUnavailable = true;
@@ -172,9 +169,9 @@ console.log(`Lessons with high/medium video: ${lessonsWithVideo.length}`);
 console.log(`Lessons without video: ${lessonsWithoutVideo}`);
 console.log(`YouTube IDs in registry: ${lessonVideoRegistry.filter((video) => video.youtubeId).length}`);
 console.log(`YouTube IDs found on source pages: ${foundYoutubeIds}`);
-console.log(`Exact-link fallback cards: ${exactUrlFallbackCards}`);
+console.log(`Direct-link fallback cards: ${directLinkFallbackCards}`);
 console.log(`Modules with videos: ${modulesWithVideos.join(", ") || "-"}`);
-console.log(`M5D not forced: ${lessons.filter((lesson) => lesson.module === "M5D" && (lesson.videoIds ?? []).length > 0).length === 0 ? "yes" : "no"}`);
+console.log(`M5D lessons with curated video: ${lessons.filter((lesson) => lesson.module === "M5D" && (lesson.videoIds ?? []).length > 0).length}`);
 
 if (warnings.length) {
   console.log("\nWarnings:");

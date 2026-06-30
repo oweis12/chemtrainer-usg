@@ -2,7 +2,7 @@
 
 ## Samenvatting
 - M4: 6 lessen
-- M5D: 7 lessen
+- M5D: 15 lessen
 - M6: 8 lessen
 - M7: 6 lessen
 - M8: 11 lessen
@@ -17,9 +17,9 @@
 - Nog aandacht: meer samengestelde examenvragen rond gemengde rekenroutes.
 
 ### M5D
-- Dekking: DNA/RNA, polymeren, eiwitten, mutaties en translatie zijn nu zichtbaar verdeeld over meerdere lessen.
-- Sterk: bouwstenen, codontabel, vorm-functie, route van DNA naar eiwit.
-- Nog aandacht: extra oefening op interpretatie van figuren en complexe contextvragen.
+- Dekking: DNA/RNA, basenparen, transcriptie, translatie, codontabel/BINAS, peptidebinding, hydrolyse en eiwitstructuur zijn nu expliciet uitgesplitst.
+- Sterk: er is nu een duidelijke route van bouwsteen naar DNA als informatiepolymeer, van DNA naar mRNA, van mRNA naar aminozuurketen en van aminozuurvolgorde naar eiwitvorm en enzymwerking.
+- Nog aandacht: later kunnen nog extra figuurinterpretatie en complexere contextvragen toegevoegd worden, maar de basisdekking voor de huidige toets is nu veel steviger.
 
 ### M6
 - Dekking: compleet en didactisch rustig genoeg voor de huidige scope.
@@ -58,3 +58,10 @@ Deze audit beschrijft de huidige werkelijke toestand van de lessen. Er is bewust
 - Toegevoegd: `RutherfordScatteringDiagram` met alfa-bron, goudfolie, rechte/afgebogen/teruggekaatste routes en korte labels.
 - Verdiept: M9 polariteit, M8 Rutherford, M4 rekenen, M7 redox, M8 MS/GC-MS en M10 titratie met explicietere BINAS- en toetsaanpak.
 - Vraagbank: 8 gerichte examenvragen toegevoegd over BINAS 40A, BINAS 48, Rutherford, GC-MS en titratie/indicatoren.
+
+## Aanvulling 2026-06-30: M5D DNA-verdieping
+
+- Toegevoegd: 8 nieuwe M5D-lessen voor `DNA als informatie-polymeer`, `DNA en RNA vergelijken`, `Basenparen en dubbele helix`, `Transcriptie`, `Translatie`, `DNA -> mRNA -> aminozuurketen`, `Peptidebinding en hydrolyse` en `Eiwitstructuur`.
+- Verdiept: BINAS-hulp bij codons en translatie is nu expliciet en robuust met `117E/G` plus `71E/71G/71J` als school-/editie-alias.
+- Verdiept: modelantwoorden en oefenvragen voor DNA -> mRNA -> aminozuurketen zijn nu stap voor stap en verwijzen niet meer foutief weg van BINAS.
+- Video's: M5D heeft nu 9 lessen met een gerichte video, zonder willekeurige Exact-koppelingen.

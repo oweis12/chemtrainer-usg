@@ -1,16 +1,18 @@
 # VIDEO MAPPING AUDIT — ChemTrainer USG
 
-Datum: 2026-06-26
+Datum: 2026-06-30
 
-Bron: [Exact wat je zoekt — uitlegfilmpjes](https://exactwatjezoekt.nl/hulp-bij-leren/uitlegfilmpjes)
+Bronnen:
+
+- [Exact wat je zoekt — uitlegfilmpjes](https://exactwatjezoekt.nl/hulp-bij-leren/uitlegfilmpjes)
+- Gecureerde M5D YouTube-links die inhoudelijk passen bij DNA, transcriptie en translatie
 
 Uitgangspunten:
 
 - Per les staat maximaal 1 hoofdvideo.
 - Alleen high/medium confidence wordt direct getoond.
-- YouTube-embeds zijn alleen gebruikt wanneer de video-id op de echte Exact-pagina is gevonden.
+- Een YouTube-video mag alleen gekoppeld worden als de match inhoudelijk sterk genoeg is en de video-id betrouwbaar is.
 - Als een les geen duidelijk passende video heeft, blijft de les zonder video.
-- M5D is niet geforceerd: er is geen passende DNA/RNA/eiwit/polymeer-video in de gebruikte bron gevonden.
 - GC/MS/IR/NMR is niet geforceerd: de huidige bron heeft geen directe video over deze analysetechnieken.
 - Titratierekenen is niet gekoppeld aan een algemene pH-video. Waar een titratieles een video heeft, is dat een molschema/rekenroute-video of een echte indicator/zuur-base/evenwicht/elektrochemie-match.
 
@@ -24,13 +26,21 @@ Uitgangspunten:
 | `m4-beperkende-stof` | M4 | Beperkende stof en opbrengst | Rendement | https://exactwatjezoekt.nl/hulp-bij-leren/uitlegfilmpjes/rendement/ | medium | Past bij opbrengst en theoretische/werkelijke hoeveelheid, minder bij de hele beperkende-stofroute. |
 | `m4-formules-omrekenen` | M4 | Chemische formules omzetten naar hoeveelheden | De mol en het getal van Avogadro | https://exactwatjezoekt.nl/hulp-bij-leren/uitlegfilmpjes/de-mol-en-het-getal-van-avogadro/ | medium | Helpt het molbegrip onder formules en deeltjesverhoudingen zetten. |
 | `m4-concentratie-mengsels` | M4 | Concentratie in mengsels en verdunnen | Hoe gebruik je een molschema? | https://exactwatjezoekt.nl/hulp-bij-leren/uitlegfilmpjes/sisters-in-science/ | high | Ondersteunt de route van mol naar volume/concentratie. |
-| `m5d-dna-polymeren` | M5D | DNA, RNA en polymeren vanaf de bouwsteen | geen goede match | - | - | M5D niet geforceerd; geen passende bronvideo gevonden. |
-| `m5d-eiwitten-genexpressie` | M5D | Eiwitten maken: van DNA naar aminozuurketen | geen goede match | - | - | Geen directe DNA/RNA/eiwitvideo in de gebruikte bron. |
-| `m5d-codontabel` | M5D | Codontabel gebruiken zonder verdwalen | geen goede match | - | - | Geen directe codontabel/translatievideo in de gebruikte bron. |
-| `m5d-polymeerstructuur` | M5D | Polymeren lezen als herhalende ketens | geen goede match | - | - | Geen directe polymerenvideo in de gebruikte bron. |
-| `m5d-eiwitstructuur` | M5D | Eiwitstructuur en vormwerking | geen goede match | - | - | Geen directe eiwitstructuurvideo in de gebruikte bron. |
-| `m5d-rna-en-ribosomen` | M5D | RNA en ribosomen als werkende route | geen goede match | - | - | Geen directe RNA/ribosoomvideo in de gebruikte bron. |
-| `m5d-enzymen-en-werking` | M5D | Enzymen als biologische katalysatoren | geen goede match | - | - | Geen directe enzymvideo in de gebruikte bron. |
+| `m5d-dna-polymeren` | M5D | DNA, RNA en polymeren vanaf de bouwsteen | geen goede match | - | - | Bestaande basisles blijft bewust zonder video; nieuwe DNA-lessen vangen de route nu gerichter af. |
+| `m5d-eiwitten-genexpressie` | M5D | Eiwitten maken: van DNA naar aminozuurketen | DNA, mRNA, eiwit: transcriptie en translatie | https://www.youtube.com/watch?v=Q52aV3FmOdY | high | Past goed bij de brede route DNA -> mRNA -> eiwit in scheikundecontext. |
+| `m5d-dna-overzicht` | M5D | DNA als informatie-polymeer | Van DNA naar eiwit: transcriptie en translatie | https://www.youtube.com/watch?v=hY_IGPkWh-s | high | Goede brede instapvideo voor DNA -> RNA -> eiwit, inclusief mutaties. |
+| `m5d-dna-rna-verschillen` | M5D | DNA en RNA vergelijken | DNA, mRNA, eiwit: transcriptie en translatie | https://www.youtube.com/watch?v=Q52aV3FmOdY | high | Benoemt DNA, mRNA en transcriptie compact genoeg voor deze vergelijkingsles. |
+| `m5d-dna-basparen-helix` | M5D | Basenparen en dubbele helix | De transcriptie en translatie / eiwitsynthese | https://www.youtube.com/watch?v=VQSA4y6gXlY | medium | Geen perfecte helixvideo, maar wel bruikbaar als routevideo waarin baseparing en eiwitsynthese samen terugkomen. |
+| `m5d-transcriptie` | M5D | Transcriptie: van DNA naar mRNA | Van DNA naar eiwit: transcriptie en translatie | https://www.youtube.com/watch?v=hY_IGPkWh-s | high | Sluit direct aan op transcriptie en de stap DNA -> mRNA. |
+| `m5d-translatie-codontabel` | M5D | Translatie: van mRNA-codons naar aminozuren | DNA, mRNA, protein: how to answer questions about these in exams | https://www.youtube.com/watch?v=hVD1IvD4Ua8 | high | Beste match voor codons lezen, aminozuurvolgorde bepalen en toetsaanpak. |
+| `m5d-dna-naar-aminozuurketen-aanpak` | M5D | Aanpak: DNA → mRNA → aminozuurketen | DNA, mRNA, protein: how to answer questions about these in exams | https://www.youtube.com/watch?v=hVD1IvD4Ua8 | high | Sluit direct aan op het vaste stappenplan DNA -> mRNA -> codons -> aminozuren. |
+| `m5d-eiwitten-peptidebinding-hydrolyse` | M5D | Eiwitten: peptidebinding en hydrolyse | geen goede match | - | - | Er is nog geen voldoende gerichte video voor peptidebinding en hydrolyse die past zonder ruis. |
+| `m5d-eiwitstructuur-denaturatie` | M5D | Primaire, secundaire en tertiaire eiwitstructuur | geen goede match | - | - | Geen sterke, compacte video gevonden die precies dit toetsdoel afdekt. |
+| `m5d-codontabel` | M5D | Codontabel gebruiken zonder verdwalen | DNA, mRNA, protein: how to answer questions about these in exams | https://www.youtube.com/watch?v=hVD1IvD4Ua8 | high | Beste bestaande videomatch voor BINAS-codontabel, mRNA-codons en mutatievragen. |
+| `m5d-polymeerstructuur` | M5D | Polymeren lezen als herhalende ketens | geen goede match | - | - | Geen goede video die tegelijk veilig en specifiek genoeg op polymeerstructuur zit. |
+| `m5d-eiwitstructuur` | M5D | Eiwitstructuur en vormwerking | geen goede match | - | - | Geen compacte video die precies vormwerking en structuur netjes koppelt. |
+| `m5d-rna-en-ribosomen` | M5D | RNA en ribosomen als werkende route | DNA, mRNA, eiwit: transcriptie en translatie | https://www.youtube.com/watch?v=Q52aV3FmOdY | high | Legt de rol van mRNA en ribosoom in de route duidelijk uit. |
+| `m5d-enzymen-en-werking` | M5D | Enzymen als biologische katalysatoren | geen goede match | - | - | De DNA-routevideo’s zijn hier te indirect; geen losse enzymvideo geforceerd. |
 | `m6-ionen-ladingen` | M6 | Ionen en ladingen herkennen | Uitleg over zouten en oplosvergelijkingen | https://exactwatjezoekt.nl/hulp-bij-leren/uitlegfilmpjes/uitleg-over-zouten-en-oplosvergelijkingen/ | high | Past bij ionen, zouten en losse ionen in oplossing. |
 | `m6-zuren-basen-protonen` | M6 | Zuren en basen als protonoverdracht | Wat is H3O+? | https://exactwatjezoekt.nl/hulp-bij-leren/uitlegfilmpjes/wat-is-h3o/ | high | De les volgt protonoverdracht in water. |
 | `m6-ionrooster-geleidbaarheid` | M6 | Ionrooster, oplossen en geleidbaarheid | Uitleg over zouten en oplosvergelijkingen | https://exactwatjezoekt.nl/hulp-bij-leren/uitlegfilmpjes/uitleg-over-zouten-en-oplosvergelijkingen/ | high | Sluit aan op ionrooster, oplossen en bewegende ionen. |
@@ -81,14 +91,27 @@ Uitgangspunten:
 | `m10-elektrochemie-cellen` | M10 | Elektrochemische cellen, batterijen en brandstofcellen | Hoe ziet een elektrochemische cel eruit? | https://exactwatjezoekt.nl/hulp-bij-leren/uitlegfilmpjes/hoe-ziet-een-elektrochemische-cel-eruit/ | high | De les vraagt om onderdelen en werking van elektrochemische cellen. |
 | `m10-duurzaamheid-rekenen` | M10 | Duurzaamheid rekenen: rendement, atoomeconomie en E-factor | E-factor | https://exactwatjezoekt.nl/hulp-bij-leren/uitlegfilmpjes/e-factor/ | high | De les onderscheidt groene-chemiegetallen; E-factor geeft afval scherp weer. |
 
+## M5D DNA Video Search
+
+- Exact wat je zoekt leverde geen duidelijke, toetsgerichte DNA-match voor transcriptie/translatie/codontabel op.
+- Daarom is M5D niet meer leeg gelaten, maar ook niet geforceerd aan een onjuiste Exact-video gekoppeld.
+- In plaats daarvan zijn vier gecureerde YouTube-video’s toegevoegd met inhoudelijke dekking voor:
+  - DNA -> RNA -> eiwit
+  - transcriptie
+  - translatie
+  - codons lezen
+  - mutatie-effect
+  - toetsaanpak
+- Alleen lessen met een duidelijke inhoudelijke match hebben een video gekregen.
+
 ## Samenvatting
 
-- Registry-video's: 34.
-- Lessen met high/medium video: 39.
-- Lessen zonder goede video: 23.
-- YouTube IDs betrouwbaar gevonden: 34.
-- Exact-link fallback gebruikt: 0 directe fallbackkaarten, maar de component ondersteunt fallback als een toekomstige bron geen betrouwbare ID heeft.
-- Modules met video's: M4, M6, M7, M8, M9, M10.
-- M5D niet geforceerd: ja.
+- Registry-video's: 38.
+- Lessen met high/medium video: 48.
+- Lessen zonder goede video: 22.
+- YouTube IDs betrouwbaar gevonden: 38.
+- Direct-link fallback gebruikt: 0.
+- Modules met video's: M10, M4, M5D, M6, M7, M8, M9.
+- M5D-lessen met curated video: 9.
 - GC/MS/IR/NMR niet geforceerd: ja.
 - Titratierekenen niet gekoppeld aan algemene pH-video: ja.

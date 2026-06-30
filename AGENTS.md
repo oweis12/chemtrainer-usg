@@ -20,3 +20,8 @@ When implementing from a selected generated mock, treat that image as the source
 - The Leerdoelen page should be learner-facing first: show what the student must know, which lesson fits, which questions to practise, and personal checklist progress. Developer coverage and visual QA stay clearly separate.
 - M6 is foundational for M10 titration and should stay expanded into calm, step-by-step lessons on ionen, hydratatie, zuur-base, pH, names-to-formulas, and the bridge to titration.
 - Uitlegvideo's in lessen stay supplementary and curated: maximaal 1 passende Exact wat je zoekt / Sisters in Science-video per les, na de basisuitleg, geen low-confidence/random matches, geen transcripties, en een Exact-link fallback als een YouTube-id niet betrouwbaar is.
+- Voor M5D DNA/transcriptie/translatie zijn curated YouTube-video's toegestaan wanneer Exact geen goede match heeft, maar nog steeds maximaal 1 hoofdvideo per les en alleen bij duidelijke inhoudelijke fit.
+- Bij M5D DNA -> mRNA -> aminozuurketen-vragen moet BINAS-hulp expliciet blijven: verwijs naar de codontabel/genetische-code-tabel (voor deze koers vaak 117E/G; soms 71E/71G/71J als editie-alias) en zeg daar niet dat BINAS overbodig is.
+- Accounts in ChemTrainer blijven lokale profielen in dezelfde browser: geen echte online login, geen backend-auth en duidelijke lokale opslag/backup-tekst.
+- SEO-uitbreidingen voor ChemTrainer blijven eerlijk en openbaar: indexeerbare tekstpagina's, duidelijke metadata en geen keyword stuffing, cloaking of verborgen content.
+- Gamification blijft ondersteunend en rustig: subtiele punten, streaks, achievements en cosmetische shop-items mogen leren niet overheersen of kinderachtig/chaotisch maken.
