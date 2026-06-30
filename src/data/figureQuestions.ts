@@ -161,7 +161,7 @@ export const figureQuestions: Question[] = [
     hints: ["Codons horen bij mRNA, niet bij een eiwitketen zelf."],
     commonMistakes: ["DNA-triplets direct codons noemen zonder mRNA te maken."],
     explanation: "Figuur 5 maakt de volgorde zichtbaar: eerst transcriptie, daarna translatie.",
-    visual: { type: "image", src: "/assets/chemtrainer/dna/transcriptie-translatie-stappen.webp", alt: "Schema van transcriptie en translatie.", caption: "Figuur 5: transcriptie maakt mRNA; translatie leest codons.", purpose: "explanation-only" },
+    visual: { type: "diagram", component: "DnaExpressionDiagram", variant: "translation", alt: "Schema van translatie met mRNA-codons en een aminozuurketen.", caption: "Figuur 5: transcriptie maakt mRNA; translatie leest codons van drie.", purpose: "explanation-only" },
   }),
   q({
     id: "figure-m5d-02",
@@ -177,7 +177,7 @@ export const figureQuestions: Question[] = [
     hints: ["Volg de pijlen in figuur 5 van links naar rechts."],
     commonMistakes: ["Zeggen dat DNA zelf direct als enzym werkt."],
     explanation: "Dit is een ketenredenering: elke stap verandert mogelijk de volgende stap.",
-    visual: { type: "image", src: "/assets/chemtrainer/dna/transcriptie-translatie-stappen.webp", alt: "Schema DNA naar mRNA naar aminozuurketen.", caption: "Figuur 5: van code naar eiwitvorm.", purpose: "explanation-only" },
+    visual: { type: "diagram", component: "DnaExpressionDiagram", variant: "mutationEffect", alt: "Schema met normaal en gemuteerd DNA, mRNA en aminozuurvolgorde.", caption: "Figuur 5: volg de verandering van DNA via codon naar mogelijke enzymvorm.", purpose: "explanation-only" },
   }),
   q({
     id: "figure-m10-01",

@@ -97,7 +97,17 @@ function LessonDetail({ lesson, completed, onBack, onComplete, onPractice, onTit
 
         {lesson.diagram && <section className="lesson-section">
           <span className="section-no">{sectionNo()}</span>
-          <div><h2>Visualisatie / mini-diagram</h2><ConceptDiagram kind={lesson.diagram} /></div>
+          <div>
+            <h2>Visualisatie / mini-diagram</h2>
+            <ConceptDiagram kind={lesson.diagram} />
+            <FigureExplanationBlock explanation={{
+              observation: `Je ziet een compact schema bij ${lesson.topic}.`,
+              meaning: `Het schema ondersteunt het leerdoel: ${lesson.objectives[0]}.`,
+              conclusion: memoryAnchor[0],
+              examUse: lesson.examApproach?.[0] ?? lesson.examAnswer,
+              commonMistake: lesson.commonMistakes[0],
+            }} />
+          </div>
         </section>}
 
         {lessonImageSlots.length > 0 && <section className="lesson-section">
@@ -107,15 +117,23 @@ function LessonDetail({ lesson, completed, onBack, onComplete, onPractice, onTit
             <div className="lesson-image-slots">
               {lessonImageSlots.map((asset, index) => {
                 const figure = getFigureByAssetId(asset.id);
-                return <FigureBlock
-                  key={asset.id}
-                  src={asset.path}
-                  alt={asset.alt}
-                  title={figure?.title ?? asset.topic}
-                  figureNumber={figure?.number ?? String(index + 1)}
-                  caption={asset.caption}
-                  status={asset.status}
-                />;
+                return <div className="lesson-figure-with-explanation" key={asset.id}>
+                  <FigureBlock
+                    src={asset.path}
+                    alt={asset.alt}
+                    title={figure?.title ?? asset.topic}
+                    figureNumber={figure?.number ?? String(index + 1)}
+                    caption={asset.caption}
+                    status={asset.status}
+                  />
+                  <FigureExplanationBlock explanation={{
+                    observation: asset.alt,
+                    meaning: asset.caption,
+                    conclusion: `Gebruik dit beeld om ${lesson.objectives[0]} te onderbouwen.`,
+                    examUse: lesson.examApproach?.[0] ?? `Koppel de zichtbare onderdelen aan ${lesson.topic} en formuleer daarna je conclusie.`,
+                    commonMistake: lesson.commonMistakes[0],
+                  }} />
+                </div>;
               })}
             </div>
           </div>

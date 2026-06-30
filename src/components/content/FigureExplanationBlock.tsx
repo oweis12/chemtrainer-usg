@@ -4,7 +4,7 @@ import type { FigureExplanation } from "../../types";
 export function FigureExplanationBlock({ explanation }: { explanation: FigureExplanation }) {
   return <section className="figure-explanation-block">
     <div>
-      <strong>Wat laat dit figuur zien?</strong>
+      <strong>Wat zie je?</strong>
       <p>{explanation.observation}</p>
     </div>
     <div>
@@ -16,7 +16,7 @@ export function FigureExplanationBlock({ explanation }: { explanation: FigureExp
       <p>{explanation.conclusion}</p>
     </div>
     <div>
-      <strong>Hoe kan dit in een toetsvraag terugkomen?</strong>
+      <strong>Hoe komt dit op de toets?</strong>
       <p>{explanation.examUse}</p>
     </div>
     {explanation.steps && explanation.steps.length > 0 && <div className="figure-explanation-steps">
@@ -24,7 +24,7 @@ export function FigureExplanationBlock({ explanation }: { explanation: FigureExp
       <ol>{explanation.steps.map((step) => <li key={step}>{step}</li>)}</ol>
     </div>}
     {explanation.binasLink && <p className="figure-explanation-note"><ArrowRight size={15} weight="bold" />{explanation.binasLink}</p>}
-    {explanation.commonMistake && <p className="figure-explanation-warning"><WarningCircle size={15} weight="fill" />{explanation.commonMistake}</p>}
+    {explanation.commonMistake && <div className="figure-explanation-warning"><strong><WarningCircle size={15} weight="fill" /> Veelgemaakte fout</strong><p>{explanation.commonMistake}</p></div>}
   </section>;
 }
 

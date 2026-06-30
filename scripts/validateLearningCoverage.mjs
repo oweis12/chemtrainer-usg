@@ -15,6 +15,7 @@ const questionFiles = [
   "src/data/questions.ts",
   "src/data/extendedQuestions.ts",
   "src/data/priorityQuestions.ts",
+  "src/data/massSpecMasteryQuestions.ts",
   "src/data/structureQuestions.ts",
   "src/data/structureGraphQuestions.ts",
   "src/data/qualityReplacementQuestions.ts",

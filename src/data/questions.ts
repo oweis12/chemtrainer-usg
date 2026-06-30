@@ -6,6 +6,7 @@ import { structureQuestions } from "./structureQuestions";
 import { qualityReplacementQuestions } from "./qualityReplacementQuestions";
 import { coverageQaQuestions } from "./coverageQaQuestions";
 import { figureQuestions } from "./figureQuestions";
+import { massSpecMasteryQuestions } from "./massSpecMasteryQuestions";
 import { enhanceQuestion } from "../utils/questionEnhancements";
 
 type Draft = Omit<Question, "rubric" | "hints" | "commonMistakes" | "explanation"> & Partial<Pick<Question, "rubric" | "hints" | "commonMistakes" | "explanation">>;
@@ -147,6 +148,7 @@ const baseQuestions: Question[] = [
   ...m7,
   ...m8,
   ...m8PriorityQuestions,
+  ...massSpecMasteryQuestions,
   ...m5d,
   ...m5dPriorityQuestions,
   ...structureQuestions,

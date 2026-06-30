@@ -148,6 +148,7 @@ export interface VisualAssetRecord {
   prompt: string;
   status: "needs-image" | "placeholder" | "done";
   path?: string;
+  nativeComponent?: string;
 }
 
 export interface OfficialPracticeTest {

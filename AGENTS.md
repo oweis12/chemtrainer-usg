@@ -14,6 +14,8 @@ When implementing from a selected generated mock, treat that image as the source
 - Keep BINAS support as an original reference guide only: show relevant table references and how to use them, never copied table contents, screenshots, or literal table reproductions.
 - Current content priority: improve test quality, contextual reasoning and visual interpretation in M10, M8 and M5D before adding broad new features or generic content.
 - Keep the light lab-notebook identity intact during future quality passes. Prioritise teacher-aligned coverage, explicit `molmassa` and `molariteit` language, source transparency, and didactic depth over unrelated features.
+- For exact chemistry processes such as DNA/transcriptie/translatie, peptidebinding, hydrolyse, redox and titration logic, prefer native React/SVG diagrams first; use static/generated images only for broader illustrative overviews where label precision is less critical.
+- New lesson figures should ship with a caption plus a learner-facing explanation block beneath them; question figures should support reasoning without leaking the answer directly in the labels.
 - Real images should render as numbered figures with title and caption; do not show “Beeldslot voor latere foto/illustratie” once an image exists.
 - TitratieLab should have one clear primary Cloud-scene simulation; setup building belongs behind an optional challenge, not beside a second main interface.
 - Procedure steps in TitratieLab should behave as action/feedback cards tied to actual lab state, not as passive checkboxes.
