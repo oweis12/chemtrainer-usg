@@ -191,3 +191,21 @@
   40% { opacity: 1; transform: scale(1.02); }
   100% { opacity: 1; transform: scale(1); }
 }
+.titration-scene-wrapper { max-width: none; border: 0; border-radius: 0; background: var(--paper); box-shadow: none; font-family: inherit; }
+.titration-scene-svg { min-height: 0; }
+.lab-scene-heading { width:100%; display:flex; justify-content:space-between; padding:16px 20px; font: 11px 'IBM Plex Mono',monospace; letter-spacing:.08em; border-bottom:1px solid var(--line); }
+.lab-running { color:var(--green); }
+.lab-scale { font: 9px 'IBM Plex Mono',monospace; fill:#455d50; }
+.lab-label { font: 10px 'IBM Plex Mono',monospace; letter-spacing:1px; fill:#4b6455; }
+.lab-small { font: 11px Inter,sans-serif; fill:#5b7265; }
+.lab-reading { font: 18px 'IBM Plex Mono',monospace; fill:#294f3d; }
+.titration-valve-controls { margin:16px 0 0; gap:6px; }
+.titration-valve-btn { border-radius:4px; font: 12px Inter,sans-serif; padding:10px 12px; color:var(--ink); background:var(--paper); border-color:var(--line-strong); }
+.titration-valve-btn--active { background:#345c49; border-color:#345c49; color:white; }
+.titration-valve-btn:disabled { opacity:.4; cursor:not-allowed; }
+.lab-control-note { padding:0 20px; font-size:12px; color:var(--ink-soft); text-align:center; }
+.lab-falling-drop { animation: lab-drop .66s linear infinite; }
+.lab-swirl { transform-origin:330px 472px; animation:lab-swirl .7s ease-in-out; }
+@keyframes lab-drop { from { transform:translateY(0); opacity:1; } to { transform:translateY(66px); opacity:0; } }
+@keyframes lab-swirl { 25% { transform:rotate(-4deg); } 75% { transform:rotate(4deg); } }
+@media(prefers-reduced-motion:reduce) { .lab-falling-drop,.lab-swirl { animation:none; } }

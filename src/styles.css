@@ -803,3 +803,32 @@ p { color: var(--ink-soft); line-height: 1.65; }
   .reward-toast-stack { top: auto; bottom: 84px; right: 12px; }
   .floating-companion { right: 12px; bottom: 96px; width: 70px; height: 70px; }
 }
+/* Practicum: one workbench, with the procedure beside it. */
+.titration-workspace { grid-template-columns:minmax(0,1.55fr) minmax(300px,.85fr); }
+.titration-scene-grid-cloud { display:flex; flex-direction:column; padding:0; min-height:0; gap:0; align-items:stretch; }
+.titration-scene-grid-cloud .titration-apparatus { align-self:stretch; display:block; }
+.titration-scene-grid-cloud .titration-scene-wrapper { max-width:none; border:0; box-shadow:none; }
+.titration-simulation-note { display:flex; flex-wrap:wrap; align-items:center; gap:8px 18px; padding:18px 22px; border-top:1px solid var(--line); }
+.titration-simulation-note p { margin:0; font-size:12px; }
+.titration-simulation-note code { width:100%; padding-top:8px; }
+.titration-sim-grid { display:flex; gap:8px; overflow-x:auto; padding-bottom:8px; }
+.titration-sim-card { min-width:180px; flex:1; }
+.titration-sim-card strong { font-size:13px; }
+.titration-sim-card small { font-size:11px; }
+.lab-notebook table { width:100%; border-collapse:collapse; margin-top:16px; font-variant-numeric:tabular-nums; }
+.lab-notebook th,.lab-notebook td { text-align:left; padding:9px; border-bottom:1px solid var(--line); }
+.lab-notebook p,.lab-action-message { font-size:13px; line-height:1.6; }
+.lab-action-message { padding:14px; background:var(--paper-muted); border-left:3px solid #9e652f; }
+.privacy-settings { display:block; margin:16px auto 90px; color:var(--ink-soft); font:inherit; font-size:12px; background:none; border:0; text-decoration:underline; cursor:pointer; }
+.cookie-consent-panel { position:fixed; z-index:1000; bottom:20px; left:50%; transform:translateX(-50%); width:min(680px,calc(100% - 32px)); max-height:85dvh; overflow:auto; background:var(--paper); color:var(--ink); border:1px solid var(--line-strong); box-shadow:0 8px 50px #0002; padding:24px; }
+.cookie-consent-panel h2 { margin:8px 0; font-size:24px; }
+.cookie-consent-panel p { font-size:13px; line-height:1.65; }
+.cookie-consent-panel small { display:block; margin-top:14px; color:var(--ink-soft); }
+.privacy-choices { display:flex; flex-wrap:wrap; gap:12px 24px; padding:10px 0 20px; }
+.privacy-choices label { display:flex; align-items:center; gap:8px; font-size:13px; }
+.privacy-actions { display:flex; gap:8px; flex-wrap:wrap; }
+.video-consent { padding:18px; border:1px solid var(--line); font-size:13px; }
+@media(max-width:1150px) { .titration-workspace { grid-template-columns:1fr; } }
+@media(max-width:600px) { .cookie-consent-panel { bottom:12px; padding:18px; } .privacy-actions { display:grid; } .titration-sim-card { min-width:175px; } }
+
+.titration-bench { min-height:0; }

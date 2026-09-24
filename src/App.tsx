@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Analytics } from "@vercel/analytics/react";
 import { Layout } from "./components/Layout";
 import { Home } from "./pages/Home";
 import { Learn } from "./pages/Learn";
@@ -223,7 +222,7 @@ export function App() {
       >
         {page}
       </Layout>
-      <Analytics />
+
     </>
   );
 }

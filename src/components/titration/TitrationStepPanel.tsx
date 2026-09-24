@@ -19,7 +19,7 @@ const procedureSteps: Array<{ key: keyof TitrationProcedureState; label: string;
   { key: "filledBurette", label: "Vul de buret met titrant", action: "Buret gevuld", success: "Goed: de titrant met bekende molariteit zit nu boven het monster.", problem: "Zonder gevulde buret kun je geen beginstand aflezen en geen bekend volume toevoegen.", recovery: "Vul de buret, verwijder luchtbelletjes en noteer daarna pas de beginstand." },
   { key: "readStart", label: "Lees de beginstand af", action: "Beginstand afgelezen", success: "Goed: beginstand is nodig, want gebruikt volume = eindstand − beginstand.", problem: "Als de beginstand ontbreekt, kun je het gebruikte volume niet correct berekenen.", recovery: "Lees de onderkant van de meniscus op ooghoogte en vul de beginstand in bij ‘Buret aflezen’." },
   { key: "titratedSlowly", label: "Titreer langzaam bij het eindpunt", action: "Langzaam getitreerd", success: "Goed: langzaam druppelen verkleint de kans dat je voorbij het eindpunt schiet.", problem: "Te snel titreren rond het eindpunt geeft kans op overshoot: je voegt dan te veel titrant toe.", recovery: "Zet de kraan op ‘Druppel’ zodra de kleurverandering traag verdwijnt." },
-  { key: "stoppedAtEndpoint", label: "Stop bij blijvende lichte kleur", action: "Gestopt bij eindpunt", success: "Goed: een blijvende lichte kleur is het praktische eindpunt dat dicht bij het equivalentiepunt ligt.", problem: "Als je te vroeg of te laat stopt, wordt het gemeten volume te klein of te groot.", recovery: "Sluit de kraan zodra de lichte kleur blijft. Bij fel/donker is de titratie voorbijgeschoten." },
+  { key: "stoppedAtEndpoint", label: "Stop bij de blijvende kleuromslag", action: "Gestopt bij eindpunt", success: "Goed: een blijvende kleuromslag is het praktische eindpunt dat dicht bij het equivalentiepunt ligt.", problem: "Als je te vroeg of te laat stopt, wordt het gemeten volume te klein of te groot.", recovery: "Sluit de kraan bij de omslag. Bij zoutzuur als titrant verdwijnt de roze kleur." },
   { key: "readEnd", label: "Lees de eindstand af", action: "Eindstand afgelezen", success: "Goed: met begin- en eindstand kun je het buretverbruik bepalen.", problem: "Zonder eindstand kun je het toegevoegde volume niet uitrekenen.", recovery: "Sluit de kraan en lees opnieuw de onderkant van de meniscus op ooghoogte af." },
 ];
 
@@ -55,7 +55,7 @@ export function TitrationStepPanel({ setup, procedure, setupFeedback, procedureW
     if (key === "readEnd" && !hasEndReading) return "Vul beneden eerst een eindstand in. Pas dan is het volume controleerbaar.";
     if (key === "titratedSlowly" && valveSetting === "snel") return "De kraan staat snel: dat is handig in het begin, maar gevaarlijk bij het eindpunt.";
     if (key === "titratedSlowly" && done) return "Goed: je hebt de druppelstand gebruikt. Rond het eindpunt is dat nauwkeuriger dan snel laten lopen.";
-    if (key === "stoppedAtEndpoint" && done && endpointState !== "goed") return endpointState === "te_ver" ? "Je hebt stoppen gemarkeerd, maar de kleur is al te sterk. Deze meting geeft waarschijnlijk een te groot volume." : "Je hebt stoppen gemarkeerd, maar het eindpunt is nog niet overtuigend bereikt.";
+    if (key === "stoppedAtEndpoint" && done && endpointState !== "goed") return endpointState === "te_ver" ? "Je hebt stoppen gemarkeerd nadat het eindpunt is overschreden. Deze meting geeft een te groot volume." : "Je hebt stoppen gemarkeerd, maar het eindpunt is nog niet overtuigend bereikt.";
     return fallback;
   };
 
@@ -75,7 +75,7 @@ export function TitrationStepPanel({ setup, procedure, setupFeedback, procedureW
       </div>
     </> : <div className="setup-feedback good">
       <CheckCircle size={18} weight="fill" />
-      <div><p>De basisopstelling staat klaar. Wil je dit extra oefenen? Zet dan de challenge “zelf opstelling samenstellen” aan.</p></div>
+      <div><p>De opstelling staat klaar. Bereid nu het glaswerk en monster voor.</p></div>
     </div>}
     <h3>Procedurestappen</h3>
     <div className="procedure-stepper">
@@ -105,8 +105,8 @@ export function TitrationStepPanel({ setup, procedure, setupFeedback, procedureW
           </div>
         </div>
         <p className="procedure-step-feedback">{contextualFeedback(currentStep.key, isStepDone(currentStep.key), isStepDone(currentStep.key) ? currentStep.success : currentStep.problem)}</p>
-        {activeProcedureAnimation === currentStep.key && <p className="procedure-step-animating">Mini-preview toont deze handeling.</p>}
-        {!isStepDone(currentStep.key) && <p className="procedure-step-recovery"><strong>Herstel:</strong> {currentStep.recovery}</p>}
+        {activeProcedureAnimation === currentStep.key && <p className="procedure-step-animating">De handeling is uitgevoerd.</p>}
+        {!isStepDone(currentStep.key) && <p className="procedure-step-recovery"><strong>Uitvoering:</strong> {currentStep.recovery}</p>}
         <div className="procedure-step-actions">
           <button className={isStepDone(currentStep.key) ? "completed-button compact-button" : "secondary-button compact-button"} onClick={() => onSetProcedure(currentStep.key, true, currentStep.key)}>
             <CheckCircle size={16} weight={isStepDone(currentStep.key) ? "fill" : "regular"} /> {currentStep.action}
@@ -116,7 +116,7 @@ export function TitrationStepPanel({ setup, procedure, setupFeedback, procedureW
       </article>
     </div>
     {showProcedureWarnings && procedureWarnings.length > 0 && <div className="procedure-warnings">
-      {procedureWarnings.map((warning) => <p key={warning}><WarningCircle size={15} weight="fill" /> {warning}</p>)}
+      {procedureWarnings.slice(0, 1).map((warning) => <p key={warning}><WarningCircle size={15} weight="fill" /> {warning}</p>)}
     </div>}
   </section>;
 }

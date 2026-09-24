@@ -81,6 +81,11 @@ export const curriculumGapLessons: Lesson[] = [
     ],
   },
   {
+    example: {
+      title: "Karakteristieke gebieden lezen",
+      prompt: "Gebruik het schema om uit te leggen welke brede en smalle gebieden je op VWO-niveau meestal eerst bekijkt.",
+      steps: ["Zoek eerst brede of sterke banden.", "Koppel elke band aan een mogelijke groep.", "Begrens je conclusie met 'past bij' of 'sluit uit'."],
+    },
     id: "m8-ir-spectrum",
     module: "M8",
     title: "IR-spectrum: functionele groepen herkennen",
@@ -123,6 +128,11 @@ export const curriculumGapLessons: Lesson[] = [
     ],
   },
   {
+    example: {
+      title: "Twee signalen met verhouding 3:1",
+      prompt: "Gebruik het schema om uit te leggen wat twee signalen met integraalverhouding 3:1 je wél en niet vertellen.",
+      steps: ["Tel eerst het aantal signalen.", "Lees daarna de verhouding.", "Vergelijk pas dan de kandidaatstructuren."],
+    },
     id: "m8-nmr-structuur",
     module: "M8",
     title: "NMR: structuurinformatie uit H-omgevingen",
@@ -229,6 +239,11 @@ export const curriculumGapLessons: Lesson[] = [
     ],
   },
   {
+    example: {
+      title: "Kation versus anion",
+      prompt: "Gebruik het schema om de oriëntatie van water rond Na+ en Cl- op microniveau te beschrijven.",
+      steps: ["Lees eerst welk ion positief en welk ion negatief is.", "Koppel daarna de juiste δ-kant van water aan elk ion.", "Benoem de kracht als ion-dipoolinteractie."],
+    },
     id: "m9-hydratatie-ion-dipool",
     module: "M9",
     title: "Hydratatie en ion-dipoolinteracties",
@@ -271,6 +286,11 @@ export const curriculumGapLessons: Lesson[] = [
     ],
   },
   {
+    example: {
+      title: "Wat doet een micel precies?",
+      prompt: "Gebruik het schema om uit te leggen waarom zeep olie in water helpt verdelen.",
+      steps: ["Wijs de hydrofiele kop en hydrofobe staart aan.", "Leg uit waarom staarten naar vet gericht zijn.", "Leg uit waarom koppen contact met water houden."],
+    },
     id: "m9-hydrofoob-hydrofiel-zeep",
     module: "M9",
     title: "Hydrofoob, hydrofiel en zeep",
@@ -468,6 +488,11 @@ export const curriculumGapLessons: Lesson[] = [
     ],
   },
   {
+    example: {
+      title: "Waar moet de indicator omslaan?",
+      prompt: "Gebruik de curve om uit te leggen waarom je het omslagtraject in de steile sprong zoekt.",
+      steps: ["Zoek de steile sprong.", "Bepaal waar het equivalentiepunt ongeveer ligt.", "Kies een indicator die daar omslaat."],
+    },
     id: "m10-titratiecurve",
     module: "M10",
     title: "Titratiecurve begrijpen",

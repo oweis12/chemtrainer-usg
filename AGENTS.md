@@ -27,3 +27,7 @@ When implementing from a selected generated mock, treat that image as the source
 - Accounts in ChemTrainer blijven lokale profielen in dezelfde browser: geen echte online login, geen backend-auth en duidelijke lokale opslag/backup-tekst.
 - SEO-uitbreidingen voor ChemTrainer blijven eerlijk en openbaar: indexeerbare tekstpagina's, duidelijke metadata en geen keyword stuffing, cloaking of verborgen content.
 - Gamification blijft ondersteunend en rustig: subtiele punten, streaks, achievements en cosmetische shop-items mogen leren niet overheersen of kinderachtig/chaotisch maken.
+
+- Vermijd AI-achtige slogans, zelfbeschrijvende ontwerpteksten en beloften over nog te bouwen onderdelen. Gebruik korte, concrete leerlingentaal.
+- TitratieLab moet als een samenhangend practicum werken: nauwkeurig doseren, zichtbare meetapparatuur en handelingen gekoppeld aan de toestand van de proef.
+- Vraag toestemming voordat optionele statistieken of externe video’s laden; weigeren en later wijzigen moeten eenvoudig blijven.

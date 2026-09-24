@@ -32,8 +32,8 @@ export function Rewards({
       <section className="page-intro intro-inline">
         <div>
           <span className="section-kicker">Beloningen</span>
-          <h1>Rustige gamification die het leren ondersteunt.</h1>
-          <p>Verdien punten met lessen, oefenvragen en streaks. Koop daarna alleen lokale, cosmetische extra's.</p>
+          <h1>Je punten en beloningen</h1>
+          <p>Je verdient punten door lessen af te ronden en vragen te beantwoorden. Wissel ze in voor een andere weergave van je profiel.</p>
         </div>
         <div className="rewards-stats">
           <div>
@@ -61,12 +61,12 @@ export function Rewards({
       <section className="reward-settings">
         <div className="section-title-row">
           <div>
-            <span className="section-kicker">Companion</span>
+            <span className="section-kicker">Labmaatje</span>
             <h2>Cosmetische weergave</h2>
           </div>
         </div>
         <button className="ghost-button" onClick={() => onToggleCompanion(!profile.game.companionHidden)}>
-          {profile.game.companionHidden ? "Companion weer tonen" : "Companion verbergen"}
+          {profile.game.companionHidden ? "Labmaatje weer tonen" : "Labmaatje verbergen"}
         </button>
       </section>
 
@@ -76,7 +76,7 @@ export function Rewards({
         <div className="achievement-panel panel-lined">
           <div className="section-title-row">
             <div>
-              <span className="section-kicker">Achievements</span>
+              <span className="section-kicker">Mijlpalen</span>
               <h2>Behaald</h2>
             </div>
           </div>
@@ -90,7 +90,7 @@ export function Rewards({
               ))}
             </div>
           ) : (
-            <p>Nog geen achievements vrijgespeeld. Begin met een les en een paar oefenvragen.</p>
+            <p>Nog geen mijlpalen behaald. Begin met een les en een paar oefenvragen.</p>
           )}
         </div>
 

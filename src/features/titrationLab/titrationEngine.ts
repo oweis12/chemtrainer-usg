@@ -86,6 +86,11 @@ export function getEndpointState(addedMl: number, targetMl: number, allowedError
 }
 
 export function endpointLabel(state: EndpointState, simulation: TitrationSimulation) {
+  if (simulation.titrantName === "zoutzuur") {
+    if (state === "voor") return "roze";
+    if (state === "bijna") return "roze wordt lichter";
+    return "kleurloos";
+  }
   if (simulation.indicator.toLowerCase().includes("fenolftale")) {
     if (state === "voor") return "kleurloos";
     if (state === "bijna") return "heel licht roze, verdwijnt nog";
@@ -135,8 +140,8 @@ export function evaluateProcedure(procedure: TitrationProcedureState, valveSetti
   if (valveSetting === "snel" && (endpointState === "bijna" || endpointState === "goed")) warnings.push("Te snel rond het eindpunt: kans op overshoot, dus te veel titrant en een te hoge berekende hoeveelheid analyte.");
   if (!procedure.titratedSlowly) warnings.push("Druppelstand nog niet gebruikt: bij het eindpunt moet je langzaam titreren om overshoot te voorkomen.");
   if (procedure.stoppedAtEndpoint && endpointState === "voor") warnings.push("Stop te vroeg gemarkeerd: het equivalentiepunt is nog niet bereikt.");
-  if (procedure.stoppedAtEndpoint && endpointState === "te_ver") warnings.push("Stop te laat gemarkeerd: de kleur is te sterk en het gemeten volume is te groot.");
-  if (!procedure.stoppedAtEndpoint && endpointState === "te_ver") warnings.push("Je bent voorbij het eindpunt; de kleur is te sterk en de meting is onbetrouwbaar.");
+  if (procedure.stoppedAtEndpoint && endpointState === "te_ver") warnings.push("Stop te laat gemarkeerd: er is meer titrant toegevoegd dan nodig; het gemeten volume is te groot.");
+  if (!procedure.stoppedAtEndpoint && endpointState === "te_ver") warnings.push("Je bent voorbij het eindpunt; er is te veel titrant toegevoegd.");
   if (!procedure.readEnd) warnings.push("Eindstand ontbreekt: sluit de kraan en lees de onderkant van de meniscus opnieuw af.");
   return warnings;
 }

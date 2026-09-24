@@ -16,7 +16,7 @@ export function ImageSlot({ src, alt, caption, fallback, className = "" }: Image
   const canOpen = Boolean(src) && !missing;
   return <figure className={`image-slot ${className}`}>
     <div className={`image-slot-media ${canOpen ? "figure-zoomable" : ""}`} onClick={() => canOpen && setOpen(true)} role={canOpen ? "button" : undefined} tabIndex={canOpen ? 0 : undefined} onKeyDown={(event) => { if (canOpen && (event.key === "Enter" || event.key === " ")) { event.preventDefault(); setOpen(true); } }}>
-      {!missing && src ? <img src={src} alt={alt} onError={() => setMissing(true)} /> : fallback ?? <div className="image-slot-placeholder" role="img" aria-label={alt}><ImageSquare size={30} weight="duotone" /><span>Illustratie volgt</span></div>}
+      {!missing && src ? <img src={src} alt={alt} onError={() => setMissing(true)} /> : fallback ?? <div className="image-slot-placeholder" role="img" aria-label={alt}><ImageSquare size={30} weight="duotone" /><span>Afbeelding niet beschikbaar</span></div>}
       {canOpen && <span className="figure-hover-overlay">Klik om te vergroten</span>}
     </div>
     {caption && <figcaption>{caption}</figcaption>}

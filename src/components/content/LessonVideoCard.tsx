@@ -1,7 +1,10 @@
 import { ArrowSquareOut, PlayCircle } from "@phosphor-icons/react";
 import type { LessonVideo } from "../../data/lessonVideoRegistry";
 
+import { usePrivacy } from "../PrivacyConsent";
+
 export function LessonVideoCard({ video }: { video: LessonVideo }) {
+  const { media, openSettings } = usePrivacy();
   const linkHref = video.youtubeUrl ?? video.exactUrl;
   const linkLabel = video.source === "youtube"
     ? "Open op YouTube"
@@ -22,7 +25,7 @@ export function LessonVideoCard({ video }: { video: LessonVideo }) {
         </div>
       </div>
 
-      {video.youtubeId && (
+      {video.youtubeId && media && (
         <div className="lesson-video-frame">
           <iframe
             title={video.title}
@@ -35,6 +38,7 @@ export function LessonVideoCard({ video }: { video: LessonVideo }) {
         </div>
       )}
 
+      {video.youtubeId && !media && <div className="video-consent"><p>Deze video wordt pas geladen als je externe video’s toestaat.</p><button className="secondary-button" onClick={openSettings}>Video-instellingen</button></div>}
       <a className="lesson-video-link" href={linkHref} target="_blank" rel="noreferrer">
         {linkLabel} <ArrowSquareOut size={16} />
       </a>

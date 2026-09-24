@@ -31,7 +31,7 @@ export function FigureBlock({ src, alt, title, caption, figureNumber, status, fa
         ) : (
           <div className="figure-placeholder-box" role="img" aria-label={alt}>
             <ImageSquare size={30} weight="duotone" />
-            <span>Illustratie volgt</span>
+            <span>Afbeelding niet beschikbaar</span>
           </div>
         )}
         {zoomable && <span className="figure-hover-overlay">Klik om te vergroten</span>}

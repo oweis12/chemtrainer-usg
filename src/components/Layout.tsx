@@ -135,9 +135,7 @@ export function Layout({
               <a href="/voor-docenten.html" target="_blank" rel="noreferrer">
                 Voor docenten
               </a>
-              <a href="/llms.txt" target="_blank" rel="noreferrer">
-                llms.txt
-              </a>
+
             </div>
           </footer>
         </main>

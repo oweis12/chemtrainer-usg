@@ -1,7 +1,6 @@
-import { ArrowClockwise, BookOpenText, Flask, Info, PlayCircle, TestTube } from "@phosphor-icons/react";
+import { ArrowClockwise, BookOpenText, Flask, Info, TestTube } from "@phosphor-icons/react";
 import { useEffect, useMemo, useState } from "react";
 import { FigureBlock } from "../components/content/FigureBlock";
-import { ProcedureActionPreview } from "../components/titration/ProcedureActionPreview";
 import { TitrationCalculationPanel, type TitrationCalculationInputs } from "../components/titration/TitrationCalculationPanel";
 import { TitrationFeedbackPanel } from "../components/titration/TitrationFeedbackPanel";
 import { TitrationSetup } from "../components/titration/TitrationSetup";
@@ -14,7 +13,6 @@ import type { EndpointState, TitrationLabProgress, TitrationSimulation, ValveSet
 import {
   accuracyFeedback,
   calculateFromVolume,
-  clampVolume,
   endpointLabel,
   evaluateProcedure,
   evaluateSetup,
@@ -63,8 +61,9 @@ function emptyCalculationInputs(): TitrationCalculationInputs {
 }
 
 function endpointHint(state: EndpointState, simulation: TitrationSimulation) {
+  if (simulation.titrantName === "zoutzuur") return "De roze kleur verdwijnt bij toevoegen van zoutzuur. Stop zodra de oplossing na zwenken kleurloos blijft; extra zuur is niet zichtbaar aan de indicator.";
   if (simulation.indicator.toLowerCase().includes("fenolftale")) {
-    if (state === "voor") return "Nog kleurloos: er is nog zuur/base over in de erlenmeyer.";
+    if (state === "voor") return "Nog kleurloos: er is nog zuur over in de erlenmeyer.";
     if (state === "bijna") return "Bijna: een roze zweem verdwijnt nog door zwenken.";
     if (state === "goed") return "Goed eindpunt: heel lichtroze blijft ongeveer een halve minuut zichtbaar.";
     return "Te ver: de roze kleur is te sterk, dus je hebt te veel titrant toegevoegd.";
@@ -80,12 +79,12 @@ const procedureActionCopy: Partial<Record<keyof TitrationProcedureState, string>
   filledBurette: "De buret is gevuld met een oplossing met bekende molariteit.",
   readStart: "Gebruik: eindstand − beginstand = gebruikt volume.",
   titratedSlowly: "Rond het eindpunt voorkom je overshoot door langzaam te druppelen.",
-  stoppedAtEndpoint: "Stop bij blijvende lichte kleur, niet bij felroze.",
+  stoppedAtEndpoint: "Sluit de kraan bij de omslag. Bij zoutzuur als titrant verdwijnt het roze.",
   readEnd: "Gebruik: eindstand − beginstand = gebruikt volume.",
 };
 
 export function TitrationLab({ progress: storedProgress, onSaveProgress }: { progress: TitrationLabProgress; onSaveProgress: (progress: TitrationLabProgress) => void }) {
-  const [labMode, setLabMode] = useState<TitrationLabMode>("uitleg");
+  const [labMode, setLabMode] = useState<TitrationLabMode>("begeleid");
   const [setupChallenge, setSetupChallenge] = useState(false);
   const [selectedId, setSelectedId] = useState(titrationSimulations[0]?.id ?? "");
   const simulation = titrationSimulations.find((item) => item.id === selectedId) ?? titrationSimulations[0];
@@ -102,6 +101,9 @@ export function TitrationLab({ progress: storedProgress, onSaveProgress }: { pro
   const [progress, setProgress] = useState(storedProgress);
   const [activeProcedureAnimation, setActiveProcedureAnimation] = useState<ProcedureAnimation>(null);
   const [lastProcedureAction, setLastProcedureAction] = useState<string>("");
+  const [labMessage, setLabMessage] = useState("");
+  const [measurements, setMeasurements] = useState<Array<{ volume: number; included: boolean }>>([]);
+  const [recorded, setRecorded] = useState(false);
   const [currentProcedureIndex, setCurrentProcedureIndex] = useState(0);
 
   useEffect(() => {
@@ -112,13 +114,15 @@ export function TitrationLab({ progress: storedProgress, onSaveProgress }: { pro
     if (labMode !== "uitleg" && !setupChallenge) setSetup(readySetup());
   }, [labMode, setupChallenge]);
 
+  const canDose = Object.values(setup).every(Boolean) && procedure.filledBurette && procedure.pipettedSample && procedure.addedIndicator && procedure.readStart && currentAddedMl < 50 - START_READING_ML;
   useEffect(() => {
     if (valveSetting === "dicht") return;
+    if (!canDose || labMode === "uitleg") { setValveSetting("dicht"); return; }
     const timer = window.setInterval(() => {
-      setCurrentAddedMl((current) => clampVolume(current + flowRateMlPerTick(valveSetting)));
+      setCurrentAddedMl((current) => Math.min(50 - START_READING_ML, Math.round((current + flowRateMlPerTick(valveSetting)) * 100) / 100));
     }, 320);
     return () => window.clearInterval(timer);
-  }, [valveSetting]);
+  }, [valveSetting, canDose, labMode]);
 
   const actualEndMl = START_READING_ML + currentAddedMl;
   const endpointState = getEndpointState(currentAddedMl, simulation.equivalenceVolumeMl, simulation.allowedErrorMl);
@@ -157,6 +161,8 @@ export function TitrationLab({ progress: storedProgress, onSaveProgress }: { pro
   });
 
   const resetSimulation = (nextId = selectedId) => {
+    if (nextId !== selectedId) setMeasurements([]);
+    setRecorded(false); setLabMessage("");
     setSelectedId(nextId);
     setSetup(setupChallenge ? cloneSetup() : readySetup());
     setProcedure(cloneProcedure());
@@ -174,6 +180,7 @@ export function TitrationLab({ progress: storedProgress, onSaveProgress }: { pro
   };
 
   const saveProgress = () => {
+    if (saved || !procedure.readEnd || !calculationChecked || valveSetting !== "dicht") return;
     const next = updateTitrationProgress(progress, score, accuracy.deviation, simulation.id, mistakes);
     setProgress(next);
     onSaveProgress(next);
@@ -182,10 +189,12 @@ export function TitrationLab({ progress: storedProgress, onSaveProgress }: { pro
   const asset = (id: string) => visualAssetRegistry.find((item) => item.id === id);
   const imageIds = ["visual-titration-setup", "visual-titration-meniscus", "visual-titration-schellbach", "visual-titration-steps"];
   const setMode = (next: TitrationLabMode) => {
+    setValveSetting("dicht");
     setLabMode(next);
     if (next !== "uitleg" && !setupChallenge) setSetup(readySetup());
   };
   const toggleSetupChallenge = () => {
+    setValveSetting("dicht");
     setSetupChallenge((current) => {
       const next = !current;
       setSetup(next ? cloneSetup() : readySetup());
@@ -199,26 +208,63 @@ export function TitrationLab({ progress: storedProgress, onSaveProgress }: { pro
     if (nextIndex >= 0) setCurrentProcedureIndex(nextIndex);
   };
   const setProcedureStep = (key: keyof TitrationProcedureState, value: boolean, label?: string) => {
-    setProcedure((current) => ({ ...current, [key]: value }));
+    if (currentAddedMl > 0 && ["rinsedBurette", "rinsedPipette", "pipettedSample", "addedIndicator", "filledBurette"].includes(key)) { setLabMessage("Begin een nieuwe meting om het monster of de voorbereiding te veranderen."); return; }
+    if (value) {
+      if (!Object.values(setup).every(Boolean)) { setLabMessage("Maak eerst de opstelling compleet."); return; }
+      const previous = PROCEDURE_ORDER.slice(0, PROCEDURE_ORDER.indexOf(key));
+      if (previous.some(step => !procedure[step])) { setLabMessage("Voer eerst de eerdere stappen uit en noteer je beginstand."); return; }
+      if (key === "readStart" || key === "readEnd") { setLabMessage("Noteer de buretstand in het afleespaneel hieronder."); return; }
+      if (key === "titratedSlowly") { changeValve("langzaam"); return; }
+      if (key === "stoppedAtEndpoint") { setValveSetting("dicht"); }
+    }
+    setProcedure(current => {
+      const next = { ...current, [key]: value };
+      if (!value) PROCEDURE_ORDER.slice(PROCEDURE_ORDER.indexOf(key) + 1).forEach(step => { next[step] = false; });
+      return next;
+    });
+    setLabMessage(""); setSaved(false);
     if (label) pulseProcedureAnimation(key, label);
+    if (value) setCurrentProcedureIndex(Math.min(PROCEDURE_ORDER.indexOf(key) + 1, 8));
   };
+  function changeValve(next: ValveSetting) {
+    if (next !== "dicht" && !canDose) return;
+    setValveSetting(next);
+    if (next !== "dicht") {
+      setSaved(false); setRecorded(false); setEndInput(""); setCalculationChecked(false);
+      setProcedure(current => ({ ...current, titratedSlowly: current.titratedSlowly || next === "langzaam", stoppedAtEndpoint: false, readEnd: false }));
+    }
+  }
+  function addDrop() {
+    if (!canDose || valveSetting !== "dicht") return;
+    setCurrentAddedMl(current => Math.min(49.65, Math.round((current + .03) * 100) / 100));
+    setProcedure(current => ({ ...current, titratedSlowly: true, stoppedAtEndpoint: false, readEnd: false }));
+    setEndInput(""); setSaved(false); setRecorded(false); setCalculationChecked(false);
+  }
   const handleStartInput = (value: string) => {
+    if (currentAddedMl > 0 || !procedure.filledBurette) { setLabMessage("Noteer de beginstand na het vullen, vóór je begint te titreren."); return; }
     setStartInput(value);
-    if (value.trim()) setProcedureStep("readStart", true, "readStart");
+    const valid = parseDutchNumber(value) !== null && Math.abs(parseDutchNumber(value)! - START_READING_ML) <= .05;
+    setProcedure(current => ({ ...current, readStart: valid }));
+    if (valid) { setCurrentProcedureIndex(6); setLabMessage(""); }
   };
   const handleEndInput = (value: string) => {
-    setEndInput(value);
-    if (value.trim()) setProcedureStep("readEnd", true, "readEnd");
+    if (valveSetting !== "dicht" || !currentAddedMl) { setLabMessage("Sluit de kraan na het titreren voordat je de eindstand noteert."); return; }
+    setEndInput(value); setSaved(false); setRecorded(false); setCalculationChecked(false);
+    const valid = parseDutchNumber(value) !== null && Math.abs(parseDutchNumber(value)! - actualEndMl) <= .05;
+    setProcedure(current => ({ ...current, readEnd: valid, stoppedAtEndpoint: true }));
+    setLabMessage("");
   };
+  const selectedMeasurements = measurements.filter(row => row.included);
+  const average = selectedMeasurements.length ? selectedMeasurements.reduce((sum, row) => sum + row.volume, 0) / selectedMeasurements.length : null;
 
   return <div className="titration-page">
     <section className="page-intro intro-inline titration-hero">
       <div>
-        <span className="section-kicker">TitratieLab V1</span>
-        <h1>Oefen titreren alsof je naast de docent aan de labtafel staat.</h1>
-        <p>Bouw de opstelling, draai aan het kraantje, lees de buret af en werk de berekening uit met je eigen gemeten volume.</p>
+        <span className="section-kicker">Practicum · M10</span>
+        <h1>Bepaal de molariteit van je monster.</h1>
+        <p>Bepaal een onbekende molariteit. Bereid je monster voor, titreer tot de kleuromslag en reken met je eigen meting.</p>
       </div>
-      <div className="titration-lab-stamp"><Flask size={22} weight="duotone" /><span>2D lab · lokaal opgeslagen</span></div>
+      <div className="titration-lab-stamp"><Flask size={22} weight="duotone" /><span>TitratieLab</span></div>
     </section>
 
     <div className="titration-mode-tabs" aria-label="TitratieLab modus">
@@ -247,11 +293,6 @@ export function TitrationLab({ progress: storedProgress, onSaveProgress }: { pro
       </div>
       <p className="titration-figure-reference">Zoals in figuur 4 zichtbaar is: je leest eerst de beginstand af, titreert rustig tot het eindpunt, leest daarna de eindstand af en rekent pas dan met het gebruikte volume in liter.</p>
       <div className="titration-learning-grid">
-        <div className="titration-video-placeholder">
-          <PlayCircle size={33} weight="duotone" />
-          <h3>Bekijk een korte uitlegvideo</h3>
-          <p>Hier kan later een korte uitlegvideo worden toegevoegd.</p>
-        </div>
         <div className="titration-rinsing-note">
           <span className="section-kicker">Glaswerk spoelen</span>
           <p>Bij nauwkeurig titreren spoel je de buret met de bekende oplossing in de buret. De pipet spoel je met de monsteroplossing. De erlenmeyer mag met demiwater worden nagespoeld, want extra water verandert het aantal mol stof in de erlenmeyer niet.</p>
@@ -288,7 +329,7 @@ export function TitrationLab({ progress: storedProgress, onSaveProgress }: { pro
     <section className="titration-mode-helper">
       <div>
         <span className="section-kicker">{labMode === "begeleid" ? "Begeleid oefenen" : "Zelf oefenen"}</span>
-        <p>{labMode === "begeleid" ? "De basisopstelling staat klaar en de app geeft hulp bij fouten. De titrant is de bekende oplossing in de buret; de monsteroplossing zit in de erlenmeyer." : "Je krijgt minder directe hulp. Bouw de opstelling alleen als extra challenge; normaal oefen je vooral eindpunt, aflezen en berekenen."}</p>
+        <p>{labMode === "begeleid" ? "De basisopstelling staat klaar en de app geeft hulp bij fouten. De titrant is de bekende oplossing in de buret; de monsteroplossing zit in de erlenmeyer." : "Werk de meting zelfstandig uit. Controleer na afloop je aflezing en berekening."}</p>
       </div>
       <button className={setupChallenge ? "completed-button" : "ghost-button"} onClick={toggleSetupChallenge}>Extra oefenen: stel zelf de opstelling samen</button>
     </section>
@@ -303,25 +344,30 @@ export function TitrationLab({ progress: storedProgress, onSaveProgress }: { pro
           valveSetting={valveSetting}
           endpointState={endpointState}
           hasIndicator={procedure.addedIndicator}
-          onValveChange={(next) => {
-            setValveSetting(next);
-            if (next === "langzaam") setProcedure((current) => ({ ...current, titratedSlowly: true }));
-          }}
+          filled={procedure.filledBurette} hasSample={procedure.pipettedSample} canDose={canDose} onDrop={addDrop}
+          onValveChange={changeValve}
           procedureAnimation={activeProcedureAnimation ?? undefined}
         />
         {lastProcedureAction && <div className="titration-action-banner" aria-live="polite">{procedureActionCopy[lastProcedureAction as keyof TitrationProcedureState] ?? ""}</div>}
-        <div className={`endpoint-hint endpoint-${endpointState}`}>
+        {procedure.addedIndicator && <div className={`endpoint-hint endpoint-${endpointState}`}>
           <TestTube size={20} weight="duotone" />
           <div>
             <strong>{endpointLabel(endpointState, simulation)}</strong>
-            <p>{endpointHint(endpointState, simulation)}</p>
+            <p>{labMode === "begeleid" ? endpointHint(endpointState, simulation) : "Observeer de kleur na zwenken en bepaal zelf wanneer je stopt."}</p>
           </div>
         </div>
-        <button className="ghost-button" onClick={() => resetSimulation()}><ArrowClockwise size={17} /> Reset deze simulatie</button>
+        }
+        <section className="titration-panel lab-notebook">
+          <span className="section-kicker">Meetlogboek</span><h2>Vergelijk je metingen</h2>
+          <p>Noteer je verbruik en herhaal de proef. Vink alleen vergelijkbare metingen aan voor het gemiddelde.</p>
+          <button className="secondary-button" disabled={!readingOk || valveSetting !== "dicht" || recorded || !procedure.readEnd} onClick={() => { setMeasurements(rows => [...rows, { volume: reading.usedVolume!, included: true }]); setRecorded(true); }}>Meting vastleggen</button>
+          {measurements.length > 0 ? <><table><thead><tr><th>Gebruik</th><th>Meting</th><th>Verbruik</th></tr></thead><tbody>{measurements.map((row, index) => <tr key={index}><td><input type="checkbox" aria-label={`Gebruik meting ${index+1}`} checked={row.included} onChange={() => setMeasurements(rows => rows.map((r,i) => i===index?{...r,included:!r.included}:r))}/></td><td>{index+1}</td><td>{row.volume.toFixed(2).replace('.',',')} mL</td></tr>)}</tbody></table><p><strong>Gemiddeld: {average === null ? "—" : `${average.toFixed(2).replace('.',',')} mL`}</strong> · {selectedMeasurements.length} metingen</p>{selectedMeasurements.length>1 && Math.max(...selectedMeasurements.map(r=>r.volume))-Math.min(...selectedMeasurements.map(r=>r.volume))>.2 && <p role="status">Deze waarden verschillen meer dan 0,20 mL. Onderzoek de oorzaak en doe een extra meting.</p>}</> : <p className="muted">Nog geen metingen vastgelegd.</p>}
+        </section>
+        <button className="ghost-button" onClick={() => resetSimulation()}><ArrowClockwise size={17} /> Nieuwe meting</button>
       </div>
 
       <div className="titration-side-column">
-        <ProcedureActionPreview action={activeProcedureAnimation} />
+        {labMessage && <p className="lab-action-message" role="status">{labMessage}</p>}
         <TitrationStepPanel
           setup={setup}
           procedure={procedure}
@@ -329,8 +375,8 @@ export function TitrationLab({ progress: storedProgress, onSaveProgress }: { pro
           procedureWarnings={procedureWarnings}
           valveSetting={valveSetting}
           endpointState={endpointState}
-          hasStartReading={Boolean(startInput.trim())}
-          hasEndReading={Boolean(endInput.trim())}
+          hasStartReading={procedure.readStart}
+          hasEndReading={procedure.readEnd}
           showSetupBuilder={setupChallenge}
           showProcedureWarnings={labMode === "begeleid"}
           activeProcedureAnimation={activeProcedureAnimation}
@@ -362,7 +408,7 @@ export function TitrationLab({ progress: storedProgress, onSaveProgress }: { pro
           onChange={(next) => { setCalculationInputs(next); setSaved(false); }}
           onCheck={() => setCalculationChecked(true)}
         />
-        <TitrationFeedbackPanel
+        {calculationChecked && procedure.readEnd && <TitrationFeedbackPanel
           endpointText={endpointLabel(endpointState, simulation)}
           accuracyLevel={accuracy.level}
           accuracyText={accuracy.text}
@@ -372,7 +418,7 @@ export function TitrationLab({ progress: storedProgress, onSaveProgress }: { pro
           mistakes={mistakes}
           saved={saved}
           onSave={saveProgress}
-        />
+        />}
       </div>
     </section>
 

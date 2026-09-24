@@ -36,7 +36,7 @@ export function StructureLab({ onPractice }: StructureLabProps) {
 
   return <div className="structure-lab-page">
     <section className="page-intro intro-inline">
-      <div><span className="section-kicker">StructuurLab</span><h1>Zie wat een structuurformule vertelt.</h1><p>Lees eerst de atomen en bindingen. Bouw daarna zelf met puzzelstukken. De chemie blijft echt; de editor blijft bewust rustig en overzichtelijk.</p></div>
+      <div><span className="section-kicker">StructuurLab</span><h1>Zie wat een structuurformule vertelt.</h1><p>Lees eerst de atomen en bindingen. Bouw daarna zelf met puzzelstukken. Controleer of elk atoom het juiste aantal bindingen heeft.</p></div>
       <div className="structurelab-stamp"><Atom size={29} weight="duotone" /><span>kijken<br />→ bouwen</span></div>
     </section>
 
@@ -46,7 +46,7 @@ export function StructureLab({ onPractice }: StructureLabProps) {
 
     {tab === "recognize" && <section className="lab-reading-grid">
       <article className="lab-notebook-card lab-reading-card">
-        <span className="learning-layer">Eerst rustig lezen</span><h2>Een tekening is een routekaart van atomen.</h2>
+        <span className="learning-layer">Atomen en bindingen</span><h2>Zo lees je een structuurformule.</h2>
         <p>Een cirkel met C, H, O of N staat voor een atoom. Een lijn ertussen is een binding: één lijn betekent één gedeeld elektronenpaar, twee lijnen een dubbele binding. Je hoeft niet meteen elke naam te kennen. Zoek eerst de opvallende atomen: O en N vertellen vaak al veel.</p>
         <div className="lab-rule-list"><div><strong>C</strong><span>koolstof; maakt meestal vier bindingen</span></div><div><strong>H</strong><span>waterstof; maakt meestal één binding</span></div><div><strong>O</strong><span>zuurstof; zoek naar OH of C=O</span></div><div><strong>N</strong><span>stikstof; zoek naar NH₂ of C(=O)—N</span></div></div>
         <div className="lab-tip"><Sparkle size={18} weight="fill" /><span><b>Handige kijkvolgorde:</b> 1. zoek O/N, 2. kijk naar dubbele bindingen, 3. benoem de groep, 4. pas daarna voorspel je polariteit of H-bruggen.</span></div>
@@ -61,6 +61,6 @@ export function StructureLab({ onPractice }: StructureLabProps) {
 
     {tab === "groups" && <section className="lab-groups"><div className="lab-groups-head"><div><span className="learning-layer">Patronen herkennen</span><h2>Vijf groepen die je vaak terugziet.</h2><p>Lees niet alleen de naam; kijk naar het kleinste stuk structuur dat de groep bewijst.</p></div><div className="lab-group-key"><span>OH</span> alcohol <span>COOH</span> carbonzuur <span>C(=O)—O</span> ester</div></div><div className="lab-group-grid">{groupExamples.map((question) => question.structure && <article className="lab-group-card" key={question.id}><h3>{question.topic.replace("StructuurLab · ", "")}</h3><StructureRenderer structure={question.structure} /><p>{question.modelAnswer}</p></article>)}</div></section>}
 
-    {tab === "test" && <section className="lab-test-section"><div className="lab-test-copy"><span className="learning-layer">Van kijken naar toetsdenken</span><h2>Structuurvragen zitten nu tussen je gewone oefenvragen.</h2><p>Je kunt er in Oefenen op filteren via onderwerpen zoals <b>StructuurLab · ester</b>, <b>StructuurLab · polariteit</b> of <b>StructuurLab · nucleotide</b>. Bouwvragen worden bewust niet in de Proeftoets gezet: daar wil je zonder interactieve editor kunnen werken.</p><button className="primary-button" onClick={onPractice}>Naar Oefenen <ArrowRight size={18} /></button></div><div className="lab-test-preview">{exampleQuestions.slice(1, 3).map((question) => question.structure && <article key={question.id}><div><span>{question.module}</span><small>Niveau {question.level}</small></div><p>{question.question}</p><CheckCircle size={21} weight="duotone" /></article>)}</div></section>}
+    {tab === "test" && <section className="lab-test-section"><div className="lab-test-copy"><span className="learning-layer">Oefenvragen</span><h2>Oefen met structuurvragen.</h2><p>Je kunt er in Oefenen op filteren via onderwerpen zoals <b>StructuurLab · ester</b>, <b>StructuurLab · polariteit</b> of <b>StructuurLab · nucleotide</b>. De Proeftoets bevat lees- en redeneervragen; moleculen bouwen oefen je hier.</p><button className="primary-button" onClick={onPractice}>Naar Oefenen <ArrowRight size={18} /></button></div><div className="lab-test-preview">{exampleQuestions.slice(1, 3).map((question) => question.structure && <article key={question.id}><div><span>{question.module}</span><small>Niveau {question.level}</small></div><p>{question.question}</p><CheckCircle size={21} weight="duotone" /></article>)}</div></section>}
   </div>;
 }

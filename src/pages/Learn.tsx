@@ -23,7 +23,7 @@ export function Learn({ completedLessons, onComplete, onPractice, onTitrationLab
   const visible = lessons.filter((lesson) => filter === "all" || lesson.module === filter);
 
   if (selected) return <LessonDetail lesson={selected} completed={completedLessons.includes(selected.id)} onBack={() => { setSelected(null); setChecksVisible(false); }} onComplete={() => onComplete(selected.id)} onPractice={() => onPractice(selected.module)} onTitrationLab={onTitrationLab} checksVisible={checksVisible} setChecksVisible={setChecksVisible} />;
-  return <div className="learn-page"><section className="page-intro"><span className="section-kicker">Leeromgeving</span><h1>Van basisbegrip naar toetsantwoord.</h1><p>Elke les bouwt op van de bouwsteen naar het antwoord dat je op een toets moet kunnen formuleren.</p></section><div className="filter-tabs"><button className={filter === "all" ? "active" : ""} onClick={() => setFilter("all")}>Alle modules</button>{(["M4", "M5D", "M6", "M7", "M8", "M9", "M10"] as ModuleId[]).map((module) => <button key={module} className={filter === module ? "active" : ""} onClick={() => setFilter(module)}>{module}</button>)}</div><section className="lesson-list">{visible.map((lesson) => <LessonCard key={lesson.id} lesson={lesson} completed={completedLessons.includes(lesson.id)} onOpen={() => setSelected(lesson)} />)}</section></div>;
+  return <div className="learn-page"><section className="page-intro"><span className="section-kicker">Leeromgeving</span><h1>Lessen per onderwerp</h1><p>Lees de uitleg, bekijk de voorbeelden en controleer met de oefenvragen of je het begrijpt.</p></section><div className="filter-tabs"><button className={filter === "all" ? "active" : ""} onClick={() => setFilter("all")}>Alle modules</button>{(["M4", "M5D", "M6", "M7", "M8", "M9", "M10"] as ModuleId[]).map((module) => <button key={module} className={filter === module ? "active" : ""} onClick={() => setFilter(module)}>{module}</button>)}</div><section className="lesson-list">{visible.map((lesson) => <LessonCard key={lesson.id} lesson={lesson} completed={completedLessons.includes(lesson.id)} onOpen={() => setSelected(lesson)} />)}</section></div>;
 }
 
 function fallbackFigureExplanation(example: NonNullable<Lesson["extraExamples"]>[number]): FigureExplanation {
@@ -59,7 +59,7 @@ function LessonDetail({ lesson, completed, onBack, onComplete, onPractice, onTit
         <span className="lesson-module">{lesson.module}</span>
         <span className="section-kicker">{lesson.topic}</span>
         <h1>{lesson.title}</h1>
-        <p>{lesson.duration} · Lees rustig; je hoeft niet alles in één keer te onthouden.</p>
+        <p>{lesson.duration} · Uitleg, voorbeelden en controlevragen.</p>
       </div>
       <button className={completed ? "completed-button" : "secondary-button"} onClick={onComplete}><CheckCircle size={19} weight={completed ? "fill" : "regular"} />{completed ? "Les afgerond" : "Markeer als afgerond"}</button>
     </header>
@@ -139,7 +139,7 @@ function LessonDetail({ lesson, completed, onBack, onComplete, onPractice, onTit
           </div>
         </section>}
 
-        <section className="lesson-section">
+        {!lesson.extraExamples?.some(example => example.prompt === lesson.example.prompt) && <section className="lesson-section">
           <span className="section-no">{sectionNo()}</span>
           <div>
             <h2>Voorbeeld stap voor stap</h2>
@@ -148,7 +148,7 @@ function LessonDetail({ lesson, completed, onBack, onComplete, onPractice, onTit
             <BinasBox references={binasReferences} heading="BINAS bij dit voorbeeld" />
             <BinasReferenceBox references={explicitBinasReferences} />
           </div>
-        </section>
+        </section>}
 
         {lesson.extraExamples && lesson.extraExamples.length > 0 && <section className="lesson-section">
           <span className="section-no">{sectionNo()}</span>

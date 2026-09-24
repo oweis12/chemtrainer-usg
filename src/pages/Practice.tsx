@@ -169,7 +169,7 @@ export function Practice({ onResult, seedQuestionId, onSeedHandled, onOpenTitrat
     <section className="page-intro intro-inline">
       <div>
         <span className="section-kicker">Oefenen</span>
-        <h1>Kies een rustige oefenroute.</h1>
+        <h1>Wat wil je oefenen?</h1>
         <p>Start snel met basis, toetsniveau of je foutenlog. Gebruik daarna pas filters als je heel gericht wilt oefenen.</p>
       </div>
       <div className="question-count"><strong>{available.length}</strong><span>{source === "review" ? "foutvragen" : "beschikbare vragen"}</span></div>
@@ -266,7 +266,7 @@ export function Practice({ onResult, seedQuestionId, onSeedHandled, onOpenTitrat
       </div>}
       <QuestionCard key={current.id} question={current} onPracticeResult={runResult} />
       {resolved && <div className="next-question">
-        <div><span className="section-kicker">Volgende stap</span><strong>De planner kiest nu een vraag die niet direct hetzelfde is.</strong></div>
+        <div><span className="section-kicker">Volgende stap</span><strong>Ga verder met een andere vraag.</strong></div>
         <button className="primary-button" onClick={choose}>Volgende vraag <ArrowRight size={18} /></button>
       </div>}
     </>}
