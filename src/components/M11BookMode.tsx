@@ -34,7 +34,7 @@ export function M11BookMode({ lesson, completed, onBack, onComplete, onPractice,
         <p className="m11-book-kicker">M11 · studieboek</p>
         <div className="m11-book-title-row">
           <div className="m11-book-title-copy">
-            <p className="m11-book-paragraph">Paragraaf {chapter.paragraph}</p>
+            <p className="m11-book-paragraph">{chapter.paragraph}</p>
             <h1>{chapter.title}</h1>
             <p className="m11-book-goal">{chapter.goal}</p>
             <p className="m11-book-context">{chapter.contextNote}</p>
@@ -54,7 +54,7 @@ export function M11BookMode({ lesson, completed, onBack, onComplete, onPractice,
                 aria-current={item.lessonId === chapter.lessonId ? "page" : undefined}
                 onClick={() => onSelectLesson(item.lessonId)}
               >
-                <span className="m11-book-rail-number">P{item.paragraph}</span>
+                <span className="m11-book-rail-number">{item.paragraph}</span>
                 <span>{item.title}</span>
               </button>
             ))}
@@ -65,17 +65,12 @@ export function M11BookMode({ lesson, completed, onBack, onComplete, onPractice,
           <span>Hoofdstuk</span>
           <select value={chapter.lessonId} onChange={(event) => onSelectLesson(event.target.value)}>
             {m11BookChapters.map((item) => (
-              <option key={item.lessonId} value={item.lessonId}>P{item.paragraph} · {item.title}</option>
+              <option key={item.lessonId} value={item.lessonId}>{item.paragraph} · {item.title}</option>
             ))}
           </select>
         </label>
 
         <article className="m11-book-reading">
-          <section className="m11-book-theory-intro" aria-label="Leerdoel">
-            <h2>Wat leer je?</h2>
-            <p>{chapter.goal}</p>
-          </section>
-
           {chapter.theorySections.map((section) => (
             <section className="m11-book-theory" key={section.heading}>
               <h2>{section.heading}</h2>
@@ -99,6 +94,7 @@ export function M11BookMode({ lesson, completed, onBack, onComplete, onPractice,
             <ol>
               {chapter.workedExample.steps.map((step, index) => <li key={index}>{step}</li>)}
             </ol>
+            <p className="m11-book-example-answer"><strong>Antwoord</strong> {chapter.workedExample.answer}</p>
           </section>
 
           <section className="m11-book-exercises">
@@ -107,7 +103,7 @@ export function M11BookMode({ lesson, completed, onBack, onComplete, onPractice,
               <h2>Oefeningen</h2>
             </div>
             <ol className="m11-book-exercise-list">
-              {chapter.exercises.map((exercise) => (
+              {chapter.exercises.map((exercise, index) => (
                 <li className="m11-book-exercise" key={exercise.id}>
                   <p className="m11-book-source-ref">Bronselectie: {exercise.sourceRefs.join(" · ")}</p>
                   <p className="m11-book-question">{exercise.question}</p>
@@ -137,7 +133,7 @@ export function M11BookMode({ lesson, completed, onBack, onComplete, onPractice,
             <h2>Na deze paragraaf kan ik…</h2>
             <ul>
               {chapter.checklist.map((item) => {
-                const key = chapter.id + ":" + item;
+                const key = chapter.lessonId + ":" + item;
                 return (
                   <li key={key}>
                     <label>
@@ -156,7 +152,7 @@ export function M11BookMode({ lesson, completed, onBack, onComplete, onPractice,
 
           {chapter.optionalNote && (
             <aside className="m11-book-optional">
-              <h2>Verdieping</h2>
+              <h2>Scope</h2>
               <p>{chapter.optionalNote}</p>
             </aside>
           )}
