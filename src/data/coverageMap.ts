@@ -9,6 +9,7 @@ export const coverageMap: Record<ModuleId, string[]> = {
   M8: learningObjectives.filter((objective) => objective.module === "M8").map((objective) => objective.id),
   M9: learningObjectives.filter((objective) => objective.module === "M9").map((objective) => objective.id),
   M10: learningObjectives.filter((objective) => objective.module === "M10").map((objective) => objective.id),
+  M11: learningObjectives.filter((objective) => objective.module === "M11").map((objective) => objective.id),
 };
 
 export const coverageSummary = (module?: ModuleId) => learningObjectives.filter((objective) => !module || objective.module === module).reduce((summary, objective) => {

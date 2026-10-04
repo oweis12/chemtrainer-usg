@@ -85,7 +85,7 @@ export function VisualAssetAudit() {
       <label className="visual-module-filter">Module
         <select value={module} onChange={(event) => setModule(event.target.value as ModuleId | "all")}>
           <option value="all">Alle modules</option>
-          {(["M4", "M5D", "M6", "M7", "M8", "M9", "M10"] as ModuleId[]).map((id) => <option key={id} value={id}>{id}</option>)}
+          {(["M4", "M5D", "M6", "M7", "M8", "M9", "M10", "M11"] as ModuleId[]).map((id) => <option key={id} value={id}>{id}</option>)}
         </select>
       </label>
 

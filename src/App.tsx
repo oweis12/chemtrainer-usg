@@ -39,6 +39,7 @@ export function App() {
   const [activePage, setActivePage] = useState<AppPage>("home");
   const [profileSession, setProfileSession] = useState<ProfileSession>(loadProfileSession);
   const [practiceSeed, setPracticeSeed] = useState<string | null>(null);
+  const [continueLessonId, setContinueLessonId] = useState<string | null>(null);
   const [rewardToasts, setRewardToasts] = useState<RewardToastMessage[]>([]);
 
   const activeProfile = profileSession.profiles.find((profile) => profile.id === profileSession.activeProfileId) ?? profileSession.profiles[0];
@@ -126,6 +127,7 @@ export function App() {
         onComplete={completeLesson}
         onPractice={practiceModule}
         onTitrationLab={() => setActivePage("titrationlab")}
+        initialLessonId={continueLessonId}
       />
     );
   } else if (activePage === "practice") {
@@ -169,14 +171,20 @@ export function App() {
       />
     );
   } else {
-    page = <Home progress={progress} onNavigate={navigate} />;
+    page = <Home progress={progress} onNavigate={navigate} onContinueLearning={(lessonId) => {
+      setContinueLessonId(lessonId);
+      setActivePage("learn");
+    }} />;
   }
 
   return (
     <>
       <Layout
         activePage={activePage}
-        onNavigate={navigate}
+        onNavigate={(page) => {
+          setContinueLessonId(null);
+          navigate(page);
+        }}
         theme={progress.theme}
         onToggleTheme={toggleTheme}
         activeProfile={activeProfile}

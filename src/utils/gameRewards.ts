@@ -123,7 +123,7 @@ function unlockAchievementBatch(profile: LocalProfile) {
     grants.push(...resolution.grants);
   }
 
-  (["M4", "M5D", "M6", "M7", "M8", "M9", "M10"] as Array<Question["module"]>).forEach((moduleId) => {
+  (["M4", "M5D", "M6", "M7", "M8", "M9", "M10", "M11"] as Array<Question["module"]>).forEach((moduleId) => {
     const achievementId = `module-complete-${moduleId}`;
     if (hasCompletedModule(next, moduleId) && !next.game.achievements.includes(achievementId)) {
       const resolution = withAchievement(next, achievementId, `Achievement: alle lessen van ${moduleId} afgerond`, 100);

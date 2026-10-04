@@ -9,6 +9,7 @@ import { curriculumGapQuestions } from "./curriculumGapQuestions";
 import { figureQuestions } from "./figureQuestions";
 import { massSpecMasteryQuestions } from "./massSpecMasteryQuestions";
 import { enhanceQuestion } from "../utils/questionEnhancements";
+import { m11Questions } from "./m11Questions";
 
 type Draft = Omit<Question, "rubric" | "hints" | "commonMistakes" | "explanation"> & Partial<Pick<Question, "rubric" | "hints" | "commonMistakes" | "explanation">>;
 
@@ -158,6 +159,7 @@ const baseQuestions: Question[] = [
   ...structureBuildQuestions,
   ...coverageQaQuestions,
   ...figureQuestions,
+  ...m11Questions,
 ];
 
 const replacementById = new Map(qualityReplacementQuestions.map((question) => [question.id, question]));

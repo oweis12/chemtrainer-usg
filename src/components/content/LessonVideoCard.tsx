@@ -3,9 +3,9 @@ import type { LessonVideo } from "../../data/lessonVideoRegistry";
 
 import { usePrivacy } from "../PrivacyConsent";
 
-export function LessonVideoCard({ video }: { video: LessonVideo }) {
+export function LessonVideoCard({ video, scopeNote }: { video: LessonVideo; scopeNote?: string }) {
   const { media, openSettings } = usePrivacy();
-  const linkHref = video.youtubeUrl ?? video.exactUrl;
+  const linkHref = video.source === "exact-wat-je-zoekt" ? video.exactUrl : video.youtubeUrl ?? video.exactUrl;
   const linkLabel = video.source === "youtube"
     ? "Open op YouTube"
     : video.source === "exact-wat-je-zoekt"
@@ -17,10 +17,11 @@ export function LessonVideoCard({ video }: { video: LessonVideo }) {
       <div className="lesson-video-copy">
         <div className="lesson-video-icon"><PlayCircle size={24} weight="duotone" /></div>
         <div>
-          <p className="lesson-video-lead">Liever een korte uitlegvideo? Deze video sluit aan bij dit onderwerp.</p>
+          <p className="lesson-video-lead">Korte video ter aanvulling.</p>
           <h3>{video.title}</h3>
           <p>{video.summary}</p>
           <p className="lesson-video-match"><strong>Waarom deze?</strong> {video.whyThisVideo}</p>
+          {scopeNote && <p className="lesson-video-scope">{scopeNote}</p>}
           <span>{video.providerName}</span>
         </div>
       </div>

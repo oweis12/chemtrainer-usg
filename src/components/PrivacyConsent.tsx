@@ -34,7 +34,7 @@ export function PrivacyProvider({ children }: { children: ReactNode }) {
       <span className="section-kicker">Jouw privacy</span>
       <h2 id="privacy-title">Cookies en externe diensten</h2>
       <p>Je profiel, antwoorden en voortgang blijven in deze browser. Deze lokale opslag is nodig om je werk te bewaren.</p>
-      <p>Met jouw toestemming laden we bezoekstatistieken van Vercel en video's van YouTube. YouTube kan cookies plaatsen en ontvangt bij het laden onder meer je IP-adres. Je kunt ook zonder deze diensten oefenen.</p>
+      <p>Vercel Analytics en ingesloten YouTube-video's staan standaard uit. Als je ze toestaat, laden we die diensten in ChemTrainer. YouTube ontvangt bij het insluiten onder meer je IP-adres. Een link naar Exact of YouTube opent alleen wanneer je erop klikt en gaat dan rechtstreeks naar die aanbieder.</p>
       <div className="privacy-choices">
         <label><input type="checkbox" checked={analytics} onChange={e => setAnalytics(e.target.checked)} /> Bezoekstatistieken (Vercel)</label>
         <label><input type="checkbox" checked={media} onChange={e => setMedia(e.target.checked)} /> Externe video's (YouTube)</label>
@@ -44,7 +44,8 @@ export function PrivacyProvider({ children }: { children: ReactNode }) {
         <button className="secondary-button" onClick={() => save({ analytics, media })}>Keuze opslaan</button>
         <button className="secondary-button" onClick={() => save({ analytics: true, media: true })}>Alles toestaan</button>
       </div>
-      <small>Je kunt je keuze altijd wijzigen via Cookie-instellingen onderaan de pagina.</small>
+      <a className="privacy-policy-link" href="/privacy.html" target="_blank" rel="noreferrer">Lees de privacyverklaring</a>
+      <small>Je kunt je keuze altijd wijzigen via Cookie-instellingen onderaan de pagina. Weigeren heeft geen invloed op lessen of oefenen.</small>
     </section>}
   </PrivacyContext.Provider>;
 }

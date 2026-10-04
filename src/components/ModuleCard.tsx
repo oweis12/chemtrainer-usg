@@ -1,4 +1,4 @@
-import { ArrowRight, WarningCircle } from "@phosphor-icons/react";
+import { ArrowRight } from "@phosphor-icons/react";
 import type { ChemistryModule } from "../types";
 import { ProgressBar } from "./ProgressBar";
 
@@ -17,7 +17,6 @@ export function ModuleCard({ module, score, attempts, onOpen }: ModuleCardProps)
       <p>{module.subtitle}</p>
       <div className="module-scoreline"><span>{attempts ? `${score}% beheerst` : "nog niet geoefend"}</span><span>{attempts} vragen</span></div>
       <ProgressBar value={attempts ? score : 0} tone={module.accent} compact />
-      {score < 60 && attempts > 0 && <span className="weak-chip"><WarningCircle size={14} /> aandachtspunt</span>}
     </button>
   );
 }

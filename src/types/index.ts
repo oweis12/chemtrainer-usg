@@ -1,4 +1,4 @@
-export type ModuleId = "M4" | "M5D" | "M6" | "M7" | "M8" | "M9" | "M10";
+export type ModuleId = "M4" | "M5D" | "M6" | "M7" | "M8" | "M9" | "M10" | "M11";
 export type ThemeMode = "light" | "dark";
 
 export type QuestionType = "mcq" | "open" | "calculation" | "steps" | "order" | "mixed" | "structure" | "structure_view" | "structure_click" | "structure_build" | "structure_complete";
@@ -85,6 +85,8 @@ export interface Lesson {
   miniCheck: Array<{ question: string; answer: string }>;
   imageSlots?: string[];
   videoIds?: string[];
+  videoScopeNote?: string;
+  optionalTheory?: string[];
 }
 
 export interface FigureExplanation {
@@ -262,7 +264,7 @@ export interface ShopItem {
   cosmeticSlot: "pet" | "badge" | "theme" | "effect" | "avatar";
 }
 
-export type AppPage = "home" | "learn" | "practice" | "test" | "mistakes" | "structurelab" | "titrationlab" | "binas" | "coverage" | "visualaudit" | "rewards";
+export type AppPage = "home" | "learn" | "practice" | "test" | "mistakes" | "structurelab" | "titrationlab" | "binas" | "coverage" | "visualaudit" | "rewards" | "privacy";
 export type TestKind = "official" | "officialPractice" | "random" | "challenge" | "priority" | "learningObjectives";
 
 export type TitrationTaskType = "molariteit" | "massa-aandeel" | "volume-aflezen" | "procedure";

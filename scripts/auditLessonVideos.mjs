@@ -6,8 +6,11 @@ import ts from "typescript";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const tmpDir = await fs.mkdtemp(path.join(os.tmpdir(), "chemtrainer-video-audit-"));
+const transpiledPaths = new Map();
 
-async function importTs(relativePath) {
+async function transpileTs(relativePath) {
+  const normalizedPath = path.normalize(relativePath);
+  if (transpiledPaths.has(normalizedPath)) return transpiledPaths.get(normalizedPath);
   const sourcePath = path.join(root, relativePath);
   const source = await fs.readFile(sourcePath, "utf8");
   const output = ts.transpileModule(source, {
@@ -19,8 +22,32 @@ async function importTs(relativePath) {
     },
     fileName: sourcePath,
   });
-  const outputPath = path.join(tmpDir, `${path.basename(relativePath, ".ts")}-${Date.now()}-${Math.random().toString(16).slice(2)}.mjs`);
-  await fs.writeFile(outputPath, output.outputText, "utf8");
+  const outputPath = path.join(tmpDir, normalizedPath.replace(/\.ts$/, ".mjs"));
+  transpiledPaths.set(normalizedPath, outputPath);
+  await fs.mkdir(path.dirname(outputPath), { recursive: true });
+
+  let outputText = output.outputText;
+  const imports = [...outputText.matchAll(/from\s+(["'])(\.{1,2}\/[^"']+)\1/g)];
+  for (const [, quote, specifier] of imports) {
+    const dependencyPath = path.resolve(path.dirname(sourcePath), `${specifier}.ts`);
+    try {
+      await fs.access(dependencyPath);
+    } catch {
+      continue;
+    }
+    const dependencyRelativePath = path.relative(root, dependencyPath);
+    const dependencyOutputPath = await transpileTs(dependencyRelativePath);
+    let outputSpecifier = path.relative(path.dirname(outputPath), dependencyOutputPath).split(path.sep).join("/");
+    if (!outputSpecifier.startsWith(".")) outputSpecifier = `./${outputSpecifier}`;
+    outputText = outputText.replaceAll(`${quote}${specifier}${quote}`, `${quote}${outputSpecifier}${quote}`);
+  }
+
+  await fs.writeFile(outputPath, outputText, "utf8");
+  return outputPath;
+}
+
+async function importTs(relativePath) {
+  const outputPath = await transpileTs(relativePath);
   return import(pathToFileURL(outputPath).href);
 }
 

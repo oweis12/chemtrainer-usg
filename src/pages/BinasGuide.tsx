@@ -7,7 +7,7 @@ import type { ModuleId } from "../types";
 
 type GuideMode = "guide" | "practice";
 
-const modules: Array<ModuleId | "all"> = ["all", "M4", "M6", "M7", "M8", "M9", "M10"];
+const modules: Array<ModuleId | "all"> = ["all", "M4", "M6", "M7", "M8", "M9", "M10", "M11"];
 
 export function BinasGuide() {
   const [mode, setMode] = useState<GuideMode>("guide");

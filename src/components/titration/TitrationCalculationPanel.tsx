@@ -22,9 +22,9 @@ interface TitrationCalculationPanelProps {
 
 export function TitrationCalculationPanel({ simulation, usedVolumeMl, expected, inputs, checked, titrantMolOk, molarityOk, massPercentageOk, onChange, onCheck }: TitrationCalculationPanelProps) {
   const showMass = simulation.taskType === "massa-aandeel";
-  return <section className="titration-panel">
+  return <section className="titration-console-section titration-calculation-panel">
     <span className="section-kicker">Berekening</span>
-    <h2>Reken met je eigen gemeten volume.</h2>
+    <h3>Reken met je gemeten volume</h3>
     <p className="calculation-used-volume">Gebruikt volume titrant: <strong>{usedVolumeMl === null ? "nog niet bepaald" : `${usedVolumeMl.toFixed(2)} mL`}</strong></p>
     <ol className="calculation-help">
       <li>Bereken hoeveel mol {simulation.titrantName} heeft gereageerd.</li>

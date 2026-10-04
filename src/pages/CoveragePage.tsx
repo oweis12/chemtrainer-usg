@@ -38,7 +38,7 @@ export function CoveragePage({ onVisualAudit }: { onVisualAudit: () => void }) {
       <div><CheckCircle size={24} weight="duotone" /><strong>{summary.beheerst}</strong><span>beheerst</span></div>
     </section>
     <section className="coverage-filter">
-      <label>Module<select value={module} onChange={(event) => setModule(event.target.value as ModuleId | "all")}><option value="all">Alle modules</option>{(["M4", "M5D", "M6", "M7", "M8", "M9", "M10"] as ModuleId[]).map((id) => <option key={id} value={id}>{id}</option>)}</select></label>
+      <label>Module<select value={module} onChange={(event) => setModule(event.target.value as ModuleId | "all")}><option value="all">Alle modules</option>{(["M4", "M5D", "M6", "M7", "M8", "M9", "M10", "M11"] as ModuleId[]).map((id) => <option key={id} value={id}>{id}</option>)}</select></label>
       <p>Kies een module en vink leerdoelen af zodra je ze echt beheerst. Gebruik de lessen en vragen als routekaart: eerst begrijpen, dan oefenen, dan afvinken.</p>
     </section>
     <section className="coverage-qa-strip">

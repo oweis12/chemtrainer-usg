@@ -1,5 +1,6 @@
 import type { ChemistryModule, Lesson } from "../types";
 import { curriculumGapLessons } from "./curriculumGapLessons";
+import { m11Lessons } from "./m11Lessons";
 
 export const modules: ChemistryModule[] = [
   { id: "M4", shortLabel: "M4", title: "Formules & kwantitatief", subtitle: "Van formule naar hoeveelheid stof", accent: "blue", topics: ["elemententheorie", "chemische formules", "mol", "molmassa", "concentratie", "massa%", "reactievergelijkingen"] },
@@ -9,6 +10,7 @@ export const modules: ChemistryModule[] = [
   { id: "M8", shortLabel: "M8", title: "Wetenschap & analysetechnieken", subtitle: "Atomen meten en stoffen herkennen", accent: "blue", topics: ["isotopen", "massaspectrometrie", "GC-MS", "IR", "NMR", "atoommodel"] },
   { id: "M9", shortLabel: "M9", title: "Deeltjesmodellen & bindingen", subtitle: "Structuur verklaart eigenschappen", accent: "green", topics: ["atoombinding", "polariteit", "dipolen", "intermoleculaire krachten", "hydrofiel", "materialen"] },
   { id: "M10", shortLabel: "M10", title: "Evenwicht, zuur-base & titratie", subtitle: "Rekenen en verklaren bij titraties", accent: "amber", topics: ["zuur-base", "titratie", "equivalentiepunt", "indicator", "n = c × V", "massa%", "foutenanalyse"] },
+  { id: "M11", shortLabel: "M11", title: "Evenwichten & modellen", subtitle: "Evenwicht, buffers, pigmenten, complexen, radicalen, spectra en binding", accent: "blue", topics: ["Kv", "Ks", "Kw", "aminozuren", "buffers", "pigmenten", "complex-ionen", "radicalen", "polymeren", "atoommodel", "spectra", "binding"] },
 ];
 
 const baseLessons: Lesson[] = [
@@ -1451,10 +1453,6 @@ const lessonVideoIdsByLessonId: Record<string, string[]> = {
   "m8-ms-hoe-leid-je-molecuul-af": ["youtube-m8-ms-general"],
   "m8-gc-ms-combineren": ["youtube-m8-ms-applications"],
   "m8-ms-examenvragen-aanpak": ["youtube-m8-ms-exam-approach"],
-  "m8-analyse-overzicht": ["youtube-m8-spectroscopy-overview"],
-  "m8-ir-spectrum": ["youtube-m8-ir-reading"],
-  "m8-nmr-structuur": ["youtube-m8-nmr-basics"],
-  "m8-combineer-ms-ir-nmr": ["youtube-m8-combination-spectra"],
   "m9-atoombinding": ["exact-atoombinding-vorming"],
   "m9-ionbinding": ["exact-drie-soorten-stoffen"],
   "m9-metaalbinding": ["exact-drie-soorten-stoffen"],
@@ -1462,10 +1460,7 @@ const lessonVideoIdsByLessonId: Record<string, string[]> = {
   "m9-intermoleculair": ["exact-polair-apolair-hbrug"],
   "m9-oplossen-reactiesnelheid": ["exact-micro-meso-macro"],
   "m9-oplosbaarheid-formule-herkennen": ["exact-micro-meso-macro"],
-  "m9-hydratatie-ion-dipool": ["youtube-m9-hydration-water"],
-  "m9-hydrofoob-hydrofiel-zeep": ["youtube-m9-soap-emulsion"],
   "m9-kookpunt-bindingen": ["exact-polair-apolair-hbrug"],
-  "m9-reactiesnelheid-verbeteren": ["youtube-m9-collision-model"],
   "m10-titratie": ["exact-molschema"],
   "m10-zuur-base-evenwicht": ["exact-evenwichtsreacties"],
   "m10-elektrochemie-duurzaamheid": ["exact-waterstofbrandstofcel"],
@@ -1478,16 +1473,27 @@ const lessonVideoIdsByLessonId: Record<string, string[]> = {
   "m10-evenwicht-zwakke-zuren": ["exact-evenwichtsreacties"],
   "m10-elektrochemie-cellen": ["exact-elektrochemische-cel"],
   "m10-duurzaamheid-rekenen": ["exact-e-factor"],
-  "m10-sterk-zwak-zuur-base-binas": ["youtube-m10-binas-49"],
-  "m10-zuur-base-reactievergelijkingen": ["youtube-m10-reactions-acid-base"],
-  "m10-titratie-principe": ["youtube-m10-titration-principle"],
-  "m10-titratiecurve": ["youtube-m10-titration-curve"],
-  "m10-titratie-vraagtypes": ["youtube-m10-titration-exercises"],
+  "m11-p1-evenwichten": ["exact-evenwichtsreacties"],
+  "m11-p2-aminozuren-buffers": ["exact-ph-betekenis"],
+  "m11-p3-verf": ["exact-ionen-neerslagreacties"],
+  "m11-p4-complexen": ["exact-ionen-neerslagreacties"],
+  "m11-p5-verfdrogen": ["youtube-m11-p5-radical-chain-reaction"],
+  "m11-p6-atoommodel": ["exact-atoom-bouw"],
+};
+
+const lessonVideoScopeNotesByLessonId: Record<string, string> = {
+  "m11-p1-evenwichten": "De video behandelt het basisidee van evenwicht. Kv, Ks, Kw en de bijbehorende berekeningen oefen je met de uitleg en voorbeelden in deze les.",
+  "m11-p2-aminozuren-buffers": "De video licht de betekenis van pH toe. Aminozuren, peptidebindingen en bufferrekenen worden in deze les uitgelegd.",
+  "m11-p3-verf": "De video behandelt ionen aantonen en neerslagreacties. Pigmenten en de beperkingen van kleurwaarnemingen komen in deze les aan bod.",
+  "m11-p4-complexen": "De video laat zien hoe neerslagreacties vrije ionen aantonen. In deze les koppel je dat aan de invloed van complexvorming op de hoeveelheid vrij metaalion; ligandbinding zelf staat hierboven uitgelegd.",
+  "m11-p5-verfdrogen": "De video ondersteunt rechtstreeks de fasen van een radicale kettingreactie: initiatie, propagatie en terminatie. De les behandelt daarnaast fysisch versus chemisch drogen, het botsende-deeltjesmodel, foton- en bindingsenergie, additie en polyadditie, en netwerkpolymeren.",
+  "m11-p6-atoommodel": "De video behandelt de kern en elektronen van een atoom. Spectra en bindingen vragen aanvullende uitleg in deze les.",
 };
 
 const attachLessonVideo = (lesson: Lesson): Lesson => ({
   ...lesson,
   ...(lessonVideoIdsByLessonId[lesson.id] ? { videoIds: lessonVideoIdsByLessonId[lesson.id] } : {}),
+  ...(lessonVideoScopeNotesByLessonId[lesson.id] ? { videoScopeNote: lessonVideoScopeNotesByLessonId[lesson.id] } : {}),
 });
 
 export const lessons: Lesson[] = [
@@ -1497,4 +1503,5 @@ export const lessons: Lesson[] = [
   ...supplementalLessons.filter((lesson) => !supersededMassSpecLessonIds.has(lesson.id)),
   ...curriculumGapLessons,
   ...massSpecMasterclassLessons,
+  ...m11Lessons,
 ].map(attachLessonVideo);

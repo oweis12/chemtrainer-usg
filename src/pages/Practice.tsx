@@ -18,7 +18,7 @@ interface PracticeProps {
 type PracticeLevel = PracticeFilter["level"];
 type PracticeSource = NonNullable<PracticeFilter["source"]>;
 
-const moduleIds: ModuleId[] = ["M4", "M5D", "M6", "M7", "M8", "M9", "M10"];
+const moduleIds: ModuleId[] = ["M4", "M5D", "M6", "M7", "M8", "M9", "M10", "M11"];
 
 function levelMatches(question: Question, level: PracticeLevel) {
   if (level === "basis") return question.level <= 2;
