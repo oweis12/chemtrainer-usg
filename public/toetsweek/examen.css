@@ -1,0 +1,53 @@
+
+.exam-nav-link{border:1px solid transparent;background:transparent;border-radius:10px;color:#9cabb9;padding:11px 12px;display:flex;gap:13px;text-align:left;align-items:center;font-weight:600;width:100%;font-size:14px}
+.exam-nav-link:hover{background:#182535;color:var(--text)}
+.exit-exam{display:grid;place-items:center;text-decoration:none;font-size:20px}
+.exam-two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:30px 0}
+.exam-feature{border:1px solid var(--line);background:#132232;border-radius:18px;padding:28px;display:flex;flex-direction:column;align-items:flex-start;min-height:313px}
+.exam-feature.featured{border-color:#587466;background:linear-gradient(145deg,#1d383b,#132130)}
+.exam-feature .eyebrow{margin-bottom:14px}
+.exam-feature h2{font:600 27px/1.14 'Space Grotesk';letter-spacing:-.045em;margin:0 0 14px}
+.exam-feature p{font-size:13px;color:#b2c6d4;flex:1;margin:0 0 20px}
+.exam-feature footer{color:#8aa3b4;font-size:11px;margin:13px 0 0}
+.exam-rule{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:25px 0}
+.exam-rule div{border:1px solid #34495b;padding:17px;border-radius:12px;font-size:12px;color:#b0c5d4;background:#142331}
+.exam-rule strong{display:block;color:#e6f2f5;font-size:13px;margin-bottom:7px}
+.exam-primary{background:#a7edcf;color:#10251d;border:0;border-radius:10px;padding:13px 20px;font-weight:800;font-size:13px}
+.exam-secondary{background:#1f3442;color:#d3e5ec;border:1px solid #54717a;border-radius:10px;padding:12px 17px;font-weight:700;font-size:12px}
+.exam-button-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.exam-detail{font-size:11px;color:#8ea7b9;margin-top:12px}
+.exam-card{background:#152635;border:1px solid #315061;border-radius:18px;padding:27px;margin-top:23px}
+.exam-timer{font:600 24px 'Space Grotesk';font-variant-numeric:tabular-nums;color:#a7edcf}
+.exam-navigation{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:22px;color:#91a9bc;font-size:12px}
+.exam-progress{height:6px;background:#24394a;border-radius:4px;margin-bottom:28px;overflow:hidden}.exam-progress i{display:block;height:100%;background:#a7edcf}
+.exam-context{background:#0e1c28;border-left:3px solid #4d8e84;border-radius:7px;padding:17px 18px;color:#c0d2dc;margin:21px 0;font-size:14px;white-space:pre-wrap}
+.exam-question{font:500 clamp(19px,2.6vw,26px)/1.4 'Space Grotesk';margin:22px 0}
+.exam-card textarea{width:100%;height:200px;resize:vertical;border:1px solid #4f7180;background:#0a1925;color:#e7f3f7;padding:16px 18px;border-radius:11px;font-size:14px;line-height:1.6}
+.exam-card textarea:focus-visible{outline-color:var(--accent)}
+.exam-sublabel{color:#88a4b6;font-size:11px;margin:8px 0 20px}
+.exam-input-nav{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-top:22px}
+.exam-source-list{display:grid;gap:11px;margin:25px 0}
+.exam-source-row{border:1px solid #314c5a;border-radius:13px;padding:18px 21px;background:#122231;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.exam-source-row b{font-size:14px;display:block}.exam-source-row span{color:#91aabb;font-size:12px;display:block;margin-top:5px}
+.exam-external{color:#a7edcf;text-decoration:underline;text-underline-offset:3px;font-size:13px;font-weight:600}
+.exam-flag{color:#e9aa80;font-size:12px;font-weight:700}
+.exam-score{font:600 clamp(40px,7vw,64px) 'Space Grotesk';letter-spacing:-.06em;line-height:1.2}
+.exam-score small{font-size:18px;color:#89a8b1;letter-spacing:0}
+.exam-scorecard{border:1px solid #365263;background:#162938;padding:22px;border-radius:16px;margin:20px 0}
+.exam-review{border:1px solid #345263;border-radius:17px;padding:23px;margin:17px 0;background:#12212f}
+.exam-review h3{font:600 18px 'Space Grotesk';margin:0 0 10px}
+.exam-answer{white-space:pre-wrap;border:1px solid #284757;border-radius:9px;background:#0c1c29;padding:15px;font-size:13px;color:#d9e8ed;margin:13px 0}
+.exam-answer.empty{color:#7893a6}
+.exam-model{background:#1c3435;border:1px solid #3a6b61;border-radius:11px;padding:15px;margin:17px 0;color:#cce7dc;font-size:13px;white-space:pre-wrap}
+.exam-point{display:flex;gap:12px;align-items:flex-start;border-top:1px solid #2a4352;padding:12px 1px;font-size:13px;color:#c8dbe3}
+.exam-point input{margin-top:3px;accent-color:#a7edcf;transform:scale(1.15)}
+.exam-marked{font-size:12px;color:#8eacbd}
+.exam-marks{color:#a7edcf;font:600 19px 'Space Grotesk'}
+.exam-section-label{color:#a7edcf;font-size:11px;letter-spacing:.13em;font-weight:700}
+.exam-note{color:#8fa9ba;font-size:12px;margin:14px 0;line-height:1.7}
+.exam-rule-plain{background:#1a292f;border-left:3px solid #bd9478;padding:14px 17px;margin:20px 0;font-size:12px;color:#d5c8be}
+.exam-type-label{font-size:11px;letter-spacing:.14em;color:#9fc1c9;font-weight:700}
+.exam-mode-pills{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:13px 0}
+.exam-pill{display:inline-flex;border:1px solid #426060;border-radius:999px;padding:5px 11px;color:#accdc3;font-size:10px;font-weight:700}
+.exam-continue{border:1px solid #314d5f;border-radius:11px;background:#152b3a;padding:17px 20px;margin:15px 0;display:flex;gap:20px;justify-content:space-between;align-items:center}
+@media(max-width:800px){.exam-two{grid-template-columns:1fr}.exam-feature{min-height:250px}.exam-rule{grid-template-columns:1fr}.exam-input-nav{flex-wrap:wrap}.exam-card{padding:19px}.exam-source-row{display:block}.exam-external{display:inline-block;margin-top:9px}.mobile-nav a{font-size:11px;padding:11px 7px;color:#a7edcf}}
