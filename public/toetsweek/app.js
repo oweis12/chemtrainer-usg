@@ -54,7 +54,7 @@ function renderStudy(){
  if(q.type==="choice"){
   body+='<label class="sr-only" for="answer-input">Jouw antwoord en uitleg</label><textarea id="answer-input" class="answer-text" placeholder="Schrijf het antwoord én de chemische reden op. Zonder antwoordopties." '+(feedback?"disabled":"")+'>'+esc(draft)+'</textarea><div class="unit-label">Volledig open vraag. Geen meerkeuzeopties; controleer pas na het inleveren.</div>';
  } else if(q.type==="number"){
-  body+='<label class="sr-only" for="answer-input">Jouw berekening of uitkomst</label><input id="answer-input" class="answer-input" autocomplete="off" placeholder="Jouw antwoord, bijv. 0,0050 of 5,0e-3" inputmode="decimal" value="'+esc(draft)+'" '+(feedback?"disabled":"")+'><div class="unit-label">Geef een waarde in '+esc(q.unit||"de aangegeven eenheid")+'. Schrijf berekenstappen op papier.</div>';
+  body+='<label class="sr-only" for="answer-input">Jouw berekening of uitkomst</label><input id="answer-input" class="answer-input" autocomplete="off" placeholder="Jouw antwoord, bijv. 0,0050 of 5,0e-3" inputmode="text" type="text" autocapitalize="off" spellcheck="false" value="'+esc(draft)+'" '+(feedback?"disabled":"")+'><div class="numeric-tools"><button type="button" data-action="insert-minus" aria-label="Voeg minteken toe">− negatief</button><button type="button" data-action="insert-exp" aria-label="Voeg maal tien tot de macht toe">×10^</button></div><div class="unit-label">Geef je antwoord in '+esc(q.unit||"de aangegeven eenheid")+'. Gebruik − of e-3 voor machten van tien. Schrijf berekenstappen op papier.</div>';
  } else {
   body+='<label class="sr-only" for="answer-input">Jouw uitleg</label><textarea id="answer-input" class="answer-text" placeholder="Schrijf eerst zelf 2–5 zinnen en gebruik je eigen woorden." '+(feedback?"disabled":"")+'>'+esc(draft)+'</textarea><div class="unit-label">Een open uitleg beoordeel je met de criteria, of vrijwillig met de AI-coach.</div>';
  }
@@ -74,7 +74,7 @@ function renderStudy(){
 function renderFeedback(q){
  var isExplain=q.type==="explain"||q.type==="choice",out='<div class="feedback '+(feedback.correct===false?"bad":"")+'">';
  if(isExplain&&!feedback.graded){
-  out+='<h3>Leg je antwoord naast de criteria.</h3><p>Je eigen antwoord staat vast. Markeer wat je daadwerkelijk hebt uitgelegd; wees streng.</p><div class="answer-reference">'+esc(q.answer)+'</div><div class="rubric">';
+  out+='<h3>Controleer jouw uitleg met het model.</h3><p>Dit is zelfcorrectie: vergelijk inhoud én de chemische reden; markeer alleen wat letterlijk in je antwoord staat.</p><div class="answer-reference"><strong>VERWACHT ANTWOORD</strong><div>'+esc(q.type==="choice"?q.options[q.answer]:q.answer)+'</div><p>'+esc(q.why)+'</p><div style="border-top:1px solid #3a5564;margin-top:10px;padding-top:12px"><strong>JOUW ANTWOORD</strong><div>'+esc(feedback.submittedAnswer||draft)+'</div></div></div><div class="rubric">';
   var rubric=q.type==="choice"?["Mijn eigen antwoord komt inhoudelijk overeen met het model.","Mijn uitleg bevat de juiste chemische reden."]:q.rubric;
   rubric.forEach(function(r,i){out+='<label><input type="checkbox" data-rubric="'+i+'"> '+esc(r)+'</label>'});
   out+='</div><div class="review-actions"><button class="secondary-btn" data-action="self-incomplete">Ik mis nog iets</button><button class="primary-btn" data-action="self-correct">Alle criteria aanwezig →</button></div>';
@@ -189,6 +189,7 @@ document.addEventListener("click",function(event){
  if(action==="finish-assessment"){state.mode="coach";state.focus=null;persist();screen="mission";render();return;}
  if(action==="choice"){chosen=Number(btn.dataset.value);render();return;}
  if(action==="hint"){if(state.mode==="assessment"){notify("Tijdens de nulmeting geen hints.");return;}hints=Math.min(2,hints+1);render();return;}
+ if(action==="insert-minus"||action==="insert-exp"){var input=document.getElementById("answer-input");if(!input||input.disabled)return;var added=action==="insert-minus"?"−":"×10^";var pos=input.selectionStart==null?input.value.length:input.selectionStart;var end=input.selectionEnd==null?pos:input.selectionEnd;input.value=input.value.slice(0,pos)+added+input.value.slice(end);draft=input.value;input.focus();input.setSelectionRange(pos+added.length,pos+added.length);return;}
  if(action==="submit"){handleSubmit();return;}
  if(action==="self-correct"){gradeSelf(true);return;}
  if(action==="self-incomplete"){gradeSelf(false);return;}
