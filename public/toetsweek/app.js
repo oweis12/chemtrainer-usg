@@ -33,12 +33,13 @@ function renderMission(){
  var missionText=assessmentFinished?"Je antwoorden zijn vastgelegd. Nu schakelen we over op opbouw: eerst voorkennis herstellen, dan toepassingen en transfer.":assess?"Begin bij "+pending+". Gebruik geen antwoordenboek. Een hint mag, maar telt niet als zelfstandige beheersing.":next?"Verder met "+pending+". De opdracht komt in de oorspronkelijke leerketen; je hoeft niets zelf uit het boek te selecteren.":"Alle 32 leerstappen zijn behandeld. Ga terug naar foutvragen of probeer de toetsmodus.";
  var action=assessmentFinished?'<button class="primary-btn" data-action="finish-assessment">Maak mijn leerroute →</button>':next?'<button class="primary-btn" data-action="start"> '+(assess?"Start de nulmeting":"Verder met mijn leerroute")+' →</button>':'<button class="primary-btn" data-action="exam">Start toetsvragen →</button>';
  var out=header("JOUW TOETSWEEK / 09—16 OKTOBER","Geen gokken.<br><em>Wel beheersen.</em>",intro);
+ out+='<section class="exam-link-banner"><span>NIEUW · EXAMENLAB</span><strong>Geen antwoordopties. Echte toetsvragen.</strong><p>12 open proeftoetsvragen of drie officiële vwo-examenvragen, met tijdsdruk en correctie pas na inleveren.</p><a class="primary-btn" href="/toetsweek/examen.html">Open Examenlab →</a></section>';
  if(!storageOK)out+='<div class="notice">Lokale opslag is niet beschikbaar. Exporteer je antwoorden voordat je dit venster sluit.</div>';
  out+='<div class="stats-grid"><div class="stat"><span>Vandaag actief</span><b id="time-used">'+timeLabel()+'</b><small>Richtlijn: maximaal 2 uur</small></div><div class="stat"><span>Zelfstandig beheerst</span><b>'+report.passed+' <small>/ '+report.total+'</small></b><small>Geen credits voor hints</small></div><div class="stat"><span>Opvolging nodig</span><b>'+report.weak.reduce(function(n,c){return n+c.mistakes},0)+'</b><small>Fouten & hulpgebruik</small></div></div>';
  out+='<section class="mission"><div class="mission-label">'+(assess?"FASE 01 · NULMETING":"FOCUS · GEPERSONALISEERDE ROUTE")+'</div><h2>'+esc(missionTitle)+'</h2><p>'+esc(missionText)+'</p><div class="button-row">'+action+'<button class="secondary-btn" data-nav="map">Bekijk de hele leerlijn</button></div></section>';
  out+='<div class="section-line"><h2>Wat er achter zit</h2><span>M10 §4/6 → M11 P1–P6</span></div><div class="track">';
  E.chapters.forEach(function(c){var m=E.mastery(state,c);out+='<div class="track-item"><div><b>'+esc(c.module)+'</b><small>'+esc(c.title)+'</small><div class="meter"><i style="width:'+m.percent+'%"></i></div></div><span class="track-value">'+m.percent+'%</span></div>'});
- out+='</div><p class="footnote">Deze percentages tonen de oefeningen in deze coach die zelfstandig goed zijn opgelost; ze voorspellen geen toetscijfer. De opdrachten zijn nieuw geschreven en volgen de begrippen en volgorde van je eigen methode.</p>';
+ out+='</div><p class="footnote">Open redeneringen worden door jouzelf nagekeken; percentages betekenen dus geen bewezen toetsbeheersing en voorspellen geen cijfer. De opdrachten zijn nieuw geschreven en volgen de begrippen en volgorde van je eigen methode.</p>';
  return out;
 }
 function renderStudy(){
@@ -51,8 +52,7 @@ function renderStudy(){
  body+='<div class="progress-tiny"><span style="width:'+((position+1)/chapter.tasks.length*100)+'%"></span></div>';
  body+='<section class="problem-box"><div class="problem-type">'+esc(q.tier)+' · '+(q.type==="choice"?"REDENEREN":q.type==="number"?"BEREKENEN":"UITLEGGEN")+'</div><h2>'+esc(q.stem)+'</h2>';
  if(q.type==="choice"){
-  body+='<div class="options" role="radiogroup" aria-label="Antwoordopties">';
-  q.options.forEach(function(o,i){body+='<button class="option '+(chosen===i?"active":"")+'" data-action="choice" data-value="'+i+'" aria-pressed="'+(chosen===i)+'" '+(feedback?"disabled":"")+'><span class="optletter">'+String.fromCharCode(65+i)+'</span><span>'+esc(o)+'</span></button>'});body+='</div>';
+  body+='<label class="sr-only" for="answer-input">Jouw antwoord en uitleg</label><textarea id="answer-input" class="answer-text" placeholder="Schrijf het antwoord én de chemische reden op. Zonder antwoordopties." '+(feedback?"disabled":"")+'>'+esc(draft)+'</textarea><div class="unit-label">Volledig open vraag. Geen meerkeuzeopties; controleer pas na het inleveren.</div>';
  } else if(q.type==="number"){
   body+='<label class="sr-only" for="answer-input">Jouw berekening of uitkomst</label><input id="answer-input" class="answer-input" autocomplete="off" placeholder="Jouw antwoord, bijv. 0,0050 of 5,0e-3" inputmode="decimal" value="'+esc(draft)+'" '+(feedback?"disabled":"")+'><div class="unit-label">Geef een waarde in '+esc(q.unit||"de aangegeven eenheid")+'. Schrijf berekenstappen op papier.</div>';
  } else {
@@ -60,29 +60,30 @@ function renderStudy(){
  }
  if(!feedback){
    if(hints)body+='<div class="hint-box"><strong>HINT '+hints+'/2</strong><div>'+esc(q.hints[hints-1])+'</div></div>';
-   body+='<div class="problem-actions"><button class="hint-link" data-action="hint" '+(hints>=2?"disabled":"")+'>◇ '+(hints===0?"Geef me een kleine hint":hints===1?"Nog één hint":"Geen hints over")+'</button><button class="primary-btn" data-action="submit">'+(q.type==="explain"?"Vergelijk met criteria":"Controleer mijn antwoord")+' →</button></div>';
+   body+='<div class="problem-actions"><button class="hint-link" data-action="hint" '+(hints>=2||isAssess?"disabled":"")+'>◇ '+(hints===0?"Geef me een kleine hint":hints===1?"Nog één hint":"Geen hints over")+'</button><button class="primary-btn" data-action="submit">'+(q.type==="explain"?"Vergelijk met criteria":"Controleer mijn antwoord")+' →</button></div>';
  }else{
    body+=renderFeedback(q);
  }
  var method=chapter.methodSteps[Math.min(chapter.methodSteps.length-1, Math.floor(position/Math.ceil(chapter.tasks.length/chapter.methodSteps.length)))];
  body+='<div class="method-cue"><div class="method-cue-heading"><span>OPBOUW IN JE EIGEN BOEK</span><strong>§'+esc(method.sections)+'</strong></div><p>'+esc(method.instruction)+'</p><small>'+esc(method.goal)+'</small></div>';
  body+='<div class="source-note"><span>BRONLEERLIJN · '+esc(q.source)+'</span><span>'+esc(chapter.concepts.join(" / "))+'</span></div></section>';
- if(!feedback)body+='<p class="footnote">Alleen een correct antwoord zonder hints telt als zelfstandige beheersing. Het originele boekje blijft de leidraad; deze vragen zijn nieuwe, parallelle oefenvragen.</p>';
+ if(!feedback)body+='<p class="footnote">Getallen worden automatisch gecontroleerd, maar open verklaringen controleer je zelf. De nulmeting heeft geen hints. Gebruik het Examenlab voor een proeftoets.</p>';
  body+='</div>';
  return body;
 }
 function renderFeedback(q){
- var isExplain=q.type==="explain",out='<div class="feedback '+(feedback.correct===false?"bad":"")+'">';
+ var isExplain=q.type==="explain"||q.type==="choice",out='<div class="feedback '+(feedback.correct===false?"bad":"")+'">';
  if(isExplain&&!feedback.graded){
   out+='<h3>Leg je antwoord naast de criteria.</h3><p>Je eigen antwoord staat vast. Markeer wat je daadwerkelijk hebt uitgelegd; wees streng.</p><div class="answer-reference">'+esc(q.answer)+'</div><div class="rubric">';
-  q.rubric.forEach(function(r,i){out+='<label><input type="checkbox" data-rubric="'+i+'"> '+esc(r)+'</label>'});
+  var rubric=q.type==="choice"?["Mijn eigen antwoord komt inhoudelijk overeen met het model.","Mijn uitleg bevat de juiste chemische reden."]:q.rubric;
+  rubric.forEach(function(r,i){out+='<label><input type="checkbox" data-rubric="'+i+'"> '+esc(r)+'</label>'});
   out+='</div><div class="review-actions"><button class="secondary-btn" data-action="self-incomplete">Ik mis nog iets</button><button class="primary-btn" data-action="self-correct">Alle criteria aanwezig →</button></div>';
  }else{
   var valid=feedback.correct&&feedback.independent;
   out+='<h3>'+(valid?"Zelfstandig opgelost.":feedback.correct?"Goed antwoord, maar met hulp.":"Hier zit een leerkans.")+'</h3>';
   if(feedback.precisionIssue)out+='<p><strong>Significantie:</strong> de waarde klopt numeriek, maar het aantal decimalen of significante cijfers niet. Schrijf het antwoord opnieuw op met de juiste nauwkeurigheid.</p>';
   out+='<p>'+esc(q.why)+'</p>';
-  out+='<div class="answer-reference"><strong>Modelantwoord</strong><div>'+esc(q.displayAnswer|| (q.type==="choice"?q.options[q.answer]:q.answer))+'</div></div>';
+  out+='<div class="answer-reference"><strong>Modelantwoord</strong><div>'+esc(q.displayAnswer|| (q.type==="choice"?q.options[q.answer]+" — "+q.why:q.answer))+'</div></div>';
   if(!valid)out+='<p><strong>Belangrijk:</strong> dit onderdeel telt pas mee na een nieuwe zelfstandige poging. Schrijf voor jezelf op welke stap ontbrak.</p>';
   out+='<div class="review-actions"><button class="secondary-btn" data-action="retry">Bekijk deze stap opnieuw</button><button class="primary-btn" data-action="next">Verder volgens leerlijn →</button></div>';
  }
@@ -125,15 +126,17 @@ function render(){
 function track(correct,independent){
  if(!current)return;
  var now=new Date().toISOString();
- state.attempts.push({id:current.id,at:now,correct:!!correct,independent:!!independent,hints:hints,minutes:Math.max(1,Math.min(12,Math.ceil(spent/60)||3)),selfAssessed:current.type==="explain"});
+ state.attempts.push({id:current.id,at:now,correct:!!correct,independent:!!independent,hints:hints,minutes:Math.max(1,Math.min(12,Math.ceil(spent/60)||3)),selfAssessed:current.type==="explain"||current.type==="choice"});
  state.attempts=state.attempts.slice(-700);
  persist();
 }
 function handleSubmit(){
  var q=getTask();if(!q||feedback)return;
- if(q.type==="choice"){if(chosen===null){notify("Kies eerst een antwoord.");return;}draft=q.options[chosen];}
- else {var input=document.getElementById("answer-input");draft=input?input.value.trim():draft;if(!draft){notify("Schrijf eerst zelf je antwoord.");return;}}
- var result=E.evaluate(q,q.type==="choice"?chosen:draft);
+ var input=document.getElementById("answer-input");
+ draft=input?input.value.trim():draft;
+ if(!draft){notify("Schrijf eerst een eigen antwoord.");return;}
+ if(q.type==="choice"&&draft.length<12){notify("Leg ook de reden achter je antwoord uit.");return;}
+ var result=q.type==="choice"?{automatic:false,correct:null}:E.evaluate(q,draft);
  if(!result.automatic){feedback={graded:false,correct:null,independent:false,submittedAnswer:draft};render();return;}
  var independent=hints===0&&!seenRecently.has(q.id);
  feedback={graded:true,correct:result.correct,independent:independent&&result.correct,precisionIssue:!!result.precisionIssue,submittedAnswer:draft};
@@ -185,7 +188,7 @@ document.addEventListener("click",function(event){
  if(action==="start"){screen="study";if(!state.sessionStart)state.sessionStart=new Date().toISOString();setTask(E.choose(state));return;}
  if(action==="finish-assessment"){state.mode="coach";state.focus=null;persist();screen="mission";render();return;}
  if(action==="choice"){chosen=Number(btn.dataset.value);render();return;}
- if(action==="hint"){hints=Math.min(2,hints+1);render();return;}
+ if(action==="hint"){if(state.mode==="assessment"){notify("Tijdens de nulmeting geen hints.");return;}hints=Math.min(2,hints+1);render();return;}
  if(action==="submit"){handleSubmit();return;}
  if(action==="self-correct"){gradeSelf(true);return;}
  if(action==="self-incomplete"){gradeSelf(false);return;}
