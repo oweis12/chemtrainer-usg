@@ -80,6 +80,7 @@ function renderFeedback(q){
  }else{
   var valid=feedback.correct&&feedback.independent;
   out+='<h3>'+(valid?"Zelfstandig opgelost.":feedback.correct?"Goed antwoord, maar met hulp.":"Hier zit een leerkans.")+'</h3>';
+  if(feedback.precisionIssue)out+='<p><strong>Significantie:</strong> de waarde klopt numeriek, maar het aantal decimalen of significante cijfers niet. Schrijf het antwoord opnieuw op met de juiste nauwkeurigheid.</p>';
   out+='<p>'+esc(q.why)+'</p>';
   out+='<div class="answer-reference"><strong>Modelantwoord</strong><div>'+esc(q.displayAnswer|| (q.type==="choice"?q.options[q.answer]:q.answer))+'</div></div>';
   if(!valid)out+='<p><strong>Belangrijk:</strong> dit onderdeel telt pas mee na een nieuwe zelfstandige poging. Schrijf voor jezelf op welke stap ontbrak.</p>';
@@ -135,7 +136,7 @@ function handleSubmit(){
  var result=E.evaluate(q,q.type==="choice"?chosen:draft);
  if(!result.automatic){feedback={graded:false,correct:null,independent:false,submittedAnswer:draft};render();return;}
  var independent=hints===0&&!seenRecently.has(q.id);
- feedback={graded:true,correct:result.correct,independent:independent&&result.correct,submittedAnswer:draft};
+ feedback={graded:true,correct:result.correct,independent:independent&&result.correct,precisionIssue:!!result.precisionIssue,submittedAnswer:draft};
  seenRecently.add(q.id);track(result.correct,independent&&result.correct);render();
 }
 function gradeSelf(ok){

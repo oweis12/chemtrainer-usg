@@ -10,13 +10,13 @@
     {id:"a",module:"M10 §6",title:"Zuren, basen & K",chapter:"6",source:"M10 practicum 6, boekpagina 6-1 en verder",minutes:75,blurb:"Waarom een zwak zuur anders rekent dan een sterk zuur.",concepts:["sterk en zwak","Kz en Kb","x-schema","pH en significantie"],tasks:[
       {id:"a1",tier:"basis",type:"choice",stem:"Een oplossing bevat 0,10 M NH₃. Waarom mag je niet zomaar [OH⁻] = 0,10 M nemen?",options:["NH₃ is een zwakke base; slechts een deel reageert","NH₃ is geen base","OH⁻ is altijd 10⁻⁷ M","Water bevat geen H⁺"],answer:0,why:"Ammoniak reageert in een evenwicht met water. De beginconcentratie NH₃ is niet gelijk aan de gevormde [OH⁻].",hints:["Is de reactie aflopend of niet-aflopend?","Bij een zwakke base stel je een evenwicht op."]},
       {id:"a2",tier:"methode",type:"choice",stem:"Voor NH₃ + H₂O ⇌ NH₄⁺ + OH⁻: wat is Kb?",options:["[NH₄⁺][OH⁻] / [NH₃]","[NH₃] / ([NH₄⁺][OH⁻])","[NH₄⁺][OH⁻][H₂O]","[NH₃][OH⁻] / [NH₄⁺]"],answer:0,why:"Water is hier oplosmiddel en wordt weggelaten. Productconcentraties in de teller; NH₃ in de noemer.",hints:["Kijk naar producten versus uitgangsstof.","H₂O als oplosmiddel heeft nagenoeg constante concentratie."]},
-      {id:"a3",tier:"toepassing",type:"number",stem:"Een sterk zuur is volledig opgelost en levert [H₃O⁺] = 0,0020 mol/L. Bereken de pH (let op decimalen).",answer:2.7,tolerance:0.015,unit:"pH",why:"pH = −log(0,0020) = 2,70. Twee significante cijfers in de concentratie geven twee decimalen in de pH.",hints:["Gebruik pH = −log[H₃O⁺].","Bij pH hoort het aantal decimalen bij de significante cijfers van [H₃O⁺]."],displayAnswer:"2,70"},
+      {id:"a3",tier:"toepassing",type:"number",stem:"Een sterk zuur is volledig opgelost en levert [H₃O⁺] = 0,0020 mol/L. Bereken de pH (let op decimalen).",answer:2.7,tolerance:0.015,requiredDecimals:2,unit:"pH",why:"pH = −log(0,0020) = 2,70. Twee significante cijfers in de concentratie geven twee decimalen in de pH.",hints:["Gebruik pH = −log[H₃O⁺].","Bij pH hoort het aantal decimalen bij de significante cijfers van [H₃O⁺]."],displayAnswer:"2,70"},
       {id:"a4",tier:"transfer",type:"choice",stem:"Bij een zwak zuur gebruik je Kz = x²/(c₀−x). Wanneer mag je ongeveer c₀−x ≈ c₀ nemen?",options:["Als x klein is tegenover c₀, en je dat achteraf controleert","Altijd als het zuur verdund is","Alleen bij sterke zuren","Als de pH lager dan 7 is"],answer:0,why:"De verwaarlozing van x moet gerechtvaardigd zijn; bijvoorbeeld controle of x minder dan circa 5% van c₀ is.",hints:["Welke aanname maak je eigenlijk?","Controleer de verhouding x/c₀."]},
     ]},
     {id:"v",module:"M11 P1",title:"Verdeling, oplosbaarheid & water",chapter:"1",source:"M11 practicum 1, boekpagina 1-1 t/m 1-8",minutes:80,blurb:"Eerst verdelingsevenwicht, daarna Ks, vervolgens Kw en pOH.",concepts:["Kv","Ks","Kw","pH en pOH"],tasks:[
       {id:"v1",tier:"basis",type:"choice",stem:"Wat is een verdelingsevenwicht?",options:["Een stof verdeelt zich tussen twee fasen zonder nieuwe stof te vormen","Een neerslagreactie die altijd afloopt","Een chemische verbranding","Een oplossing waarin alle concentraties gelijk zijn"],answer:0,why:"Bij O₂(g) ⇌ O₂(aq) gaat het om verdeling tussen gas en water, geen verandering naar een nieuwe stof.",hints:["Denk aan zuurstof in water en in lucht.","Zijn de moleculen chemisch veranderd?"]},
       {id:"v2",tier:"methode",type:"choice",stem:"Ca(OH)₂(s) ⇌ Ca²⁺(aq) + 2OH⁻(aq). Wat is Ks?",options:["[Ca²⁺][OH⁻]²","[Ca²⁺][OH⁻]","[Ca(OH)₂] / ([Ca²⁺][OH⁻]²)","[Ca²⁺]²[OH⁻]"],answer:0,why:"De vaste stof telt niet mee; de coëfficiënt 2 bij OH⁻ wordt exponent 2.",hints:["Neem geen concentratie van de vaste stof op.","Gebruik de stoichiometrische coëfficiënten als exponenten."]},
-      {id:"v3",tier:"toepassing",type:"number",stem:"Bij 25°C heeft een oplossing pH = 9,20. Bereken de pOH.",answer:4.8,tolerance:0.015,unit:"pOH",why:"Bij 25°C geldt pH + pOH = 14,00, dus pOH = 14,00 − 9,20 = 4,80.",hints:["Gebruik Kw bij 25°C.","pH + pOH = 14,00."],displayAnswer:"4,80"},
+      {id:"v3",tier:"toepassing",type:"number",stem:"Bij 25°C heeft een oplossing pH = 9,20. Bereken de pOH.",answer:4.8,tolerance:0.015,requiredDecimals:2,unit:"pOH",why:"Bij 25°C geldt pH + pOH = 14,00, dus pOH = 14,00 − 9,20 = 4,80.",hints:["Gebruik Kw bij 25°C.","pH + pOH = 14,00."],displayAnswer:"4,80"},
       {id:"v4",tier:"transfer",type:"number",stem:"Ca(OH)₂ lost op volgens Ca(OH)₂ ⇌ Ca²⁺ + 2OH⁻. Als [Ca²⁺] = 0,010 M, bereken Ks.",answer:0.000004,tolerance:0.00000015,unit:"mol³/L³",why:"[OH⁻] = 0,020 M. Ks = 0,010 × (0,020)² = 4,0 × 10⁻⁶.",hints:["Bij iedere Ca²⁺ ontstaan twee OH⁻.","Ks = [Ca²⁺] × [OH⁻]²."],displayAnswer:"4,0 × 10⁻⁶"},
     ]},
     {id:"b",module:"M11 P2",title:"Buffers & aminozuren",chapter:"2",source:"M11 practicum 2, boekpagina 2-1 t/m 2-5",minutes:70,blurb:"Zuur-basereacties, peptidebinding en bufferwerking.",concepts:["geconjugeerd paar","buffer","condensatie","pH in het lichaam"],tasks:[
@@ -46,7 +46,7 @@
     {id:"q",module:"M11 P6",title:"Atoommodellen & spectra",chapter:"6",source:"M11 practicum 6, vooral 6.3, 6.4, 6.6 en 6.7; §6.5 buiten toets",minutes:95,blurb:"Na model en energieniveau kun je licht en ionisatie verklaren.",concepts:["Bohr","energieniveaus","absorptie/emissie","ionisatie"],tasks:[
       {id:"q1",tier:"basis",type:"choice",stem:"Wat is de belangrijkste uitbreiding van Bohr ten opzichte van Rutherford?",options:["Elektronen kunnen slechts bepaalde energieniveaus innemen","Een atoom heeft geen kern","Elektronen zijn positief geladen","Ieder atoom bevat evenveel protonen als neutronen"],answer:0,why:"Bohr gebruikt discrete energieniveaus, waarmee specifieke spectra verklaard kunnen worden.",hints:["Waarom zijn lijnspectra geen continu spectrum?","Denk aan toegestane waarden voor elektronenergie."]},
       {id:"q2",tier:"methode",type:"choice",stem:"Een elektron valt van een hoger naar een lager energieniveau. Wat ontstaat?",options:["Een foton met energie ΔE","Er wordt altijd een elektron afgestoten","Er wordt geen energie uitgewisseld","Een proton verdwijnt"],answer:0,why:"Bij emissie wordt het energieverschil als foton uitgezonden: ΔE = hf.",hints:["Is dit absorptie of emissie?","De energie gaat het atoom uit als elektromagnetische straling."]},
-      {id:"q3",tier:"toepassing",type:"number",stem:"Een overgang heeft ΔE = 4,0 × 10⁻¹⁹ J. Gebruik h = 6,63 × 10⁻³⁴ J s. Geef de frequentie in 10¹⁴ Hz (dus typ alleen het getal voor ×10¹⁴).",answer:6.03,tolerance:0.08,unit:"×10¹⁴ Hz",why:"f = ΔE/h = 4,0 × 10⁻¹⁹ / (6,63 × 10⁻³⁴) ≈ 6,0 × 10¹⁴ Hz (2 significante cijfers).",hints:["Gebruik ΔE = hf.","De machten leveren 10¹⁵; reken ook de coëfficiënten na."],displayAnswer:"6,0"},
+      {id:"q3",tier:"toepassing",type:"number",stem:"Een overgang heeft ΔE = 4,0 × 10⁻¹⁹ J. Gebruik h = 6,63 × 10⁻³⁴ J s. Geef de frequentie in 10¹⁴ Hz (dus typ alleen het getal voor ×10¹⁴).",answer:6.03,tolerance:0.08,requiredSigFigs:2,unit:"×10¹⁴ Hz",why:"f = ΔE/h = 4,0 × 10⁻¹⁹ / (6,63 × 10⁻³⁴) ≈ 6,0 × 10¹⁴ Hz (2 significante cijfers).",hints:["Gebruik ΔE = hf.","De machten leveren 10¹⁵; reken ook de coëfficiënten na."],displayAnswer:"6,0"},
       {id:"q4",tier:"transfer",type:"explain",stem:"Twee elementen absorberen verschillende golflengten licht. Leg uit waarom hun absorptiespectra verschillen en hoe dit samenhangt met hun atoommodellen.",answer:"De elementen hebben verschillende toegestane energieniveaus. Alleen fotonen met energie die overeenkomt met een verschil tussen toegestane niveaus kunnen worden geabsorbeerd. Daardoor verschilt de reeks absorptielijnen per element.",rubric:["Noem discrete energieniveaus.","Verbind fotonenergie aan ΔE = hf.","Leg uit waarom de niveaus per element verschillen."],why:"Dit combineert atoombouw, kwantisering en spectra in één nieuwe context.",hints:["Welke energie moet een foton hebben voor een overgang?","Zijn de mogelijke energieniveaus bij alle elementen gelijk?"]},
     ]}
   ];
@@ -136,7 +136,26 @@
     var m=s.match(/^([+-]?\d+(?:\.\d+)?)[x*]10\^?([+-]?\d+)$/i);if(m)return Number(m[1])*Math.pow(10,Number(m[2]));
     return NaN;
   }
-  function evaluate(q,response){if(q.type==="choice"){return {automatic:true,correct:Number(response)===q.answer}}if(q.type==="number"){var n=parseNumber(response);return {automatic:true,correct:Number.isFinite(n)&&Math.abs(n-q.answer)<=q.tolerance,parsed:n};}return {automatic:false,correct:null}}
+  function evaluate(q,response){
+    if(q.type==="choice")return {automatic:true,correct:Number(response)===q.answer};
+    if(q.type==="number"){
+      var n=parseNumber(response),valueCorrect=Number.isFinite(n)&&Math.abs(n-q.answer)<=q.tolerance;
+      var s=String(response).trim().replace(",",".").replace(/[−–]/g,"-");
+      var precisionCorrect=true;
+      if(q.requiredDecimals!=null){
+        var dec=s.match(/^[+-]?\d+(?:\.(\d+))?$/);
+        precisionCorrect=!!dec && !!dec[1] && dec[1].length===q.requiredDecimals;
+      }
+      if(q.requiredSigFigs!=null){
+        var mantissa=s.replace(/^[+-]/,"").split(/[eE]/)[0].replace(/[×x*]10.*$/,"");
+        var digits=mantissa.replace(".","").replace(/^0+/,"");
+        // Trailing zeros after a decimal point are significant.
+        precisionCorrect=/^[\d.]+$/.test(mantissa) && digits.length===q.requiredSigFigs;
+      }
+      return {automatic:true,correct:valueCorrect&&precisionCorrect,precisionIssue:valueCorrect&&!precisionCorrect,parsed:n};
+    }
+    return {automatic:false,correct:null};
+  }
   function sessionProgress(state){var attempts=state.attempts.filter(function(a){return state.sessionStart && a.at>=state.sessionStart});var minutes=attempts.reduce(function(s,a){return s+Math.min(30,Math.max(1,a.minutes||4))},0);return {minutes:minutes,questions:attempts.length,remaining:Math.max(0,120-minutes)}}
   function report(state){return {passed:allTasks.filter(function(t){return independentPass(state,t.id)}).length,total:allTasks.length,weak:chapters.map(function(c){return Object.assign({id:c.id,title:c.title,module:c.module},mastery(state,c),weakness(state,c))}),reviews:due(state).length,attempts:state.attempts.length};}
   global.StudyEngine={chapters:chapters,allTasks:allTasks,byId:byId,blank:blank,sanitize:sanitize,history:history,independentPass:independentPass,mastery:mastery,due:due,choose:choose,parseNumber:parseNumber,evaluate:evaluate,sessionProgress:sessionProgress,report:report};
