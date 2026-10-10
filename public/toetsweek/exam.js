@@ -5,7 +5,7 @@ var banks={mock:D.MOCK,real:D.REAL}, durations={mock:4800000,real:1200000};
 var sessions={mock:null,real:null},kind="",index=0,page="home",saved;
 try{saved=JSON.parse(localStorage.getItem(STORE)||"{}");for(var k of ["mock","real"])if(saved[k]&&saved[k].kind===k&&saved[k].answers)sessions[k]=saved[k]}catch(e){}
 function esc(a){return String(a??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}
-function save(){try{localStorage.setItem(STORE,JSON.stringify(sessions))}catch(e){}}
+function save(){try{localStorage.setItem(STORE,JSON.stringify(sessions));window.AxiomAccount?.requestSync();}catch(e){}}
 function time(s){return Math.max(0,durations[s.kind]-(Date.now()-s.start))}
 function hh(t){return Math.floor(t/60000).toString().padStart(2,"0")+":"+Math.floor(t%60000/1000).toString().padStart(2,"0")}
 function total(s){var n=0,m=0;for(var q of banks[s.kind]){var r=q.marks||q.rubric;m+=r.length;for(var j=0;j<r.length;j++)if(s.marks[q.id+":"+j])n++;}return {n:n,m:m}}
@@ -75,5 +75,9 @@ if(a==="flag"){saveAnswer();var v=sessions[kind],id=banks[kind][index].id;v.flag
 });
 document.addEventListener("input",function(e){if(e.target.id==="exam-response")saveAnswer()});
 document.addEventListener("change",function(e){var k=e.target.dataset.mark;if(!k||page!=="results")return;var v=sessions[kind];if(!v.finished)return;v.marks[k]=!!e.target.checked;save();var sc=total(v),a=document.getElementById("exam-score");if(a)a.innerHTML=sc.n+' <small>/ '+sc.m+' punten</small>';var bar=document.querySelector(".exam-scorecard .barline span");if(bar)bar.style.width=Math.round(sc.n/sc.m*100)+"%"});
+window.addEventListener("axiom:progress-loaded",function(){
+ try{const imported=JSON.parse(localStorage.getItem(STORE)||"{}");for(const k of ["mock","real"]){if(imported[k]&&imported[k].kind===k&&imported[k].answers)sessions[k]=imported[k];}}catch(e){}
+ if(page==="home"||page==="results")show();
+});
 setInterval(tick,1000);show();
 })();

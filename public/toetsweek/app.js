@@ -13,7 +13,7 @@ try {aiCode=sessionStorage.getItem("axiom-code")||"";}catch(e){}
 function dayString(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
 var today=dayString(),spent=0;
 try {var saved=JSON.parse(localStorage.getItem(DAYSTORE)||"{}");spent=saved.date===today?Math.max(0,Number(saved.seconds)||0):0;}catch(e){}
-function persist(){try{localStorage.setItem(STORE,JSON.stringify(state));}catch(e){storageOK=false;notify("Opslaan mislukt: exporteer je voortgang.");}}
+function persist(){try{localStorage.setItem(STORE,JSON.stringify(state));window.AxiomAccount?.requestSync();}catch(e){storageOK=false;notify("Opslaan mislukt: exporteer je voortgang.");}}
 function saveTime(){try{localStorage.setItem(DAYSTORE,JSON.stringify({date:today,seconds:spent}));}catch(e){}}
 function timeLabel(){return Math.floor(spent/60)+" / 120 min";}
 function esc(s){return String(s==null?"":s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
@@ -206,6 +206,10 @@ document.addEventListener("change",function(event){
 document.addEventListener("keydown",function(e){if(e.key==="Enter"&&screen==="study"&&!feedback&&current?.type==="number"){handleSubmit();}});
 document.addEventListener("visibilitychange",saveTime);
 window.addEventListener("pagehide",saveTime);
+window.addEventListener("axiom:progress-loaded",function(){
+ try{state=E.sanitize(JSON.parse(localStorage.getItem(STORE)));}catch(e){return;}
+ if(screen!=="study"){render();}
+});
 setInterval(function(){if(dayString()!==today){today=dayString();spent=0;saveTime()}if(screen==="study"&&document.visibilityState==="visible"){spent++;if(spent%10===0)saveTime();var timer=document.getElementById("study-timer");if(timer)timer.textContent=timeLabel();if(spent===7200)notify("Twee uur actieve studietijd bereikt. Neem rust of rond bewust af.");}},1000);
 render();
 })();

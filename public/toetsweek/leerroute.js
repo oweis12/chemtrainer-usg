@@ -19,7 +19,7 @@ if(!unit){try{const old=localStorage.getItem(CURRENT);if(units.some(c=>c.id===ol
 if(!unit)unit=units[0].id;
 let notice="";
 function esc(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
-function save(){try{localStorage.setItem(STORE,JSON.stringify(progress));}catch(e){notice="Opslaan is mislukt. Controleer je browseropslag."}}
+function save(){try{localStorage.setItem(STORE,JSON.stringify(progress));window.AxiomAccount?.requestSync();}catch(e){notice="Opslaan is mislukt. Controleer je browseropslag."}}
 function data(){
  let d=progress.topics[unit];
  if(!d||typeof d!=="object"){d=blankTopic();progress.topics[unit]=d;}
@@ -166,5 +166,9 @@ document.addEventListener("input",e=>{if(e.target.id==="answer-field")saveInput(
 document.addEventListener("change",e=>{if(e.target.id==="route-subject")setUnit(e.target.value);});
 document.addEventListener("click",e=>{const b=e.target.closest("[data-action]");if(b)action(b.dataset.action,b);});
 window.addEventListener("pagehide",saveInput);
+window.addEventListener("axiom:progress-loaded",function(){
+ try{const imported=JSON.parse(localStorage.getItem(STORE)||"null");if(imported?.version===2&&imported.topics)progress=imported;}catch(e){}
+ if(!document.activeElement||document.activeElement.id!=="answer-field")render();
+});
 render();
 })();
