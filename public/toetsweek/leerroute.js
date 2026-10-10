@@ -1,118 +1,170 @@
 (function(){
 "use strict";
-var E=window.StudyEngine,B=window.AXIOM_EXAMS,D=window.AXIOM_ROUTE_DATA;
-if(!E||!B||!D){document.getElementById("route-content").textContent="Leerroutedata ontbreekt.";return}
-const STORE="axiom-route-v1",SHARED="Gedeelde documenten → 2026–2027 / USG Scheikunde klas 6 TUE",MAGISTER="https://nuovo.magister.net/magister/#/elo/bronnen";
-const units=E.chapters.filter(c=>D.topics[c.id]);
-const allHard=Object.fromEntries(D.hard.map(q=>[q.id,q]));
-const bank={};
-for(const c of units){bank[c.id]=B.MOCK.find(q=>q.unit===c.module)||null}
-let all={version:1,topics:{}},unit="r",draft="",started=Date.now();
-try{const loaded=JSON.parse(localStorage.getItem(STORE)||"null");if(loaded&&loaded.version===1&&loaded.topics&&typeof loaded.topics==="object"){all=loaded;}}
-catch(e){}
-function blank(){return {intro:{opened:false,reflection:"",done:false},book:{index:0,notes:{},done:false},exam:{answer:"",submitted:false,marks:[],done:false,retries:0},hard:{answer:"",submitted:false,marks:[],done:false,retries:0}};}
-function data(){if(!all.topics[unit])all.topics[unit]=blank();return all.topics[unit]}
-function save(){try{localStorage.setItem(STORE,JSON.stringify(all));}catch(e){toast("Opslaan mislukt. Controleer de browseropslag.")}}
-function esc(str){return String(str??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;")}
-function toast(str){const el=document.getElementById("route-message");if(el)el.textContent=str;}
-function getStage(p){return !p.intro.done?"intro":!p.book.done?"book":!p.exam.done?"exam":!p.hard.done?"hard":"finished"}
-function status(p){return [p.intro.done,p.book.done,p.exam.done,p.hard.done]}
-function choice(){const saved=new URLSearchParams(location.search).get("module")||"";if(units.some(c=>c.id===saved))return saved;try{const last=localStorage.getItem("axiom-route-current");if(units.some(c=>c.id===last))return last;}catch(e){}return "r";}
-unit=choice();
-const root=document.getElementById("route-content"),nav=document.getElementById("route-units");
-function rowPrimary(ref,title){
- if(!ref)return "";
- const path=SHARED+" → "+ref.folder;
- return '<div class="r-ref"><span class="r-label">'+esc(title)+'</span><b>'+esc(ref.file)+'</b><small>'+esc(path)+'</small><a href="'+MAGISTER+'" target="_blank" rel="noopener noreferrer" data-resource="true">Open dit document in Magister ↗</a><p class="r-small">Magister heeft niet voor alle documenten een publieke directe link. Selecteer de map en bestandsnaam hierboven.</p></div>';
+const E=window.StudyEngine,B=window.AXIOM_EXAMS,D=window.AXIOM_ROUTE_DATA,L=window.AXIOM_LESSONS;
+const root=document.getElementById("route-content"),selector=document.getElementById("route-units");
+if(!E||!B||!D||!L||!root||!selector){if(root)root.textContent="De oefeningen konden niet worden geladen. Probeer de pagina te verversen.";return;}
+const STORE="axiom-course-v2",CURRENT="axiom-route-current";
+const units=E.chapters.filter(c=>L[c.id]&&D.topics[c.id]);
+const hard=Object.fromEntries(D.hard.map(q=>[q.id,q]));
+const mocks=Object.fromEntries(units.map(c=>[c.id,B.MOCK.find(q=>q.unit===c.module)||null]));
+function blankTopic(){return {introDone:false,practice:{index:0,items:{},done:false},exam:{answer:"",revealed:false,done:false},hard:{answer:"",revealed:false,done:false}};}
+let progress={version:2,topics:{}};
+try{
+ const stored=JSON.parse(localStorage.getItem(STORE)||"null");
+ if(stored?.version===2 && stored.topics && typeof stored.topics==="object")progress=stored;
+}catch(e){}
+const param=new URLSearchParams(location.search).get("module");
+let unit=units.some(c=>c.id===param)?param:null;
+if(!unit){try{const old=localStorage.getItem(CURRENT);if(units.some(c=>c.id===old))unit=old;}catch(e){}}
+if(!unit)unit=units[0].id;
+let notice="";
+function esc(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#39;");}
+function save(){try{localStorage.setItem(STORE,JSON.stringify(progress));}catch(e){notice="Opslaan is mislukt. Controleer je browseropslag."}}
+function data(){
+ let d=progress.topics[unit];
+ if(!d||typeof d!=="object"){d=blankTopic();progress.topics[unit]=d;}
+ if(!d.practice||!d.practice.items)d.practice=blankTopic().practice;
+ if(!d.exam)d.exam=blankTopic().exam;
+ if(!d.hard)d.hard=blankTopic().hard;
+ if(typeof d.introDone!=="boolean")d.introDone=false;
+ return d;
 }
-function renderIntro(c,p,conf){
- const s=p.intro;
- let out='<div class="r-card"><span class="r-label">Stap 1 van 4</span><h2>Uitleg</h2>';
- out+='<p>Open de uitlegbron en beschrijf daarna uit je hoofd wat je hebt geleerd.</p>';
- if(conf.video){
-  out+='<div class="r-ref r-video"><div><span class="r-label">'+(conf.video.kind==="video"?"UITLEGVIDEO":"UITLEGBRON")+'</span><b>'+esc(conf.video.label)+'</b><small>Gerichte externe bron, geen herdruk van schoolmateriaal</small></div><a href="'+esc(conf.video.url)+'" target="_blank" rel="noopener noreferrer" data-resource="true">Open uitleg ↗</a></div>';
- } else {
-  out+='<div class="r-warning">Voor dit specifieke practicum heb ik nog geen gecontroleerde, exact passende video gevonden. Je docentboekje is daarom verplicht als uitlegbron; geen willekeurige video van een ander hoofdstuk.</div>';
- }
- out+=rowPrimary({file:conf.file,folder:conf.folder},"BRON UIT JE EIGEN METHODE");
- out+='<div class="r-good">Voor je verdergaat: '+(s.opened?"✓ Je hebt een bron geopend. Nu je eigen redenering formuleren.":"Open eerst de uitlegbron hierboven. Die wordt extern geopend; het kijkgedrag zelf kan deze app niet verifiëren.")+'</div>';
- out+='<label class="r-label" for="route-input">LEG DIT ZONDER HULP UIT</label><p>'+esc(conf.recall)+'</p>';
- out+='<textarea class="r-textarea" id="route-input" placeholder="Schrijf minimaal enkele zinnen uit je hoofd. Geen opsomming van woorden.">'+esc(s.reflection)+'</textarea>';
- out+='<div class="r-cta"><button class="r-button" data-action="intro-complete" '+(!s.opened?"disabled":"")+'>Ik kan dit zelf uitleggen →</button><button class="r-secondary" data-action="intro-resource">Ik heb de bron daadwerkelijk geopend</button></div>';
- out+='<p class="r-small">Voorwaarde: bron geopend + eigen uitleg van ten minste 60 tekens. Dit controleert niet automatisch of je uitleg chemisch klopt; test dat in de volgende stappen.</p></div>';
- return out;
+function activeStage(d){
+ if(!d.introDone)return "intro";
+ if(!d.practice.done)return "practice";
+ if(!d.exam.done)return "exam";
+ if(!d.hard.done)return "hard";
+ return "finished";
 }
-function renderBook(c,p,conf){
- const s=p.book,methods=c.methodSteps||[],idx=Math.min(s.index,methods.length-1),m=methods[idx];
- let out='<div class="r-card"><span class="r-label">Stap 2 van 4</span><h2>Opgaven uit het boek</h2>';
- out+='<p>Werk de paragrafen op volgorde af. Noteer waar je vastliep en hoe je de opgave hebt opgelost.</p>';
- out+=rowPrimary({file:conf.file,folder:conf.folder},"VERPLICHTE METHODE");
- out+='<div class="r-progress"><span>Deel '+(idx+1)+' van '+methods.length+'</span><span>'+esc(c.module)+' · '+esc(m.sections)+'</span></div>';
- out+='<div class="r-sequence"><b>§'+esc(m.sections)+' · '+esc(m.goal)+'</b><p>'+esc(m.instruction)+'</p></div>';
- if(conf.aPracticum){out+='<div class="r-silver"><span class="r-label">GESELECTEERDE A-PRACTICUMOPGAVEN · DOCENT 2023–24</span><p>'+esc(conf.aPracticum)+'</p><p class="r-small">Bron: M11 t/m P3 kw1 samengevat en oefenopgaven 6 2023–2024. Dit document is aanvullend materiaal uit een eerder schooljaar. Gebruik de opgaven in methodevolgorde, niet geïsoleerd. Het is niet bevestigd dat dit de selectie voor jouw aankomende toets is.</p></div>'}
- out+='<label class="r-label" for="route-input">CONTROLE VAN JE EIGEN WERK</label><p>Welke opgave of redeneerstap was het lastigst en hoe heb je die uiteindelijk opgelost? Noem de chemische oorzaak, geen algemene tekst.</p><textarea id="route-input" class="r-textarea" placeholder="Bij vraag … dacht ik … maar ik moest … omdat …">'+esc(s.notes[idx]||"")+'</textarea>';
- out+='<div class="r-cta"><button class="r-button" data-action="book-next">'+(idx===methods.length-1?"Boekketen afronden →":"Volgende paragraaf →")+'</button></div>';
- out+='<details><summary class="r-small">Alleen bij vastlopen: één extra bron</summary>'+rowPrimary({file:conf.extra,folder:conf.extraFolder},"GERICHTE NASLAG")+'</details>';
- out+='</div>';
- return out;
+function stages(d){return [d.introDone,d.practice.done,d.exam.done,d.hard.done];}
+function modelFor(q){
+ if(q.type==="choice")return q.options[q.answer]+(q.why?"\n\nUitleg: "+q.why:"");
+ if(q.type==="number")return (q.displayAnswer||String(q.answer))+(q.unit&&q.unit!=="pH"&&q.unit!=="pOH"?" "+q.unit:"")+(q.why?"\n\nUitwerking: "+q.why:"");
+ return (q.answer||"")+(q.why?"\n\n"+q.why:"");
 }
-function answerBlock(q,s,step){
- const rubric=q.rubric||q.marks||[];
- const reached=!!s.submitted, score=s.marks.filter(Boolean).length,minimum=Math.ceil(rubric.length*0.75);
- let h='<div class="r-card"><span class="r-label">FASE '+(step==="exam"?"3 van 4 / Toetsvraag":"4 van 4 / Verdieping")+'</span><h2>'+(step==="exam"?"Toetsvraag":"Verdiepingsvraag")+'</h2>';
- h+='<div class="r-silver">'+esc(q.context)+'</div>';
- h+='<p class="exam-question">'+esc(q.question||q.ask)+'</p>';
- h+='<label for="route-input" class="r-label">EIGEN REDENERING, VERGELIJKING EN BEREKENING</label>';
- h+='<textarea id="route-input" class="r-textarea" style="min-height:220px" '+(reached?"disabled":"")+' placeholder="Gebruik eventueel papier voor de berekening, maar zet hier je belangrijkste stappen en conclusie.">'+esc(s.answer||"")+'</textarea>';
- if(!reached){
-  h+='<p class="r-small">Geen hints en geen uitwerking tot je antwoord is ingeleverd. Schrijf meerdere stappen zodat je eerlijk kunt nakijken.</p><div class="r-cta"><button class="r-button" data-action="submit-answer">Inleveren en model pas daarna tonen →</button></div>';
+function textArea(label,value,disabled){
+ return '<label class="course-label" for="answer-field">'+esc(label)+'</label><textarea id="answer-field" class="r-textarea course-answer" spellcheck="false" '+(disabled?"readonly":"")+' placeholder="Typ hier je uitwerking, of maak de berekening op papier.">'+esc(value||"")+'</textarea>';
+}
+function stageHeader(d){
+ const names=["Uitleg","Oefenen","Toetsvraag","Verdieping"];
+ return '<div class="r-steps" aria-label="Leerroutevoortgang">'+names.map((name,i)=>{
+  let done=stages(d)[i],current=activeStage(d)===["intro","practice","exam","hard"][i];
+  return '<div class="r-step '+(done?"done":current?"active":"")+'"><b>'+(done?"✓":i+1)+'</b><span>'+name+'</span></div>';
+ }).join("")+'</div>';
+}
+function theory(c,d){
+ const l=L[c.id];
+ let html='<section class="r-card course-lesson"><div class="course-overline">Theorie · '+esc(c.module)+'</div><h2>'+esc(c.title)+'</h2>';
+ l.sections.forEach((s,i)=>{
+  html+='<div class="course-section"><h3>'+esc(s.heading)+'</h3><p>'+esc(s.text)+'</p><div class="course-example"><span>Voorbeeld</span><p>'+esc(s.example)+'</p></div></div>';
+ });
+ html+='<div class="course-caution"><strong>Let op</strong><p>'+esc(l.pitfall)+'</p></div>';
+ html+='<div class="course-recap"><strong>Na deze uitleg kun je:</strong><ul>'+l.summary.map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul></div>';
+ html+='<div class="course-actions"><button class="r-button" data-action="intro-done">Start de oefenvragen →</button></div>';
+ html+='</section>';
+ return html;
+}
+function practice(c,d){
+ const list=c.tasks;
+ const i=Math.min(Math.max(0,Number(d.practice.index)||0),list.length-1);
+ d.practice.index=i;
+ const q=list[i],item=d.practice.items[q.id]||{answer:"",revealed:false};
+ const steps=["basis","methode","toepassing","transfer"];
+ let html='<section class="r-card course-practice"><div class="course-overline">Oefenvraag '+(i+1)+' van '+list.length+' · '+esc(steps[i]||q.tier)+'</div><h2>'+esc(c.title)+'</h2>';
+ html+='<div class="course-question">'+esc(q.stem)+'</div>';
+ html+=textArea("Jouw antwoord",item.answer,item.revealed);
+ if(!item.revealed){
+  html+='<p class="course-footnote">Schrijf eerst zelf een antwoord. De uitwerking verschijnt pas wanneer je hem opvraagt.</p>';
+  html+='<div class="course-actions"><button class="r-button" data-action="reveal-practice">Bekijk de uitwerking</button></div>';
  }else{
-  h+='<div class="r-answer"><strong>Modeluitwerking</strong><div style="margin-top:9px">'+esc(q.model||q.answer)+'</div></div>';
-  h+='<p>Geef jezelf uitsluitend een punt wanneer die stap duidelijk in je oorspronkelijke uitwerking staat. Deze score wordt door jou toegekend, niet automatisch door AI.</p>';
-  h+='<div class="r-marks">';
-  rubric.forEach((r,i)=>{h+='<label><input type="checkbox" data-rubric="'+i+'" '+(s.marks[i]?"checked":"")+'><div><span>+1 punt</span> '+esc(r)+'</div></label>'});
-  h+='</div><div class="'+(score>=minimum?"r-good":"r-warning")+'">Zelf beoordeeld: '+score+'/'+rubric.length+' punten. Voor deze stap heb je minimaal '+minimum+' punten nodig. '+(s.retries?'Je hebt dit model eerder bekeken; een herhaling is geen onafhankelijk bewijs.':'')+'</div>';
-  h+='<div class="r-cta"><button class="r-button" data-action="confirm-score">'+(step==="hard"?"Resultaat vastleggen →":"Verder naar zware transfer →")+'</button><button class="r-secondary" data-action="retry-answer">Herstel en probeer opnieuw</button></div>';
+  html+='<div class="course-model" role="region" aria-label="Modelantwoord"><span>Modelantwoord en uitwerking</span><div>'+esc(modelFor(q))+'</div></div>';
+  html+='<div class="course-actions"><button class="r-secondary" data-action="retry-practice">Zelf opnieuw proberen</button><button class="r-button" data-action="practice-next">'+(i===list.length-1?"Naar toetsvraag →":"Volgende oefenvraag →")+'</button></div>';
  }
- h+='</div>';return h;
+ if(i>0)html+='<div class="course-backline"><button data-action="practice-prev">← Vorige vraag</button></div>';
+ html+='</section>';
+ return html;
 }
-function renderFinished(c){
- return '<section class="r-card"><span class="r-label">Onderwerp afgerond</span><h2>'+esc(c.module)+'</h2><p>Je hebt de vier onderdelen afgerond. Je kunt het onderwerp herhalen of een proeftoets maken.</p><div class="r-cta"><a class="r-button" href="/toetsweek/examen.html" style="text-decoration:none">Start het volledige Examenlab →</a><button class="r-secondary" data-action="repeat-topic">Onderwerp nog eens leren</button></div></section>';
+function extendedQuestion(c,d,kind){
+ const q=kind==="exam"?mocks[c.id]:hard[c.id],x=d[kind];
+ if(!q)return '<div class="r-card"><h2>Vraag niet beschikbaar</h2><p>Gebruik voorlopig de oefenvragen.</p><button class="r-secondary" data-action="back-to-practice">Naar oefeningen</button></div>';
+ let html='<section class="r-card course-test"><div class="course-overline">'+(kind==="exam"?"Toetsvraag":"Verdieping")+' · '+esc(c.module)+'</div><h2>'+esc(kind==="exam"?(q.topic||"Toetsvraag"):"Moeilijke toepassingsvraag")+'</h2>';
+ html+='<div class="course-context">'+esc(q.context)+'</div>';
+ html+='<div class="course-question">'+esc(q.question||q.ask)+'</div>';
+ html+=textArea("Jouw uitwerking",x.answer,x.revealed);
+ if(!x.revealed){
+  html+='<p class="course-footnote">Er worden geen hints of antwoorden getoond vóórdat je de uitwerking opent.</p>';
+  html+='<div class="course-actions"><button class="r-button" data-action="reveal-extended">Bekijk het modelantwoord</button></div>';
+ } else {
+  html+='<div class="course-model" role="region" aria-label="Modelantwoord"><span>Modelantwoord en uitwerking</span><div>'+esc(q.answer||q.model||"").replace(/\*([^*]+)\*/g,"$1")+'</div></div>';
+  html+='<div class="course-checkpoints"><strong>In de uitwerking moeten deze stappen zitten:</strong><ul>'+(q.marks||q.rubric||[]).map(x=>'<li>'+esc(x)+'</li>').join("")+'</ul></div>';
+  html+='<p class="course-footnote">AXIOM geeft geen automatische punten voor open antwoorden. Vergelijk je aanpak met de uitwerking; het vastleggen van deze stap betekent alleen dat je hem hebt doorlopen.</p>';
+  html+='<div class="course-actions"><button class="r-secondary" data-action="retry-extended">Zelf opnieuw proberen</button><button class="r-button" data-action="extended-next">'+(kind==="exam"?"Naar de moeilijke vraag →":"Onderwerp afronden →")+'</button></div>';
+ }
+ html+='</section>';
+ return html;
+}
+function finish(c){
+ const next=units.find(x=>!stages(progress.topics[x.id]||blankTopic()).every(Boolean));
+ let html='<section class="r-card course-finished"><h2>'+esc(c.module)+' afgerond</h2><p>Je hebt de theorie bekeken, vier oefenvragen uitgewerkt en twee toetsvragen gemaakt. Dit registreert de doorlopen stappen, geen gegarandeerde beheersing.</p><div class="course-actions">';
+ if(next&&next.id!==c.id)html+='<button class="r-button" data-action="next-module" data-unit="'+next.id+'">Volgend onderwerp: '+esc(next.module)+' →</button>';
+ html+='<a class="r-secondary" href="/toetsweek/examen.html">Proeftoets</a><button class="r-secondary" data-action="repeat-module">Onderwerp opnieuw oefenen</button></div></section>';
+ return html;
 }
 function render(){
- const p=data(),c=units.find(x=>x.id===unit),conf=D.topics[unit];
- nav.innerHTML='<label for="route-subject">Onderwerp</label><select id="route-subject" aria-label="Kies een onderwerp">'+units.map(x=>'<option value="'+x.id+'" '+(x.id===unit?"selected":"")+'>'+esc(x.module)+' · '+esc(x.title)+'</option>').join("")+'</select>';
- const stage=getStage(p),flags=status(p);
- const headings=["Uitleg","Boek","Toetsvraag","Verdieping"];
- let h='<div class="r-steps">'+headings.map((name,i)=>'<div class="r-step '+(flags[i]?"done":stage===["intro","book","exam","hard"][i]?"active":"")+'"><b>'+(flags[i]?"✓":String(i+1).padStart(2,"0"))+'</b>'+name+'</div>').join('')+'</div>';
- h+='<div class="r-progress"><span>'+esc(c.module)+' · '+esc(c.title)+'</span><span>'+flags.filter(Boolean).length+' / 4 fasen</span></div>';
- if(stage==="intro")h+=renderIntro(c,p,conf);
- else if(stage==="book")h+=renderBook(c,p,conf);
- else if(stage==="exam")h+=answerBlock(bank[unit],p.exam,"exam");
- else if(stage==="hard")h+=answerBlock(allHard[unit],p.hard,"hard");
- else h+=renderFinished(c);
- h+='<div class="r-notice" id="route-message" role="status"></div>';root.innerHTML=h;
+ const c=units.find(x=>x.id===unit),d=data(),stage=activeStage(d);
+ selector.innerHTML='<label for="route-subject">Onderwerp</label><select id="route-subject" aria-label="Onderwerp kiezen">'+units.map(x=>'<option value="'+x.id+'" '+(x.id===unit?"selected":"")+'>'+esc(x.module)+' · '+esc(x.title)+'</option>').join("")+'</select>';
+ let html=stageHeader(d)+'<div class="course-progress"><strong>'+esc(c.module)+'</strong> <span>'+stages(d).filter(Boolean).length+'/4 onderdelen doorlopen</span></div>';
+ html+=stage==="intro"?theory(c,d):stage==="practice"?practice(c,d):stage==="exam"?extendedQuestion(c,d,"exam"):stage==="hard"?extendedQuestion(c,d,"hard"):finish(c);
+ html+='<p id="route-message" class="r-notice" role="status">'+esc(notice)+'</p>';
+ root.innerHTML=html;
 }
-function persistInput(){const text=document.getElementById("route-input");if(!text)return;const p=data(),s=getStage(p);if(s==="intro")p.intro.reflection=text.value.slice(0,6000);if(s==="book")p.book.notes[p.book.index]=text.value.slice(0,6000);if(s==="exam")p.exam.answer=text.value.slice(0,15000);if(s==="hard")p.hard.answer=text.value.slice(0,15000);save()}
-function switchUnit(id){if(!units.some(c=>c.id===id))return;persistInput();unit=id;try{localStorage.setItem("axiom-route-current",id)}catch(e){}window.history.replaceState(null,"","?module="+encodeURIComponent(id));render()}
-function act(action){
- const p=data(),stage=getStage(p);persistInput();
- if(action==="intro-resource"){p.intro.opened=true;save();render();return}
- if(action==="intro-complete"){if(!p.intro.opened){toast("Open eerst een uitlegbron.");return}if(p.intro.reflection.trim().length<60){toast("Leg dit uitgebreider uit, in minimaal twee zinnen (60 tekens).");return}p.intro.done=true;save();render();return}
- if(action==="book-next"){let i=p.book.index,ref=p.book.notes[i]||"";if(ref.trim().length<40){toast("Beschrijf eerst concreet een lastige denkstap en hoe je die oploste.");return}if(i+1>=units.find(x=>x.id===unit).methodSteps.length)p.book.done=true;else p.book.index++;save();render();return}
- if(action==="submit-answer"){const s=p[stage];if(!["exam","hard"].includes(stage))return;if(s.answer.trim().length<35){toast("Schrijf je redenering met voldoende tussenstappen uit voordat je inlevert.");return}s.submitted=true;save();render();return}
- if(action==="confirm-score"){if(!["exam","hard"].includes(stage))return;const s=p[stage],q=stage==="exam"?bank[unit]:allHard[unit],rubric=q.rubric||q.marks,earned=s.marks.filter(Boolean).length,min=Math.ceil(rubric.length*0.75);
- if(earned<min){toast("Je hebt "+earned+"/"+rubric.length+". Herstel de redeneerstappen en probeer opnieuw.");return}
- s.done=true;save();render();return}
- if(action==="retry-answer"){if(!["exam","hard"].includes(stage))return;const s=p[stage];s.submitted=false;s.answer="";s.marks=[];s.retries++;save();render();return}
- if(action==="repeat-topic"){if(!confirm("Je wilt de leergang voor dit onderwerp opnieuw doen? Je eerdere voortgang van dit onderwerp wordt teruggezet."))return;all.topics[unit]=blank();save();render();return}
+function setUnit(id){
+ if(!units.some(c=>c.id===id))return;
+ saveInput();unit=id;notice="";
+ try{localStorage.setItem(CURRENT,id)}catch(e){}
+ window.history.replaceState(null,"","?module="+encodeURIComponent(id));
+ render();
 }
-document.addEventListener("input",e=>{if(e.target.id==="route-input")persistInput()});
-document.addEventListener("click",e=>{
- const button=e.target.closest("[data-unit]");if(button){switchUnit(button.dataset.unit);return}
- const link=e.target.closest("[data-resource]");if(link){const p=data();if(getStage(p)==="intro"){p.intro.opened=true;save();}return}
- const action=e.target.closest("[data-action]");if(action)act(action.dataset.action);
-});
-document.addEventListener("change",e=>{if(e.target.id==="route-subject"){switchUnit(e.target.value);return}if(!e.target.hasAttribute("data-rubric"))return;const p=data(),stage=getStage(p);if(!["exam","hard"].includes(stage))return;p[stage].marks[Number(e.target.dataset.rubric)]=!!e.target.checked;save();render()});
+function saveInput(){
+ const el=document.getElementById("answer-field");if(!el)return;
+ const d=data(),stage=activeStage(d),value=el.value.slice(0,16000);
+ if(stage==="practice"){
+  const q=units.find(c=>c.id===unit).tasks[d.practice.index];
+  if(!d.practice.items[q.id])d.practice.items[q.id]={answer:"",revealed:false};
+  if(!d.practice.items[q.id].revealed)d.practice.items[q.id].answer=value;
+ }else if(stage==="exam"||stage==="hard"){
+  if(!d[stage].revealed)d[stage].answer=value;
+ }
+ save();
+}
+function action(name,button){
+ saveInput();
+ const d=data(),stage=activeStage(d),c=units.find(x=>x.id===unit);
+ if(name==="intro-done"&&stage==="intro"){d.introDone=true;save();render();return;}
+ if(name==="reveal-practice"&&stage==="practice"){const q=c.tasks[d.practice.index];if(!d.practice.items[q.id])d.practice.items[q.id]={answer:"",revealed:false};d.practice.items[q.id].revealed=true;save();render();return;}
+ if(name==="practice-next"&&stage==="practice"){
+  const q=c.tasks[d.practice.index];
+  if(!d.practice.items[q.id]?.revealed){notice="Bekijk eerst de uitwerking.";render();return;}
+  if(d.practice.index===c.tasks.length-1){d.practice.done=true;}else{d.practice.index++;}
+  save();render();window.scrollTo(0,0);return;
+ }
+ if(name==="practice-prev"&&stage==="practice"&&d.practice.index>0){d.practice.index--;save();render();return;}
+ if(name==="retry-practice"&&stage==="practice"){
+  const q=c.tasks[d.practice.index];d.practice.items[q.id]={answer:"",revealed:false};save();render();return;
+ }
+ if(name==="reveal-extended"&&(stage==="exam"||stage==="hard")){d[stage].revealed=true;save();render();return;}
+ if(name==="retry-extended"&&(stage==="exam"||stage==="hard")){d[stage].revealed=false;d[stage].answer="";save();render();return;}
+ if(name==="extended-next"&&(stage==="exam"||stage==="hard")&&d[stage].revealed){d[stage].done=true;save();render();window.scrollTo(0,0);return;}
+ if(name==="back-to-practice"){d.practice.done=false;save();render();return;}
+ if(name==="next-module"){setUnit(button?.dataset?.unit);return;}
+ if(name==="repeat-module"){
+  if(!window.confirm("De voortgang van alleen dit onderwerp opnieuw starten?"))return;
+  progress.topics[unit]=blankTopic();save();render();return;
+ }
+}
+document.addEventListener("input",e=>{if(e.target.id==="answer-field")saveInput();});
+document.addEventListener("change",e=>{if(e.target.id==="route-subject")setUnit(e.target.value);});
+document.addEventListener("click",e=>{const b=e.target.closest("[data-action]");if(b)action(b.dataset.action,b);});
+window.addEventListener("pagehide",saveInput);
 render();
 })();

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#10151b"><title>Leerroute · AXIOM</title>
-<meta name="description" content="Je scheikundeleerroute: theorie, methodeopgaven, toetsvragen en verdieping.">
+<meta name="description" content="Scheikunde leren met theorie, oefenvragen en toetsvragen.">
 <link rel="stylesheet" href="./coach.css">
 <style>
 .route-wrap{max-width:940px}.route-head h1{font:600 clamp(36px,5vw,57px)/1.1 'Space Grotesk';letter-spacing:-.05em;margin:10px 0}.route-head p{color:#a4b9c5;max-width:700px}.route-back{font-size:12px;color:#9ccdbd;text-decoration:none}.unit-picker{display:flex;flex-wrap:wrap;gap:8px;margin:25px 0 32px}.unit-picker button{border:1px solid #2f4957;background:#152638;border-radius:10px;color:#b4c7d2;padding:10px 13px;font-size:12px;font-weight:700}.unit-picker button.active{border-color:#a7edcf;background:#224138;color:#c0ffe0}
@@ -13,7 +13,7 @@
 .mobile-nav a{font-size:11px;padding:10px;color:#c0d5de}
 @media(max-width:750px){.r-steps{gap:5px}.r-step{padding:10px 7px;font-size:9px;min-height:71px}.r-step b{font-size:15px}.unit-picker button{padding:8px 11px}.r-card{padding:19px}}
 </style>
-<link rel="stylesheet" href="./clean.css">
+<link rel="stylesheet" href="./clean.css"><link rel="stylesheet" href="./course.css">
 </head>
 <body>
 <div class="app">
@@ -33,13 +33,13 @@
   <main class="content route-wrap">
     <div class="page-heading route-head">
       <h1>Leerroute</h1>
-      <p>Werk per onderwerp de uitleg, boekopgaven en twee toetsvragen af. Je voortgang wordt automatisch bewaard.</p>
+      <p>Elk onderwerp heeft uitleg, vier oefenvragen, een toetsvraag en een moeilijkere opgave.</p>
     </div>
     <div class="unit-picker" id="route-units"></div>
     <section id="route-content" aria-live="polite"></section>
-    <details class="fineprint"><summary>Over de voortgang</summary><p>De open vragen worden door jouzelf nagekeken met beoordelingspunten. Een afgevinkte stap garandeert niet dat je de toetsstof beheerst. Uitlegvideo's en Magister-bestanden openen buiten de site; de site controleert niet of je ze volledig hebt bekeken.</p></details>
+    <details class="fineprint"><summary>Over de voortgang</summary><p>Je voortgang laat zien welke stappen je hebt doorlopen. Open antwoorden worden niet automatisch beoordeeld. Controleer je redenering altijd aan de hand van het modelantwoord.</p></details>
   </main>
   <footer class="mobile-nav" aria-label="Hoofdnavigatie"><a href="/toetsweek/">Overzicht</a><a href="/toetsweek/leerroute.html" aria-current="page">Leerroute</a><a href="/toetsweek/examen.html">Toetsen</a></footer>
 </div></div>
-<script src="./engine.js"></script><script src="./exam-data.js"></script><script src="./route-data.js"></script><script src="./leerroute.js"></script>
+<script src="./engine.js"></script><script src="./exam-data.js"></script><script src="./route-data.js"></script><script src="./lessons.js"></script><script src="./leerroute.js"></script>
 </body></html>

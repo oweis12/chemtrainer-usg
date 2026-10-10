@@ -27,24 +27,33 @@ function renderNav(){document.body.classList.toggle("axiom-focus-mode",screen===
 function header(kicker,title,description){return '<div class="page-heading"><h1 class="display">'+title+'</h1><p class="intro">'+esc(description)+'</p></div>';}
 function renderMission(){
  var saved={topics:{}},active="r";
- try{saved=JSON.parse(localStorage.getItem("axiom-route-v1")||"{}")||{};active=localStorage.getItem("axiom-route-current")||"r"}catch(e){}
+ try{saved=JSON.parse(localStorage.getItem("axiom-course-v2")||"{}")||{};active=localStorage.getItem("axiom-route-current")||"r"}catch(e){}
  if(!saved.topics||typeof saved.topics!=="object")saved.topics={};
  if(!E.chapters.some(function(c){return c.id===active}))active="r";
- function count(c){var p=saved.topics[c.id];return p?[p.intro?.done,p.book?.done,p.exam?.done,p.hard?.done].filter(Boolean).length:0;}
+ function count(c){
+  var p=saved.topics[c.id];if(!p)return 0;
+  return [!!p.introDone,!!p.practice?.done,!!p.exam?.done,!!p.hard?.done].filter(Boolean).length;
+ }
  var finished=E.chapters.filter(function(c){return count(c)===4}).length;
  var chosen=E.chapters.find(function(c){return c.id===active})||E.chapters[0];
  var stage=count(chosen);
  if(stage===4 && finished<8){chosen=E.chapters.find(function(c){return count(c)<4});stage=count(chosen);}
- var phases=["Uitleg","Boekopgaven","Toetsvraag","Verdieping","Afgerond"];
+ var phases=["Theorie","Oefenvragen","Toetsvraag","Moeilijke vraag","Afgerond"];
  var url="/toetsweek/leerroute.html?module="+encodeURIComponent(chosen.id);
- var desc=["Bekijk de uitleg en beschrijf in eigen woorden wat je hebt geleerd.","Maak de opgaven in de oorspronkelijke boekvolgorde.","Maak de toetsvraag en vergelijk na het inleveren met het model.","Maak de verdiepingsvraag over een nieuwe situatie.","Alle onderdelen van dit onderwerp zijn afgerond."][stage];
- var h='<div class="page-heading"><h1>Overzicht</h1><p>Scheikunde · M10 practicum 4 en 6, M11 practicum 1 t/m 6.</p></div>';
- h+='<div class="overview-status"><div><b>'+finished+'/8</b> onderwerpen afgerond</div><div><b>'+Math.floor(spent/60)+'/120</b> minuten actief vandaag</div></div>';
- h+='<section class="overview-main"><div class="overview-meta">Verder met · '+esc(chosen.module)+' · '+esc(phases[stage])+'</div><h2>'+esc(chosen.title)+'</h2><p>'+esc(desc)+'</p><div class="overview-actions"><a class="primary-btn" href="'+url+'">Verder leren →</a><a class="secondary-btn" href="/toetsweek/examen.html">Toetsen</a></div></section>';
- h+='<div class="section-line"><h2>Onderwerpen</h2><span>4 onderdelen per onderwerp</span></div><div class="overview-subjects">';
+ var desc=[
+ "Begin met de uitleg op de site. Daarna volgen vier oefenvragen.",
+ "Maak vier oefenvragen en bekijk de uitwerking na je antwoord.",
+ "Maak een open toetsvraag en vergelijk die met het modelantwoord.",
+ "Maak een moeilijkere opgave in een nieuwe context.",
+ "Dit onderwerp is volledig doorlopen."
+ ][stage];
+ var h='<div class="page-heading"><h1>Overzicht</h1><p>Scheikunde · M10 §4 en §6, M11 practicum 1 t/m 6.</p></div>';
+ h+='<div class="overview-status"><div><b>'+finished+'/8</b> onderwerpen doorlopen</div><div><b>'+Math.floor(spent/60)+'/120</b> minuten oefentijd vandaag</div></div>';
+ h+='<section class="overview-main"><div class="overview-meta">Verder met · '+esc(chosen.module)+' · '+esc(phases[stage])+'</div><h2>'+esc(chosen.title)+'</h2><p>'+esc(desc)+'</p><div class="overview-actions"><a class="primary-btn" href="'+url+'">Verder leren →</a><a class="secondary-btn" href="/toetsweek/examen.html">Proeftoetsen</a></div></section>';
+ h+='<div class="section-line"><h2>Onderwerpen</h2><span>Uitleg · 4 oefeningen · 2 toetsvragen</span></div><div class="overview-subjects">';
  E.chapters.forEach(function(c){h+='<a class="subject-row" href="/toetsweek/leerroute.html?module='+encodeURIComponent(c.id)+'"><span class="subject-code">'+esc(c.module)+'</span><span class="subject-name">'+esc(c.title)+'</span><span class="subject-progress">'+count(c)+'/4 <span aria-hidden="true">›</span></span></a>'});
- h+='</div><div class="overview-tools"><button data-action="start">Losse oefenvragen</button><button data-nav="review">Fouten herhalen</button><button data-nav="stats">Voortgang bekijken</button></div>';
- if(!storageOK)h+='<div class="notice">De browser kan je voortgang niet opslaan. Exporteer je werk via Voortgang.</div>';
+ h+='</div><div class="overview-tools"><button data-action="start">Extra oefenvragen</button><button data-nav="review">Eerdere fouten</button><button data-nav="stats">Oude voortgang</button></div>';
+ if(!storageOK)h+='<div class="notice">De browser kan je voortgang niet opslaan. Exporteer je werk via Oude voortgang.</div>';
  return h;
 }
 function renderStudy(){
