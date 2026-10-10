@@ -105,7 +105,7 @@ function extendedQuestion(c,d,kind){
 }
 function finish(c){
  const next=units.find(x=>!stages(progress.topics[x.id]||blankTopic()).every(Boolean));
- let html='<section class="r-card course-finished"><h2>'+esc(c.module)+' afgerond</h2><p>Je hebt de theorie bekeken, vier oefenvragen uitgewerkt en twee toetsvragen gemaakt. Dit registreert de doorlopen stappen, geen gegarandeerde beheersing.</p><div class="course-actions">';
+ let html='<section class="r-card course-finished"><h2>'+esc(c.module)+' afgerond</h2><p>Je hebt de theorie, vier oefenvragen en twee toetsvragen doorlopen. Je kunt de uitwerkingen opnieuw bekijken, maar doorlopen betekent niet automatisch dat je de stof beheerst.</p><div class="course-actions">';
  if(next&&next.id!==c.id)html+='<button class="r-button" data-action="next-module" data-unit="'+next.id+'">Volgend onderwerp: '+esc(next.module)+' →</button>';
  html+='<a class="r-secondary" href="/toetsweek/examen.html">Proeftoets</a><button class="r-secondary" data-action="repeat-module">Onderwerp opnieuw oefenen</button></div></section>';
  return html;

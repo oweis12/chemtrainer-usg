@@ -35,6 +35,13 @@ function renderMission(){
   return [!!p.introDone,!!p.practice?.done,!!p.exam?.done,!!p.hard?.done].filter(Boolean).length;
  }
  var finished=E.chapters.filter(function(c){return count(c)===4}).length;
+ var answersWritten=0;
+ E.chapters.forEach(function(c){
+  var p=saved.topics[c.id];if(!p)return;
+  Object.values(p.practice?.items||{}).forEach(function(item){if(typeof item.answer==="string"&&item.answer.trim())answersWritten++;});
+  if(typeof p.exam?.answer==="string"&&p.exam.answer.trim())answersWritten++;
+  if(typeof p.hard?.answer==="string"&&p.hard.answer.trim())answersWritten++;
+ });
  var chosen=E.chapters.find(function(c){return c.id===active})||E.chapters[0];
  var stage=count(chosen);
  if(stage===4 && finished<8){chosen=E.chapters.find(function(c){return count(c)<4});stage=count(chosen);}
@@ -48,7 +55,7 @@ function renderMission(){
  "Dit onderwerp is volledig doorlopen."
  ][stage];
  var h='<div class="page-heading"><h1>Overzicht</h1><p>Scheikunde · M10 §4 en §6, M11 practicum 1 t/m 6.</p></div>';
- h+='<div class="overview-status"><div><b>'+finished+'/8</b> onderwerpen doorlopen</div><div><b>'+Math.floor(spent/60)+'/120</b> minuten oefentijd vandaag</div></div>';
+ h+='<div class="overview-status"><div><b>'+finished+'/8</b> onderwerpen doorlopen</div><div><b>'+answersWritten+'/48</b> eigen antwoorden ingevuld</div></div>';
  h+='<section class="overview-main"><div class="overview-meta">Verder met · '+esc(chosen.module)+' · '+esc(phases[stage])+'</div><h2>'+esc(chosen.title)+'</h2><p>'+esc(desc)+'</p><div class="overview-actions"><a class="primary-btn" href="'+url+'">Verder leren →</a><a class="secondary-btn" href="/toetsweek/examen.html">Proeftoetsen</a></div></section>';
  h+='<div class="section-line"><h2>Onderwerpen</h2><span>Uitleg · 4 oefeningen · 2 toetsvragen</span></div><div class="overview-subjects">';
  E.chapters.forEach(function(c){h+='<a class="subject-row" href="/toetsweek/leerroute.html?module='+encodeURIComponent(c.id)+'"><span class="subject-code">'+esc(c.module)+'</span><span class="subject-name">'+esc(c.title)+'</span><span class="subject-progress">'+count(c)+'/4 <span aria-hidden="true">›</span></span></a>'});
