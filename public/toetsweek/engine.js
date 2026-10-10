@@ -96,6 +96,20 @@
     ]
   };
   chapters.forEach(function(c){c.methodSteps=(methodFlow[c.id]||[]).map(function(x,i){return {sequence:i+1,sections:x[0],instruction:x[1],goal:x[2]}})});
+  // Keep the original 32-item progression and append independent practice from M10/M11 concepts.
+  // The source exercises are NOT reproduced; these are separately written questions.
+  var packs=global.AXIOM_EXTRA_QUESTIONS||{};
+  chapters.forEach(function(ch){
+    var extra=Array.isArray(packs[ch.id])?packs[ch.id]:[];
+    var occupied=new Set(ch.tasks.map(function(q){return q.id}));
+    extra.forEach(function(q){
+      if(occupied.has(q.id))throw Error("Duplicate AXIOM question id: "+q.id);
+      if(!q.stem || !q.why || !Array.isArray(q.hints) || q.hints.length<2)throw Error("Incomplete AXIOM question "+q.id);
+      if(q.type==="number" && (!Number.isFinite(q.answer)||typeof q.tolerance!=="number"))throw Error("Bad numerical exercise "+q.id);
+      if(q.type==="explain" && !Array.isArray(q.rubric))throw Error("Missing model criteria "+q.id);
+      occupied.add(q.id);ch.tasks.push(q);
+    });
+  });
   var allTasks=chapters.flatMap(function(ch){return ch.tasks.map(function(t){return Object.assign({},t,{unitId:ch.id,module:ch.module,unitTitle:ch.title,source:ch.source})})});
   var byId=Object.fromEntries(allTasks.map(function(t){return [t.id,t]}));
   var order=Object.fromEntries(allTasks.map(function(t,i){return [t.id,i]}));

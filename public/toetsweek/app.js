@@ -26,49 +26,25 @@ function daysLeft(){return Math.max(0,Math.ceil((Date.parse("2026-10-16T11:30:00
 function renderNav(){document.body.classList.toggle("axiom-focus-mode",screen==="study");document.querySelectorAll("[data-nav]").forEach(function(btn){var on=btn.getAttribute("data-nav")===screen||(screen==="study" && btn.getAttribute("data-nav")==="mission");btn.classList.toggle("selected",on);btn.setAttribute("aria-current",on?"page":"false")});var c=document.getElementById("crumb");c.textContent=screen==="mission"?"Overzicht":screen==="study"?"Oefening":screen==="map"?"Onderwerpen":screen==="review"?"Herhalen":"Voortgang";}
 function header(kicker,title,description){return '<div class="page-heading"><h1 class="display">'+title+'</h1><p class="intro">'+esc(description)+'</p></div>';}
 function renderMission(){
- var saved={topics:{}},active="r";
- try{saved=JSON.parse(localStorage.getItem("axiom-course-v2")||"{}")||{};active=localStorage.getItem("axiom-route-current")||"r"}catch(e){}
- if(!saved.topics||typeof saved.topics!=="object")saved.topics={};
- if(!E.chapters.some(function(c){return c.id===active}))active="r";
- function count(c){
-  var p=saved.topics[c.id];if(!p)return 0;
-  return [!!p.introDone,!!p.practice?.done,!!p.exam?.done,!!p.hard?.done].filter(Boolean).length;
- }
- var finished=E.chapters.filter(function(c){return count(c)===4}).length;
- var answersWritten=0;
- E.chapters.forEach(function(c){
-  var p=saved.topics[c.id];if(!p)return;
-  Object.values(p.practice?.items||{}).forEach(function(item){if(typeof item.answer==="string"&&item.answer.trim())answersWritten++;});
-  if(typeof p.exam?.answer==="string"&&p.exam.answer.trim())answersWritten++;
-  if(typeof p.hard?.answer==="string"&&p.hard.answer.trim())answersWritten++;
- });
- var chosen=E.chapters.find(function(c){return c.id===active})||E.chapters[0];
- var stage=count(chosen);
- if(stage===4 && finished<8){chosen=E.chapters.find(function(c){return count(c)<4});stage=count(chosen);}
- var phases=["Theorie","Oefenvragen","Toetsvraag","Moeilijke vraag","Afgerond"];
- var url="/toetsweek/leerroute.html?module="+encodeURIComponent(chosen.id);
- var desc=[
- "Begin met de uitleg op de site. Daarna volgen vier oefenvragen.",
- "Maak vier oefenvragen en bekijk de uitwerking na je antwoord.",
- "Maak een open toetsvraag en vergelijk die met het modelantwoord.",
- "Maak een moeilijkere opgave in een nieuwe context.",
- "Dit onderwerp is volledig doorlopen."
- ][stage];
- var h='<div class="page-heading"><h1>Overzicht</h1><p>Scheikunde · M10 §4 en §6, M11 practicum 1 t/m 6.</p></div>';
- h+='<div class="overview-status"><div><b>'+finished+'/8</b> onderwerpen doorlopen</div><div><b>'+answersWritten+'/48</b> eigen antwoorden ingevuld</div></div>';
- h+='<section class="overview-main"><div class="overview-meta">Verder met · '+esc(chosen.module)+' · '+esc(phases[stage])+'</div><h2>'+esc(chosen.title)+'</h2><p>'+esc(desc)+'</p><div class="overview-actions"><a class="primary-btn" href="'+url+'">Verder leren →</a><a class="secondary-btn" href="/toetsweek/examen.html">Proeftoetsen</a></div></section>';
- h+='<div class="section-line"><h2>Onderwerpen</h2><span>Uitleg · 4 oefeningen · 2 toetsvragen</span></div><div class="overview-subjects">';
- E.chapters.forEach(function(c){h+='<a class="subject-row" href="/toetsweek/leerroute.html?module='+encodeURIComponent(c.id)+'"><span class="subject-code">'+esc(c.module)+'</span><span class="subject-name">'+esc(c.title)+'</span><span class="subject-progress">'+count(c)+'/4 <span aria-hidden="true">›</span></span></a>'});
- h+='</div><div class="overview-tools"><button data-action="start">Extra oefenvragen</button><button data-nav="review">Eerdere fouten</button><button data-nav="stats">Oude voortgang</button></div>';
- if(!storageOK)h+='<div class="notice">De browser kan je voortgang niet opslaan. Exporteer je werk via Oude voortgang.</div>';
- return h;
+ var report=E.report(state),next=E.choose(state),assess=state.mode==="assessment",finished=assess&&!next;
+ var title=finished?"Nulmeting afgerond":assess?"Begin met de nulmeting":"Verder oefenen";
+ var text=finished?"Je hebt de eerste acht vragen gedaan. Ga verder met de oefenreeks.":assess?"Acht eerste vragen laten zien waar je extra oefening nodig hebt.":next?"Volgende vraag: "+next.module+" · "+next.unitTitle:"Alle vragen zijn geprobeerd. Je kunt nu fouten herhalen.";
+ var button=finished?'<button class="primary-btn" data-action="finish-assessment">Verder met oefenen →</button>':next?'<button class="primary-btn" data-action="start">'+(assess?"Start nulmeting":"Volgende oefenvraag")+' →</button>':'<button class="primary-btn" data-nav="review">Fouten herhalen →</button>';
+ var out=header("","Overzicht","M10 §4 en §6 · M11 P1 t/m P6");
+ out+='<div class="overview-status"><div><b>'+report.attempts+'</b> gemaakte pogingen</div><div><b>'+report.total+'</b> verschillende oefenvragen</div></div>';
+ out+='<section class="overview-main"><div class="overview-meta">'+(next?esc(next.module):"Oefenen")+'</div><h2>'+esc(title)+'</h2><p>'+esc(text)+'</p><div class="overview-actions">'+button+'<a class="secondary-btn" href="/toetsweek/examen.html">Examenopgaven</a></div></section>';
+ out+='<div class="section-line"><h2>Onderwerpen</h2><span>Oefenreeksen per hoofdstuk</span></div><div class="overview-subjects">';
+ E.chapters.forEach(function(c){var m=E.mastery(state,c);out+='<button class="subject-row" data-action="focus" data-unit="'+esc(c.id)+'"><span class="subject-code">'+esc(c.module)+'</span><span class="subject-name">'+esc(c.title)+'</span><span class="subject-progress">'+m.passed+'/'+m.total+' →</span></button>';});
+ out+='</div><div class="overview-tools"><button data-nav="review">Fouten herhalen</button><button data-nav="stats">Voortgang bekijken</button></div>';
+ out+='<details class="fineprint"><summary>Over beoordelingen</summary><p>Een numeriek antwoord kan automatisch worden nagekeken. Een open antwoord beoordeel je zelf aan de hand van het model; de voortgang is daarom geen voorspeld cijfer. Je eerdere AXIOM-antwoorden blijven in de browser bewaard.</p></details>';
+ return out;
 }
 function renderStudy(){
  var q=getTask();
- if(!q)return header("FOCUS","Je bent bijgewerkt.","De nulmeting is klaar of alle leerstappen zijn behandeld.")+'<div class="button-row"><button class="primary-btn" data-action="finish-assessment">Ga naar leerroute →</button><button class="secondary-btn" data-nav="review">Herhaal fouten</button></div>';
+ if(!q)return header("","Oefenreeks afgerond","Je kunt verder met je foutvragen of examenopgaven.")+'<div class="button-row"><button class="primary-btn" data-action="finish-assessment">Verder oefenen →</button><button class="secondary-btn" data-nav="review">Herhaal fouten</button></div>';
  var chapter=E.chapters.find(function(c){return c.id===q.unitId}), position=chapter.tasks.findIndex(function(t){return t.id===q.id});
  var isAssess=state.mode==="assessment";
- var body='<button class="crumb-back" data-nav="mission">← Vandaag</button><div class="exercise-shell"><div class="exercise-meta"><span>'+(isAssess?"NULMETING":"BEGELEID OEFENEN")+' / '+esc(q.module)+'</span><span>ACTIEVE TIJD: <span id="study-timer">'+timeLabel()+'</span></span></div>';
+ var body='<button class="crumb-back" data-nav="mission">← Overzicht</button><div class="exercise-shell"><div class="exercise-meta"><span>'+(isAssess?"NULMETING":"OEFENEN")+' / '+esc(q.module)+'</span><span>ACTIEVE TIJD: <span id="study-timer">'+timeLabel()+'</span></span></div>';
  body+='<h1 class="exercise-title">'+esc(chapter.title)+'</h1><p class="exercise-sub">'+esc(chapter.blurb)+'</p>';
  body+='<div class="progress-tiny"><span style="width:'+((position+1)/chapter.tasks.length*100)+'%"></span></div>';
  body+='<section class="problem-box"><div class="problem-type">'+esc(q.tier)+' · '+(q.type==="choice"?"REDENEREN":q.type==="number"?"BEREKENEN":"UITLEGGEN")+'</div><h2>'+esc(q.stem)+'</h2>';
@@ -77,7 +53,7 @@ function renderStudy(){
  } else if(q.type==="number"){
   body+='<label class="sr-only" for="answer-input">Jouw berekening of uitkomst</label><input id="answer-input" class="answer-input" autocomplete="off" placeholder="Jouw antwoord, bijv. 0,0050 of 5,0e-3" inputmode="text" type="text" autocapitalize="off" spellcheck="false" value="'+esc(draft)+'" '+(feedback?"disabled":"")+'><div class="numeric-tools"><button type="button" data-action="insert-minus" aria-label="Voeg minteken toe">− negatief</button><button type="button" data-action="insert-exp" aria-label="Voeg maal tien tot de macht toe">×10^</button></div><div class="unit-label">Geef je antwoord in '+esc(q.unit||"de aangegeven eenheid")+'. Gebruik − of e-3 voor machten van tien. Schrijf berekenstappen op papier.</div>';
  } else {
-  body+='<label class="sr-only" for="answer-input">Jouw uitleg</label><textarea id="answer-input" class="answer-text" placeholder="Schrijf eerst zelf 2–5 zinnen en gebruik je eigen woorden." '+(feedback?"disabled":"")+'>'+esc(draft)+'</textarea><div class="unit-label">Een open uitleg beoordeel je met de criteria, of vrijwillig met de AI-coach.</div>';
+  body+='<label class="sr-only" for="answer-input">Jouw uitleg</label><textarea id="answer-input" class="answer-text" placeholder="Schrijf eerst zelf 2–5 zinnen en gebruik je eigen woorden." '+(feedback?"disabled":"")+'>'+esc(draft)+'</textarea><div class="unit-label">Vergelijk je redenering pas na inleveren met het volledige modelantwoord.</div>';
  }
  if(!feedback){
    if(hints)body+='<div class="hint-box"><strong>HINT '+hints+'/2</strong><div>'+esc(q.hints[hints-1])+'</div></div>';
@@ -85,10 +61,6 @@ function renderStudy(){
  }else{
    body+=renderFeedback(q);
  }
- var method=chapter.methodSteps[Math.min(chapter.methodSteps.length-1, Math.floor(position/Math.ceil(chapter.tasks.length/chapter.methodSteps.length)))];
- body+='<div class="method-cue"><div class="method-cue-heading"><span>OPBOUW IN JE EIGEN BOEK</span><strong>§'+esc(method.sections)+'</strong></div><p>'+esc(method.instruction)+'</p><small>'+esc(method.goal)+'</small></div>';
- body+='<div class="source-note"><span>BRONLEERLIJN · '+esc(q.source)+'</span><span>'+esc(chapter.concepts.join(" / "))+'</span></div></section>';
- if(!feedback)body+='<p class="footnote">Getallen worden automatisch gecontroleerd, maar open verklaringen controleer je zelf. De nulmeting heeft geen hints. Gebruik het Examenlab voor een proeftoets.</p>';
  body+='</div>';
  return body;
 }
