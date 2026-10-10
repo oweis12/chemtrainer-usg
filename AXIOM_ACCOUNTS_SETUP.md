@@ -1,14 +1,13 @@
-# AXIOM cloudaccount instellen
+# AXIOM cloudaccounts activeren
 
-1. Maak een Supabase-project aan via https://supabase.com/dashboard en wacht totdat de database gereed is.
-2. Plak de inhoud van `supabase/axiom-progress.sql` in **SQL Editor** en voer hem uit.
-3. Ga in Supabase naar **Authentication → Providers → Email**. Zet e-mail en wachtwoord aan en houd e-mailverificatie ingeschakeld. Stel onder URL Configuration het **Site URL** in op `https://chemtrainer-usg.vercel.app` en voeg eventueel dit domein toe aan de redirects.
-4. Voeg in **Vercel → Project → Settings → Environment Variables** twee variabelen toe: `AXIOM_SUPABASE_URL` = de Supabase Project URL en `AXIOM_SUPABASE_PUBLISHABLE_KEY` = de **publishable** (of oude anon) key. Geen secret of service-role key gebruiken!
-5. Start een nieuwe Vercel deployment. Test via `https://chemtrainer-usg.vercel.app/api/axiom-config`: `{"enabled":true,...}` geeft aan dat de publieke configuratie aanwezig is.
-6. Maak via AXIOM een account, bevestig je e-mail en log in. Controleer de synchronisatie op een tweede apparaat.
+De accountinterface en voortgangssynchronisatie zijn ingebouwd. Echte registratie blijft **uitgeschakeld tot er een Supabase-project is gekoppeld**. De oude lokale voortgang blijft ongewijzigd.
 
-**Privacy:** de voortgang wordt per ingelogde gebruiker met RLS afgeschermd en per apparaat als afzonderlijke rij opgeslagen. Er worden geen schooldocumenten naar deze database geüpload. Wachtwoorden worden verwerkt door Supabase Auth en niet door AXIOM opgeslagen.
+1. Maak een gratis Supabase-project aan: https://supabase.com/dashboard.
+2. Ga naar **SQL Editor** en voer `supabase/axiom-progress.sql` uit. Dit maakt de privé-opslag aan en schakelt Row Level Security in.
+3. Stel in **Authentication → Providers → Email** e-mail/wachtwoord in, met bevestiging via e-mail. Zet onder URL Configuration het Site URL op `https://chemtrainer-usg.vercel.app`.
+4. Open `public/toetsweek/cloud-config.js` en vul **alleen** de publieke project-URL en **publishable** key in. Zet `enabled: true`. Een publishable/anon key mag volgens Supabase in de frontend staan, mits RLS juist is ingesteld. **Gebruik nooit de secret of service-role key.**
+5. Deploy de commit naar Vercel. Test registratie, e-mailbevestiging, inloggen, en progressie op een tweede apparaat.
 
-**Bestaande data:** je browser bewaart `axiom-v2-progress` en `axiom-exams-v1`; bij de eerste aanmelding vraagt AXIOM of je deze lokale voortgang wilt koppelen. De quiz blijft zonder account offline werken.
+De cloud gebruikt afzonderlijke rijen per gebruiker en browser, beveiligd met RLS. Oudere lokale pogingen kunnen na aanmelden worden geïmporteerd. Zonder account blijven oefenvragen en lokaal opslaan gewoon werken.
 
-**Let op:** de Vercel-variabelen en Supabase-project zijn nog niet automatisch aangemaakt. Zonder deze stappen toont AXIOM een duidelijke melding dat cloudaccounts nog niet zijn geactiveerd.
+Let op: dit project heeft nog geen werkelijk gekoppelde Supabase-instance; alleen broncode deployen creëert geen gebruikersdatabase.
