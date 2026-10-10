@@ -23,24 +23,29 @@ function getTask(){return current||E.choose(state);}
 function setTask(q){current=q;chosen=null;draft="";hints=0;feedback=null;reason="";aiReply="";render();}
 function attemptTask(q){state.mode=state.mode==="assessment"?"assessment":state.mode;screen="study";if(!state.sessionStart)state.sessionStart=new Date().toISOString();setTask(q||E.choose(state));}
 function daysLeft(){return Math.max(0,Math.ceil((Date.parse("2026-10-16T11:30:00+02:00")-Date.now())/86400000));}
-function renderNav(){document.body.classList.toggle("axiom-focus-mode",screen==="study");document.querySelectorAll("[data-nav]").forEach(function(btn){var on=btn.getAttribute("data-nav")===screen||(screen==="study" && btn.getAttribute("data-nav")==="mission");btn.classList.toggle("selected",on);btn.setAttribute("aria-current",on?"page":"false")});var c=document.getElementById("crumb");c.textContent=screen==="mission"?"VANDAAG":screen==="study"?"FOCUS":screen==="map"?"LEERLIJN":screen==="review"?"HERHALEN":"VOORTGANG";}
-function header(kicker,title,description){return '<div class="eyebrow">'+esc(kicker)+'</div><div class="head-row"><div><h1 class="display">'+title+'</h1><p class="intro">'+esc(description)+'</p></div><div class="dateplate"><small>DAGEN TOT TOETS</small><b>'+daysLeft()+'</b><small>VRIJDAG 16 OKT</small></div></div>';}
+function renderNav(){document.body.classList.toggle("axiom-focus-mode",screen==="study");document.querySelectorAll("[data-nav]").forEach(function(btn){var on=btn.getAttribute("data-nav")===screen||(screen==="study" && btn.getAttribute("data-nav")==="mission");btn.classList.toggle("selected",on);btn.setAttribute("aria-current",on?"page":"false")});var c=document.getElementById("crumb");c.textContent=screen==="mission"?"Overzicht":screen==="study"?"Oefening":screen==="map"?"Onderwerpen":screen==="review"?"Herhalen":"Voortgang";}
+function header(kicker,title,description){return '<div class="page-heading"><h1 class="display">'+title+'</h1><p class="intro">'+esc(description)+'</p></div>';}
 function renderMission(){
- var report=E.report(state),next=E.choose(state),assess=state.mode==="assessment",assessmentFinished=assess&&!next;
- var intro=assess?"Eerst bewijzen wat je al zelfstandig kunt. Acht korte ijkpunten, één uit elke leerketen.":"Geen losse opgaven kiezen. AXIOM volgt de volgorde van M10 en M11 en herhaalt wat nog niet zelfstandig lukt.";
- var pending=next?next.module+" · "+next.unitTitle:"Alle huidige taken zijn behandeld";
- var missionTitle=assessmentFinished?"Nulmeting afgerond.":"Eén volgende stap. Geen twijfel.";
- var missionText=assessmentFinished?"Je antwoorden zijn vastgelegd. Nu schakelen we over op opbouw: eerst voorkennis herstellen, dan toepassingen en transfer.":assess?"Begin bij "+pending+". Gebruik geen antwoordenboek. Een hint mag, maar telt niet als zelfstandige beheersing.":next?"Verder met "+pending+". De opdracht komt in de oorspronkelijke leerketen; je hoeft niets zelf uit het boek te selecteren.":"Alle 32 leerstappen zijn behandeld. Ga terug naar foutvragen of probeer de toetsmodus.";
- var action=assessmentFinished?'<button class="primary-btn" data-action="finish-assessment">Maak mijn leerroute →</button>':next?'<button class="primary-btn" data-action="start"> '+(assess?"Start de nulmeting":"Verder met mijn leerroute")+' →</button>':'<button class="primary-btn" data-action="exam">Start toetsvragen →</button>';
- var out=header("JOUW TOETSWEEK / 09—16 OKTOBER","Geen gokken.<br><em>Wel beheersen.</em>",intro);
- out+='<section class="exam-link-banner"><span>NIEUW · BEGELEIDE LEERROUTE</span><strong>Uitleg → boek in volgorde → examenvraag → zware transfer.</strong><p>Per onderwerp één gecontroleerde bron; de volgende fase ontgrendelt pas na je eigen uitwerking. Inclusief de gerichte A-practicum-opgaven uit Magister.</p><div class="button-row"><a class="primary-btn" href="/toetsweek/leerroute.html">Start begeleide leerroute →</a><a class="secondary-btn" href="/toetsweek/examen.html">Examenlab</a></div></section>';
- if(!storageOK)out+='<div class="notice">Lokale opslag is niet beschikbaar. Exporteer je antwoorden voordat je dit venster sluit.</div>';
- out+='<div class="stats-grid"><div class="stat"><span>Vandaag actief</span><b id="time-used">'+timeLabel()+'</b><small>Richtlijn: maximaal 2 uur</small></div><div class="stat"><span>Zelfstandig beheerst</span><b>'+report.passed+' <small>/ '+report.total+'</small></b><small>Geen credits voor hints</small></div><div class="stat"><span>Opvolging nodig</span><b>'+report.weak.reduce(function(n,c){return n+c.mistakes},0)+'</b><small>Fouten & hulpgebruik</small></div></div>';
- out+='<section class="mission"><div class="mission-label">'+(assess?"FASE 01 · NULMETING":"FOCUS · GEPERSONALISEERDE ROUTE")+'</div><h2>'+esc(missionTitle)+'</h2><p>'+esc(missionText)+'</p><div class="button-row">'+action+'<button class="secondary-btn" data-nav="map">Bekijk de hele leerlijn</button></div></section>';
- out+='<div class="section-line"><h2>Wat er achter zit</h2><span>M10 §4/6 → M11 P1–P6</span></div><div class="track">';
- E.chapters.forEach(function(c){var m=E.mastery(state,c);out+='<div class="track-item"><div><b>'+esc(c.module)+'</b><small>'+esc(c.title)+'</small><div class="meter"><i style="width:'+m.percent+'%"></i></div></div><span class="track-value">'+m.percent+'%</span></div>'});
- out+='</div><p class="footnote">Open redeneringen worden door jouzelf nagekeken; percentages betekenen dus geen bewezen toetsbeheersing en voorspellen geen cijfer. De opdrachten zijn nieuw geschreven en volgen de begrippen en volgorde van je eigen methode.</p>';
- return out;
+ var saved={topics:{}},active="r";
+ try{saved=JSON.parse(localStorage.getItem("axiom-route-v1")||"{}")||{};active=localStorage.getItem("axiom-route-current")||"r"}catch(e){}
+ if(!saved.topics||typeof saved.topics!=="object")saved.topics={};
+ if(!E.chapters.some(function(c){return c.id===active}))active="r";
+ function count(c){var p=saved.topics[c.id];return p?[p.intro?.done,p.book?.done,p.exam?.done,p.hard?.done].filter(Boolean).length:0;}
+ var finished=E.chapters.filter(function(c){return count(c)===4}).length;
+ var chosen=E.chapters.find(function(c){return c.id===active})||E.chapters[0];
+ var stage=count(chosen);
+ if(stage===4 && finished<8){chosen=E.chapters.find(function(c){return count(c)<4});stage=count(chosen);}
+ var phases=["Uitleg","Boekopgaven","Toetsvraag","Verdieping","Afgerond"];
+ var url="/toetsweek/leerroute.html?module="+encodeURIComponent(chosen.id);
+ var desc=["Bekijk de uitleg en beschrijf in eigen woorden wat je hebt geleerd.","Maak de opgaven in de oorspronkelijke boekvolgorde.","Maak de toetsvraag en vergelijk na het inleveren met het model.","Maak de verdiepingsvraag over een nieuwe situatie.","Alle onderdelen van dit onderwerp zijn afgerond."][stage];
+ var h='<div class="page-heading"><h1>Overzicht</h1><p>Scheikunde · M10 practicum 4 en 6, M11 practicum 1 t/m 6.</p></div>';
+ h+='<div class="overview-status"><div><b>'+finished+'/8</b> onderwerpen afgerond</div><div><b>'+Math.floor(spent/60)+'/120</b> minuten actief vandaag</div></div>';
+ h+='<section class="overview-main"><div class="overview-meta">Verder met · '+esc(chosen.module)+' · '+esc(phases[stage])+'</div><h2>'+esc(chosen.title)+'</h2><p>'+esc(desc)+'</p><div class="overview-actions"><a class="primary-btn" href="'+url+'">Verder leren →</a><a class="secondary-btn" href="/toetsweek/examen.html">Toetsen</a></div></section>';
+ h+='<div class="section-line"><h2>Onderwerpen</h2><span>4 onderdelen per onderwerp</span></div><div class="overview-subjects">';
+ E.chapters.forEach(function(c){h+='<a class="subject-row" href="/toetsweek/leerroute.html?module='+encodeURIComponent(c.id)+'"><span class="subject-code">'+esc(c.module)+'</span><span class="subject-name">'+esc(c.title)+'</span><span class="subject-progress">'+count(c)+'/4 <span aria-hidden="true">›</span></span></a>'});
+ h+='</div><div class="overview-tools"><button data-action="start">Losse oefenvragen</button><button data-nav="review">Fouten herhalen</button><button data-nav="stats">Voortgang bekijken</button></div>';
+ if(!storageOK)h+='<div class="notice">De browser kan je voortgang niet opslaan. Exporteer je werk via Voortgang.</div>';
+ return h;
 }
 function renderStudy(){
  var q=getTask();
@@ -95,7 +100,7 @@ function renderFeedback(q){
  return out;
 }
 function renderMap(){
- var out=header("KENNISKAART / 08 KETENS","Een route.<br><em>Geen vraagbank.</em>","Deze volgorde volgt de didactische opbouw in de schoolmodules. De coach behandelt beginbegrippen voordat hij ingewikkelde toepassingsvragen aanbiedt.");
+ var out=header("Onderwerpen","Onderwerpen","Oefeningen uit de verschillende onderdelen van de toetsstof.");
  out+='<div class="notice">Boekafbakening uit je planning: M10 practicum 4 en 6, M11 practicum 1–6. Voor M11 P6 is §6.5 uitgesloten; §6.1–6.2 zijn in het overzicht leesstof. Check afwijkingen met de docent.</div>';
  out+='<div class="map-list">';
  E.chapters.forEach(function(c,i){var m=E.mastery(state,c);out+='<button class="map-card" data-action="focus" data-unit="'+esc(c.id)+'"><span class="map-num">'+String(i+1).padStart(2,"0")+'</span><span><span class="map-book">'+esc(c.module)+' · '+esc(c.source)+'</span><h3>'+esc(c.title)+'</h3><p>'+esc(c.blurb)+'</p></span><span class="map-pct">'+m.passed+'/'+m.total+' →</span></button>'});
@@ -103,7 +108,7 @@ function renderMap(){
  return out;
 }
 function renderReview(){
- var report=E.report(state),bad=E.allTasks.filter(function(q){var h=E.history(state,q.id);return h.length&&!E.independentPass(state,q.id)}),out=header("GEHEUGEN / HERHALING","Je fouten zijn<br><em>je studieplan.</em>","Elke vraag die fout ging of waarvoor je hulp nodig had, blijft openstaan tot je hem later zelfstandig goed oplost.");
+ var report=E.report(state),bad=E.allTasks.filter(function(q){var h=E.history(state,q.id);return h.length&&!E.independentPass(state,q.id)}),out=header("Herhalen","Herhalen","Vragen die nog niet zelfstandig goed gingen.");
  out+='<div class="stats-grid"><div class="stat"><span>Openstaande vragen</span><b>'+bad.length+'</b><small>Ook hints tellen mee</small></div><div class="stat"><span>Nu herhaalbaar</span><b>'+report.reviews+'</b><small>Na tijd tussen de pogingen</small></div><div class="stat"><span>Totale pogingen</span><b>'+report.attempts+'</b><small>Niet gelijk aan beheersing</small></div></div>';
  out+='<div class="section-line"><h2>Herhaalwachtrij</h2><span>Onopgeloste vragen</span></div><div class="list-rows">';
  if(!bad.length)out+='<div class="panel">Je hebt nog geen openstaande fouten. Maak eerst de nulmeting of de leerroute.</div>';
@@ -112,7 +117,7 @@ function renderReview(){
  return out;
 }
 function renderStats(){
- var r=E.report(state);var out=header("RESULTATEN / ZONDER OPSMUK","Meet begrip.<br><em>Niet activiteit.</em>","De coach geeft geen voorspeld cijfer. Hier zie je welke vragen zelfstandig lukten en waar nog een volledige nieuwe poging nodig is.");
+ var r=E.report(state);var out=header("Voortgang","Voortgang","Resultaten van je oefenvragen. Open antwoorden zijn door jouzelf nagekeken.");
  out+='<div class="stats-grid"><div class="stat"><span>Zelfstandig goed</span><b>'+r.passed+'/'+r.total+'</b><small>Oefenitems in deze coach</small></div><div class="stat"><span>Pogingen</span><b>'+r.attempts+'</b><small>Inclusief herstel</small></div><div class="stat"><span>Vandaag actief</span><b id="time-used">'+timeLabel()+'</b><small>Dagbudget 120 min</small></div></div>';
  out+='<div class="section-line"><h2>Per kennisketen</h2><span>Zelfstandig opgelost</span></div><div class="list-rows">';
  r.weak.forEach(function(c){out+='<div class="panel"><div class="panel-heading"><h3>'+esc(c.module)+' · '+esc(c.title)+'</h3><strong>'+c.passed+' / '+c.total+'</strong></div><div class="barline"><span style="width:'+c.percent+'%"></span></div><p class="note">'+c.mistakes+' pogingen met fout of hulpgebruik · '+c.attempts+' totaal</p></div>'});

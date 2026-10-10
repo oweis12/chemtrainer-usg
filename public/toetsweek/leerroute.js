@@ -27,8 +27,8 @@ function rowPrimary(ref,title){
 }
 function renderIntro(c,p,conf){
  const s=p.intro;
- let out='<div class="r-card"><span class="r-label">FASE 01 / BEGRIJPEN VÓÓR OEFENEN</span><h2>Één gerichte uitleg</h2>';
- out+='<p>Begin niet blind aan sommen. Gebruik één bron en schrijf daarna zonder hulp uit wat je begrepen hebt. Deze stap wordt pas voltooid na je eigen korte uitleg.</p>';
+ let out='<div class="r-card"><span class="r-label">Stap 1 van 4</span><h2>Uitleg</h2>';
+ out+='<p>Open de uitlegbron en beschrijf daarna uit je hoofd wat je hebt geleerd.</p>';
  if(conf.video){
   out+='<div class="r-ref r-video"><div><span class="r-label">'+(conf.video.kind==="video"?"UITLEGVIDEO":"UITLEGBRON")+'</span><b>'+esc(conf.video.label)+'</b><small>Gerichte externe bron, geen herdruk van schoolmateriaal</small></div><a href="'+esc(conf.video.url)+'" target="_blank" rel="noopener noreferrer" data-resource="true">Open uitleg ↗</a></div>';
  } else {
@@ -44,8 +44,8 @@ function renderIntro(c,p,conf){
 }
 function renderBook(c,p,conf){
  const s=p.book,methods=c.methodSteps||[],idx=Math.min(s.index,methods.length-1),m=methods[idx];
- let out='<div class="r-card"><span class="r-label">FASE 02 / BOEK IN ORIGINELE VOLGORDE</span><h2>Van experiment naar theorie</h2>';
- out+='<p>Dit is geen willekeurige vraaggenerator. Volg de opgaven en conclusies in dezelfde volgorde als in het boekje. Ga niet naar het volgende onderdeel totdat je de huidige keten hebt afgewerkt.</p>';
+ let out='<div class="r-card"><span class="r-label">Stap 2 van 4</span><h2>Opgaven uit het boek</h2>';
+ out+='<p>Werk de paragrafen op volgorde af. Noteer waar je vastliep en hoe je de opgave hebt opgelost.</p>';
  out+=rowPrimary({file:conf.file,folder:conf.folder},"VERPLICHTE METHODE");
  out+='<div class="r-progress"><span>Deel '+(idx+1)+' van '+methods.length+'</span><span>'+esc(c.module)+' · '+esc(m.sections)+'</span></div>';
  out+='<div class="r-sequence"><b>§'+esc(m.sections)+' · '+esc(m.goal)+'</b><p>'+esc(m.instruction)+'</p></div>';
@@ -59,7 +59,7 @@ function renderBook(c,p,conf){
 function answerBlock(q,s,step){
  const rubric=q.rubric||q.marks||[];
  const reached=!!s.submitted, score=s.marks.filter(Boolean).length,minimum=Math.ceil(rubric.length*0.75);
- let h='<div class="r-card"><span class="r-label">FASE '+(step==="exam"?"03 / OPEN EXAMENVRAAG":"04 / ZWARE TRANSFER")+'</span><h2>'+(step==="exam"?"Pas het toe zonder hints":"Kan je dit in een nieuwe situatie?")+'</h2>';
+ let h='<div class="r-card"><span class="r-label">FASE '+(step==="exam"?"3 van 4 / Toetsvraag":"4 van 4 / Verdieping")+'</span><h2>'+(step==="exam"?"Toetsvraag":"Verdiepingsvraag")+'</h2>';
  h+='<div class="r-silver">'+esc(q.context)+'</div>';
  h+='<p class="exam-question">'+esc(q.question||q.ask)+'</p>';
  h+='<label for="route-input" class="r-label">EIGEN REDENERING, VERGELIJKING EN BEREKENING</label>';
@@ -67,7 +67,7 @@ function answerBlock(q,s,step){
  if(!reached){
   h+='<p class="r-small">Geen hints en geen uitwerking tot je antwoord is ingeleverd. Schrijf meerdere stappen zodat je eerlijk kunt nakijken.</p><div class="r-cta"><button class="r-button" data-action="submit-answer">Inleveren en model pas daarna tonen →</button></div>';
  }else{
-  h+='<div class="r-answer"><strong>MODELUITWERKING</strong><div style="margin-top:9px">'+esc(q.model||q.answer)+'</div></div>';
+  h+='<div class="r-answer"><strong>Modeluitwerking</strong><div style="margin-top:9px">'+esc(q.model||q.answer)+'</div></div>';
   h+='<p>Geef jezelf uitsluitend een punt wanneer die stap duidelijk in je oorspronkelijke uitwerking staat. Deze score wordt door jou toegekend, niet automatisch door AI.</p>';
   h+='<div class="r-marks">';
   rubric.forEach((r,i)=>{h+='<label><input type="checkbox" data-rubric="'+i+'" '+(s.marks[i]?"checked":"")+'><div><span>+1 punt</span> '+esc(r)+'</div></label>'});
@@ -77,13 +77,13 @@ function answerBlock(q,s,step){
  h+='</div>';return h;
 }
 function renderFinished(c){
- return '<section class="r-card"><span class="r-label">LEERROUTE AFGEROND</span><h2>'+esc(c.module)+' · Gereed voor een proeftoets</h2><p>Je hebt vier stappen afgerond: uitleg, boekketen, open examenvraag en zware transfer. De open vragen zijn door jouzelf beoordeeld, dus test je begrip nog op een nieuwe vraag die je nooit eerder zag.</p><div class="r-cta"><a class="r-button" href="/toetsweek/examen.html" style="text-decoration:none">Start het volledige Examenlab →</a><button class="r-secondary" data-action="repeat-topic">Onderwerp nog eens leren</button></div></section>';
+ return '<section class="r-card"><span class="r-label">Onderwerp afgerond</span><h2>'+esc(c.module)+'</h2><p>Je hebt de vier onderdelen afgerond. Je kunt het onderwerp herhalen of een proeftoets maken.</p><div class="r-cta"><a class="r-button" href="/toetsweek/examen.html" style="text-decoration:none">Start het volledige Examenlab →</a><button class="r-secondary" data-action="repeat-topic">Onderwerp nog eens leren</button></div></section>';
 }
 function render(){
  const p=data(),c=units.find(x=>x.id===unit),conf=D.topics[unit];
- nav.innerHTML=units.map(x=>'<button data-unit="'+x.id+'" class="'+(x.id===unit?"active":"")+'">'+esc(x.module)+'</button>').join("");
+ nav.innerHTML='<label for="route-subject">Onderwerp</label><select id="route-subject" aria-label="Kies een onderwerp">'+units.map(x=>'<option value="'+x.id+'" '+(x.id===unit?"selected":"")+'>'+esc(x.module)+' · '+esc(x.title)+'</option>').join("")+'</select>';
  const stage=getStage(p),flags=status(p);
- const headings=["Uitleg","Boekvolgorde","Examenvraag","Transfer"];
+ const headings=["Uitleg","Boek","Toetsvraag","Verdieping"];
  let h='<div class="r-steps">'+headings.map((name,i)=>'<div class="r-step '+(flags[i]?"done":stage===["intro","book","exam","hard"][i]?"active":"")+'"><b>'+(flags[i]?"✓":String(i+1).padStart(2,"0"))+'</b>'+name+'</div>').join('')+'</div>';
  h+='<div class="r-progress"><span>'+esc(c.module)+' · '+esc(c.title)+'</span><span>'+flags.filter(Boolean).length+' / 4 fasen</span></div>';
  if(stage==="intro")h+=renderIntro(c,p,conf);
@@ -113,6 +113,6 @@ document.addEventListener("click",e=>{
  const link=e.target.closest("[data-resource]");if(link){const p=data();if(getStage(p)==="intro"){p.intro.opened=true;save();}return}
  const action=e.target.closest("[data-action]");if(action)act(action.dataset.action);
 });
-document.addEventListener("change",e=>{if(!e.target.hasAttribute("data-rubric"))return;const p=data(),stage=getStage(p);if(!["exam","hard"].includes(stage))return;p[stage].marks[Number(e.target.dataset.rubric)]=!!e.target.checked;save();render()});
+document.addEventListener("change",e=>{if(e.target.id==="route-subject"){switchUnit(e.target.value);return}if(!e.target.hasAttribute("data-rubric"))return;const p=data(),stage=getStage(p);if(!["exam","hard"].includes(stage))return;p[stage].marks[Number(e.target.dataset.rubric)]=!!e.target.checked;save();render()});
 render();
 })();

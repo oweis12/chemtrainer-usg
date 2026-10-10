@@ -13,18 +13,18 @@ function finish(expired){if(!sessions[kind]||sessions[kind].finished)return;sess
 function guard(){if(kind&&sessions[kind]&&!sessions[kind].finished&&time(sessions[kind])===0)finish(true)}
 function start(k,restart){if(!banks[k])return;if(restart&&!confirm("Deze examensessie wissen en opnieuw beginnen?"))return;kind=k;if(restart||!sessions[k])sessions[k]={kind:k,start:Date.now(),answers:{},marks:{},flags:{},finished:null};index=0;page=sessions[k].finished?"results":"exam";save();show();}
 function home(){
-var h='<div class="eyebrow">AXIOM / EXAMENLAB</div><h1 class="display">Minder hints.<br><em>Meer bewijs.</em></h1><p class="intro">Geen meerkeuzevragen, geen tussentijds nakijken. Maak eerst de volledige redenering. Pas na inleveren zie je de uitwerkingen en scorepunten.</p>';
-h+='<div class="exam-rule"><div><strong>Geen weggevertjes</strong>Alle vragen zijn open.</div><div><strong>Onder tijdsdruk</strong>De tijd loopt door bij het bekijken van originele examen-PDFs.</div><div><strong>Handmatig nakijken</strong>Punten worden nooit automatisch verzonnen.</div></div>';
-h+='<div class="exam-two"><article class="exam-feature featured"><div class="eyebrow">EXAMENSTIJL / NIEUWE OPGAVEN</div><h2>Volledige<br>proeftoets.</h2><p>12 open, samenhangende vragen uit M10 §4 en §6 en M11 P1–P6. Nieuw geschreven in examenstijl, niet afkomstig uit een officieel CE.</p><button class="exam-primary" data-act="start" data-kind="mock">'+(sessions.mock?(sessions.mock.finished?"Bekijk nagekeken toets":"Hervat proeftoets"):"Start 40-puntenproeftoets")+' →</button><footer>80 minuten · 40 punten</footer></article>';
-h+='<article class="exam-feature"><div class="eyebrow">OFFICIEEL / CVTE 2025-I</div><h2>Echte<br>examenvragen.</h2><p>Vragen 9, 14 en 22 uit het originele vwo-examen, gekozen op aansluiting met evenwicht en reactiesnelheid. De volledige tekst en figuren staan in het officiële PDF-bestand.</p><button class="exam-secondary" data-act="start" data-kind="real">'+(sessions.real?(sessions.real.finished?"Bekijk nakijkcriteria":"Hervat examenvragen"):"Start 3 echte CE-vragen")+' →</button><footer>20 minuten · 9 punten</footer></article></div>';
-h+='<section class="panel"><div class="panel-heading"><h3>De selectie van je docent</h3><span class="exam-flag">NOG NIET ONTVANGEN</span></div><p class="note">De opgaven uit Magister → Bronnen zijn niet in je beschikbare bestanden aangetroffen. Upload die PDF/Word hier in ChatGPT, dan kunnen we de officiële docentselectie verwerken. We noemen niets docentgeselecteerd zonder dat bestand te hebben gezien.</p></section>';
-h+='<div class="section-line"><h2>Officiële bronnen</h2></div><div class="exam-source-row"><div><b>Vwo scheikunde 2025, tijdvak 1</b><span>25 vragen in het complete examen. De coach verwijst naar 9, 14 en 22.</span></div><a class="exam-external" href="'+D.LINKS.examination+'" target="_blank" rel="noopener noreferrer">Opgaven-PDF ↗</a></div>';
-return h;
+var mock=sessions.mock,real=sessions.real;
+var out='<div class="page-heading"><h1>Toetsen</h1><p>Maak een proeftoets of oefen met officiële examenvragen. De correctie verschijnt na het inleveren.</p></div>';
+out+='<div class="exam-two">';
+out+='<article class="exam-feature"><div class="overview-meta">12 vragen · 80 minuten · 40 punten</div><h2>Proeftoets M10 en M11</h2><p>Open vragen over de volledige toetsstof, geschreven in examenstijl.</p><button class="exam-primary" data-act="start" data-kind="mock">'+(mock?(mock.finished?"Correctie bekijken":"Verder met proeftoets"):"Begin proeftoets")+' →</button></article>';
+out+='<article class="exam-feature"><div class="overview-meta">3 vragen · 20 minuten · 9 punten</div><h2>Echte examenvragen</h2><p>Vwo 2025, tijdvak 1: vragen 9, 14 en 22. Met het officiële correctievoorschrift.</p><button class="exam-secondary" data-act="start" data-kind="real">'+(real?(real.finished?"Correctie bekijken":"Verder met examenvragen"):"Begin examenvragen")+' →</button></article></div>';
+out+='<details class="fineprint"><summary>Bronnen en beoordeling</summary><p>De proeftoets is door AXIOM geschreven, niet door je docent of het CvTE. De officiële examenvragen staan in het originele bestand. Je kent na inleveren zelf punten toe op basis van de criteria.</p><p><a href="'+D.LINKS.examination+'" rel="noopener noreferrer" target="_blank">Bekijk het officiële examen vwo 2025-I ↗</a></p></details>';
+return out;
 }
 function exam(){
 var v=sessions[kind];guard();if(v.finished)return results();
 var list=banks[kind],q=list[index],answered=list.filter(x=>(v.answers[x.id]||"").trim()).length;
-var h='<div class="eyebrow">'+(kind==="real"?"ECHT CENTRAAL EXAMEN / CVTE":"PROEFTOETS / EXAMENSTIJL")+'</div>';
+var h='<div class="eyebrow">'+(kind==="real"?"Officiële examenvragen":"Proeftoets")+'</div>';
 h+='<div class="exam-navigation"><span>VRAAG '+(index+1)+' / '+list.length+' · '+answered+' BEANTWOORD</span><span class="exam-timer" id="exam-time">'+hh(time(v))+'</span></div><div class="exam-progress"><i style="width:'+((index+1)/list.length*100)+'%"></i></div>';
 h+='<section class="exam-card"><div class="exam-type-label">'+esc(q.unit)+' / '+esc(q.topic||q.title)+' · '+q.points+' PUNTEN</div><h1 class="exam-question">'+(kind==="real"?"Officiële vraag "+q.number:"Opgave "+(index+1))+'</h1>';
 h+='<div class="exam-context">'+esc(q.context)+'</div>';
@@ -41,7 +41,7 @@ return h;
 function results(){
 var v=sessions[kind];if(!v)return home();if(!v.finished){page="exam";return exam();}
 var score=total(v),list=banks[kind];
-var h='<div class="eyebrow">INGELEVERD / EERLIJK NAKIJKEN</div><h1 class="display">Vergelijk.<br><em>Ken punten toe.</em></h1><p class="intro">Je antwoorden zijn vergrendeld. Vergelijk ze met de modeluitwerking, vink alleen verdiende punten aan. Het resultaat is zelf-nagekeken, dus geen door de software berekend toetscijfer.</p>';
+var h='<div class="page-heading"><h1>Nakijken</h1><p>Vergelijk je antwoorden met het model en vink verdiende punten aan. Je beoordeelt jezelf; de software kent geen cijfer toe.</p></div>';
 h+='<div class="exam-scorecard"><div class="exam-type-label">ZELF TOEGEKENDE PUNTEN</div><div class="exam-score" id="exam-score">'+score.n+' <small>/ '+score.m+' punten</small></div><div class="barline"><span style="width:'+Math.round(100*score.n/score.m)+'%"></span></div></div>';
 if(kind==="real")h+='<div class="notice">Het volledige officiële <a class="exam-external" href="'+D.LINKS.correction+'" target="_blank" rel="noopener noreferrer">correctievoorschrift ↗</a> is nu beschikbaar. De korte criteria hieronder vervangen het officiële beoordelingsmodel niet.</div>';
 for(var i=0;i<list.length;i++){
