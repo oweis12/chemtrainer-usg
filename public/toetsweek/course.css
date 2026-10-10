@@ -43,3 +43,13 @@
  .course-progress{flex-wrap:wrap}
  .course-lesson>h2,.course-practice>h2,.course-test>h2{font-size:21px!important}
 }
+
+.course-exit{display:inline-block;color:#9ebbb1;font-size:12px;text-decoration:none;margin-bottom:14px}
+.course-exit:hover{text-decoration:underline;color:#d6e9e0}
+@media(max-width:760px){
+  .course-page .mobile-nav{
+    display:flex;position:static;width:100%;z-index:auto;margin-top:3px;
+    justify-content:space-around;padding:13px 15px max(18px,env(safe-area-inset-bottom));
+  }
+  .course-page .content{padding-bottom:35px}
+}
